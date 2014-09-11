@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="WebLauncher Conventions" lang="en" name="title" />
+<meta content="web development experience,maintenance nightmare,index method,legacy systems,method names,php class,uniform system,config files,tenets,apples,conventions,conventional controller,best practices,maps,visibility,news articles,functionality,logic,WebLauncher,developers" lang="en" name="keywords" />
+
+    <title>WebLauncher Conventions &mdash; WebLauncher Framework 2.7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><img src="../_static/logo.png">
+          WebLauncher Framework</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.7</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configurations.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../views.html">Views</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">WebLauncher Conventions</a><ul>
+<li><a class="reference internal" href="#modules-conventions">Modules Conventions</a></li>
+<li><a class="reference internal" href="#components-conventions">Components Conventions</a></li>
+<li><a class="reference internal" href="#controller-conventions">Controller Conventions</a><ul>
+<li><a class="reference internal" href="#url-considerations-for-controller-names">URL Considerations for Controller Names</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#model-and-database-conventions">Model and Database Conventions</a></li>
+<li><a class="reference internal" href="#view-conventions">View Conventions</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/overview/weblauncher-conventions.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="weblauncher-conventions">
+<h1>WebLauncher Conventions<a class="headerlink" href="#weblauncher-conventions" title="Permalink to this headline">¶</a></h1>
+<p>We are big fans of convention over configuration. While it takes a
+bit of time to learn WebLauncher&#8217;s conventions, you save time in the
+long run: by following convention, you get free functionality, and
+you free yourself from the maintenance nightmare of tracking config
+files. Convention also makes for a very uniform system development,
+allowing other developers to jump in and help more easily.</p>
+<p>WebLauncher&#8217;s conventions have been distilled from years of web
+development experience and best practices. While we suggest you use
+these conventions while developing with WebLauncher, we should mention
+that many of these tenets are easily overridden – something that is
+especially handy when working with legacy systems.</p>
+<div class="section" id="modules-conventions">
+<h2>Modules Conventions<a class="headerlink" href="#modules-conventions" title="Permalink to this headline">¶</a></h2>
+<p>Modules are big parts of an app that might require several custom configurations and/or seession handlers. The default module is called site/ and can be found in the /modules/site/ folder.</p>
+<p>The stucture of a module is the following:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">components</span></tt>                        (components of the module | required)</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">models</span></tt>                            (models of the module | not required)</p>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">views</span></tt>                             (general views and layouts | required | this can be also structured in skins)</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">index.tpl</span></tt>                 (general layout of the module | required)</li>
+<li><tt class="docutils literal"><span class="pre">404.tpl</span></tt>                   (404 error layout | not required)</li>
+<li><tt class="docutils literal"><span class="pre">noscript.tpl</span></tt>              (no javascript section template | not required)</li>
+<li><tt class="docutils literal"><span class="pre">restricted.tpl</span></tt>    (restricted area template | not required)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">config.php</span></tt>                        (custom module configuration file | not required)</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">index.php</span></tt>                         (module controller class named PageIndex | required)</p>
+</li>
+</ul>
+</div>
+<div class="section" id="components-conventions">
+<h2>Components Conventions<a class="headerlink" href="#components-conventions" title="Permalink to this headline">¶</a></h2>
+<p>Components are in WebLauncher parts of applicaiton functionality. Each component can have several sub-components located in the <tt class="docutils literal"><span class="pre">components</span></tt> folder.</p>
+<p>A component structure is like this:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">components</span></tt>                        (sub-components folder | not required)</li>
+<li><tt class="docutils literal"><span class="pre">views</span></tt>                             (views folder for this component | required - also configurable by skin)</li>
+<li><tt class="docutils literal"><span class="pre">models</span></tt>                            (custom models folder | not required)</li>
+<li><tt class="docutils literal"><span class="pre">{component_name}.php</span></tt>      (controller class file | required)</li>
+</ul>
+<p>A new component can be easily built using ?a=build in the url. For this to work the $page-&gt;build_enabled need to be true.</p>
+</div>
+<div class="section" id="controller-conventions">
+<h2>Controller Conventions<a class="headerlink" href="#controller-conventions" title="Permalink to this headline">¶</a></h2>
+<p>Controller class names are simple to use and follow (ex. home_page - is the controller for the home component). We used lower case writting for fast codding purposes.</p>
+<p>The first method you write for a controller might be the
+<tt class="docutils literal"><span class="pre">index()</span></tt> method. When a request specifies a controller but not
+an action, the default WebLauncher behavior is to execute the
+<tt class="docutils literal"><span class="pre">index()</span></tt> method of that controller. For example, a request for
+<a class="reference external" href="http://www.example.com/apples/">http://www.example.com/apples/</a> maps to a call on the <tt class="docutils literal"><span class="pre">index()</span></tt>
+method of the <tt class="docutils literal"><span class="pre">apples_page</span></tt>, whereas
+<a class="reference external" href="http://www.example.com/apples/view/">http://www.example.com/apples/view/</a> maps to a call on the
+<tt class="docutils literal"><span class="pre">action_view()</span></tt> method of the <tt class="docutils literal"><span class="pre">apples_page</span></tt>. Another way to call an action of a controller is by using <a class="reference external" href="http://www.example.com/apples?a=view">http://www.example.com/apples?a=view</a> .</p>
+<p>You can also use the request method specific actions:</p>
+<ul class="simple">
+<li>get_action_view()</li>
+<li>post_action_view()</li>
+<li>delete_action_view()</li>
+<li>put_action_view()</li>
+</ul>
+<p>To pass several parameters to the actions you can use <a class="reference external" href="http://www.example.com/apples/view/1">http://www.example.com/apples/view/1</a> which will call action_view($id).</p>
+<div class="section" id="url-considerations-for-controller-names">
+<h3>URL Considerations for Controller Names<a class="headerlink" href="#url-considerations-for-controller-names" title="Permalink to this headline">¶</a></h3>
+<p>As you&#8217;ve just seen, single word controllers map easily to a simple
+lower case URL path. For example, <tt class="docutils literal"><span class="pre">apples_page</span></tt> (which would
+be defined in the file name &#8216;apples.php&#8217; located under modules/site/components/apples/apples.php) is accessed
+from <a class="reference external" href="http://example.com/apples">http://example.com/apples</a>.</p>
+<p>Multiple word controllers <em>can</em> be any &#8216;inflected&#8217; form which
+equals the controller name so:</p>
+<ul class="simple">
+<li>/redApples</li>
+<li>/RedApples</li>
+<li>/Redapples</li>
+<li>/redapples</li>
+</ul>
+<p>will all resolve to the index of the reedapples_page controller. However,
+the convention is that your URLs are lowercase and underscored,
+therefore /red_apples/go_pick is the correct form to access the
+<tt class="docutils literal"><span class="pre">red_apples::action_go_pick</span></tt> action.</p>
+</div>
+</div>
+<div class="section" id="model-and-database-conventions">
+<h2>Model and Database Conventions<a class="headerlink" href="#model-and-database-conventions" title="Permalink to this headline">¶</a></h2>
+<p>Model class names are lower case and correspond to the database table name to which they have access. This is for simplicity and fast codding.</p>
+<p>Ex.</p>
+<blockquote>
+<div><p>books =&gt; db table books</p>
+<p>books_authors =&gt; db table books_authors</p>
+</div></blockquote>
+</div>
+<div class="section" id="view-conventions">
+<h2>View Conventions<a class="headerlink" href="#view-conventions" title="Permalink to this headline">¶</a></h2>
+<p>View template files are named after the controller functions they
+display, in an underscored form. The action_get() function of the
+cars_page class will look for a view template in
+/modules/site/components/cars/get.tpl.</p>
+<p>The basic pattern is
+/modules/{module}/components/{component1}/components/{component2}/views/underscored_function_name.ctp.</p>
+<p>By naming the pieces of your application using WebLauncher conventions,
+you gain functionality without the hassle and maintenance tethers
+of configuration. Here&#8217;s a final example that ties the conventions
+together:</p>
+<ul class="simple">
+<li>Database table: &#8220;persons&#8221;</li>
+<li>Model class: &#8220;persons&#8221;, found at /modules/site/models/persons.php</li>
+<li>Controller class: &#8220;persons_page&#8221;, found at /modules/site/components/persons/persons.php</li>
+<li>View template, found at /modules/site/components/persons/views/persons.tpl</li>
+</ul>
+<p>Using these conventions, WebLauncher knows that a request to
+<a class="reference external" href="http://example.com/persons/">http://example.com/persons/</a> maps to a call on the index() function
+of the persons_page, where the persons model is automatically
+available (and automatically tied to the &#8216;persons&#8217; table in the
+database), and renders to a file. None of these relationships have
+been configured by any means other than by creating classes and
+files that you&#8217;d need to create anyway.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, WebLauncher.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

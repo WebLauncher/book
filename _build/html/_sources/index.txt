@@ -1,0 +1,31 @@
+.. WebLauncher Framework documentation master file, created by
+   sphinx-quickstart on Thu May 08 18:56:29 2014.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome To WebLauncher Framework Book
+=================================================
+
+This book is mostly appliable to 2.7+ releases of the framework. Most of the functionalities are also available in pre 2.7 releases. To be sure that the functionalities are available check the API Docs of those releases.
+
+**WebLauncher** framework is built with the ideea of keeping things simple and easy to implement. 
+Use this documentation to get familiar with the development tehniques used to implement a website or app using this framework.
+
+Contents
+--------
+
+.. toctree::
+   :maxdepth: 2
+   
+   overview
+   install   
+   configurations
+   		/config/general_config
+   		/config/module_config
+   		/config/database_config
+   		/config/email_config
+   		/config/advanced_config   		
+   controllers
+   models
+   views
+

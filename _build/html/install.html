@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="Installation" lang="en" name="title" />
+<meta content="apache mod rewrite,microsoft sql server,tar bz2,tmp directory,database storage,archive copy,tar gz,source application,current releases,web servers,microsoft iis,copyright notices,database engine,bug fixes,lighthttpd,repository,enhancements,source code,WebLauncher,incorporate" lang="en" name="keywords" />
+
+    <title>Install &mdash; WebLauncher Framework 2.7.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="index.html" />
+    <link rel="next" title="Configurations" href="configurations.html" />
+    <link rel="prev" title="Overview" href="overview.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><img src="_static/logo.png">
+          WebLauncher Framework</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.7</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Install</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+<li><a class="reference internal" href="#downloading-weblauncher">Downloading WebLauncher</a></li>
+<li><a class="reference internal" href="#permissions">Permissions</a></li>
+<li><a class="reference internal" href="#setup">Setup</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="overview.html" title="Previous Chapter: Overview"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Overview</span>
+    </a>
+  </li>
+  <li>
+    <a href="configurations.html" title="Next Chapter: Configurations"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Configurations &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/install.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="install">
+<h1>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h1>
+<p>WebLauncher is fast and easy to install. The minimum requirements are a webserver and a copy of WebLauncher, that’s it! While this manual focuses primarily on setting up on Apache (because it’s the most commonly used), you can configure WebLauncher to run on a variety of web servers such as LightHTTPD or Microsoft IIS.</p>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>HTTP Server. For example: Apache. mod_rewrite is required.</li>
+<li>PHP 5.3.+ or greater.</li>
+</ul>
+<p>Technically a database engine isn’t required, but we imagine that most applications will utilize one. WebLauncher supports a variety of database storage engines:</p>
+<ul class="simple">
+<li>MySQL (4 or greater)</li>
+<li>PostgreSQL (under development)</li>
+<li>Microsoft SQL Server (under development)</li>
+<li>SQLite (under development)</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All built-in drivers require PDO. You should make sure you have the
+correct PDO extensions installed.</p>
+</div>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>WebLauncher is licensed under the MIT license. This means that you are free to
+modify, distribute and republish the source code on the condition that the
+copyright notices are left intact. You are also free to incorporate WebLauncher
+into any commercial or closed source application.</p>
+</div>
+<div class="section" id="downloading-weblauncher">
+<h2>Downloading WebLauncher<a class="headerlink" href="#downloading-weblauncher" title="Permalink to this headline">¶</a></h2>
+<p>There are two main ways to get a fresh copy of WebLauncher. You can
+either download an archived copy (zip/tar.gz/tar.bz2):</p>
+<p><a class="reference external" href="http://weblauncher.ro/downloads/wbl27.zip">http://weblauncher.ro/downloads/wbl27.zip</a></p>
+<p>All current releases of WebLauncher are hosted on
+<a class="reference external" href="https://github.com/WebLauncher/framework">GitHub</a>. GitHub houses both WebLauncher
+itself as well as many other plugins for WebLauncher. The WebLauncher
+releases are available at
+<a class="reference external" href="https://github.com/WebLauncher/framework/tags">GitHub tags</a>.</p>
+<p>Alternatively you can get fresh off the press code, with all the
+bug-fixes and up to the minute enhancements.
+These can be accessed from GitHub by cloning the
+<a class="reference external" href="https://github.com/WebLauncher/framework">GitHub</a> repository:</p>
+<div class="highlight-python"><div class="highlight"><pre>git clone git://github.com/WebLauncher/framework.git
+</pre></div>
+</div>
+</div>
+<div class="section" id="permissions">
+<h2>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline">¶</a></h2>
+<p>WebLauncher uses the <tt class="docutils literal"><span class="pre">cache/</span></tt> directory for a number of different
+operations. A few examples would be Model descriptions, cached
+views and session information.</p>
+<p>As such, make sure the directory <tt class="docutils literal"><span class="pre">cache/</span></tt> and all its subdirectories in your WebLauncher installation
+are writable by the web server user.</p>
+<p>One common issue is that the cache/ directories and subdirectories must be writable both by the web server and the command line user.
+On a UNIX system, if your web server user is different from your command line user,
+you can run the following commands just once in your project to ensure that
+permissions will be setup properly:</p>
+<div class="highlight-python"><div class="highlight"><pre>HTTPDUSER=`ps aux | grep -E &#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39; | grep -v root | head -1 | cut -d\  -f1`
+setfacl -R -m u:${HTTPDUSER}:rwx cache
+setfacl -R -d -m u:${HTTPDUSER}:rwx cache
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>Setting up WebLauncher can be as simple as slapping it in your web
+server&#8217;s document root, or as complex and flexible as you wish.
+This section will cover the three main installation types for
+WebLauncher: development, production, and advanced.</p>
+<ul class="simple">
+<li>Development: easy to get going, URLs for the application include
+the WebLauncher installation directory name, and less secure.</li>
+<li>Production: Requires the ability to configure the web server&#8217;s
+document root, clean URLs, very secure.</li>
+<li>Advanced: With some configuration, allows you to place key
+WebLauncher directories in different parts of the filesystem, possibly
+sharing a single WebLauncher core library folder amongst many WebLauncher
+applications.</li>
+</ul>
+<p>Congratulations! You are ready to <a class="reference internal" href="getting-started.html"><em>create your first WebLauncher
+application</em></a>.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, WebLauncher.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
