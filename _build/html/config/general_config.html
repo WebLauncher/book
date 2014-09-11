@@ -138,6 +138,43 @@
       
   <div class="section" id="general-configurations">
 <h1>General Configurations<a class="headerlink" href="#general-configurations" title="Permalink to this headline">¶</a></h1>
+<p>These general configurations will help the system determine how it should function.</p>
+<p><strong>Page trace</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$page-&gt;trace = false;
+</pre></div>
+</div>
+<p>If true shows a trace help page that helps debug the issues, default value false.</p>
+<p><strong>Debug mode</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$page-&gt;debug = true;
+</pre></div>
+</div>
+<p>Activates the display of errors, if false all error will be not shown.</p>
+<p><strong>Live mode</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$page-&gt;live = false;
+</pre></div>
+</div>
+<p>If true tells the system that the site is in production so it should stop running debug codes and start optimizing site, also activates cache if configured.</p>
+<p><strong>Default Module</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$page-&gt;default_module = &#39;site/&#39;;
+</pre></div>
+</div>
+<p>This tells the system which is the default module that it should render.</p>
+<p><strong>Session Cookie Name</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$page-&gt;session_cookie = &#39;default_session_cookie&#39;;
+</pre></div>
+</div>
+<p>Set it to an appropiate name to your site theme.</p>
+<p>While no general configuration is required to be done and most settings have good default values to get you going easily, there might be the case you would like to changed these:</p>
+<div class="highlight-python"><div class="highlight"><pre>$page-&gt;modules_folder = &#39;modules&#39;;
+// module folder to use, this is relative to site root folder
+
+$page-&gt;skins_folder = &#39;skins/&#39;;
+// skins folder to use, this is relative to site root folder
+
+$page-&gt;files_folder = &#39;files/&#39;;
+// files folder to use, this is relative to site root folder, this needs to have write permissions
+</pre></div>
+</div>
 </div>
 
 
