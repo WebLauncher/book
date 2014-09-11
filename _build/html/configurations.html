@@ -138,6 +138,22 @@
   <div class="section" id="configurations">
 <h1>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h1>
 <p>Configurations in WebLauncher framework usually refers to applying some available configurations to the main class (System) and/or it&#8217;s sub-classes.</p>
+<p>For configuring the framework settings you can use the <strong>global config file</strong> (<tt class="docutils literal"><span class="pre">php.config.php</span></tt>) and the <strong>modules config</strong> files (<tt class="docutils literal"><span class="pre">config.php</span></tt> located under each module folder).</p>
+<p>Each of this files should start with:</p>
+<div class="highlight-python"><div class="highlight"><pre>global $page;
+</pre></div>
+</div>
+<p>Using this variable you can set several settings (database, e-mail, authentication ...) for the framework to use.</p>
+<p>While the <strong>global config file</strong> is not restricted to any configuration limitations the <strong>modules config</strong> should be only used to set some minor modules related configurations.</p>
+<p>The path to the <strong>global config file</strong> can be modified if required using <em>SYSTEM_CONFIG_PATH</em> constant in the <tt class="docutils literal"><span class="pre">index.php</span></tt> file located in the root of the site. For security reasons this should be moved outside of web public location.
+This needs to be a global path. Do not use realtive paths. See example below:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">define</span><span class="p">(</span><span class="s">&#39;SYSTEM_CONFIG_PATH&#39;</span><span class="p">,</span><span class="s">&#39;/home/account/&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The name of the <strong>global config file</strong> can be modified if required using <em>SYSTEM_CONFIG_FILE</em> constant in the <tt class="docutils literal"><span class="pre">index.php</span></tt> file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">define</span><span class="p">(</span><span class="s">&#39;SYSTEM_CONFIG_FILE&#39;</span><span class="p">,</span><span class="s">&#39;my_conf.php&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
 <p>Read the following sections to find out more about configurations:</p>
 <div class="toctree-wrapper compound">
 <ul>
