@@ -112,8 +112,8 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/config/email_config.txt"
-     rel="nofollow">Source</a>
+  <a href="https://github.com/weblauncher/book/edit/master/config/email_config.rst"
+     rel="nofollow">Modify Source</a>
 </div></li>
             
           </ul>
@@ -138,7 +138,37 @@
       
   <div class="section" id="e-mail-configurations">
 <h1>E-mail Configurations<a class="headerlink" href="#e-mail-configurations" title="Permalink to this headline">¶</a></h1>
-<p>To do</p>
+<p>Most of the aplications need to send an e-mail now and then. WebLauncher Framework extend PHPMailer as the default mailer. (<a class="reference external" href="https://github.com/PHPMailer/PHPMailer">https://github.com/PHPMailer/PHPMailer</a>)</p>
+<p>Here are the configurations you can use to setup your e-mail delivery system:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$page-&gt;mail_host=&#39;your_mail_server&#39;;</span>
+<span class="x">// yout mail server address if local use localhost or 127.0.0.1</span>
+
+<span class="x">$page-&gt;mail_type=&#39;smtp&#39;;</span>
+<span class="x">// we recomment smtp (other: qmail, sendmail, mail, queue)</span>
+
+<span class="x">$page-&gt;mail_user=&#39;noreply@yoursite.com&#39;;</span>
+<span class="x">// the smtp address user to use for e-mail sending</span>
+
+<span class="x">$page-&gt;mail_password=&#39;smtp password&#39;;</span>
+<span class="x">// the smtp password</span>
+
+<span class="x">$page-&gt;mail_ssl=false;</span>
+<span class="x">// true if the smtp connection is using SSL</span>
+
+<span class="x">$page-&gt;mail_port=25;</span>
+<span class="x">// the smtp port to use</span>
+
+<span class="x">$page-&gt;mail_defaults = array(</span>
+<span class="x">        &#39;subject&#39; =&gt; &#39;Default e-mail subject&#39;,  // the default e-mail subject</span>
+<span class="x">        &#39;from&#39; =&gt; &#39;from@yoursite.com&#39;,                  // the default from e-mail address</span>
+<span class="x">        &#39;fromname&#39; =&gt; &#39;Your Site Name&#39;,                 // the default from name value</span>
+<span class="x">        &#39;reply_to&#39; =&gt; &#39;noreply@heyduckee.com&#39;,  // the default reply e-mail address</span>
+<span class="x">        &#39;reply_name&#39; =&gt; &#39;Your Site Reply Name&#39;, // the default reply name value</span>
+<span class="x">        &#39;mail_in&#39; =&gt; &#39;to&#39;,                                              // the default email method (to, cc, bcc)</span>
+<span class="x">        &#39;others&#39; =&gt; array(&#39;headers&#39;=&gt;array(&#39;X-SendFrom&#39;=&gt;&#39;address&#39;)) // this can be used to set custom headers to the e-mails</span>
+<span class="x">);</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -154,7 +184,7 @@
     </p>
     <p>
         &copy; Copyright 2014, WebLauncher.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.<br/>
     </p>
   </div>
 </footer>

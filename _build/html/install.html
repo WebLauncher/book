@@ -120,8 +120,8 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="_sources/install.txt"
-     rel="nofollow">Source</a>
+  <a href="https://github.com/weblauncher/book/edit/master/install.rst"
+     rel="nofollow">Modify Source</a>
 </div></li>
             
           </ul>
@@ -187,7 +187,7 @@ releases are available at
 bug-fixes and up to the minute enhancements.
 These can be accessed from GitHub by cloning the
 <a class="reference external" href="https://github.com/WebLauncher/framework">GitHub</a> repository:</p>
-<div class="highlight-python"><div class="highlight"><pre>git clone git://github.com/WebLauncher/framework.git
+<div class="highlight-php"><div class="highlight"><pre><span class="x">git clone git://github.com/WebLauncher/framework.git</span>
 </pre></div>
 </div>
 </div>
@@ -202,9 +202,9 @@ are writable by the web server user.</p>
 On a UNIX system, if your web server user is different from your command line user,
 you can run the following commands just once in your project to ensure that
 permissions will be setup properly:</p>
-<div class="highlight-python"><div class="highlight"><pre>HTTPDUSER=`ps aux | grep -E &#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39; | grep -v root | head -1 | cut -d\  -f1`
-setfacl -R -m u:${HTTPDUSER}:rwx cache
-setfacl -R -d -m u:${HTTPDUSER}:rwx cache
+<div class="highlight-php"><div class="highlight"><pre><span class="x">HTTPDUSER=`ps aux | grep -E &#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39; | grep -v root | head -1 | cut -d\  -f1`</span>
+<span class="x">setfacl -R -m u:${HTTPDUSER}:rwx cache</span>
+<span class="x">setfacl -R -d -m u:${HTTPDUSER}:rwx cache</span>
 </pre></div>
 </div>
 </div>
@@ -224,8 +224,8 @@ WebLauncher directories in different parts of the filesystem, possibly
 sharing a single WebLauncher core library folder amongst many WebLauncher
 applications.</li>
 </ul>
-<p>Congratulations! You are ready to <a class="reference internal" href="getting-started.html"><em>create your first WebLauncher
-application</em></a>.</p>
+<p>Congratulations! You are ready to <tt class="xref doc docutils literal"><span class="pre">create</span> <span class="pre">your</span> <span class="pre">first</span> <span class="pre">WebLauncher</span>
+<span class="pre">application</span></tt>.</p>
 </div>
 </div>
 
@@ -242,7 +242,7 @@ application</em></a>.</p>
     </p>
     <p>
         &copy; Copyright 2014, WebLauncher.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.<br/>
     </p>
   </div>
 </footer>

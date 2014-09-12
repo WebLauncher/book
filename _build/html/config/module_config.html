@@ -112,8 +112,8 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/config/module_config.txt"
-     rel="nofollow">Source</a>
+  <a href="https://github.com/weblauncher/book/edit/master/config/module_config.rst"
+     rel="nofollow">Modify Source</a>
 </div></li>
             
           </ul>
@@ -138,7 +138,16 @@
       
   <div class="section" id="module-configurations">
 <h1>Module Configurations<a class="headerlink" href="#module-configurations" title="Permalink to this headline">¶</a></h1>
-<p>to do</p>
+<p>You can do most configurations to the framework using <strong>modules config</strong> files (<tt class="docutils literal"><span class="pre">config.php</span></tt> located under each module folder). These will only apply to the current module.</p>
+<p>If you only have one module in the site you can just do these configuration directly into the <strong>global config file</strong> (<tt class="docutils literal"><span class="pre">php.config.php</span></tt>).</p>
+<p>Here are some mostly module area used ones:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$page-&gt;title=&quot;my site default title&quot;;</span>
+<span class="x">// sets the default title of the site</span>
+
+<span class="x">$page-&gt;module_user_type=&#39;user&#39;;</span>
+<span class="x">// this is used by the Authentication module to determine which user type logs in</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -154,7 +163,7 @@
     </p>
     <p>
         &copy; Copyright 2014, WebLauncher.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.<br/>
     </p>
   </div>
 </footer>
