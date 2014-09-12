@@ -20,11 +20,11 @@ Contents
    overview
    install   
    configurations
-   		/config/general_config
-   		/config/module_config
-   		/config/database_config
-   		/config/email_config
-   		/config/advanced_config   		
+   		config/general_config
+   		config/module_config.rst
+   		config/database_config.rst
+   		config/email_config.rst
+   		config/advanced_config.rst  		
    controllers
    models
    views
