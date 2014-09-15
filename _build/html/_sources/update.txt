@@ -1,0 +1,20 @@
+Update from 2.6
+===============
+
+1. Replace old framework folder (lib/stable) with the new one
+2. Empty cache folder (all compiled templates need to be deleted)
+3. System tables renamed:
+	- x_conf_sys_settings => settings (can be now configured using $page->settings_table)
+	- x_conf_languages => locales (can be now configured settings $page->libraries_settings['wbl_locale']['table'])
+	- x_conf_texts => locales_texts (can be now configured settings $page->libraries_settings['wbl_locale']['texts_table'])
+	- x_conf_translations => locales_translations (can be now configured settings $page->libraries_settings['wbl_locale']['translations_table'])
+	- x_conf_metas => seo_metas (can be now configured using $page->libraries_settings['wbl_seo']['metas_table'])
+	- x_conf_pages => seo_links (can be now configured using $page->libraries_settings['wbl_seo']['links_table'])
+	- x_conf_pages_tracking => seo_trackings (can be configured using $page->libraries_settings['wbl_seo']['trackings_table'])
+	- x_conf_visits_logs => logins (can be configured using $page->logins_logs_table)
+	- x_conf_cronjobs => cronjobs (can be configured using $page->console_cronjobs_db_table)
+	- x_conf_email_queue => email_queue (can be configured using $page->mail_queue_table)
+4. Replace $page->metas_enabled with $page->seo_enabled
+5. Replace $page->visits_logs_enabled with $page->logins_logs_enabled
+6. Move skins/ folder under assets/ folder. Some general sites do not require skins and should only be used in case there is the need for skins. Otherwise assets/ folder should be used.
+7. Replace 'tbl_' with '' (blank string). In table aliasing and models there is no longer required to use this. Be carefull with this your project my be using 'tbl_' string for other reasons. A manual search/replace is recommended.

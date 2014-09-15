@@ -19,6 +19,7 @@ Contents
    
    overview
    install   
+   update
    configurations
    		config/general_config
    		config/module_config.rst
