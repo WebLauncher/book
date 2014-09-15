@@ -20,4 +20,6 @@ WebLauncher Framework allows database table aliasing. Which means that you can g
 		...
 	);
 	
-	// in previous versions of the framework 'pages' would have to be replaced by 'tbl_pages'
+.. warning::
+
+    In previous versions of the framework 'pages' would have to be replaced by 'tbl_pages'.

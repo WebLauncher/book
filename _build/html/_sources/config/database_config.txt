@@ -12,3 +12,14 @@ Most online aplications nowdays have a database in it's backend. Here are the se
 	));
 	
 While the system only uses by default the db connection located at index 0 in the $page->db_connections array, you can set several connections details. Connection will need to be initialised manually by your code.
+
+WebLauncher Framework allows database table aliasing. Which means that you can give shorter name to the models that get associated with the db tables by using::
+
+	$page -> tables = array(
+		'pages' => 'my_site_pages',  // this will alias 'my_site_pages' table to 'pages' model
+		...
+	);
+	
+.. warning::
+
+    In previous versions of the framework 'pages' would have to be replaced by 'tbl_pages'.

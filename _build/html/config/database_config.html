@@ -149,6 +149,17 @@
 </pre></div>
 </div>
 <p>While the system only uses by default the db connection located at index 0 in the $page-&gt;db_connections array, you can set several connections details. Connection will need to be initialised manually by your code.</p>
+<p>WebLauncher Framework allows database table aliasing. Which means that you can give shorter name to the models that get associated with the db tables by using:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$page -&gt; tables = array(</span>
+<span class="x">        &#39;pages&#39; =&gt; &#39;my_site_pages&#39;,  // this will alias &#39;my_site_pages&#39; table to &#39;pages&#39; model</span>
+<span class="x">        ...</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">In previous versions of the framework &#8216;pages&#8217; would have to be replaced by &#8216;tbl_pages&#8217;.</p>
+</div>
 </div>
 
 
