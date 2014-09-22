@@ -88,7 +88,7 @@ WebLauncher: development, production, and advanced.
    applications.
 
 Congratulations! You are ready to :doc:`create your first WebLauncher
-application </getting-started>`.
+application <getting-started>`.
 
 .. meta::
     :title lang=en: Installation

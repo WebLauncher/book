@@ -31,4 +31,5 @@ Read the following sections to find out more about configurations:
    config/module_config
    config/database_config
    config/email_config
+   config/templates_config
    config/advanced_config

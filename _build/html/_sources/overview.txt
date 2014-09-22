@@ -41,7 +41,14 @@ Getting Help
 If you're stuck, there are a number of places :doc:`you can get help
 </overview/where-to-get-help>`.
 
+Reference:
 
+.. toctree::
+   :maxdepth: 1
+   
+   /overview/where-to-get-help
+   /overview/weblauncher-request
+   /overview/weblauncher-conventions
 
 .. meta::
     :title lang=en: .. WebLauncher Cookbook documentation master file, created by

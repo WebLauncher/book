@@ -18,14 +18,12 @@ Contents
    :maxdepth: 2
    
    overview
-   install   
+   install
+   getting-started
    update
    configurations
-   		config/general_config
-   		config/module_config.rst
-   		config/database_config.rst
-   		config/email_config.rst
-   		config/advanced_config.rst  		
+   modules
+   components	
    controllers
    models
    views

@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Search &mdash; WebLauncher Framework 2.7.0 documentation</title>
+    <title>Modules &mdash; WebLauncher Framework 2.7.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,23 +25,17 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/searchtools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="index.html" />
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
-  
+    <link rel="next" title="Components" href="components.html" />
+    <link rel="prev" title="Advanced Configurations" href="config/advanced_config.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-
 
   </head>
   <body>
@@ -73,13 +67,13 @@
      href="index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul>
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="controllers.html">Controllers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
@@ -96,24 +90,46 @@
      href="#">Page <b class="caret"></b></a>
   <ul class="dropdown-menu localtoc"
       role="menu"
-      aria-labelledby="dLabelLocalToc"></ul>
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Modules</a></li>
+</ul>
+</ul>
 </li>
               
             
             
               
                 
+  <li>
+    <a href="config/advanced_config.html" title="Previous Chapter: Advanced Configurations"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Advanced Configu...</span>
+    </a>
+  </li>
+  <li>
+    <a href="components.html" title="Next Chapter: Components"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Components &raquo;</span>
+    </a>
+  </li>
               
             
             
             
             
-              <li class="hidden-sm"></li>
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="https://github.com/weblauncher/book/edit/master/modules.rst"
+     rel="nofollow">Modify Source</a>
+</div></li>
             
           </ul>
 
           
             
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
           
         </div>
     </div>
@@ -123,35 +139,28 @@
   <div class="row">
     <div class="col-md-12">
       
-  <h1 id="search-documentation">Search</h1>
-  <div id="fallback" class="admonition warning">
-  <script type="text/javascript">$('#fallback').hide();</script>
-  <p>
-    Please activate JavaScript to enable the search
-    functionality.
-  </p>
-  </div>
-  <p>
-    From here you can search these documents. Enter your search
-    words into the box below and click "search". Note that the search
-    function will automatically search for all of the words. Pages
-    containing fewer words won't appear in the result list.
-  </p>
+  <div class="section" id="modules">
+<h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
+<p>A module is a big part of an application, having some or more different configurations and design. While a simple
+application can be built using a single module there might be the case a large application requiring several modules.
+Example: the backend administration of a site, employee space etc.</p>
+<p>WebLauncher Frameworks offeres the posibility of creating several modules. You can also create several applications it will have the same result.</p>
+<p>WebLauncher Framework offers a code builder that will automatically create a new module.
+Navigate to <tt class="docutils literal"><span class="pre">yourdomain.com/{module_name}?a=build-module</span></tt> and this should generate you a new module if it&#8217;s not existing.
+For this to work your webserver has to have write persmissions on the <tt class="docutils literal"><span class="pre">modules/</span></tt> folder and the <tt class="docutils literal"><span class="pre">$page-&gt;build_enabled</span></tt> configuration needs to be <strong>true</strong>.</p>
+<p>To manually create a new module simply go into the <tt class="docutils literal"><span class="pre">modules/</span></tt> folder and add a new folder called {module_name}. No space or starting numbers are allowed in the name of the folder. The name should be URL complaint.</p>
+<p>The new module should be now accesible using <tt class="docutils literal"><span class="pre">yourdomain.com/{module_name}</span></tt>. Accessing this path should pop an error saying that you are missing the PageIndex class for in the <tt class="docutils literal"><span class="pre">index.php</span></tt> file in the modules.
+Since your new module has now code you will have to create an <tt class="docutils literal"><span class="pre">index.php</span></tt> file and post the following code:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class PageIndex extends Page {</span>
 
-  
-  <form class="form-inline" action="" method="get">
-    <div class="form-group">
-      <input type="text" class="form-control" name="q" value="" />
-    </div>
-    <input type="submit" class="btn btn-default" value="search" />
-    <span id="search-progress" style="padding-left: 10px"></span>
-  </form>  
-  
-  
-  
-  <div id="search-results">
-  
-  </div>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Now you have a new module class. However when accesing the module path you will still get a 404 error that the path is not on server. This is because your new module does not have the default
+module component <tt class="docutils literal"><span class="pre">home</span></tt>. The framework requires at least the <tt class="docutils literal"><span class="pre">home</span></tt> component for every the module.</p>
+<p>To check out more about components and how to build them go to <a class="reference internal" href="components.html"><em>components section</em></a>.</p>
+</div>
+
 
     </div>
       

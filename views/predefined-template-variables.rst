@@ -1,0 +1,2 @@
+Predefined Template Variables
+=============================
