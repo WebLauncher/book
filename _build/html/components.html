@@ -91,7 +91,12 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Components</a></li>
+<li><a class="reference internal" href="#">Components</a><ul>
+<li><a class="reference internal" href="#structure-of-a-component">Structure of a component</a></li>
+<li><a class="reference internal" href="#create-a-component">Create a component</a></li>
+<li><a class="reference internal" href="#url-access-to-a-component">URL Access to a component</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -141,6 +146,63 @@
       
   <div class="section" id="components">
 <h1>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h1>
+<p>A <strong>component</strong> is a small part of an application that serves for handling a part of the application functionality. Each module has at least one component <tt class="docutils literal"><span class="pre">home</span></tt>.
+The <tt class="docutils literal"><span class="pre">home</span></tt> component is required for the module to work.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Ex. In a blog application you should have <tt class="docutils literal"><span class="pre">post</span></tt> component to handle the display/edit of a post.</p>
+</div>
+<p>Components can be hierahically organised. Each component can have one or more sub-components.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Ex. The <tt class="docutils literal"><span class="pre">post</span></tt> component can have <tt class="docutils literal"><span class="pre">view</span></tt> and <tt class="docutils literal"><span class="pre">edit</span></tt> sub-components.</p>
+</div>
+<div class="section" id="structure-of-a-component">
+<h2>Structure of a component<a class="headerlink" href="#structure-of-a-component" title="Permalink to this headline">¶</a></h2>
+<p>A component folder has the following structure:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">components/             // [optional] this folder contains the sub-components of the current component</span>
+<span class="x">models/                         // [optional] this folder can contain the models defined for this controller</span>
+<span class="x">views/                          // [required] this folder contains the views that can be structured by skins</span>
+<span class="x">component.php           // [required] this is the controller class that serves this component `component`</span>
+</pre></div>
+</div>
+<p>Each component has a controller class that controls the functionality flow. <a class="reference internal" href="controllers.html"><em>Read more about controllers</em></a>.</p>
+</div>
+<div class="section" id="create-a-component">
+<h2>Create a component<a class="headerlink" href="#create-a-component" title="Permalink to this headline">¶</a></h2>
+<p>WebLauncher Framework offers a code builder that will automatically create a new component.
+Navigate to <tt class="docutils literal"><span class="pre">yourdomain.com/module_name/new_component?a=build</span></tt> and this should generate you a new componet <tt class="docutils literal"><span class="pre">new_component</span></tt> if it&#8217;s not existing.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">For this to work your webserver has to have write persmissions on the <tt class="docutils literal"><span class="pre">modules/module_name/components/</span></tt> folder and the <tt class="docutils literal"><span class="pre">$page-&gt;build_enabled</span></tt> configuration needs to be <strong>true</strong>.</p>
+</div>
+<p>To manually create a new component simply go into the <tt class="docutils literal"><span class="pre">modules/module_name/components/</span></tt> folder and add a new folder called {new_component}. No space or starting numbers are allowed in the name of the folder. The name should be URL compliant.</p>
+<p>The new component should be now accesible using <tt class="docutils literal"><span class="pre">yourdomain.com/module_name/new_component</span></tt>. Accessing this path should pop a 404 error.
+Since your new component has no controller code you will have to create an <tt class="docutils literal"><span class="pre">new_component.php</span></tt> file and post the following code:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class new_component_page extends Page {</span>
+
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Now you have a new component class. However this new component won&#8217;t have any view defined. For this component to have a default view defined create the folder <tt class="docutils literal"><span class="pre">views/</span></tt> in your
+new component folder and add a new file called <tt class="docutils literal"><span class="pre">new_component.tpl</span></tt> in that folder.</p>
+<p>Now you should have a fully functional component.</p>
+<p>To check out more about controllers go to <a class="reference internal" href="controllers.html"><em>controller section</em></a>.</p>
+</div>
+<div class="section" id="url-access-to-a-component">
+<h2>URL Access to a component<a class="headerlink" href="#url-access-to-a-component" title="Permalink to this headline">¶</a></h2>
+<p>Each component can be accesed via the url given in the browser. Here is an example:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>To access the <tt class="docutils literal"><span class="pre">post</span></tt> component of the module <tt class="docutils literal"><span class="pre">blog</span></tt> of an application hosted at <tt class="docutils literal"><span class="pre">localhost</span></tt> you use:</p>
+<p class="last"><a class="reference external" href="http:://localhost/blog/post/">http:://localhost/blog/post/</a></p>
+</div>
+<p>You will be able to access that controller for coding by accessing the appropiate folder on the path described by the url.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When using routes in configurations you might find the controllers only by checking out the configured routes.</p>
+</div>
+</div>
 </div>
 
 

@@ -16,6 +16,19 @@ Conventions
 
 Learn about a typical :doc:`WebLauncher request </overview/weblauncher-request>` and the :doc:`conventions </overview/weblauncher-conventions>` that power WebLauncher.
 
+Modules
+-------
+
+Modules are big independent application part with their own design and configurations.
+Read more about :doc:`/modules`.
+
+Components
+----------
+
+Components are small application parts that are served by a controller and can have several view files.
+Read more about :doc:`/components`.
+
+
 Controllers
 -----------
 
