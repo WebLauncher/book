@@ -110,14 +110,14 @@ cover some of the core attributes and methods provided by WebLauncher's controll
 Request Life-cycle callbacks
 ============================
 
-.. php:class:: Controller
+.. php:class:: Page
 
 WebLauncher controllers come fitted with callbacks you can use to
 insert logic around the request life-cycle:
 
 .. php:method:: on_init()
 
-    This function is executed before every action in the controller.
+    This function is executed before every action in the controller and before every sub-component is initialised.
     It's a handy place to check for an active session or inspect user
     permissions.
 
@@ -128,7 +128,7 @@ insert logic around the request life-cycle:
 
 .. php:method:: on_load()
 
-    Called after controller action logic, but before the view is
+    Called after controller action logic and after each sub-component action logic, but before the view is
     rendered. This callback is not used often, but may be needed if you
     are calling :php:meth:`~Page::render()` manually before the end of a given action.
 

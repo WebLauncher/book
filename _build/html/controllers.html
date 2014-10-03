@@ -252,16 +252,16 @@ cover some of the core attributes and methods provided by WebLauncher&#8217;s co
 <div class="section" id="request-life-cycle-callbacks">
 <span id="controller-life-cycle"></span><h2>Request Life-cycle callbacks<a class="headerlink" href="#request-life-cycle-callbacks" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="Controller">
-<em class="property">class </em><tt class="descname">Controller</tt><a class="headerlink" href="#Controller" title="Permalink to this definition">¶</a></dt>
+<dt id="Page">
+<em class="property">class </em><tt class="descname">Page</tt><a class="headerlink" href="#Page" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>WebLauncher controllers come fitted with callbacks you can use to
 insert logic around the request life-cycle:</p>
 <dl class="method">
-<dt id="Controller::on_init">
-<tt class="descclassname">Controller::</tt><tt class="descname">on_init</tt><big>(</big><big>)</big><a class="headerlink" href="#Controller::on_init" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function is executed before every action in the controller.
+<dt id="Page::on_init">
+<tt class="descclassname">Page::</tt><tt class="descname">on_init</tt><big>(</big><big>)</big><a class="headerlink" href="#Page::on_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is executed before every action in the controller and before every sub-component is initialised.
 It&#8217;s a handy place to check for an active session or inspect user
 permissions.</p>
 <div class="admonition note">
@@ -272,16 +272,16 @@ and scaffolded actions.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Controller::on_load">
-<tt class="descclassname">Controller::</tt><tt class="descname">on_load</tt><big>(</big><big>)</big><a class="headerlink" href="#Controller::on_load" title="Permalink to this definition">¶</a></dt>
-<dd><p>Called after controller action logic, but before the view is
+<dt id="Page::on_load">
+<tt class="descclassname">Page::</tt><tt class="descname">on_load</tt><big>(</big><big>)</big><a class="headerlink" href="#Page::on_load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called after controller action logic and after each sub-component action logic, but before the view is
 rendered. This callback is not used often, but may be needed if you
 are calling <tt class="xref php php-meth docutils literal"><span class="pre">render()</span></tt> manually before the end of a given action.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Controller::index">
-<tt class="descclassname">Controller::</tt><tt class="descname">index</tt><big>(</big><big>)</big><a class="headerlink" href="#Controller::index" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::index">
+<tt class="descclassname">Page::</tt><tt class="descname">index</tt><big>(</big><big>)</big><a class="headerlink" href="#Page::index" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function is executed when an action is not provided in the request.</p>
 </dd></dl>
 
@@ -293,14 +293,14 @@ visit the <cite>WebLauncher API</cite>.</p>
 <div class="section" id="interacting-with-views">
 <h3>Interacting with Views<a class="headerlink" href="#interacting-with-views" title="Permalink to this headline">¶</a></h3>
 <p>Controllers interact with views in a number of ways. First, they
-are able to pass data to the views, using <tt class="xref php php-meth docutils literal"><span class="pre">assign()</span></tt>. You can also
+are able to pass data to the views, using <a class="reference internal" href="#Page::assign" title="Page::assign"><tt class="xref php php-meth docutils literal"><span class="pre">assign()</span></tt></a>. You can also
 decide which view class to use, and which view file should be
 rendered from the controller.</p>
 <dl class="method">
-<dt id="Controller::assign">
-<tt class="descclassname">Controller::</tt><tt class="descname">assign</tt><big>(</big><em>string $var</em>, <em>mixed $value</em><big>)</big><a class="headerlink" href="#Controller::assign" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#Controller::assign" title="Controller::assign"><tt class="xref php php-meth docutils literal"><span class="pre">assign()</span></tt></a> method is the main way to send data from your
-controller to your view. Once you&#8217;ve used <tt class="xref php php-meth docutils literal"><span class="pre">assign()</span></tt>, the variable
+<dt id="Page::assign">
+<tt class="descclassname">Page::</tt><tt class="descname">assign</tt><big>(</big><em>string $var</em>, <em>mixed $value</em><big>)</big><a class="headerlink" href="#Page::assign" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <tt class="xref php php-meth docutils literal"><span class="pre">assign()</span></tt> method is the main way to send data from your
+controller to your view. Once you&#8217;ve used <a class="reference internal" href="#Page::assign" title="Page::assign"><tt class="xref php php-meth docutils literal"><span class="pre">assign()</span></tt></a>, the variable
 can be accessed in your view:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">// First you pass data from the controller:</span>
 
@@ -312,7 +312,7 @@ can be accessed in your view:</p>
 <span class="x">You have selected </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$color</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> icing for the cake.</span>
 </pre></div>
 </div>
-<p>The <a class="reference internal" href="#Controller::assign" title="Controller::assign"><tt class="xref php php-meth docutils literal"><span class="pre">assign()</span></tt></a> method also takes an associative array as its first
+<p>The <tt class="xref php php-meth docutils literal"><span class="pre">assign()</span></tt> method also takes an associative array as its first
 parameter. This can often be a quick way to assign a set of
 information to the view:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">$data = array(</span>
@@ -352,9 +352,9 @@ will not try to re-render the view:</p>
 <div class="section" id="flow-control">
 <h3>Flow Control<a class="headerlink" href="#flow-control" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
-<dt id="Controller::redirect">
-<tt class="descclassname">Controller::</tt><tt class="descname">redirect</tt><big>(</big><em>mixed $url</em>, <em>integer $status</em>, <em>boolean $exit</em><big>)</big><a class="headerlink" href="#Controller::redirect" title="Permalink to this definition">¶</a></dt>
-<dd><p>The flow control method you&#8217;ll use most often is <tt class="xref php php-meth docutils literal"><span class="pre">redirect()</span></tt>.
+<dt id="Page::redirect">
+<tt class="descclassname">Page::</tt><tt class="descname">redirect</tt><big>(</big><em>mixed $url</em>, <em>integer $status</em>, <em>boolean $exit</em><big>)</big><a class="headerlink" href="#Page::redirect" title="Permalink to this definition">¶</a></dt>
+<dd><p>The flow control method you&#8217;ll use most often is <a class="reference internal" href="#Page::redirect" title="Page::redirect"><tt class="xref php php-meth docutils literal"><span class="pre">redirect()</span></tt></a>.
 This method takes its first parameter in the form of a
 WebLauncher-relative URL. When a user has successfully placed an order,
 you might wish to redirect them to a receipt screen.:</p>
@@ -373,7 +373,7 @@ you might wish to redirect them to a receipt screen.:</p>
 <span class="x">$this-&gt;redirect(&#39;http://www.example.com&#39;);</span>
 </pre></div>
 </div>
-<p>The second parameter of <tt class="xref php php-meth docutils literal"><span class="pre">redirect()</span></tt> allows you to define an HTTP
+<p>The second parameter of <a class="reference internal" href="#Page::redirect" title="Page::redirect"><tt class="xref php php-meth docutils literal"><span class="pre">redirect()</span></tt></a> allows you to define an HTTP
 status code to accompany the redirect. You may want to use 301
 (moved permanently) or 303 (see other), depending on the nature of
 the redirect.</p>
@@ -389,14 +389,14 @@ set the third parameter to <tt class="docutils literal"><span class="pre">false<
 <div class="section" id="other-useful-methods">
 <h3>Other Useful Methods<a class="headerlink" href="#other-useful-methods" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
-<dt id="Controller::add_message">
-<tt class="descclassname">Controller::</tt><tt class="descname">add_message</tt><big>(</big><em>string $type='success'</em>, <em>string $message</em><big>)</big><a class="headerlink" href="#Controller::add_message" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::add_message">
+<tt class="descclassname">Page::</tt><tt class="descname">add_message</tt><big>(</big><em>string $type='success'</em>, <em>string $message</em><big>)</big><a class="headerlink" href="#Page::add_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method saves the message into the session for it to be displayed at the render time.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Controller::referer">
-<tt class="descclassname">Controller::</tt><tt class="descname">referer</tt><big>(</big><big>)</big><a class="headerlink" href="#Controller::referer" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::referer">
+<tt class="descclassname">Page::</tt><tt class="descname">referer</tt><big>(</big><big>)</big><a class="headerlink" href="#Page::referer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the referring URL for the current request. Parameter
 <tt class="docutils literal"><span class="pre">$default</span></tt> can be used to supply a default URL to use if
 HTTP_REFERER cannot be read from headers. So, instead of doing
@@ -415,21 +415,21 @@ this:</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Controller::validate">
-<tt class="descclassname">Controller::</tt><tt class="descname">validate</tt><big>(</big><em>string $form_id</em><big>)</big><a class="headerlink" href="#Controller::validate" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::validate">
+<tt class="descclassname">Page::</tt><tt class="descname">validate</tt><big>(</big><em>string $form_id</em><big>)</big><a class="headerlink" href="#Page::validate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use this method to check the validity of a form id ($form_id). Although most of the forms are automatically checked by
 the internal form validation system sometimes is better to check twice.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Controller::add_validator">
-<tt class="descclassname">Controller::</tt><tt class="descname">add_validator</tt><big>(</big><em>string $form_id</em>, <em>string $field_name</em>, <em>string $rule</em>, <em>string $message</em><big>)</big><a class="headerlink" href="#Controller::add_validator" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::add_validator">
+<tt class="descclassname">Page::</tt><tt class="descname">add_validator</tt><big>(</big><em>string $form_id</em>, <em>string $field_name</em>, <em>string $rule</em>, <em>string $message</em><big>)</big><a class="headerlink" href="#Page::add_validator" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method adds a form validator to a given field in a form. Checkout the <tt class="docutils literal"><span class="pre">form</span> <span class="pre">validation</span> <span class="pre">page</span></tt>.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Controller::mail">
-<tt class="descclassname">Controller::</tt><tt class="descname">mail</tt><big>(</big><em>string $template</em>, <em>mixed $params=array()</em><big>)</big><a class="headerlink" href="#Controller::mail" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::mail">
+<tt class="descclassname">Page::</tt><tt class="descname">mail</tt><big>(</big><em>string $template</em>, <em>mixed $params=array()</em><big>)</big><a class="headerlink" href="#Page::mail" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send e-mail using EmailManager. Checkout <tt class="docutils literal"><span class="pre">sending</span> <span class="pre">an</span> <span class="pre">e-mail</span> <span class="pre">page</span></tt>.</p>
 </dd></dl>
 
@@ -440,68 +440,68 @@ the internal form validation system sometimes is better to check twice.</p>
 <p>For a complete list of controller attributes and their descriptions
 visit the <cite>WebLauncher API</cite>.</p>
 <dl class="attr">
-<dt id="Controller::$title">
-<em class="property">property </em><tt class="descclassname">Controller::$</tt><tt class="descname">title</tt><a class="headerlink" href="#Controller::$title" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::$title">
+<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">title</tt><a class="headerlink" href="#Page::$title" title="Permalink to this definition">¶</a></dt>
 <dd><p>Page title</p>
 </dd></dl>
 
 <dl class="attr">
-<dt id="Controller::$view">
-<em class="property">property </em><tt class="descclassname">Controller::$</tt><tt class="descname">view</tt><a class="headerlink" href="#Controller::$view" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::$view">
+<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">view</tt><a class="headerlink" href="#Page::$view" title="Permalink to this definition">¶</a></dt>
 <dd><p>The view to be used for the current action.</p>
 </dd></dl>
 
 <dl class="attr">
-<dt id="Controller::$system">
-<em class="property">property </em><tt class="descclassname">Controller::$</tt><tt class="descname">system</tt><a class="headerlink" href="#Controller::$system" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::$system">
+<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">system</tt><a class="headerlink" href="#Page::$system" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct access to System class for helper methods and attributes.</p>
 </dd></dl>
 
 <dl class="attr">
-<dt id="Controller::$models">
-<em class="property">property </em><tt class="descclassname">Controller::$</tt><tt class="descname">models</tt><a class="headerlink" href="#Controller::$models" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::$models">
+<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">models</tt><a class="headerlink" href="#Page::$models" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct access to System::models for accesing the models.</p>
 </dd></dl>
 
 <dl class="attr">
-<dt id="Controller::$paths">
-<em class="property">property </em><tt class="descclassname">Controller::$</tt><tt class="descname">paths</tt><a class="headerlink" href="#Controller::$paths" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::$paths">
+<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">paths</tt><a class="headerlink" href="#Page::$paths" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct access to System::paths for using generated URL/Directories paths.</p>
 </dd></dl>
 
 <dl class="attr">
-<dt id="Controller::$db">
-<em class="property">property </em><tt class="descclassname">Controller::$</tt><tt class="descname">db</tt><a class="headerlink" href="#Controller::$db" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::$db">
+<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">db</tt><a class="headerlink" href="#Page::$db" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct access to the current DbManager object for executing DB queries.</p>
 </dd></dl>
 
 <dl class="attr">
-<dt id="Controller::$user">
-<em class="property">property </em><tt class="descclassname">Controller::$</tt><tt class="descname">user</tt><a class="headerlink" href="#Controller::$user" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::$user">
+<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">user</tt><a class="headerlink" href="#Page::$user" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct access to the current signed in user data as array.</p>
 </dd></dl>
 
 <dl class="attr">
-<dt id="Controller::$session">
-<em class="property">property </em><tt class="descclassname">Controller::$</tt><tt class="descname">session</tt><a class="headerlink" href="#Controller::$session" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::$session">
+<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">session</tt><a class="headerlink" href="#Page::$session" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct access to the session array. You can also use $_SESSION variable.</p>
 </dd></dl>
 
 <dl class="attr">
-<dt id="Controller::$forms">
-<em class="property">property </em><tt class="descclassname">Controller::$</tt><tt class="descname">forms</tt><a class="headerlink" href="#Controller::$forms" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::$forms">
+<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">forms</tt><a class="headerlink" href="#Page::$forms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct access to System::forms FormsManager object.</p>
 </dd></dl>
 
 <dl class="attr">
-<dt id="Controller::$parent">
-<em class="property">property </em><tt class="descclassname">Controller::$</tt><tt class="descname">parent</tt><a class="headerlink" href="#Controller::$parent" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::$parent">
+<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">parent</tt><a class="headerlink" href="#Page::$parent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Access to the parent component controller class.</p>
 </dd></dl>
 
 <dl class="attr">
-<dt id="Controller::$subpage">
-<em class="property">property </em><tt class="descclassname">Controller::$</tt><tt class="descname">subpage</tt><a class="headerlink" href="#Controller::$subpage" title="Permalink to this definition">¶</a></dt>
+<dt id="Page::$subpage">
+<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">subpage</tt><a class="headerlink" href="#Page::$subpage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Access to the child component requested.</p>
 </dd></dl>
 
