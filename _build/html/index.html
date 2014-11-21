@@ -9,8 +9,7 @@
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.1.0/lumen/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -63,7 +62,7 @@
      id="dLabelGlobalToc"
      data-toggle="dropdown"
      data-target="#"
-     href="#">Site <b class="caret"></b></a>
+     href="#">Contents <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
@@ -134,9 +133,38 @@
   </div>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      
+	<div class="row">
+<div class="col-md-3">
+	<div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+	<li class="globaltoc-container">
+		<a role="button"
+		id="dLabelGlobalToc"
+		data-toggle="dropdown"
+		data-target="#"
+		href="#">Contents <b class="caret"></b></a>
+		<ul class="globaltoc"
+		role="menu"
+		aria-labelledby="dLabelGlobalToc">
+			<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
+</ul>
+
+		</ul>
+	</li>
+</ul>
+	</div>
+</div>
+		<div class="col-md-9">
+			
   <div class="section" id="welcome-to-weblauncher-framework-book">
 <h1>Welcome To WebLauncher Framework Book<a class="headerlink" href="#welcome-to-weblauncher-framework-book" title="Permalink to this headline">¶</a></h1>
 <p>This book is mostly appliable to 2.7+ releases of the framework. Most of the functionalities are also available in pre 2.7 releases. To be sure that the functionalities are available check the API Docs of those releases.</p>
@@ -147,8 +175,21 @@ Use this documentation to get familiar with the development tehniques used to im
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#getting-help">Getting Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#conventions">Conventions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#modules">Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#components">Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#controllers">Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#views">Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#models">Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#getting-help">Getting Help</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview/where-to-get-help.html">Where To Get Help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview/weblauncher-request.html">WebLaucher Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview/weblauncher-conventions.html">WebLauncher Conventions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a><ul>
@@ -187,13 +228,32 @@ Use this documentation to get familiar with the development tehniques used to im
 <li class="toctree-l2"><a class="reference internal" href="controllers.html#request-parameters">Request parameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controllers.html#controller-actions">Controller actions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controllers.html#request-life-cycle-callbacks">Request Life-cycle callbacks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controllers.html#controller-methods">Controller Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controllers.html#controller-methods">Controller Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="controllers.html#interacting-with-views">Interacting with Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controllers.html#flow-control">Flow Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controllers.html#other-useful-methods">Other Useful Methods</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="controllers.html#controller-attributes">Controller Attributes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="models.html#understanding-models">Understanding Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models.html#more-on-models">More on models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#more-on-models">More on models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models/associations-linking-models-together.html">Associations: Linking Models Together</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/retrieving-your-data.html">Retrieving Your Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/saving-your-data.html">Saving Your Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/deleting-data.html">Deleting Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/data-validation.html">Data Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/callback-methods.html">Callback Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/behaviors.html">Behaviors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/datasources.html">DataSources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/model-attributes.html">Model Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/additional-methods-and-properties.html">Additional Methods and Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/virtual-fields.html">Virtual fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/transactions.html">Transactions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
@@ -203,21 +263,23 @@ Use this documentation to get familiar with the development tehniques used to im
 </div>
 
 
-    </div>
-      
-  </div>
+		</div>
+		  
+	</div>
 </div>
 <footer class="footer">
-  <div class="container">
-    <p class="pull-right">
-      <a href="#">Back to top</a>
-      
-    </p>
-    <p>
-        &copy; Copyright 2014, WebLauncher.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.<br/>
-    </p>
-  </div>
+	<div class="container">
+		<p class="pull-right">
+			<a href="#">Back to top</a>
+			
+		</p>
+		<p>
+			&copy; Copyright 2014, WebLauncher.
+			<br/>
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			<br/>
+		</p>
+	</div>
 </footer>
   </body>
 </html>
