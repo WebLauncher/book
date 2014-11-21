@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="Data Validation" lang="en" name="title" />
+<meta content="validation rules,validation data,validation errors,data validation,credit card numbers,core libraries,password email,model fields,login field,model definition,php class,many different aspects,eight characters,letters and numbers,business rules,validation process,date validation,error messages,array,formatting" lang="en" name="keywords" />
+
+    <title>Data Validation &mdash; WebLauncher Framework 2.7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="../index.html" />
+    <link rel="up" title="Models" href="../models.html" />
+    <link rel="next" title="Validating Data from the Controller" href="data-validation/validating-data-from-the-controller.html" />
+    <link rel="prev" title="Deleting Data" href="deleting-data.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><img src="../_static/logo.png">
+          WebLauncher Framework</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.7</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configurations.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controllers.html">Controllers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../views.html">Views</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Data Validation</a><ul>
+<li><a class="reference internal" href="#simple-rules">Simple Rules</a></li>
+<li><a class="reference internal" href="#one-rule-per-field">One Rule Per Field</a><ul>
+<li><a class="reference internal" href="#rule">rule</a></li>
+<li><a class="reference internal" href="#required">required</a></li>
+<li><a class="reference internal" href="#allowempty">allowEmpty</a></li>
+<li><a class="reference internal" href="#on">on</a></li>
+<li><a class="reference internal" href="#message">message</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#multiple-rules-per-field">Multiple Rules per Field</a><ul>
+<li><a class="reference internal" href="#last">last</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#custom-validation-rules">Custom Validation Rules</a><ul>
+<li><a class="reference internal" href="#custom-regular-expression-validation">Custom Regular Expression Validation</a></li>
+<li><a class="reference internal" href="#adding-your-own-validation-methods">Adding your own Validation Methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dynamically-change-validation-rules">Dynamically change validation rules</a><ul>
+<li><a class="reference internal" href="#adding-new-validation-rules">Adding new validation rules</a></li>
+<li><a class="reference internal" href="#modifying-current-validation-rules">Modifying current validation rules</a></li>
+<li><a class="reference internal" href="#removing-rules-from-the-set">Removing rules from the set</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#core-validation-rules">Core Validation Rules</a></li>
+<li><a class="reference internal" href="#localized-validation">Localized Validation</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="deleting-data.html" title="Previous Chapter: Deleting Data"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Deleting Data</span>
+    </a>
+  </li>
+  <li>
+    <a href="data-validation/validating-data-from-the-controller.html" title="Next Chapter: Validating Data from the Controller"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Validating Data ... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="https://github.com/weblauncher/book/edit/master/models/data-validation.rst"
+     rel="nofollow">Modify Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="data-validation">
+<h1>Data Validation<a class="headerlink" href="#data-validation" title="Permalink to this headline">¶</a></h1>
+<p>Data validation is an important part of any application, as it
+helps to make sure that the data in a Model conforms to the
+business rules of the application. For example, you might want to
+make sure that passwords are at least eight characters long, or
+ensure that usernames are unique. Defining validation rules makes
+form handling much, much easier.</p>
+<p>There are many different aspects to the validation process. What
+we&#8217;ll cover in this section is the model side of things.
+Essentially: what happens when you call the save() method of your
+model. For more information about how to handle the displaying of
+validation errors, check out
+<tt class="xref doc docutils literal"><span class="pre">/core-libraries/helpers/form</span></tt>.</p>
+<p>The first step to data validation is creating the validation rules
+in the Model. To do that, use the Model::validate array in the
+Model definition, for example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class User extends AppModel {</span>
+<span class="x">    public $validate = array();</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>In the example above, the <tt class="docutils literal"><span class="pre">$validate</span></tt> array is added to the User
+Model, but the array contains no validation rules. Assuming that
+the users table has login, password, email and born fields, the
+example below shows some simple validation rules that apply to
+those fields:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class User extends AppModel {</span>
+<span class="x">    public $validate = array(</span>
+<span class="x">        &#39;login&#39; =&gt; &#39;alphaNumeric&#39;,</span>
+<span class="x">        &#39;email&#39; =&gt; &#39;email&#39;,</span>
+<span class="x">        &#39;born&#39; =&gt; &#39;date&#39;</span>
+<span class="x">    );</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>This last example shows how validation rules can be added to model
+fields. For the login field, only letters and numbers will be
+accepted, the email should be valid, and born should be a valid
+date. Defining validation rules enables WebLauncher Framework&#8217;s automagic showing
+of error messages in forms if the data submitted does not follow
+the defined rules.</p>
+<p>WebLauncher Framework has many validation rules and using them can be quite easy.
+Some of the built-in rules allow you to verify the formatting of
+emails, URLs, and credit card numbers – but we&#8217;ll cover these in
+detail later on.</p>
+<p>Here is a more complex validation example that takes advantage of
+some of these built-in validation rules:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class User extends AppModel {</span>
+<span class="x">    public $validate = array(</span>
+<span class="x">        &#39;login&#39; =&gt; array(</span>
+<span class="x">            &#39;alphaNumeric&#39; =&gt; array(</span>
+<span class="x">                &#39;rule&#39; =&gt; &#39;alphaNumeric&#39;,</span>
+<span class="x">                &#39;required&#39; =&gt; true,</span>
+<span class="x">                &#39;message&#39; =&gt; &#39;Letters and numbers only&#39;</span>
+<span class="x">            ),</span>
+<span class="x">            &#39;between&#39; =&gt; array(</span>
+<span class="x">                &#39;rule&#39; =&gt; array(&#39;between&#39;, 5, 15),</span>
+<span class="x">                &#39;message&#39; =&gt; &#39;Between 5 to 15 characters&#39;</span>
+<span class="x">            )</span>
+<span class="x">        ),</span>
+<span class="x">        &#39;password&#39; =&gt; array(</span>
+<span class="x">            &#39;rule&#39; =&gt; array(&#39;minLength&#39;, &#39;8&#39;),</span>
+<span class="x">            &#39;message&#39; =&gt; &#39;Minimum 8 characters long&#39;</span>
+<span class="x">        ),</span>
+<span class="x">        &#39;email&#39; =&gt; &#39;email&#39;,</span>
+<span class="x">        &#39;born&#39; =&gt; array(</span>
+<span class="x">            &#39;rule&#39; =&gt; &#39;date&#39;,</span>
+<span class="x">            &#39;message&#39; =&gt; &#39;Enter a valid date&#39;,</span>
+<span class="x">            &#39;allowEmpty&#39; =&gt; true</span>
+<span class="x">        )</span>
+<span class="x">    );</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Two validation rules are defined for login: it should contain
+letters and numbers only, and its length should be between 5 and
+15. The password field should be a minimum of 8 characters long.
+The email should be a valid email address, and born should be a
+valid date. Also, notice how you can define specific error messages
+that WebLauncher Framework will use when these validation rules fail.</p>
+<p>As the example above shows, a single field can have multiple
+validation rules. And if the built-in rules do not match your
+criteria, you can always add your own validation rules as
+required.</p>
+<p>Now that you&#8217;ve seen the big picture on how validation works, let&#8217;s
+look at how these rules are defined in the model. There are three
+different ways that you can define validation rules: simple arrays,
+single rule per field, and multiple rules per field.</p>
+<div class="section" id="simple-rules">
+<h2>Simple Rules<a class="headerlink" href="#simple-rules" title="Permalink to this headline">¶</a></h2>
+<p>As the name suggests, this is the simplest way to define a
+validation rule. The general syntax for defining rules this way
+is:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(&#39;fieldName&#39; =&gt; &#39;ruleName&#39;);</span>
+</pre></div>
+</div>
+<p>Where, &#8216;fieldName&#8217; is the name of the field the rule is defined
+for, and &#8216;ruleName&#8217; is a pre-defined rule name, such as
+&#8216;alphaNumeric&#8217;, &#8216;email&#8217; or &#8216;isUnique&#8217;.</p>
+<p>For example, to ensure that the user is giving a well formatted
+email address, you could use this rule:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(&#39;user_email&#39; =&gt; &#39;email&#39;);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="one-rule-per-field">
+<h2>One Rule Per Field<a class="headerlink" href="#one-rule-per-field" title="Permalink to this headline">¶</a></h2>
+<p>This definition technique allows for better control of how the
+validation rules work. But before we discuss that, let&#8217;s see the
+general usage pattern adding a rule for a single field:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;fieldName1&#39; =&gt; array(</span>
+<span class="x">        // or: array(&#39;ruleName&#39;, &#39;param1&#39;, &#39;param2&#39; ...)</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;ruleName&#39;,</span>
+<span class="x">        &#39;required&#39; =&gt; true,</span>
+<span class="x">        &#39;allowEmpty&#39; =&gt; false,</span>
+<span class="x">        // or: &#39;update&#39;</span>
+<span class="x">        &#39;on&#39; =&gt; &#39;create&#39;,</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Your Error Message&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>The &#8216;rule&#8217; key is required. If you only set &#8216;required&#8217; =&gt; true, the
+form validation will not function correctly. This is because
+&#8216;required&#8217; is not actually a rule.</p>
+<p>As you can see here, each field (only one field shown above) is
+associated with an array that contains five keys: &#8216;rule&#8217;,
+&#8216;required&#8217;, &#8216;allowEmpty&#8217;, &#8216;on&#8217; and &#8216;message&#8217;. Let&#8217;s have a closer
+look at these keys.</p>
+<div class="section" id="rule">
+<h3>rule<a class="headerlink" href="#rule" title="Permalink to this headline">¶</a></h3>
+<p>The &#8216;rule&#8217; key defines the validation method and takes either a
+single value or an array. The specified &#8216;rule&#8217; may be the name of a
+method in your model, a method of the core Validation class, or a
+regular expression. For more information on the rules available by
+default, see
+<a class="reference internal" href="#core-validation-rules"><em>Core Validation Rules</em></a>.</p>
+<p>If the rule does not require any parameters, &#8216;rule&#8217; can be a single
+value e.g.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;login&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;alphaNumeric&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>If the rule requires some parameters (like the max, min or range),
+&#8216;rule&#8217; should be an array:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;password&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;minLength&#39;, 8)</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>Remember, the &#8216;rule&#8217; key is required for array-based rule
+definitions.</p>
+</div>
+<div class="section" id="required">
+<h3>required<a class="headerlink" href="#required" title="Permalink to this headline">¶</a></h3>
+<p>This key accepts either a boolean, or <tt class="docutils literal"><span class="pre">create</span></tt> or <tt class="docutils literal"><span class="pre">update</span></tt>. Setting this
+key to <tt class="docutils literal"><span class="pre">true</span></tt> will make the field always required. While setting it to
+<tt class="docutils literal"><span class="pre">create</span></tt> or <tt class="docutils literal"><span class="pre">update</span></tt> will make the field required only for update or  create
+operations. If &#8216;required&#8217; is evaluated to true, the field must be present in the
+data array. For example, if the validation rule has been defined as follows:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;login&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;alphaNumeric&#39;,</span>
+<span class="x">        &#39;required&#39; =&gt; true</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>The data sent to the model&#8217;s save() method must contain data for
+the login field. If it doesn&#8217;t, validation will fail. The default
+value for this key is boolean false.</p>
+<p><tt class="docutils literal"><span class="pre">required</span> <span class="pre">=&gt;</span> <span class="pre">true</span></tt> does not mean the same as the validation rule
+<tt class="docutils literal"><span class="pre">notEmpty()</span></tt>. <tt class="docutils literal"><span class="pre">required</span> <span class="pre">=&gt;</span> <span class="pre">true</span></tt> indicates that the array <em>key</em>
+must be present - it does not mean it must have a value. Therefore
+validation will fail if the field is not present in the dataset,
+but may (depending on the rule) succeed if the value submitted is
+empty (&#8216;&#8217;).</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.1: </span>Support for <tt class="docutils literal"><span class="pre">create</span></tt> and <tt class="docutils literal"><span class="pre">update</span></tt> were added.</p>
+</div>
+</div>
+<div class="section" id="allowempty">
+<h3>allowEmpty<a class="headerlink" href="#allowempty" title="Permalink to this headline">¶</a></h3>
+<p>If set to <tt class="docutils literal"><span class="pre">false</span></tt>, the field value must be <strong>nonempty</strong>, where
+&#8220;nonempty&#8221; is defined as <tt class="docutils literal"><span class="pre">!empty($value)</span> <span class="pre">||</span> <span class="pre">is_numeric($value)</span></tt>.
+The numeric check is so that WebLauncher Framework does the right thing when
+<tt class="docutils literal"><span class="pre">$value</span></tt> is zero.</p>
+<p>The difference between <tt class="docutils literal"><span class="pre">required</span></tt> and <tt class="docutils literal"><span class="pre">allowEmpty</span></tt> can be
+confusing. <tt class="docutils literal"><span class="pre">'required'</span> <span class="pre">=&gt;</span> <span class="pre">true</span></tt> means that you cannot save the
+model without the <em>key</em> for this field being present in
+<tt class="docutils literal"><span class="pre">$this-&gt;data</span></tt> (the check is performed with <tt class="docutils literal"><span class="pre">isset</span></tt>); whereas,
+<tt class="docutils literal"><span class="pre">'allowEmpty'</span> <span class="pre">=&gt;</span> <span class="pre">false</span></tt> makes sure that the current field <em>value</em>
+is nonempty, as described above.</p>
+</div>
+<div class="section" id="on">
+<h3>on<a class="headerlink" href="#on" title="Permalink to this headline">¶</a></h3>
+<p>The &#8216;on&#8217; key can be set to either one of the following values:
+&#8216;update&#8217; or &#8216;create&#8217;. This provides a mechanism that allows a
+certain rule to be applied either during the creation of a new
+record, or during update of a record.</p>
+<p>If a rule has defined &#8216;on&#8217; =&gt; &#8216;create&#8217;, the rule will only be
+enforced during the creation of a new record. Likewise, if it is
+defined as &#8216;on&#8217; =&gt; &#8216;update&#8217;, it will only be enforced during the
+updating of a record.</p>
+<p>The default value for &#8216;on&#8217; is null. When &#8216;on&#8217; is null, the rule
+will be enforced during both creation and update.</p>
+</div>
+<div class="section" id="message">
+<h3>message<a class="headerlink" href="#message" title="Permalink to this headline">¶</a></h3>
+<p>The message key allows you to define a custom validation error
+message for the rule:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;password&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;minLength&#39;, 8),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Password must be at least 8 characters long&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Regardless of the rule, validation failure without a defined message defaults to &#8220;This field cannot be left blank.&#8221;</p>
+</div>
+</div>
+</div>
+<div class="section" id="multiple-rules-per-field">
+<h2>Multiple Rules per Field<a class="headerlink" href="#multiple-rules-per-field" title="Permalink to this headline">¶</a></h2>
+<p>The technique outlined above gives us much more flexibility than
+simple rules assignment, but there&#8217;s an extra step we can take in
+order to gain more fine-grained control of data validation. The
+next technique we&#8217;ll outline allows us to assign multiple
+validation rules per model field.</p>
+<p>If you would like to assign multiple validation rules to a single
+field, this is basically how it should look:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;fieldName&#39; =&gt; array(</span>
+<span class="x">        &#39;ruleName&#39; =&gt; array(</span>
+<span class="x">            &#39;rule&#39; =&gt; &#39;ruleName&#39;,</span>
+<span class="x">            // extra keys like on, required, etc. go here...</span>
+<span class="x">        ),</span>
+<span class="x">        &#39;ruleName2&#39; =&gt; array(</span>
+<span class="x">            &#39;rule&#39; =&gt; &#39;ruleName2&#39;,</span>
+<span class="x">            // extra keys like on, required, etc. go here...</span>
+<span class="x">        )</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>As you can see, this is quite similar to what we did in the
+previous section. There, for each field we had only one array of
+validation parameters. In this case, each &#8216;fieldName&#8217; consists of
+an array of rule indexes. Each &#8216;ruleName&#8217; contains a separate array
+of validation parameters.</p>
+<p>This is better explained with a practical example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;login&#39; =&gt; array(</span>
+<span class="x">        &#39;loginRule-1&#39; =&gt; array(</span>
+<span class="x">            &#39;rule&#39; =&gt; &#39;alphaNumeric&#39;,</span>
+<span class="x">            &#39;message&#39; =&gt; &#39;Only alphabets and numbers allowed&#39;,</span>
+<span class="x">         ),</span>
+<span class="x">        &#39;loginRule-2&#39; =&gt; array(</span>
+<span class="x">            &#39;rule&#39; =&gt; array(&#39;minLength&#39;, 8),</span>
+<span class="x">            &#39;message&#39; =&gt; &#39;Minimum length of 8 characters&#39;</span>
+<span class="x">        )</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>The above example defines two rules for the login field:
+loginRule-1 and loginRule-2. As you can see, each rule is
+identified with an arbitrary name.</p>
+<p>When using multiple rules per field the &#8216;required&#8217; and &#8216;allowEmpty&#8217;
+keys need to be used only once in the first rule.</p>
+<div class="section" id="last">
+<h3>last<a class="headerlink" href="#last" title="Permalink to this headline">¶</a></h3>
+<p>In case of multiple rules per field by default if a particular rule
+fails error message for that rule is returned and the following rules
+for that field are not processed. If you want validation to continue
+in spite of a rule failing set key <tt class="docutils literal"><span class="pre">last</span></tt> to <tt class="docutils literal"><span class="pre">false</span></tt> for that rule.</p>
+<p>In the following example even if &#8220;rule1&#8221; fails &#8220;rule2&#8221; will be processed
+and error messages for both failing rules will be returned if &#8220;rule2&#8221; also
+fails:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;login&#39; =&gt; array(</span>
+<span class="x">        &#39;rule1&#39; =&gt; array(</span>
+<span class="x">            &#39;rule&#39; =&gt; &#39;alphaNumeric&#39;,</span>
+<span class="x">            &#39;message&#39; =&gt; &#39;Only alphabets and numbers allowed&#39;,</span>
+<span class="x">            &#39;last&#39; =&gt; false</span>
+<span class="x">         ),</span>
+<span class="x">        &#39;rule2&#39; =&gt; array(</span>
+<span class="x">            &#39;rule&#39; =&gt; array(&#39;minLength&#39;, 8),</span>
+<span class="x">            &#39;message&#39; =&gt; &#39;Minimum length of 8 characters&#39;</span>
+<span class="x">        )</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>When specifying validation rules in this array form it&#8217;s possible to avoid
+providing the <tt class="docutils literal"><span class="pre">message</span></tt> key. Consider this example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;login&#39; =&gt; array(</span>
+<span class="x">        &#39;Only alphabets and numbers allowed&#39; =&gt; array(</span>
+<span class="x">            &#39;rule&#39; =&gt; &#39;alphaNumeric&#39;,</span>
+<span class="x">         ),</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>If the <tt class="docutils literal"><span class="pre">alphaNumeric</span></tt> rules fails the array key for this rule
+&#8216;Only alphabets and numbers allowed&#8217; will be returned as error message since
+the <tt class="docutils literal"><span class="pre">message</span></tt> key is not set.</p>
+</div>
+</div>
+<div class="section" id="custom-validation-rules">
+<h2>Custom Validation Rules<a class="headerlink" href="#custom-validation-rules" title="Permalink to this headline">¶</a></h2>
+<p>If you haven&#8217;t found what you need thus far, you can always create
+your own validation rules. There are two ways you can do this: by
+defining custom regular expressions, or by creating custom
+validation methods.</p>
+<div class="section" id="custom-regular-expression-validation">
+<h3>Custom Regular Expression Validation<a class="headerlink" href="#custom-regular-expression-validation" title="Permalink to this headline">¶</a></h3>
+<p>If the validation technique you need to use can be completed by
+using regular expression matching, you can define a custom
+expression as a field validation rule:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;login&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;/^[a-z0-9]{3,}$/i&#39;,</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Only letters and integers, min 3 characters&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>The example above checks if the login contains only letters and
+integers, with a minimum of three characters.</p>
+<p>The regular expression in the <tt class="docutils literal"><span class="pre">rule</span></tt> must be delimited by
+slashes. The optional trailing &#8216;i&#8217; after the last slash means the
+reg-exp is case <em>i</em>nsensitive.</p>
+</div>
+<div class="section" id="adding-your-own-validation-methods">
+<h3>Adding your own Validation Methods<a class="headerlink" href="#adding-your-own-validation-methods" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes checking data with regular expression patterns is not
+enough. For example, if you want to ensure that a promotional code
+can only be used 25 times, you need to add your own validation
+function, as shown below:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class User extends AppModel {</span>
+
+<span class="x">    public $validate = array(</span>
+<span class="x">        &#39;promotion_code&#39; =&gt; array(</span>
+<span class="x">            &#39;rule&#39; =&gt; array(&#39;limitDuplicates&#39;, 25),</span>
+<span class="x">            &#39;message&#39; =&gt; &#39;This code has been used too many times.&#39;</span>
+<span class="x">        )</span>
+<span class="x">    );</span>
+
+<span class="x">    public function limitDuplicates($check, $limit) {</span>
+<span class="x">        // $check will have value: array(&#39;promotion_code&#39; =&gt; &#39;some-value&#39;)</span>
+<span class="x">        // $limit will have value: 25</span>
+<span class="x">        $existingPromoCount = $this-&gt;find(&#39;count&#39;, array(</span>
+<span class="x">            &#39;conditions&#39; =&gt; $check,</span>
+<span class="x">            &#39;recursive&#39; =&gt; -1</span>
+<span class="x">        ));</span>
+<span class="x">        return $existingPromoCount &lt; $limit;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>The current field to be validated is passed into the function as
+first parameter as an associated array with field name as key and
+posted data as value.</p>
+<p>If you want to pass extra parameters to your validation function,
+add elements onto the &#8216;rule&#8217; array, and handle them as extra params
+(after the main <tt class="docutils literal"><span class="pre">$check</span></tt> param) in your function.</p>
+<p>Your validation function can be in the model (as in the example
+above), or in a behavior that the model implements. This includes
+mapped methods.</p>
+<p>Model/behavior methods are checked first, before looking for a
+method on the <tt class="docutils literal"><span class="pre">Validation</span></tt> class. This means that you can
+override existing validation methods (such as <tt class="docutils literal"><span class="pre">alphaNumeric()</span></tt>)
+at an application level (by adding the method to <tt class="docutils literal"><span class="pre">AppModel</span></tt>), or
+at model level.</p>
+<p>When writing a validation rule which can be used by multiple
+fields, take care to extract the field value from the $check array.
+The $check array is passed with the form field name as its key and
+the field value as its value. The full record being validated is
+stored in $this-&gt;data member variable:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class Post extends AppModel {</span>
+
+<span class="x">    public $validate = array(</span>
+<span class="x">        &#39;slug&#39; =&gt; array(</span>
+<span class="x">            &#39;rule&#39; =&gt; &#39;alphaNumericDashUnderscore&#39;,</span>
+<span class="x">            &#39;message&#39; =&gt; &#39;Slug can only be letters,&#39; .</span>
+<span class="x">                &#39; numbers, dash and underscore&#39;</span>
+<span class="x">        )</span>
+<span class="x">    );</span>
+
+<span class="x">    public function alphaNumericDashUnderscore($check) {</span>
+<span class="x">        // $data array is passed using the form field name as the key</span>
+<span class="x">        // have to extract the value to make the function generic</span>
+<span class="x">        $value = array_values($check);</span>
+<span class="x">        $value = $value[0];</span>
+
+<span class="x">        return preg_match(&#39;|^[0-9a-zA-Z_-]*$|&#39;, $value);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Your own validation methods must have <tt class="docutils literal"><span class="pre">public</span></tt> visibility. Validation
+methods that are <tt class="docutils literal"><span class="pre">protected</span></tt> and <tt class="docutils literal"><span class="pre">private</span></tt> are not supported.</p>
+</div>
+<p>The method should return <tt class="docutils literal"><span class="pre">true</span></tt> if the value is valid. If the validation
+failed, return <tt class="docutils literal"><span class="pre">false</span></tt>. The other valid return value are strings which will
+be shown as the error message. Returning a string means the validation failed.
+The string will overwrite the message set in the $validate array and be shown
+in the view&#8217;s form as the reason why the field was not valid.</p>
+</div>
+</div>
+<div class="section" id="dynamically-change-validation-rules">
+<h2>Dynamically change validation rules<a class="headerlink" href="#dynamically-change-validation-rules" title="Permalink to this headline">¶</a></h2>
+<p>Using the <tt class="docutils literal"><span class="pre">$validate</span></tt> property to declare validation rules is a good way of
+statically defining rules for each model. Nevertheless, there are cases when you
+want to dynamically add, change or remove validation rules from the predefined
+set.</p>
+<p>All validation rules are stored in a <tt class="docutils literal"><span class="pre">ModelValidator</span></tt> object, which holds
+every rule set for each field in your model. Defining new validation rules is as
+easy as telling this object to store new validation methods for the fields you
+want to.</p>
+<div class="section" id="adding-new-validation-rules">
+<h3>Adding new validation rules<a class="headerlink" href="#adding-new-validation-rules" title="Permalink to this headline">¶</a></h3>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.2.</span></p>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">ModelValidator</span></tt> objects allows several ways for adding new fields to the
+set. The first one is using the <tt class="docutils literal"><span class="pre">add</span></tt> method:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// Inside a model class</span>
+<span class="x">$this-&gt;validator()-&gt;add(&#39;password&#39;, &#39;required&#39;, array(</span>
+<span class="x">    &#39;rule&#39; =&gt; &#39;notEmpty&#39;,</span>
+<span class="x">    &#39;required&#39; =&gt; &#39;create&#39;</span>
+<span class="x">));</span>
+</pre></div>
+</div>
+<p>This will add a single rule to the <cite>password</cite> field in the model. You can chain
+multiple calls to add to create as many rules as you like:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// Inside a model class</span>
+<span class="x">$this-&gt;validator()</span>
+<span class="x">    -&gt;add(&#39;password&#39;, &#39;required&#39;, array(</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;notEmpty&#39;,</span>
+<span class="x">        &#39;required&#39; =&gt; &#39;create&#39;</span>
+<span class="x">    ))</span>
+<span class="x">    -&gt;add(&#39;password&#39;, &#39;size&#39;, array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;between&#39;, 8, 20),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Password should be at least 8 chars long&#39;</span>
+<span class="x">    ));</span>
+</pre></div>
+</div>
+<p>It is also possible to add multiple rules at once for a single field:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;validator()-&gt;add(&#39;password&#39;, array(</span>
+<span class="x">    &#39;required&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;notEmpty&#39;,</span>
+<span class="x">        &#39;required&#39; =&gt; &#39;create&#39;</span>
+<span class="x">    ),</span>
+<span class="x">    &#39;size&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;between&#39;, 8, 20),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Password should be at least 8 chars long&#39;</span>
+<span class="x">    )</span>
+<span class="x">));</span>
+</pre></div>
+</div>
+<p>Alternatively, you can use the validator object to set rules directly to fields
+using the array interface:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$validator = $this-&gt;validator();</span>
+<span class="x">$validator[&#39;username&#39;] = array(</span>
+<span class="x">    &#39;unique&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;isUnique&#39;,</span>
+<span class="x">        &#39;required&#39; =&gt; &#39;create&#39;</span>
+<span class="x">    ),</span>
+<span class="x">    &#39;alphanumeric&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;alphanumeric&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="modifying-current-validation-rules">
+<h3>Modifying current validation rules<a class="headerlink" href="#modifying-current-validation-rules" title="Permalink to this headline">¶</a></h3>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.2.</span></p>
+</div>
+<p>Modifying current validation rules is also possible using the validator object,
+there are several ways in which you can alter current rules, append methods to a
+field or completely remove a rule from a field rule set:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// In a model class</span>
+<span class="x">$this-&gt;validator()-&gt;getField(&#39;password&#39;)-&gt;setRule(&#39;required&#39;, array(</span>
+<span class="x">    &#39;rule&#39; =&gt; &#39;required&#39;,</span>
+<span class="x">    &#39;required&#39; =&gt; true</span>
+<span class="x">));</span>
+</pre></div>
+</div>
+<p>You can also completely replace all the rules for a field using a similar
+method:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// In a model class</span>
+<span class="x">$this-&gt;validator()-&gt;getField(&#39;password&#39;)-&gt;setRules(array(</span>
+<span class="x">    &#39;required&#39; =&gt; array(...),</span>
+<span class="x">    &#39;otherRule&#39; =&gt; array(...)</span>
+<span class="x">));</span>
+</pre></div>
+</div>
+<p>If you wish to just modify a single property in a rule you can set properties
+directly into the <tt class="docutils literal"><span class="pre">CakeValidationRule</span></tt> object:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// In a model class</span>
+<span class="x">$this-&gt;validator()-&gt;getField(&#39;password&#39;)</span>
+<span class="x">    -&gt;getRule(&#39;required&#39;)-&gt;message = &#39;This field cannot be left blank&#39;;</span>
+</pre></div>
+</div>
+<p>Properties in any <tt class="docutils literal"><span class="pre">CakeValidationRule</span></tt> get their name from the array keys
+one is allowed to use when defining a validation rule&#8217;s properties, such as the
+array keys &#8216;message&#8217; and &#8216;allowEmpty&#8217; for example.</p>
+<p>As with adding new rule to the set, it is also possible to modify existing rules
+using the array interface:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$validator = $this-&gt;validator();</span>
+<span class="x">$validator[&#39;username&#39;][&#39;unique&#39;] = array(</span>
+<span class="x">    &#39;rule&#39; =&gt; &#39;isUnique&#39;,</span>
+<span class="x">    &#39;required&#39; =&gt; &#39;create&#39;</span>
+<span class="x">);</span>
+
+<span class="x">$validator[&#39;username&#39;][&#39;unique&#39;]-&gt;last = true;</span>
+<span class="x">$validator[&#39;username&#39;][&#39;unique&#39;]-&gt;message = &#39;Name already taken&#39;;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="removing-rules-from-the-set">
+<h3>Removing rules from the set<a class="headerlink" href="#removing-rules-from-the-set" title="Permalink to this headline">¶</a></h3>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.2.</span></p>
+</div>
+<p>It is possible to both completely remove all rules for a field and to delete a
+single rule in a field&#8217;s rule set:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// Completely remove all rules for a field</span>
+<span class="x">$this-&gt;validator()-&gt;remove(&#39;username&#39;);</span>
+
+<span class="x">// Remove &#39;required&#39; rule from password</span>
+<span class="x">$this-&gt;validator()-&gt;remove(&#39;password&#39;, &#39;required&#39;);</span>
+</pre></div>
+</div>
+<p>Optionally, you can use the array interface to delete rules from the set:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$validator = $this-&gt;validator();</span>
+<span class="x">// Completely remove all rules for a field</span>
+<span class="x">unset($validator[&#39;username&#39;]);</span>
+
+<span class="x">// Remove &#39;required&#39; rule from password</span>
+<span class="x">unset($validator[&#39;password&#39;][&#39;required&#39;]);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="core-validation-rules">
+<span id="id1"></span><h2>Core Validation Rules<a class="headerlink" href="#core-validation-rules" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="Validation">
+<em class="property">class </em><tt class="descname">Validation</tt><a class="headerlink" href="#Validation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The Validation class in WebLauncher Framework contains many validation rules that
+can make model data validation much easier. This class contains
+many oft-used validation techniques you won&#8217;t need to write on your
+own. Below, you&#8217;ll find a complete list of all the rules, along
+with usage examples.</p>
+<dl class="staticmethod">
+<dt id="Validation::alphaNumeric">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">alphaNumeric</tt><big>(</big><em>mixed $check</em><big>)</big><a class="headerlink" href="#Validation::alphaNumeric" title="Permalink to this definition">¶</a></dt>
+<dd><p>The data for the field must only contain letters and numbers.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;login&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;alphaNumeric&#39;,</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Usernames must only contain letters and numbers.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::between">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">between</tt><big>(</big><em>string $check</em>, <em>integer $min</em>, <em>integer $max</em><big>)</big><a class="headerlink" href="#Validation::between" title="Permalink to this definition">¶</a></dt>
+<dd><p>The length of the data for the field must fall within the specified
+numeric range. Both minimum and maximum values must be supplied.
+Uses = not.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;password&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;between&#39;, 5, 15),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Passwords must be between 5 and 15 characters long.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>The length of data is &#8220;the number of bytes in the string
+representation of the data&#8221;. Be careful that it may be larger than
+the number of characters when handling non-ASCII characters.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::blank">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">blank</tt><big>(</big><em>mixed $check</em><big>)</big><a class="headerlink" href="#Validation::blank" title="Permalink to this definition">¶</a></dt>
+<dd><p>This rule is used to make sure that the field is left blank or only
+white space characters are present in its value. White space
+characters include space, tab, carriage return, and newline.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;id&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;blank&#39;,</span>
+<span class="x">        &#39;on&#39; =&gt; &#39;create&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::boolean">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">boolean</tt><big>(</big><em>string $check</em><big>)</big><a class="headerlink" href="#Validation::boolean" title="Permalink to this definition">¶</a></dt>
+<dd><p>The data for the field must be a boolean value. Valid values are
+true or false, integers 0 or 1 or strings &#8216;0&#8217; or &#8216;1&#8217;.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;myCheckbox&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;boolean&#39;),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Incorrect value for myCheckbox&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::cc">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">cc</tt><big>(</big><em>mixed $check</em>, <em>mixed $type = 'fast'</em>, <em>boolean $deep = false</em>, <em>string $regex = null</em><big>)</big><a class="headerlink" href="#Validation::cc" title="Permalink to this definition">¶</a></dt>
+<dd><p>This rule is used to check whether the data is a valid credit card
+number. It takes three parameters: &#8216;type&#8217;, &#8216;deep&#8217; and &#8216;regex&#8217;.</p>
+<p>The &#8216;type&#8217; key can be assigned to the values of &#8216;fast&#8217;, &#8216;all&#8217; or
+any of the following:</p>
+<ul class="simple">
+<li>amex</li>
+<li>bankcard</li>
+<li>diners</li>
+<li>disc</li>
+<li>electron</li>
+<li>enroute</li>
+<li>jcb</li>
+<li>maestro</li>
+<li>mc</li>
+<li>solo</li>
+<li>switch</li>
+<li>visa</li>
+<li>voyager</li>
+</ul>
+<p>If &#8216;type&#8217; is set to &#8216;fast&#8217;, it validates the data against the major
+credit cards&#8217; numbering formats. Setting &#8216;type&#8217; to &#8216;all&#8217; will check
+with all the credit card types. You can also set &#8216;type&#8217; to an array
+of the types you wish to match.</p>
+<p>The &#8216;deep&#8217; key should be set to a boolean value. If it is set to
+true, the validation will check the Luhn algorithm of the credit
+card
+(<a class="reference external" href="http://en.wikipedia.org/wiki/Luhn_algorithm">http://en.wikipedia.org/wiki/Luhn_algorithm</a>).
+It defaults to false.</p>
+<p>The &#8216;regex&#8217; key allows you to supply your own regular expression
+that will be used to validate the credit card number:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;ccnumber&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;cc&#39;, array(&#39;visa&#39;, &#39;maestro&#39;), false, null),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;The credit card number you supplied was invalid.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::comparison">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">comparison</tt><big>(</big><em>mixed $check1</em>, <em>string $operator = null</em>, <em>integer $check2 = null</em><big>)</big><a class="headerlink" href="#Validation::comparison" title="Permalink to this definition">¶</a></dt>
+<dd><p>Comparison is used to compare numeric values. It supports &#8220;is
+greater&#8221;, &#8220;is less&#8221;, &#8220;greater or equal&#8221;, &#8220;less or equal&#8221;, &#8220;equal
+to&#8221;, and &#8220;not equal&#8221;. Some examples are shown below:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;age&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;comparison&#39;, &#39;&gt;=&#39;, 18),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Must be at least 18 years old to qualify.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+
+<span class="x">public $validate = array(</span>
+<span class="x">    &#39;age&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39;    =&gt; array(&#39;comparison&#39;, &#39;greater or equal&#39;, 18),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Must be at least 18 years old to qualify.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::custom">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">custom</tt><big>(</big><em>mixed $check</em>, <em>string $regex = null</em><big>)</big><a class="headerlink" href="#Validation::custom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used when a custom regular expression is needed:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;infinite&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;custom&#39;, &#39;\u221E&#39;),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Please enter an infinite number.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::date">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">date</tt><big>(</big><em>string $check</em>, <em>mixed $format = 'ymd'</em>, <em>string $regex = null</em><big>)</big><a class="headerlink" href="#Validation::date" title="Permalink to this definition">¶</a></dt>
+<dd><p>This rule ensures that data is submitted in valid date formats. A
+single parameter (which can be an array) can be passed that will be
+used to check the format of the supplied date. The value of the
+parameter can be one of the following:</p>
+<ul class="simple">
+<li>&#8216;dmy&#8217; e.g. 27-12-2006 or 27-12-06 (separators can be a space,
+period, dash, forward slash)</li>
+<li>&#8216;mdy&#8217; e.g. 12-27-2006 or 12-27-06 (separators can be a space,
+period, dash, forward slash)</li>
+<li>&#8216;ymd&#8217; e.g. 2006-12-27 or 06-12-27 (separators can be a space,
+period, dash, forward slash)</li>
+<li>&#8216;dMy&#8217; e.g. 27 December 2006 or 27 Dec 2006</li>
+<li>&#8216;Mdy&#8217; e.g. December 27, 2006 or Dec 27, 2006 (comma is optional)</li>
+<li>&#8216;My&#8217; e.g. (December 2006 or Dec 2006)</li>
+<li>&#8216;my&#8217; e.g. 12/2006 or 12/06 (separators can be a space, period,
+dash, forward slash)</li>
+<li>&#8216;ym&#8217; e.g. 2006/12 or 06/12 (separators can be a space, period,
+dash, forward slash)</li>
+<li>&#8216;y&#8217; e.g. 2006 (separators can be a space, period,
+dash, forward slash)</li>
+</ul>
+<p>If no keys are supplied, the default key that will be used is
+&#8216;ymd&#8217;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;born&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;date&#39;, &#39;ymd&#39;),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Enter a valid date in YY-MM-DD format.&#39;,</span>
+<span class="x">        &#39;allowEmpty&#39; =&gt; true</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>While many data stores require a certain date format, you might
+consider doing the heavy lifting by accepting a wide-array of date
+formats and trying to convert them, rather than forcing users to
+supply a given format. The more work you can do for your users, the
+better.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.4: </span>The <tt class="docutils literal"><span class="pre">ym</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt> formats were added.</p>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::datetime">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">datetime</tt><big>(</big><em>array $check</em>, <em>mixed $dateFormat = 'ymd'</em>, <em>string $regex = null</em><big>)</big><a class="headerlink" href="#Validation::datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>This rule ensures that the data is a valid datetime format. A
+parameter (which can be an array) can be passed to specify the format
+of the date. The value of the parameter can be one or more of the
+following:</p>
+<ul class="simple">
+<li>&#8216;dmy&#8217; e.g. 27-12-2006 or 27-12-06 (separators can be a space,
+period, dash, forward slash)</li>
+<li>&#8216;mdy&#8217; e.g. 12-27-2006 or 12-27-06 (separators can be a space,
+period, dash, forward slash)</li>
+<li>&#8216;ymd&#8217; e.g. 2006-12-27 or 06-12-27 (separators can be a space,
+period, dash, forward slash)</li>
+<li>&#8216;dMy&#8217; e.g. 27 December 2006 or 27 Dec 2006</li>
+<li>&#8216;Mdy&#8217; e.g. December 27, 2006 or Dec 27, 2006 (comma is optional)</li>
+<li>&#8216;My&#8217; e.g. (December 2006 or Dec 2006)</li>
+<li>&#8216;my&#8217; e.g. 12/2006 or 12/06 (separators can be a space, period,
+dash, forward slash)</li>
+</ul>
+<p>If no keys are supplied, the default key that will be used is
+&#8216;ymd&#8217;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;birthday&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;datetime&#39;, &#39;dmy&#39;),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Please enter a valid date and time.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>Also a second parameter can be passed to specify a custom regular
+expression. If this parameter is used, this will be the only
+validation that will occur.</p>
+<p>Note that unlike date(), datetime() will validate a date and a time.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::decimal">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">decimal</tt><big>(</big><em>string $check</em>, <em>integer $places = null</em>, <em>string $regex = null</em><big>)</big><a class="headerlink" href="#Validation::decimal" title="Permalink to this definition">¶</a></dt>
+<dd><p>This rule ensures that the data is a valid decimal number. A
+parameter can be passed to specify the number of digits required
+after the decimal point. If no parameter is passed, the data will
+be validated as a scientific float, which will cause validation to
+fail if no digits are found after the decimal point:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;price&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;decimal&#39;, 2)</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::email">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">email</tt><big>(</big><em>string $check</em>, <em>boolean $deep = false</em>, <em>string $regex = null</em><big>)</big><a class="headerlink" href="#Validation::email" title="Permalink to this definition">¶</a></dt>
+<dd><p>This checks whether the data is a valid email address. Passing a
+boolean true as the second parameter for this rule will also
+attempt to verify that the host for the address is valid:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(&#39;email&#39; =&gt; array(&#39;rule&#39; =&gt; &#39;email&#39;));</span>
+
+<span class="x">public $validate = array(</span>
+<span class="x">    &#39;email&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;email&#39;, true),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Please supply a valid email address.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::equalTo">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">equalTo</tt><big>(</big><em>mixed $check</em>, <em>mixed $compareTo</em><big>)</big><a class="headerlink" href="#Validation::equalTo" title="Permalink to this definition">¶</a></dt>
+<dd><p>This rule will ensure that the value is equal to, and of the same
+type as the given value.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;food&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;equalTo&#39;, &#39;cake&#39;),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;This value must be the string cake&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::extension">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">extension</tt><big>(</big><em>mixed $check</em>, <em>array $extensions = array('gif'</em>, <em>'jpeg'</em>, <em>'png'</em>, <em>'jpg')</em><big>)</big><a class="headerlink" href="#Validation::extension" title="Permalink to this definition">¶</a></dt>
+<dd><p>This rule checks for valid file extensions like .jpg or .png. Allow
+multiple extensions by passing them in array form.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;image&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(</span>
+<span class="x">            &#39;extension&#39;,</span>
+<span class="x">            array(&#39;gif&#39;, &#39;jpeg&#39;, &#39;png&#39;, &#39;jpg&#39;)</span>
+<span class="x">        ),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Please supply a valid image.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::fileSize">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">fileSize</tt><big>(</big><em>$check</em>, <em>$operator = null</em>, <em>$size = null</em><big>)</big><a class="headerlink" href="#Validation::fileSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This rule allows you to check filesizes. You can use <tt class="docutils literal"><span class="pre">$operator</span></tt> to
+decide the type of comparison you want to use. All the operators supported
+by <a class="reference internal" href="#Validation::comparison" title="Validation::comparison"><tt class="xref php php-func docutils literal"><span class="pre">comparison()</span></tt></a> are supported here as well. This
+method will automatically handle array values from <tt class="docutils literal"><span class="pre">$_FILES</span></tt> by reading
+from the <tt class="docutils literal"><span class="pre">tmp_name</span></tt> key if <tt class="docutils literal"><span class="pre">$check</span></tt> is an array an contains that key:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;image&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;fileSize&#39;, &#39;&lt;=&#39;, &#39;1MB&#39;),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Image must be less than 1MB&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.3: </span>This method was added in 2.3</p>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::inList">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">inList</tt><big>(</big><em>string $check</em>, <em>array $list</em>, <em>boolean $caseInsensitive = false</em><big>)</big><a class="headerlink" href="#Validation::inList" title="Permalink to this definition">¶</a></dt>
+<dd><p>This rule will ensure that the value is in a given set. It needs an
+array of values. The field is valid if the field&#8217;s value matches
+one of the values in the given array.</p>
+<p>Example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;function&#39; =&gt; array(</span>
+<span class="x">         &#39;allowedChoice&#39; =&gt; array(</span>
+<span class="x">             &#39;rule&#39; =&gt; array(&#39;inList&#39;, array(&#39;Foo&#39;, &#39;Bar&#39;)),</span>
+<span class="x">             &#39;message&#39; =&gt; &#39;Enter either Foo or Bar.&#39;</span>
+<span class="x">         )</span>
+<span class="x">     )</span>
+<span class="x"> );</span>
+</pre></div>
+</div>
+<p>Comparison is case sensitive by default. You can set <tt class="docutils literal"><span class="pre">$caseInsensitive</span></tt> to true
+if you need case insensitive comparison.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::ip">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">ip</tt><big>(</big><em>string $check</em>, <em>string $type = 'both'</em><big>)</big><a class="headerlink" href="#Validation::ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>This rule will ensure that a valid IPv4 or IPv6 address has been
+submitted. Accepts as option &#8216;both&#8217; (default), &#8216;IPv4&#8217; or &#8216;IPv6&#8217;.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;clientip&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;ip&#39;, &#39;IPv4&#39;), // or &#39;IPv6&#39; or &#39;both&#39; (default)</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Please supply a valid IP address.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="Model::Validation::isUnique">
+<tt class="descclassname">Model::</tt><tt class="descname">isUnique</tt><big>(</big><big>)</big><a class="headerlink" href="#Model::Validation::isUnique" title="Permalink to this definition">¶</a></dt>
+<dd><p>The data for the field must be unique, it cannot be used by any
+other rows:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;login&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;isUnique&#39;,</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;This username has already been taken.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>You can validate that a set of fields are unique by providing multiple
+fields and set <tt class="docutils literal"><span class="pre">$or</span></tt> to <tt class="docutils literal"><span class="pre">false</span></tt>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;email&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;isUnique&#39;, array(&#39;email&#39;, &#39;username&#39;), false),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;This username &amp; email combination has already been used.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>Make sure to include the original field in the list of fields when making
+a unique rule across multiple fields.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::luhn">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">luhn</tt><big>(</big><em>string|array $check</em>, <em>boolean $deep = false</em><big>)</big><a class="headerlink" href="#Validation::luhn" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Luhn algorithm: A checksum formula to validate a variety of
+identification numbers. See <a class="reference external" href="http://en.wikipedia.org/wiki/Luhn_algorithm">http://en.wikipedia.org/wiki/Luhn_algorithm</a> for
+more information.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::maxLength">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">maxLength</tt><big>(</big><em>string $check</em>, <em>integer $max</em><big>)</big><a class="headerlink" href="#Validation::maxLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>This rule ensures that the data stays within a maximum length
+requirement.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;login&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;maxLength&#39;, 15),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Usernames must be no larger than 15 characters long.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>The length here is &#8220;the number of bytes in the string
+representation of the data&#8221;. Be careful that it may be larger than
+the number of characters when handling non-ASCII characters.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::mimeType">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">mimeType</tt><big>(</big><em>mixed $check</em>, <em>array|string $mimeTypes</em><big>)</big><a class="headerlink" href="#Validation::mimeType" title="Permalink to this definition">¶</a></dt>
+<dd><div class="versionadded">
+<p><span class="versionmodified">New in version 2.2.</span></p>
+</div>
+<p>This rule checks for valid mime types. Comparison is case sensitive.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.5.</span></p>
+</div>
+<p>Since 2.5 <tt class="docutils literal"><span class="pre">$mimeTypes</span></tt> can be a regex string.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;image&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;mimeType&#39;, array(&#39;image/gif&#39;)),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Invalid mime type.&#39;</span>
+<span class="x">    ),</span>
+<span class="x">    &#39;logo&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;mimeType&#39;, &#39;#image/.+#&#39;),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Invalid mime type.&#39;</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::minLength">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">minLength</tt><big>(</big><em>string $check</em>, <em>integer $min</em><big>)</big><a class="headerlink" href="#Validation::minLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>This rule ensures that the data meets a minimum length
+requirement.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;login&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;minLength&#39;, 8),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Usernames must be at least 8 characters long.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>The length here is &#8220;the number of bytes in the string
+representation of the data&#8221;. Be careful that it may be larger than
+the number of characters when handling non-ASCII characters.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::money">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">money</tt><big>(</big><em>string $check</em>, <em>string $symbolPosition = 'left'</em><big>)</big><a class="headerlink" href="#Validation::money" title="Permalink to this definition">¶</a></dt>
+<dd><p>This rule will ensure that the value is in a valid monetary
+amount.</p>
+<p>Second parameter defines where symbol is located (left/right).</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;salary&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;money&#39;, &#39;left&#39;),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Please supply a valid monetary amount.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::multiple">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">multiple</tt><big>(</big><em>mixed $check</em>, <em>mixed $options = array()</em>, <em>boolean $caseInsensitive = false</em><big>)</big><a class="headerlink" href="#Validation::multiple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this for validating a multiple select input. It supports
+parameters &#8220;in&#8221;, &#8220;max&#8221; and &#8220;min&#8221;.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;multiple&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;multiple&#39;, array(</span>
+<span class="x">            &#39;in&#39;  =&gt; array(&#39;do&#39;, &#39;re&#39;, &#39;mi&#39;, &#39;fa&#39;, &#39;sol&#39;, &#39;la&#39;, &#39;ti&#39;),</span>
+<span class="x">            &#39;min&#39; =&gt; 1,</span>
+<span class="x">            &#39;max&#39; =&gt; 3</span>
+<span class="x">        )),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Please select one, two or three options&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>Comparison is case sensitive by default. You can set <tt class="docutils literal"><span class="pre">$caseInsensitive</span></tt> to true
+if you need case insensitive comparison.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::notEmpty">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">notEmpty</tt><big>(</big><em>mixed $check</em><big>)</big><a class="headerlink" href="#Validation::notEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><p>The basic rule to ensure that a field is not empty.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;title&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;notEmpty&#39;,</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;This field cannot be left blank&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>Do not use this for a multiple select input as it will cause an
+error. Instead, use &#8220;multiple&#8221;.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::numeric">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">numeric</tt><big>(</big><em>string $check</em><big>)</big><a class="headerlink" href="#Validation::numeric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the data passed is a valid number.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;cars&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;numeric&#39;,</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Please supply the number of cars.&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::naturalNumber">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">naturalNumber</tt><big>(</big><em>mixed $check</em>, <em>boolean $allowZero = false</em><big>)</big><a class="headerlink" href="#Validation::naturalNumber" title="Permalink to this definition">¶</a></dt>
+<dd><div class="versionadded">
+<p><span class="versionmodified">New in version 2.2.</span></p>
+</div>
+<p>This rule checks if the data passed is a valid natural number.
+If <tt class="docutils literal"><span class="pre">$allowZero</span></tt> is set to true, zero is also accepted as a value.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;wheels&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;naturalNumber&#39;,</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Please supply the number of wheels.&#39;</span>
+<span class="x">    ),</span>
+<span class="x">    &#39;airbags&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;naturalNumber&#39;, true),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Please supply the number of airbags.&#39;</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::phone">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">phone</tt><big>(</big><em>mixed $check</em>, <em>string $regex = null</em>, <em>string $country = 'all'</em><big>)</big><a class="headerlink" href="#Validation::phone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Phone validates US phone numbers. If you want to validate non-US
+phone numbers, you can provide a regular expression as the second
+parameter to cover additional number formats.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;phone&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;phone&#39;, null, &#39;us&#39;)</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::postal">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">postal</tt><big>(</big><em>mixed $check</em>, <em>string $regex = null</em>, <em>string $country = 'us'</em><big>)</big><a class="headerlink" href="#Validation::postal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Postal is used to validate ZIP codes from the U.S. (us), Canada
+(ca), U.K (uk), Italy (it), Germany (de) and Belgium (be). For
+other ZIP code formats, you may provide a regular expression as the
+second parameter.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;zipcode&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;postal&#39;, null, &#39;us&#39;)</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::range">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">range</tt><big>(</big><em>string $check</em>, <em>integer $lower = null</em>, <em>integer $upper = null</em><big>)</big><a class="headerlink" href="#Validation::range" title="Permalink to this definition">¶</a></dt>
+<dd><p>This rule ensures that the value is in a given range. If no range
+is supplied, the rule will check to ensure the value is a legal
+finite on the current platform.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;number&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;range&#39;, -1, 11),</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Please enter a number between -1 and 11&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>The above example will accept any value which is larger than -1
+(e.g., -0.99) and less than 11 (e.g., 10.99).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The range lower/upper are not inclusive</p>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::ssn">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">ssn</tt><big>(</big><em>mixed $check</em>, <em>string $regex = null</em>, <em>string $country = null</em><big>)</big><a class="headerlink" href="#Validation::ssn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ssn validates social security numbers from the U.S. (us), Denmark
+(dk), and the Netherlands (nl). For other social security number
+formats, you may provide a regular expression.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;ssn&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;ssn&#39;, null, &#39;us&#39;)</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::time">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">time</tt><big>(</big><em>string $check</em><big>)</big><a class="headerlink" href="#Validation::time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time validation, determines if the string passed is a valid time. Validates
+time as 24hr (HH:MM) or am/pm ([H]H:MM[a|p]m) Does not allow/validate
+seconds.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::uploadError">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">uploadError</tt><big>(</big><em>mixed $check</em><big>)</big><a class="headerlink" href="#Validation::uploadError" title="Permalink to this definition">¶</a></dt>
+<dd><div class="versionadded">
+<p><span class="versionmodified">New in version 2.2.</span></p>
+</div>
+<p>This rule checks if a file upload has an error.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;image&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;uploadError&#39;,</span>
+<span class="x">        &#39;message&#39; =&gt; &#39;Something went wrong with the upload.&#39;</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::url">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">url</tt><big>(</big><em>string $check</em>, <em>boolean $strict = false</em><big>)</big><a class="headerlink" href="#Validation::url" title="Permalink to this definition">¶</a></dt>
+<dd><p>This rule checks for valid URL formats. Supports http(s), ftp(s),
+file, news, and gopher protocols:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;website&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; &#39;url&#39;</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>To ensure that a protocol is in the url, strict mode can be enabled
+like so:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;website&#39; =&gt; array(</span>
+<span class="x">        &#39;rule&#39; =&gt; array(&#39;url&#39;, true)</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>This validation method uses a complex regular expression that can sometimes
+cause issues with Apache2 on Windows using mod_php.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::userDefined">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">userDefined</tt><big>(</big><em>mixed $check</em>, <em>object $object</em>, <em>string $method</em>, <em>array $args = null</em><big>)</big><a class="headerlink" href="#Validation::userDefined" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs an user-defined validation.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Validation::uuid">
+<em class="property">static </em><tt class="descclassname">Validation::</tt><tt class="descname">uuid</tt><big>(</big><em>string $check</em><big>)</big><a class="headerlink" href="#Validation::uuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks that a value is a valid UUID: <a class="reference external" href="http://tools.ietf.org/html/rfc4122">http://tools.ietf.org/html/rfc4122</a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="localized-validation">
+<h2>Localized Validation<a class="headerlink" href="#localized-validation" title="Permalink to this headline">¶</a></h2>
+<p>The validation rules phone() and postal() will pass off any country prefix
+they do not know how to handle to another class with the appropriate name. For
+example if you lived in the Netherlands you would create a class like:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class NlValidation {</span>
+<span class="x">    public static function phone($check) {</span>
+<span class="x">        // ...</span>
+<span class="x">    }</span>
+<span class="x">    public static function postal($check) {</span>
+<span class="x">        // ...</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>This file could be placed in <tt class="docutils literal"><span class="pre">APP/Validation/</span></tt> or
+<tt class="docutils literal"><span class="pre">App/PluginName/Validation/</span></tt>, but must be imported via App::uses() before
+attempting to use it. In your model validation you could use your NlValidation
+class by doing the following:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $validate = array(</span>
+<span class="x">    &#39;phone_no&#39; =&gt; array(&#39;rule&#39; =&gt; array(&#39;phone&#39;, null, &#39;nl&#39;)),</span>
+<span class="x">    &#39;postal_code&#39; =&gt; array(&#39;rule&#39; =&gt; array(&#39;postal&#39;, null, &#39;nl&#39;)),</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>When your model data is validated, Validation will see that it cannot handle
+the <tt class="docutils literal"><span class="pre">nl</span></tt> locale and will attempt to delegate out to
+<tt class="docutils literal"><span class="pre">NlValidation::postal()</span></tt> and the return of that method will be used as the
+pass/fail for the validation. This approach allows you to create classes that
+handle a subset or group of locales, something that a large switch would not
+have. The usage of the individual validation methods has not changed, the
+ability to pass off to another validator has been added.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The Localized Plugin already contains a lot of rules ready to use:
+<a class="reference external" href="https://github.com/WebLauncher">https://github.com/WebLauncher</a> Framework/localized
+Also feel free to contribute with your localized validation rules.</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data-validation/validating-data-from-the-controller.html">Validating Data from the Controller</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, WebLauncher.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

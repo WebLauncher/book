@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="DataSources" lang="en" name="title" />
+<meta content="array values,model fields,connection configuration,implementation details,relational databases,best bet,mysql postgresql,sqlite,external sources,ldap server,database connection,rdbms,sqlserver,postgres,relational database,mssql,aggregates,apis,repository,signatures" lang="en" name="keywords" />
+
+    <title>DataSources &mdash; WebLauncher Framework 2.7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="../index.html" />
+    <link rel="up" title="Models" href="../models.html" />
+    <link rel="next" title="Model Attributes" href="model-attributes.html" />
+    <link rel="prev" title="Behaviors" href="behaviors.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><img src="../_static/logo.png">
+          WebLauncher Framework</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.7</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configurations.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controllers.html">Controllers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../views.html">Views</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">DataSources</a><ul>
+<li><a class="reference internal" href="#basic-api-for-datasources">Basic API For DataSources</a></li>
+<li><a class="reference internal" href="#an-example">An Example</a></li>
+<li><a class="reference internal" href="#plugin-datasources">Plugin DataSources</a></li>
+<li><a class="reference internal" href="#connecting-to-sql-server">Connecting to SQL Server</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="behaviors.html" title="Previous Chapter: Behaviors"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Behaviors</span>
+    </a>
+  </li>
+  <li>
+    <a href="model-attributes.html" title="Next Chapter: Model Attributes"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Model Attributes &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="https://github.com/weblauncher/book/edit/master/models/datasources.rst"
+     rel="nofollow">Modify Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="datasources">
+<h1>DataSources<a class="headerlink" href="#datasources" title="Permalink to this headline">¶</a></h1>
+<p>DataSources are the link between models and the source of data that
+models represent. In many cases, the data is retrieved from a
+relational database such as MySQL, PostgreSQL or MSSQL. WebLauncher Framework is
+distributed with several database-specific datasources (see the
+class files in <tt class="docutils literal"><span class="pre">lib/Cake/Model/Datasource/Database</span></tt>), a summary
+of which is listed here for your convenience:</p>
+<ul class="simple">
+<li>MySql</li>
+<li>Postgres</li>
+<li>Sqlite</li>
+<li>Sqlserver</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can find additional community contributed datasources in the
+<a class="reference external" href="https://github.com/WebLauncherFramework/datasources/tree/2.0">WebLauncher Framework DataSources repository on GitHub</a>.</p>
+</div>
+<p>When specifying a database connection configuration in
+<tt class="docutils literal"><span class="pre">app/Config/database.php</span></tt>, WebLauncher Framework transparently uses the corresponding
+database datasource for all model operations. So, even though you might not have
+known about datasources, you&#8217;ve been using them all along.</p>
+<p>All of the above sources derive from a base <tt class="docutils literal"><span class="pre">DboSource</span></tt> class, which
+aggregates some logic that is common to most relational databases. If you decide
+to write a RDBMS datasource, working from one of these (e.g. Mysql, or Sqlite)
+is your best bet.</p>
+<p>Most people, however, are interested in writing datasources for external sources
+of data, such as remote REST APIs or even an LDAP server. So that&#8217;s what we&#8217;re
+going to look at now.</p>
+<div class="section" id="basic-api-for-datasources">
+<h2>Basic API For DataSources<a class="headerlink" href="#basic-api-for-datasources" title="Permalink to this headline">¶</a></h2>
+<p>A datasource can, and <em>should</em> implement at least one of the
+following methods: <tt class="docutils literal"><span class="pre">create</span></tt>, <tt class="docutils literal"><span class="pre">read</span></tt>, <tt class="docutils literal"><span class="pre">update</span></tt> and/or
+<tt class="docutils literal"><span class="pre">delete</span></tt> (the actual method signatures &amp; implementation details
+are not important for the moment, and will be described later). You
+need not implement more of the methods listed above than necessary
+- if you need a read-only datasource, there&#8217;s no reason to
+implement <tt class="docutils literal"><span class="pre">create</span></tt>, <tt class="docutils literal"><span class="pre">update</span></tt>, and <tt class="docutils literal"><span class="pre">delete</span></tt>.</p>
+<p>Methods that must be implemented for all CRUD methods:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">describe($model)</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">listSources($data</span> <span class="pre">=</span> <span class="pre">null)</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">calculate($model,</span> <span class="pre">$func,</span> <span class="pre">$params)</span></tt></li>
+<li>At least one of:<ul>
+<li><tt class="docutils literal"><span class="pre">create(Model</span> <span class="pre">$model,</span> <span class="pre">$fields</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">$values</span> <span class="pre">=</span> <span class="pre">null)</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">read(Model</span> <span class="pre">$model,</span> <span class="pre">$queryData</span> <span class="pre">=</span> <span class="pre">array(),</span> <span class="pre">$recursive</span> <span class="pre">=</span> <span class="pre">null)</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">update(Model</span> <span class="pre">$model,</span> <span class="pre">$fields</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">$values</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">$conditions</span> <span class="pre">=</span> <span class="pre">null)</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">delete(Model</span> <span class="pre">$model,</span> <span class="pre">$id</span> <span class="pre">=</span> <span class="pre">null)</span></tt></li>
+</ul>
+</li>
+</ul>
+<p>It is also possible (and sometimes quite useful) to define the
+<tt class="docutils literal"><span class="pre">$_schema</span></tt> class attribute inside the datasource itself, instead
+of in the model.</p>
+<p>And that&#8217;s pretty much all there is to it. By coupling this
+datasource to a model, you are then able to use
+<tt class="docutils literal"><span class="pre">Model::find()/save()/delete()</span></tt> as you would normally, and the appropriate
+data and/or parameters used to call those methods will be passed on
+to the datasource itself, where you can decide to implement
+whichever features you need (e.g. Model::find options such as
+<tt class="docutils literal"><span class="pre">'conditions'</span></tt> parsing, <tt class="docutils literal"><span class="pre">'limit'</span></tt> or even your own custom
+parameters).</p>
+</div>
+<div class="section" id="an-example">
+<h2>An Example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h2>
+<p>A common reason you would want to write your own datasource is when you would
+like to access a 3rd party API using the usual <tt class="docutils literal"><span class="pre">Model::find()/save()/delete()</span></tt>
+methods. Let&#8217;s write a datasource that will access a fictitious remote JSON
+based API. We&#8217;ll call it <tt class="docutils literal"><span class="pre">FarAwaySource</span></tt> and we&#8217;ll put it in
+<tt class="docutils literal"><span class="pre">app/Model/Datasource/FarAwaySource.php</span></tt>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">App::uses(&#39;HttpSocket&#39;, &#39;Network/Http&#39;);</span>
+
+<span class="x">class FarAwaySource extends DataSource {</span>
+
+<span class="x">/**</span>
+<span class="x"> * An optional description of your datasource</span>
+<span class="x"> */</span>
+<span class="x">    public $description = &#39;A far away datasource&#39;;</span>
+
+<span class="x">/**</span>
+<span class="x"> * Our default config options. These options will be customized in our</span>
+<span class="x"> * ``app/Config/database.php`` and will be merged in the ``__construct()``.</span>
+<span class="x"> */</span>
+<span class="x">    public $config = array(</span>
+<span class="x">        &#39;apiKey&#39; =&gt; &#39;&#39;,</span>
+<span class="x">    );</span>
+
+<span class="x">/**</span>
+<span class="x"> * If we want to create() or update() we need to specify the fields</span>
+<span class="x"> * available. We use the same array keys as we do with CakeSchema, eg.</span>
+<span class="x"> * fixtures and schema migrations.</span>
+<span class="x"> */</span>
+<span class="x">    protected $_schema = array(</span>
+<span class="x">        &#39;id&#39; =&gt; array(</span>
+<span class="x">            &#39;type&#39; =&gt; &#39;integer&#39;,</span>
+<span class="x">            &#39;null&#39; =&gt; false,</span>
+<span class="x">            &#39;key&#39; =&gt; &#39;primary&#39;,</span>
+<span class="x">            &#39;length&#39; =&gt; 11,</span>
+<span class="x">        ),</span>
+<span class="x">        &#39;name&#39; =&gt; array(</span>
+<span class="x">            &#39;type&#39; =&gt; &#39;string&#39;,</span>
+<span class="x">            &#39;null&#39; =&gt; true,</span>
+<span class="x">            &#39;length&#39; =&gt; 255,</span>
+<span class="x">        ),</span>
+<span class="x">        &#39;message&#39; =&gt; array(</span>
+<span class="x">            &#39;type&#39; =&gt; &#39;text&#39;,</span>
+<span class="x">            &#39;null&#39; =&gt; true,</span>
+<span class="x">        ),</span>
+<span class="x">    );</span>
+
+<span class="x">/**</span>
+<span class="x"> * Create our HttpSocket and handle any config tweaks.</span>
+<span class="x"> */</span>
+<span class="x">    public function __construct($config) {</span>
+<span class="x">        parent::__construct($config);</span>
+<span class="x">        $this-&gt;Http = new HttpSocket();</span>
+<span class="x">    }</span>
+
+<span class="x">/**</span>
+<span class="x"> * Since datasources normally connect to a database there are a few things</span>
+<span class="x"> * we must change to get them to work without a database.</span>
+<span class="x"> */</span>
+
+<span class="x">/**</span>
+<span class="x"> * listSources() is for caching. You&#39;ll likely want to implement caching in</span>
+<span class="x"> * your own way with a custom datasource. So just ``return null``.</span>
+<span class="x"> */</span>
+<span class="x">    public function listSources($data = null) {</span>
+<span class="x">        return null;</span>
+<span class="x">    }</span>
+
+<span class="x">/**</span>
+<span class="x"> * describe() tells the model your schema for ``Model::save()``.</span>
+<span class="x"> *</span>
+<span class="x"> * You may want a different schema for each model but still use a single</span>
+<span class="x"> * datasource. If this is your case then set a ``schema`` property on your</span>
+<span class="x"> * models and simply return ``$model-&gt;schema`` here instead.</span>
+<span class="x"> */</span>
+<span class="x">    public function describe($model) {</span>
+<span class="x">        return $this-&gt;_schema;</span>
+<span class="x">    }</span>
+
+<span class="x">/**</span>
+<span class="x"> * calculate() is for determining how we will count the records and is</span>
+<span class="x"> * required to get ``update()`` and ``delete()`` to work.</span>
+<span class="x"> *</span>
+<span class="x"> * We don&#39;t count the records here but return a string to be passed to</span>
+<span class="x"> * ``read()`` which will do the actual counting. The easiest way is to just</span>
+<span class="x"> * return the string &#39;COUNT&#39; and check for it in ``read()`` where</span>
+<span class="x"> * ``$data[&#39;fields&#39;] === &#39;COUNT&#39;``.</span>
+<span class="x"> */</span>
+<span class="x">    public function calculate(Model $model, $func, $params = array()) {</span>
+<span class="x">        return &#39;COUNT&#39;;</span>
+<span class="x">    }</span>
+
+<span class="x">/**</span>
+<span class="x"> * Implement the R in CRUD. Calls to ``Model::find()`` arrive here.</span>
+<span class="x"> */</span>
+<span class="x">    public function read(Model $model, $queryData = array(),</span>
+<span class="x">        $recursive = null) {</span>
+<span class="x">        /**</span>
+<span class="x">         * Here we do the actual count as instructed by our calculate()</span>
+<span class="x">         * method above. We could either check the remote source or some</span>
+<span class="x">         * other way to get the record count. Here we&#39;ll simply return 1 so</span>
+<span class="x">         * ``update()`` and ``delete()`` will assume the record exists.</span>
+<span class="x">         */</span>
+<span class="x">        if ($queryData[&#39;fields&#39;] === &#39;COUNT&#39;) {</span>
+<span class="x">            return array(array(array(&#39;count&#39; =&gt; 1)));</span>
+<span class="x">        }</span>
+<span class="x">        /**</span>
+<span class="x">         * Now we get, decode and return the remote data.</span>
+<span class="x">         */</span>
+<span class="x">        $queryData[&#39;conditions&#39;][&#39;apiKey&#39;] = $this-&gt;config[&#39;apiKey&#39;];</span>
+<span class="x">        $json = $this-&gt;Http-&gt;get(</span>
+<span class="x">            &#39;http://example.com/api/list.json&#39;,</span>
+<span class="x">            $queryData[&#39;conditions&#39;]</span>
+<span class="x">        );</span>
+<span class="x">        $res = json_decode($json, true);</span>
+<span class="x">        if (is_null($res)) {</span>
+<span class="x">            $error = json_last_error();</span>
+<span class="x">            throw new CakeException($error);</span>
+<span class="x">        }</span>
+<span class="x">        return array($model-&gt;alias =&gt; $res);</span>
+<span class="x">    }</span>
+
+<span class="x">/**</span>
+<span class="x"> * Implement the C in CRUD. Calls to ``Model::save()`` without $model-&gt;id</span>
+<span class="x"> * set arrive here.</span>
+<span class="x"> */</span>
+<span class="x">    public function create(Model $model, $fields = null, $values = null) {</span>
+<span class="x">        $data = array_combine($fields, $values);</span>
+<span class="x">        $data[&#39;apiKey&#39;] = $this-&gt;config[&#39;apiKey&#39;];</span>
+<span class="x">        $json = $this-&gt;Http-&gt;post(&#39;http://example.com/api/set.json&#39;, $data);</span>
+<span class="x">        $res = json_decode($json, true);</span>
+<span class="x">        if (is_null($res)) {</span>
+<span class="x">            $error = json_last_error();</span>
+<span class="x">            throw new CakeException($error);</span>
+<span class="x">        }</span>
+<span class="x">        return true;</span>
+<span class="x">    }</span>
+
+<span class="x">/**</span>
+<span class="x"> * Implement the U in CRUD. Calls to ``Model::save()`` with $Model-&gt;id</span>
+<span class="x"> * set arrive here. Depending on the remote source you can just call</span>
+<span class="x"> * ``$this-&gt;create()``.</span>
+<span class="x"> */</span>
+<span class="x">    public function update(Model $model, $fields = null, $values = null,</span>
+<span class="x">        $conditions = null) {</span>
+<span class="x">        return $this-&gt;create($model, $fields, $values);</span>
+<span class="x">    }</span>
+
+<span class="x">/**</span>
+<span class="x"> * Implement the D in CRUD. Calls to ``Model::delete()`` arrive here.</span>
+<span class="x"> */</span>
+<span class="x">    public function delete(Model $model, $id = null) {</span>
+<span class="x">        $json = $this-&gt;Http-&gt;get(&#39;http://example.com/api/remove.json&#39;, array(</span>
+<span class="x">            &#39;id&#39; =&gt; $id[$model-&gt;alias . &#39;.id&#39;],</span>
+<span class="x">            &#39;apiKey&#39; =&gt; $this-&gt;config[&#39;apiKey&#39;],</span>
+<span class="x">        ));</span>
+<span class="x">        $res = json_decode($json, true);</span>
+<span class="x">        if (is_null($res)) {</span>
+<span class="x">            $error = json_last_error();</span>
+<span class="x">            throw new CakeException($error);</span>
+<span class="x">        }</span>
+<span class="x">        return true;</span>
+<span class="x">    }</span>
+
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>We can then configure the datasource in our <tt class="docutils literal"><span class="pre">app/Config/database.php</span></tt> file
+by adding something like this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $faraway = array(</span>
+<span class="x">    &#39;datasource&#39; =&gt; &#39;FarAwaySource&#39;,</span>
+<span class="x">    &#39;apiKey&#39;     =&gt; &#39;1234abcd&#39;,</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>Then use the database config in our models like this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class MyModel extends AppModel {</span>
+<span class="x">    public $useDbConfig = &#39;faraway&#39;;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>We can retrieve data from our remote source using the familiar model methods:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// Get all messages from &#39;Some Person&#39;</span>
+<span class="x">$messages = $this-&gt;MyModel-&gt;find(&#39;all&#39;, array(</span>
+<span class="x">    &#39;conditions&#39; =&gt; array(&#39;name&#39; =&gt; &#39;Some Person&#39;),</span>
+<span class="x">));</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Using find types other than <tt class="docutils literal"><span class="pre">'all'</span></tt> can have unexpected results if the
+result of your <tt class="docutils literal"><span class="pre">read</span></tt> method is not a numerically indexed array.</p>
+</div>
+<p>Similarly we can save a new message:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;MyModel-&gt;save(array(</span>
+<span class="x">    &#39;name&#39; =&gt; &#39;Some Person&#39;,</span>
+<span class="x">    &#39;message&#39; =&gt; &#39;New Message&#39;,</span>
+<span class="x">));</span>
+</pre></div>
+</div>
+<p>Update the previous message:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;MyModel-&gt;id = 42;</span>
+<span class="x">$this-&gt;MyModel-&gt;save(array(</span>
+<span class="x">    &#39;message&#39; =&gt; &#39;Updated message&#39;,</span>
+<span class="x">));</span>
+</pre></div>
+</div>
+<p>And delete the message:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;MyModel-&gt;delete(42);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="plugin-datasources">
+<h2>Plugin DataSources<a class="headerlink" href="#plugin-datasources" title="Permalink to this headline">¶</a></h2>
+<p>You can also package Datasources into plugins.</p>
+<p>Simply place your datasource file into
+<tt class="docutils literal"><span class="pre">Plugin/[YourPlugin]/Model/Datasource/[YourSource].php</span></tt>
+and refer to it using the plugin notation:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $faraway = array(</span>
+<span class="x">    &#39;datasource&#39; =&gt; &#39;MyPlugin.FarAwaySource&#39;,</span>
+<span class="x">    &#39;apiKey&#39;     =&gt; &#39;abcd1234&#39;,</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="connecting-to-sql-server">
+<h2>Connecting to SQL Server<a class="headerlink" href="#connecting-to-sql-server" title="Permalink to this headline">¶</a></h2>
+<p>The Sqlserver datasource depends on Microsoft&#8217;s PHP extension called pdo_sqlsrv.
+This PHP Extension is not included in the base installation of PHP and must be
+installed separately.</p>
+<p>Also the SQL Server Native Client must be installed for the extension to work.
+As the Native Client is available only for Windows you will not be able to
+install it on Linux, Mac OS X or FreeBSD.</p>
+<p>So if the Sqlserver Datasource errors out with:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Error: Database connection &quot;Sqlserver&quot; is missing, or could not be created.</span>
+</pre></div>
+</div>
+<p>First check if the SQL Server PHP extension pdo_sqlsrv and the SQL Server Native
+Client are installed properly.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, WebLauncher.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

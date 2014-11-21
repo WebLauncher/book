@@ -4,7 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+    <meta content="Models" lang="en" name="title" />
+<meta content="information workflow,csv file,object oriented programming,model class,model classes,model definition,internal model,core model,simple declaration,application model,php class,database table,data model,data access,external web,inheritance,different ways,validity,functionality,queries" lang="en" name="keywords" />
+
     <title>Models &mdash; WebLauncher Framework 2.7.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
@@ -30,7 +32,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="index.html" />
-    <link rel="next" title="Views" href="views.html" />
+    <link rel="next" title="Associations: Linking Models Together" href="models/associations-linking-models-together.html" />
     <link rel="prev" title="Controllers" href="controllers.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -70,7 +72,11 @@
       aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="controllers.html">Controllers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
@@ -87,7 +93,11 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Models</a></li>
+<li><a class="reference internal" href="#">Models</a><ul>
+<li><a class="reference internal" href="#understanding-models">Understanding Models</a></li>
+<li><a class="reference internal" href="#more-on-models">More on models</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -101,7 +111,7 @@
     </a>
   </li>
   <li>
-    <a href="views.html" title="Next Chapter: Views"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Views &raquo;</span>
+    <a href="models/associations-linking-models-together.html" title="Next Chapter: Associations: Linking Models Together"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Associations: Li... &raquo;</span>
     </a>
   </li>
               
@@ -137,7 +147,105 @@
       
   <div class="section" id="models">
 <h1>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h1>
-<p>To do models page.</p>
+<p>Models are the classes that form the business layer in your application.
+They should be responsible for managing almost everything
+regarding your data, its validity, and its interactions, as well as the evolution
+of the information workflow in your domain.</p>
+<p>Usually, model classes represent data and are used in WebLauncher applications
+for data access. They generally represent a database table but can be used
+to access anything that manipulates data
+such as files, external web services, or others.</p>
+<p>A model can be associated with other models. For example, a Post
+may be associated with an Author as well as a list of Comments.</p>
+<p>This section will explain what features of the model can be
+automated, how to override those features, and what methods and
+properties a model can have. It will explain the different ways to
+build associations for your data. It will describe how to get, save, and delete
+data.</p>
+<div class="section" id="understanding-models">
+<h2>Understanding Models<a class="headerlink" href="#understanding-models" title="Permalink to this headline">¶</a></h2>
+<p>A Model represents your data model. In object-oriented programming,
+a data model is an object that represents a thing such as a car, a
+person, or a house. A blog, for example, may have many blog posts
+and each blog post may have many comments. The Blog, Post, and
+Comment are all examples of models, each associated with another.</p>
+<p>Here is a simple example of a model definition in WebLauncher:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class posts extends Base {</span>
+
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>With just this simple declaration, the <tt class="docutils literal"><span class="pre">posts</span></tt> model is endowed
+with all the functionality you need to create queries and to
+save and delete data. These methods come from WebLauncher Framework&#8217;s
+Model class by the magic of inheritance. The <tt class="docutils literal"><span class="pre">posts</span></tt> model
+extends the application model, Base, which in turn extends WebLauncher Framework&#8217;s
+internal _Base class. It is this core _Base class that bestows the
+functionality onto your <tt class="docutils literal"><span class="pre">posts</span></tt> model.</p>
+<p>The intermediate class, Base, is empty. If you haven&#8217;t
+created your own, it is taken from the WebLauncher Framework core folder. Overriding
+the Base allows you to define functionality that should be made
+available to all models within your application. To do so, you need
+to create your own <tt class="docutils literal"><span class="pre">Base.php</span></tt> file that resides in the Model folder,
+as do all other models in your application.</p>
+<p>Back to our <tt class="docutils literal"><span class="pre">posts</span></tt> model. In order to work on it, create the PHP file in the
+<tt class="docutils literal"><span class="pre">/modules/site/models/</span></tt> directory. By convention, it should have the same name as the class,
+which for this example will be <tt class="docutils literal"><span class="pre">posts.php</span></tt>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">WebLauncher Framework will dynamically create a model object for you if it cannot
+find a corresponding file in /modules/site/models. This also means that if
+your model file isn&#8217;t named correctly (for instance, if it is named
+post.php or Post.php rather than posts.php),
+WebLauncher Framework will use an instance of Base rather
+than your model file (which WebLauncher Framework assumes is missing). If
+you&#8217;re trying to use a method you&#8217;ve defined in your model, or a
+behavior attached to your model, and you&#8217;re getting SQL errors that
+are the name of the method you&#8217;re calling, it&#8217;s a sure sign that
+WebLauncher Framework can&#8217;t find your model and you need to check the file
+names, your application cache, or both.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Some class names are not usable for model names. For instance,
+&#8220;File&#8221; cannot be used, since &#8220;File&#8221; is a class that already exists in the
+WebLauncher Framework core.</p>
+</div>
+<p>When your model is defined, it can be accessed from within your
+<a class="reference internal" href="controllers.html"><em>Controller</em></a>. WebLauncher Framework will automatically
+make the model available for access when its name matches that of
+the controller:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class posts_page extends Page {</span>
+<span class="x">    public function index() {</span>
+<span class="x">            //grab all posts and pass it to the view</span>
+<span class="x">        $posts = $this-&gt;models-&gt;posts-&gt;get_all();</span>
+<span class="x">        $this-&gt;assign(&#39;posts&#39;, $posts);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>This shows how to use models that are already linked. To understand how associations are
+defined, take a look at the <a class="reference internal" href="models/associations-linking-models-together.html"><em>Associations section</em></a></p>
+</div>
+<div class="section" id="more-on-models">
+<h2>More on models<a class="headerlink" href="#more-on-models" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="models/associations-linking-models-together.html">Associations: Linking Models Together</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/retrieving-your-data.html">Retrieving Your Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/saving-your-data.html">Saving Your Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/deleting-data.html">Deleting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/data-validation.html">Data Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/callback-methods.html">Callback Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/behaviors.html">Behaviors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/datasources.html">DataSources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/model-attributes.html">Model Attributes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/additional-methods-and-properties.html">Additional Methods and Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/virtual-fields.html">Virtual fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/transactions.html">Transactions</a></li>
+</ul>
+</div>
+</div>
 </div>
 
 

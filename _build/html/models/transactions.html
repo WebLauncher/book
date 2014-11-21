@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="Transactions" lang="en" name="title" />
+<meta content="transaction methods,datasource,rollback,data source,begin,commit,nested transaction" lang="en" name="keywords" />
+
+    <title>Transactions &mdash; WebLauncher Framework 2.7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="../index.html" />
+    <link rel="up" title="Models" href="../models.html" />
+    <link rel="next" title="Views" href="../views.html" />
+    <link rel="prev" title="Virtual fields" href="virtual-fields.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><img src="../_static/logo.png">
+          WebLauncher Framework</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.7</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configurations.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controllers.html">Controllers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../views.html">Views</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Transactions</a><ul>
+<li><a class="reference internal" href="#nested-transactions">Nested Transactions</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="virtual-fields.html" title="Previous Chapter: Virtual fields"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Virtual fields</span>
+    </a>
+  </li>
+  <li>
+    <a href="../views.html" title="Next Chapter: Views"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Views &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="https://github.com/weblauncher/book/edit/master/models/transactions.rst"
+     rel="nofollow">Modify Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="transactions">
+<h1>Transactions<a class="headerlink" href="#transactions" title="Permalink to this headline">¶</a></h1>
+<p>To perform a transaction, a model&#8217;s table must be of a datasource
+and type which supports transactions.</p>
+<p>All transaction methods must be performed on a model&#8217;s DataSource
+object. To get a model&#8217;s DataSource from within the model, use:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$dataSource = $this-&gt;getDataSource();</span>
+</pre></div>
+</div>
+<p>You can then use the data source to start, commit, or roll back
+transactions.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$dataSource-&gt;begin();</span>
+
+<span class="x">// Perform some tasks</span>
+
+<span class="x">if (/*all&#39;s well*/) {</span>
+<span class="x">    $dataSource-&gt;commit();</span>
+<span class="x">} else {</span>
+<span class="x">    $dataSource-&gt;rollback();</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<div class="section" id="nested-transactions">
+<h2>Nested Transactions<a class="headerlink" href="#nested-transactions" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to start a transaction several times using the
+<tt class="xref php php-meth docutils literal"><span class="pre">Datasource::begin()</span></tt> method. The transaction will finish only when
+the number of <tt class="docutils literal"><span class="pre">commit</span></tt> and <tt class="docutils literal"><span class="pre">rollback</span></tt> calls match with <tt class="docutils literal"><span class="pre">begin</span></tt>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$dataSource-&gt;begin();</span>
+<span class="x">// Perform some tasks</span>
+<span class="x">$dataSource-&gt;begin();</span>
+<span class="x">// More few tasks</span>
+<span class="x">if (/*latest task ok*/) {</span>
+<span class="x">    $dataSource-&gt;commit();</span>
+<span class="x">} else {</span>
+<span class="x">    $dataSource-&gt;rollback();</span>
+<span class="x">    // Change something in main task</span>
+<span class="x">}</span>
+<span class="x">$dataSource-&gt;commit();</span>
+</pre></div>
+</div>
+<p>This will perform the real nested transaction if your database supports it and
+it is enabled in the datasource. The methods will always return true when in
+transaction mode and the nested is not supported or disabled.</p>
+<p>If you want to use multiple begin&#8217;s but not use the nested transaction from database,
+disable it using <tt class="docutils literal"><span class="pre">$dataSource-&gt;useNestedTransactions</span> <span class="pre">=</span> <span class="pre">false;</span></tt>. It will use only
+one global transaction.</p>
+<p>The real nested transaction is disabled by default. Enable it using
+<tt class="docutils literal"><span class="pre">$dataSource-&gt;useNestedTransactions</span> <span class="pre">=</span> <span class="pre">true;</span></tt>.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, WebLauncher.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="Model Attributes" lang="en" name="title" />
+<meta content="alternate table,default model,database configuration,model example,database table,default database,model class,model behavior,class model,plural form,database connections,database connection,attribute,attributes,complete list,config,WebLauncher Framework,api,class example" lang="en" name="keywords" />
+
+    <title>Model Attributes &mdash; WebLauncher Framework 2.7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="../index.html" />
+    <link rel="up" title="Models" href="../models.html" />
+    <link rel="next" title="Additional Methods and Properties" href="additional-methods-and-properties.html" />
+    <link rel="prev" title="DataSources" href="datasources.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><img src="../_static/logo.png">
+          WebLauncher Framework</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.7</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configurations.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controllers.html">Controllers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../views.html">Views</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Model Attributes</a><ul>
+<li><a class="reference internal" href="#usedbconfig">useDbConfig</a></li>
+<li><a class="reference internal" href="#usetable">useTable</a></li>
+<li><a class="reference internal" href="#tableprefix">tablePrefix</a></li>
+<li><a class="reference internal" href="#primarykey">primaryKey</a></li>
+<li><a class="reference internal" href="#displayfield">displayField</a></li>
+<li><a class="reference internal" href="#recursive">recursive</a></li>
+<li><a class="reference internal" href="#order">order</a></li>
+<li><a class="reference internal" href="#data">data</a></li>
+<li><a class="reference internal" href="#schema">_schema</a></li>
+<li><a class="reference internal" href="#validate">validate</a></li>
+<li><a class="reference internal" href="#virtualfields">virtualFields</a></li>
+<li><a class="reference internal" href="#name">name</a></li>
+<li><a class="reference internal" href="#cachequeries">cacheQueries</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="datasources.html" title="Previous Chapter: DataSources"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; DataSources</span>
+    </a>
+  </li>
+  <li>
+    <a href="additional-methods-and-properties.html" title="Next Chapter: Additional Methods and Properties"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Additional Metho... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="https://github.com/weblauncher/book/edit/master/models/model-attributes.rst"
+     rel="nofollow">Modify Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="model-attributes">
+<h1>Model Attributes<a class="headerlink" href="#model-attributes" title="Permalink to this headline">¶</a></h1>
+<p>Model attributes allow you to set properties that can override the
+default model behavior.</p>
+<p>For a complete list of model attributes and their descriptions
+visit the <a class="reference external" href="http://api.WebLauncherFramework.org/2.4/class-Model.html">WebLauncher Framework API</a>.</p>
+<div class="section" id="usedbconfig">
+<h2>useDbConfig<a class="headerlink" href="#usedbconfig" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">useDbConfig</span></tt> property is a string that specifies the name of
+the database connection to use to bind your model class to the
+related database table. You can set it to any of the database
+connections defined within your database configuration file. The
+database configuration file is stored in /app/Config/database.php.</p>
+<p>The <tt class="docutils literal"><span class="pre">useDbConfig</span></tt> property is defaulted to the &#8216;default&#8217; database
+connection.</p>
+<p>Example usage:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends AppModel {</span>
+<span class="x">    public $useDbConfig = &#39;alternate&#39;;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usetable">
+<h2>useTable<a class="headerlink" href="#usetable" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">useTable</span></tt> property specifies the database table name. By
+default, the model uses the lowercase, plural form of the model&#8217;s
+class name. Set this attribute to the name of an alternate table,
+or set it to <tt class="docutils literal"><span class="pre">false</span></tt> if you wish the model to use no database
+table.</p>
+<p>Example usage:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends AppModel {</span>
+<span class="x">    public $useTable = false; // This model does not use a database table</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Alternatively:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends AppModel {</span>
+<span class="x">    public $useTable = &#39;exmp&#39;; // This model uses a database table &#39;exmp&#39;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tableprefix">
+<h2>tablePrefix<a class="headerlink" href="#tableprefix" title="Permalink to this headline">¶</a></h2>
+<p>The name of the table prefix used for the model. The table prefix
+is initially set in the database connection file at
+/app/Config/database.php. The default is no prefix. You can
+override the default by setting the <tt class="docutils literal"><span class="pre">tablePrefix</span></tt> attribute in
+the model.</p>
+<p>Example usage:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends AppModel {</span>
+<span class="x">    public $tablePrefix = &#39;alternate_&#39;; // will look for &#39;alternate_examples&#39;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="primarykey">
+<span id="model-primarykey"></span><h2>primaryKey<a class="headerlink" href="#primarykey" title="Permalink to this headline">¶</a></h2>
+<p>Each table normally has a primary key, <tt class="docutils literal"><span class="pre">id</span></tt>. You may change which
+field name the model uses as its primary key. This is common when
+setting WebLauncher Framework to use an existing database table.</p>
+<p>Example usage:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends AppModel {</span>
+<span class="x">    // example_id is the field name in the database</span>
+<span class="x">    public $primaryKey = &#39;example_id&#39;;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="displayfield">
+<span id="model-displayfield"></span><h2>displayField<a class="headerlink" href="#displayfield" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">displayField</span></tt> attribute specifies which database field
+should be used as a label for the record. The label is used in
+scaffolding and in <tt class="docutils literal"><span class="pre">find('list')</span></tt> calls. The model will use
+<tt class="docutils literal"><span class="pre">name</span></tt> or <tt class="docutils literal"><span class="pre">title</span></tt>, by default.</p>
+<p>For example, to use the <tt class="docutils literal"><span class="pre">username</span></tt> field:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class User extends AppModel {</span>
+<span class="x">    public $displayField = &#39;username&#39;;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Multiple field names cannot be combined into a single display
+field. For example, you cannot specify,
+<tt class="docutils literal"><span class="pre">array('first_name',</span> <span class="pre">'last_name')</span></tt> as the display field. Instead
+create a virtual field with the Model attribute virtualFields</p>
+</div>
+<div class="section" id="recursive">
+<h2>recursive<a class="headerlink" href="#recursive" title="Permalink to this headline">¶</a></h2>
+<p>The recursive property defines how deep WebLauncher Framework should go to fetch
+associated model data via <tt class="docutils literal"><span class="pre">find()</span></tt>, and <tt class="docutils literal"><span class="pre">read()</span></tt> methods.</p>
+<p>Imagine your application features Groups which belong to a domain
+and have many Users which in turn have many Articles. You can set
+$recursive to different values based on the amount of data you want
+back from a $this-&gt;Group-&gt;find() call:</p>
+<ul class="simple">
+<li>-1 WebLauncher Framework fetches Group data only, no joins.</li>
+<li>0  WebLauncher Framework fetches Group data and its domain</li>
+<li>1  WebLauncher Framework fetches a Group, its domain and its associated Users</li>
+<li>2  WebLauncher Framework fetches a Group, its domain, its associated Users, and the
+Users&#8217; associated Articles</li>
+</ul>
+<p>Set it no higher than you need. Having WebLauncher Framework fetch data you
+aren&#8217;t going to use slows your app unnecessarily. Also note that
+the default recursive level is 1.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you want to combine $recursive with the <tt class="docutils literal"><span class="pre">fields</span></tt>
+functionality, you will have to add the columns containing the
+required foreign keys to the <tt class="docutils literal"><span class="pre">fields</span></tt> array manually. In the
+example above, this could mean adding <tt class="docutils literal"><span class="pre">domain_id</span></tt>.</p>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>The recommended recursive level for your application should be -1.
+This avoids retrieving related data where that is unnecessary or even
+unwanted. This is most likely the case for most of your find() calls.
+Raise it only when needed or use Containable behavior.</p>
+<p>You can achieve that by adding it to the AppModel:</p>
+<div class="last highlight-php"><div class="highlight"><pre><span class="x">public $recursive = -1;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="order">
+<h2>order<a class="headerlink" href="#order" title="Permalink to this headline">¶</a></h2>
+<p>The default ordering of data for any find operation. Possible
+values include:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$order = &quot;field&quot;</span>
+<span class="x">$order = &quot;Model.field&quot;;</span>
+<span class="x">$order = &quot;Model.field asc&quot;;</span>
+<span class="x">$order = &quot;Model.field ASC&quot;;</span>
+<span class="x">$order = &quot;Model.field DESC&quot;;</span>
+<span class="x">$order = array(&quot;Model.field&quot; =&gt; &quot;asc&quot;, &quot;Model.field2&quot; =&gt; &quot;DESC&quot;);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data">
+<h2>data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<p>The container for the model&#8217;s fetched data. While data returned
+from a model class is normally used as returned from a find() call,
+you may need to access information stored in $data inside of model
+callbacks.</p>
+</div>
+<div class="section" id="schema">
+<h2>_schema<a class="headerlink" href="#schema" title="Permalink to this headline">¶</a></h2>
+<p>Contains metadata describing the model&#8217;s database table fields.
+Each field is described by:</p>
+<ul class="simple">
+<li>name</li>
+<li>type (integer, string, datetime, etc.)</li>
+<li>null</li>
+<li>default value</li>
+<li>length</li>
+</ul>
+<p>Example Usage:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">protected $_schema = array(</span>
+<span class="x">    &#39;first_name&#39; =&gt; array(</span>
+<span class="x">        &#39;type&#39; =&gt; &#39;string&#39;,</span>
+<span class="x">        &#39;length&#39; =&gt; 30</span>
+<span class="x">    ),</span>
+<span class="x">    &#39;last_name&#39; =&gt; array(</span>
+<span class="x">        &#39;type&#39; =&gt; &#39;string&#39;,</span>
+<span class="x">        &#39;length&#39; =&gt; 30</span>
+<span class="x">    ),</span>
+<span class="x">    &#39;email&#39; =&gt; array(</span>
+<span class="x">        &#39;type&#39; =&gt; &#39;string&#39;,</span>
+<span class="x">        &#39;length&#39; =&gt; 30</span>
+<span class="x">    ),</span>
+<span class="x">    &#39;message&#39; =&gt; array(&#39;type&#39; =&gt; &#39;text&#39;)</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="validate">
+<h2>validate<a class="headerlink" href="#validate" title="Permalink to this headline">¶</a></h2>
+<p>This attribute holds rules that allow the model to make data
+validation decisions before saving. Keys named after fields hold
+regex values allowing the model to try to make matches.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is not necessary to call validate() before save() as save() will
+automatically validate your data before actually saving.</p>
+</div>
+<p>For more information on validation, see the <a class="reference internal" href="data-validation.html"><em>Data Validation</em></a>
+later on in this manual.</p>
+</div>
+<div class="section" id="virtualfields">
+<h2>virtualFields<a class="headerlink" href="#virtualfields" title="Permalink to this headline">¶</a></h2>
+<p>Array of virtual fields this model has. Virtual fields are aliased
+SQL expressions. Fields added to this property will be read as
+other fields in a model but will not be saveable.</p>
+<p>Example usage for MySQL:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public $virtualFields = array(</span>
+<span class="x">    &#39;name&#39; =&gt; &quot;CONCAT(User.first_name, &#39; &#39;, User.last_name)&quot;</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>In subsequent find operations, your User results would contain a
+<tt class="docutils literal"><span class="pre">name</span></tt> key with the result of the concatenation. It is not
+advisable to create virtual fields with the same names as columns
+on the database, this can cause SQL errors.</p>
+<p>For more information on the <tt class="docutils literal"><span class="pre">virtualFields</span></tt> property, its proper
+usage, as well as limitations, see
+<a class="reference internal" href="virtual-fields.html"><em>Virtual fields</em></a>.</p>
+</div>
+<div class="section" id="name">
+<h2>name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p>Name of the model. If you do not specify it in your model file it will
+be set to the class name by constructor.</p>
+<p>Example usage:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends AppModel {</span>
+<span class="x">    public $name = &#39;Example&#39;;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cachequeries">
+<h2>cacheQueries<a class="headerlink" href="#cachequeries" title="Permalink to this headline">¶</a></h2>
+<p>If set to true, data fetched by the model during a single request
+is cached. This caching is in-memory only, and only lasts for the
+duration of the request. Any duplicate requests for the same data
+is handled by the cache.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, WebLauncher.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

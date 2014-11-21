@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="Saving Your Data" lang="en" name="title" />
+<meta content="doc models,validation rules,data validation,flash message,null model,table php,request data,php class,model data,database table,array,recipes,success,reason,snap,data model" lang="en" name="keywords" />
+
+    <title>Saving Your Data &mdash; WebLauncher Framework 2.7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="../index.html" />
+    <link rel="up" title="Models" href="../models.html" />
+    <link rel="next" title="Deleting Data" href="deleting-data.html" />
+    <link rel="prev" title="Retrieving Your Data" href="retrieving-your-data.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><img src="../_static/logo.png">
+          WebLauncher Framework</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.7</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configurations.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controllers.html">Controllers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../views.html">Views</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Saving Your Data</a><ul>
+<li><a class="reference internal" href="#model-set-one-two-null"><tt class="docutils literal"><span class="pre">Model::set($one,</span> <span class="pre">$two</span> <span class="pre">=</span> <span class="pre">null)</span></tt></a></li>
+<li><a class="reference internal" href="#model-clear"><tt class="docutils literal"><span class="pre">Model::clear()</span></tt></a></li>
+<li><a class="reference internal" href="#model-save-array-data-null-boolean-validate-true-array-fieldlist-array"><tt class="docutils literal"><span class="pre">Model::save(array</span> <span class="pre">$data</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">boolean</span> <span class="pre">$validate</span> <span class="pre">=</span> <span class="pre">true,</span> <span class="pre">array</span> <span class="pre">$fieldList</span> <span class="pre">=</span> <span class="pre">array())</span></tt></a></li>
+<li><a class="reference internal" href="#model-create-array-data-array"><tt class="docutils literal"><span class="pre">Model::create(array</span> <span class="pre">$data</span> <span class="pre">=</span> <span class="pre">array())</span></tt></a></li>
+<li><a class="reference internal" href="#model-savefield-string-fieldname-string-fieldvalue-validate-false"><tt class="docutils literal"><span class="pre">Model::saveField(string</span> <span class="pre">$fieldName,</span> <span class="pre">string</span> <span class="pre">$fieldValue,</span> <span class="pre">$validate</span> <span class="pre">=</span> <span class="pre">false)</span></tt></a></li>
+<li><a class="reference internal" href="#model-updateall-array-fields-mixed-conditions"><tt class="docutils literal"><span class="pre">Model::updateAll(array</span> <span class="pre">$fields,</span> <span class="pre">mixed</span> <span class="pre">$conditions)</span></tt></a></li>
+<li><a class="reference internal" href="#model-savemany-array-data-null-array-options-array"><tt class="docutils literal"><span class="pre">Model::saveMany(array</span> <span class="pre">$data</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">array</span> <span class="pre">$options</span> <span class="pre">=</span> <span class="pre">array())</span></tt></a></li>
+<li><a class="reference internal" href="#model-saveassociated-array-data-null-array-options-array"><tt class="docutils literal"><span class="pre">Model::saveAssociated(array</span> <span class="pre">$data</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">array</span> <span class="pre">$options</span> <span class="pre">=</span> <span class="pre">array())</span></tt></a></li>
+<li><a class="reference internal" href="#model-saveall-array-data-null-array-options-array"><tt class="docutils literal"><span class="pre">Model::saveAll(array</span> <span class="pre">$data</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">array</span> <span class="pre">$options</span> <span class="pre">=</span> <span class="pre">array())</span></tt></a></li>
+<li><a class="reference internal" href="#saving-related-model-data-hasone-hasmany-belongsto">Saving Related Model Data (hasOne, hasMany, belongsTo)</a></li>
+<li><a class="reference internal" href="#saving-hasmany-through-data">Saving hasMany through data</a><ul>
+<li><a class="reference internal" href="#saving-related-model-data-habtm">Saving Related Model Data (HABTM)</a><ul>
+<li><a class="reference internal" href="#self-habtm">Self HABTM</a></li>
+<li><a class="reference internal" href="#what-to-do-when-habtm-becomes-complicated">What to do when HABTM becomes complicated?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#datatables">Datatables</a><ul>
+<li><a class="reference internal" href="#using-created-and-modified">Using created and modified</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="retrieving-your-data.html" title="Previous Chapter: Retrieving Your Data"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Retrieving Your ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="deleting-data.html" title="Next Chapter: Deleting Data"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Deleting Data &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="https://github.com/weblauncher/book/edit/master/models/saving-your-data.rst"
+     rel="nofollow">Modify Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="saving-your-data">
+<h1>Saving Your Data<a class="headerlink" href="#saving-your-data" title="Permalink to this headline">¶</a></h1>
+<p>WebLauncher Framework makes saving model data a snap. Data ready to be saved
+should be passed to the model&#8217;s <tt class="docutils literal"><span class="pre">save()</span></tt> method using the
+following basic format:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Array</span>
+<span class="x">(</span>
+<span class="x">    [ModelName] =&gt; Array</span>
+<span class="x">    (</span>
+<span class="x">        [fieldname1] =&gt; &#39;value&#39;</span>
+<span class="x">        [fieldname2] =&gt; &#39;value&#39;</span>
+<span class="x">    )</span>
+<span class="x">)</span>
+</pre></div>
+</div>
+<p>Most of the time you won&#8217;t even need to worry about this format:
+WebLauncher Framework&#8217;s <tt class="xref php php-class docutils literal"><span class="pre">FormHelper</span></tt>, and model find methods all
+package data in this format. If you&#8217;re using <tt class="xref php php-class docutils literal"><span class="pre">FormHelper</span></tt>,
+the data is also conveniently available in <tt class="docutils literal"><span class="pre">$this-&gt;request-&gt;data</span></tt> for
+quick usage.</p>
+<p>Here&#8217;s a quick example of a controller action that uses a WebLauncher Framework
+model to save data to a database table:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public function edit($id) {</span>
+<span class="x">    // Has any form data been POSTed?</span>
+<span class="x">    if ($this-&gt;request-&gt;is(&#39;post&#39;)) {</span>
+<span class="x">        // If the form data can be validated and saved...</span>
+<span class="x">        if ($this-&gt;Recipe-&gt;save($this-&gt;request-&gt;data)) {</span>
+<span class="x">            // Set a session flash message and redirect.</span>
+<span class="x">            $this-&gt;Session-&gt;setFlash(&#39;Recipe Saved!&#39;);</span>
+<span class="x">            return $this-&gt;redirect(&#39;/recipes&#39;);</span>
+<span class="x">        }</span>
+<span class="x">    }</span>
+
+<span class="x">    // If no form data, find the recipe to be edited</span>
+<span class="x">    // and hand it to the view.</span>
+<span class="x">    $this-&gt;set(&#39;recipe&#39;, $this-&gt;Recipe-&gt;findById($id));</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>When save is called, the data passed to it in the first parameter is validated
+using WebLauncher Framework&#8217;s validation mechanism (see <a class="reference internal" href="data-validation.html"><em>Data Validation</em></a> chapter for more
+information). If for some reason your data isn&#8217;t saving, be sure to check to see
+if some validation rules are being broken. You can debug this situation by
+outputting <tt class="xref php php-attr docutils literal"><span class="pre">Model::$validationErrors</span></tt>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">if ($this-&gt;Recipe-&gt;save($this-&gt;request-&gt;data)) {</span>
+<span class="x">    // handle the success.</span>
+<span class="x">}</span>
+<span class="x">debug($this-&gt;Recipe-&gt;validationErrors);</span>
+</pre></div>
+</div>
+<p>There are a few other save-related methods in the model that you&#8217;ll
+find useful:</p>
+<div class="section" id="model-set-one-two-null">
+<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::set($one,</span> <span class="pre">$two</span> <span class="pre">=</span> <span class="pre">null)</span></tt><a class="headerlink" href="#model-set-one-two-null" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">Model::set()</span></tt> can be used to set one or many fields of data to the
+data array inside a model. This is useful when using models with
+the ActiveRecord features offered by Model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;Post-&gt;read(null, 1);</span>
+<span class="x">$this-&gt;Post-&gt;set(&#39;title&#39;, &#39;New title for the article&#39;);</span>
+<span class="x">$this-&gt;Post-&gt;save();</span>
+</pre></div>
+</div>
+<p>Is an example of how you can use <tt class="docutils literal"><span class="pre">set()</span></tt> to update
+single fields, in an ActiveRecord approach. You can also use
+<tt class="docutils literal"><span class="pre">set()</span></tt> to assign new values to multiple fields:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;Post-&gt;read(null, 1);</span>
+<span class="x">$this-&gt;Post-&gt;set(array(</span>
+<span class="x">    &#39;title&#39; =&gt; &#39;New title&#39;,</span>
+<span class="x">    &#39;published&#39; =&gt; false</span>
+<span class="x">));</span>
+<span class="x">$this-&gt;Post-&gt;save();</span>
+</pre></div>
+</div>
+<p>The above would update the title and published fields and save the
+record to the database.</p>
+</div>
+<div class="section" id="model-clear">
+<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::clear()</span></tt><a class="headerlink" href="#model-clear" title="Permalink to this headline">¶</a></h2>
+<p>This method can be used to reset model state and clear out any unsaved data and
+validation errors.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 2.4.</span></p>
+</div>
+</div>
+<div class="section" id="model-save-array-data-null-boolean-validate-true-array-fieldlist-array">
+<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::save(array</span> <span class="pre">$data</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">boolean</span> <span class="pre">$validate</span> <span class="pre">=</span> <span class="pre">true,</span> <span class="pre">array</span> <span class="pre">$fieldList</span> <span class="pre">=</span> <span class="pre">array())</span></tt><a class="headerlink" href="#model-save-array-data-null-boolean-validate-true-array-fieldlist-array" title="Permalink to this headline">¶</a></h2>
+<p>Featured above, this method saves array-formatted data. The second
+parameter allows you to sidestep validation, and the third allows
+you to supply a list of model fields to be saved. For added
+security, you can limit the saved fields to those listed in
+<tt class="docutils literal"><span class="pre">$fieldList</span></tt>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If <tt class="docutils literal"><span class="pre">$fieldList</span></tt> is not supplied, a malicious user can add additional
+fields to the form data (if you are not using
+<tt class="xref php php-class docutils literal"><span class="pre">SecurityComponent</span></tt>), and by this change fields that were not
+originally intended to be changed.</p>
+</div>
+<p>The save method also has an alternate syntax:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">save(array $data = null, array $params = array())</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">$params</span></tt> array can have any of the following available options
+as keys:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">validate</span></tt> Set to true/false to enable/disable validation.</li>
+<li><tt class="docutils literal"><span class="pre">fieldList</span></tt> An array of fields you want to allow for saving.</li>
+<li><tt class="docutils literal"><span class="pre">callbacks</span></tt> Set to false to disable callbacks. Using &#8216;before&#8217; or &#8216;after&#8217;
+will enable only those callbacks.</li>
+<li><tt class="docutils literal"><span class="pre">counterCache</span></tt> (since 2.4) Boolean to control updating of counter caches (if any)</li>
+</ul>
+<p>More information about model callbacks is available
+<a class="reference internal" href="callback-methods.html"><em>here</em></a></p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If you don&#8217;t want the <tt class="docutils literal"><span class="pre">modified</span></tt> field to be automatically updated when saving some
+data add <tt class="docutils literal"><span class="pre">'modified'</span> <span class="pre">=&gt;</span> <span class="pre">false</span></tt> to your <tt class="docutils literal"><span class="pre">$data</span></tt> array</p>
+</div>
+<p>Once a save has been completed, the ID for the object can be found
+in the <tt class="docutils literal"><span class="pre">$id</span></tt> attribute of the model object - something especially
+handy when creating new objects.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;Ingredient-&gt;save($newData);</span>
+<span class="x">$newIngredientId = $this-&gt;Ingredient-&gt;id;</span>
+</pre></div>
+</div>
+<p>Creating or updating is controlled by the model&#8217;s <tt class="docutils literal"><span class="pre">id</span></tt> field. If
+<tt class="docutils literal"><span class="pre">$Model-&gt;id</span></tt> is set, the record with this primary key is updated.
+Otherwise a new record is created:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// Create: id isn&#39;t set or is null</span>
+<span class="x">$this-&gt;Recipe-&gt;create();</span>
+<span class="x">$this-&gt;Recipe-&gt;save($this-&gt;request-&gt;data);</span>
+
+<span class="x">// Update: id is set to a numerical value</span>
+<span class="x">$this-&gt;Recipe-&gt;id = 2;</span>
+<span class="x">$this-&gt;Recipe-&gt;save($this-&gt;request-&gt;data);</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">When calling save in a loop, don&#8217;t forget to call <tt class="docutils literal"><span class="pre">clear()</span></tt>.</p>
+</div>
+<p>If you want to update a value, rather than create a new one, make sure
+you are passing the primary key field into the data array:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$data = array(&#39;id&#39; =&gt; 10, &#39;title&#39; =&gt; &#39;My new title&#39;);</span>
+<span class="x">// This will update Recipe with id 10</span>
+<span class="x">$this-&gt;Recipe-&gt;save($data);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="model-create-array-data-array">
+<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::create(array</span> <span class="pre">$data</span> <span class="pre">=</span> <span class="pre">array())</span></tt><a class="headerlink" href="#model-create-array-data-array" title="Permalink to this headline">¶</a></h2>
+<p>This method resets the model state for saving new information.
+It does not actually create a record in the database but clears
+Model::$id and sets Model::$data based on your database field defaults. If you have
+not defined defaults for your database fields, Model::$data will be set to an empty array.</p>
+<p>If the <tt class="docutils literal"><span class="pre">$data</span></tt> parameter (using the array format outlined above) is passed, it will be merged with the database
+field defaults and the model instance will be ready to save with that data (accessible at <tt class="docutils literal"><span class="pre">$this-&gt;data</span></tt>).</p>
+<p>If <tt class="docutils literal"><span class="pre">false</span></tt> or <tt class="docutils literal"><span class="pre">null</span></tt> are passed for the <tt class="docutils literal"><span class="pre">$data</span></tt> parameter, Model::data will be set to an empty array.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If you want to insert a new row instead of updating an existing one you should always call create() first.
+This avoids conflicts with possible prior save calls in callbacks or other places.</p>
+</div>
+</div>
+<div class="section" id="model-savefield-string-fieldname-string-fieldvalue-validate-false">
+<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::saveField(string</span> <span class="pre">$fieldName,</span> <span class="pre">string</span> <span class="pre">$fieldValue,</span> <span class="pre">$validate</span> <span class="pre">=</span> <span class="pre">false)</span></tt><a class="headerlink" href="#model-savefield-string-fieldname-string-fieldvalue-validate-false" title="Permalink to this headline">¶</a></h2>
+<p>Used to save a single field value. Set the ID of the model
+(<tt class="docutils literal"><span class="pre">$this-&gt;ModelName-&gt;id</span> <span class="pre">=</span> <span class="pre">$id</span></tt>) just before calling
+<tt class="docutils literal"><span class="pre">saveField()</span></tt>. When using this method, <tt class="docutils literal"><span class="pre">$fieldName</span></tt> should only
+contain the name of the field, not the name of the model and
+field.</p>
+<p>For example, to update the title of a blog post, the call to
+<tt class="docutils literal"><span class="pre">saveField</span></tt> from a controller might look something like this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;Post-&gt;saveField(&#39;title&#39;, &#39;A New Title for a New Day&#39;);</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You can&#8217;t stop the <tt class="docutils literal"><span class="pre">modified</span></tt> field being updated with this method, you
+need to use the save() method.</p>
+</div>
+<p>The saveField method also has an alternate syntax:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">saveField(string $fieldName, string $fieldValue, array $params = array())</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">$params</span></tt> array can have any of the following available options
+as keys:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">validate</span></tt> Set to true/false to enable/disable validation.</li>
+<li><tt class="docutils literal"><span class="pre">callbacks</span></tt> Set to false to disable callbacks. Using &#8216;before&#8217; or &#8216;after&#8217;
+will enable only those callbacks.</li>
+<li><tt class="docutils literal"><span class="pre">counterCache</span></tt> (since 2.4) Boolean to control updating of counter caches (if any)</li>
+</ul>
+</div>
+<div class="section" id="model-updateall-array-fields-mixed-conditions">
+<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::updateAll(array</span> <span class="pre">$fields,</span> <span class="pre">mixed</span> <span class="pre">$conditions)</span></tt><a class="headerlink" href="#model-updateall-array-fields-mixed-conditions" title="Permalink to this headline">¶</a></h2>
+<p>Updates one or more records in a single call. Fields to be updated,
+along with their values, are identified by the <tt class="docutils literal"><span class="pre">$fields</span></tt> array.
+Records to be updated are identified by the <tt class="docutils literal"><span class="pre">$conditions</span></tt> array.
+If <tt class="docutils literal"><span class="pre">$conditions</span></tt> argument is not supplied or it is set to <tt class="docutils literal"><span class="pre">true</span></tt>,
+all records will be updated.</p>
+<p>For example, to approve all bakers who have been members for over a
+year, the update call might look something like:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$thisYear = date(&#39;Y-m-d H:i:s&#39;, strtotime(&#39;-1 year&#39;));</span>
+
+<span class="x">$this-&gt;Baker-&gt;updateAll(</span>
+<span class="x">    array(&#39;Baker.approved&#39; =&gt; true),</span>
+<span class="x">    array(&#39;Baker.created &lt;=&#39; =&gt; $thisYear)</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">$fields</span></tt> array accepts SQL expressions. Literal values should be
+quoted manually using <tt class="xref php php-meth docutils literal"><span class="pre">DboSource::value()</span></tt>. For example if one of your
+model methods was calling <tt class="docutils literal"><span class="pre">updateAll()</span></tt> you would do the following:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$db = $this-&gt;getDataSource();</span>
+<span class="x">$value = $db-&gt;value($value, &#39;string&#39;);</span>
+<span class="x">$this-&gt;updateAll(</span>
+<span class="x">    array(&#39;Baker.approved&#39; =&gt; true),</span>
+<span class="x">    array(&#39;Baker.created &lt;=&#39; =&gt; $value)</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Even if the modified field exists for the model being updated, it is
+not going to be updated automatically by the ORM. Just add it
+manually to the array if you need it to be updated.</p>
+</div>
+<p>For example, to close all tickets that belong to a certain
+customer:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;Ticket-&gt;updateAll(</span>
+<span class="x">    array(&#39;Ticket.status&#39; =&gt; &quot;&#39;closed&#39;&quot;),</span>
+<span class="x">    array(&#39;Ticket.customer_id&#39; =&gt; 453)</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>By default, updateAll() will automatically join any belongsTo
+association for databases that support joins. To prevent this,
+temporarily unbind the associations.</p>
+</div>
+<div class="section" id="model-savemany-array-data-null-array-options-array">
+<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::saveMany(array</span> <span class="pre">$data</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">array</span> <span class="pre">$options</span> <span class="pre">=</span> <span class="pre">array())</span></tt><a class="headerlink" href="#model-savemany-array-data-null-array-options-array" title="Permalink to this headline">¶</a></h2>
+<p>Method used to save multiple rows of the same model at once. The following
+options may be used:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">validate</span></tt>: Set to false to disable validation, true to validate each record before saving,
+&#8216;first&#8217; to validate <em>all</em> records before any are saved (default),</li>
+<li><tt class="docutils literal"><span class="pre">atomic</span></tt>: If true (default), will attempt to save all records in a single transaction.
+Should be set to false if database/table does not support transactions.</li>
+<li><tt class="docutils literal"><span class="pre">fieldList</span></tt>: Equivalent to the $fieldList parameter in Model::save()</li>
+<li><tt class="docutils literal"><span class="pre">deep</span></tt>: (since 2.1) If set to true, also associated data is saved, see also saveAssociated</li>
+<li><tt class="docutils literal"><span class="pre">callbacks</span></tt> Set to false to disable callbacks. Using &#8216;before&#8217; or &#8216;after&#8217;
+will enable only those callbacks.</li>
+<li><tt class="docutils literal"><span class="pre">counterCache</span></tt> (since 2.4) Boolean to control updating of counter caches (if any)</li>
+</ul>
+<p>For saving multiple records of single model, $data needs to be a
+numerically indexed array of records like this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$data = array(</span>
+<span class="x">    array(&#39;title&#39; =&gt; &#39;title 1&#39;),</span>
+<span class="x">    array(&#39;title&#39; =&gt; &#39;title 2&#39;),</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note that we are passing numerical indexes instead of usual
+<tt class="docutils literal"><span class="pre">$data</span></tt> containing the Article key. When saving multiple records
+of same model the records arrays should be just numerically indexed
+without the model key.</p>
+</div>
+<p>It is also acceptable to have the data in the following format:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$data = array(</span>
+<span class="x">    array(&#39;Article&#39; =&gt; array(&#39;title&#39; =&gt; &#39;title 1&#39;)),</span>
+<span class="x">    array(&#39;Article&#39; =&gt; array(&#39;title&#39; =&gt; &#39;title 2&#39;)),</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>To save also associated data with <tt class="docutils literal"><span class="pre">$options['deep']</span> <span class="pre">=</span> <span class="pre">true</span></tt> (since 2.1), the two above examples would look like:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$data = array(</span>
+<span class="x">    array(&#39;title&#39; =&gt; &#39;title 1&#39;, &#39;Assoc&#39; =&gt; array(&#39;field&#39; =&gt; &#39;value&#39;)),</span>
+<span class="x">    array(&#39;title&#39; =&gt; &#39;title 2&#39;),</span>
+<span class="x">);</span>
+<span class="x">$data = array(</span>
+<span class="x">    array(</span>
+<span class="x">        &#39;Article&#39; =&gt; array(&#39;title&#39; =&gt; &#39;title 1&#39;),</span>
+<span class="x">        &#39;Assoc&#39; =&gt; array(&#39;field&#39; =&gt; &#39;value&#39;)</span>
+<span class="x">    ),</span>
+<span class="x">    array(&#39;Article&#39; =&gt; array(&#39;title&#39; =&gt; &#39;title 2&#39;)),</span>
+<span class="x">);</span>
+<span class="x">$Model-&gt;saveMany($data, array(&#39;deep&#39; =&gt; true));</span>
+</pre></div>
+</div>
+<p>Keep in mind that if you want to update a record instead of creating a new
+one you just need to add the primary key index to the data row:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$data = array(</span>
+<span class="x">    array(</span>
+<span class="x">        // This creates a new row</span>
+<span class="x">        &#39;Article&#39; =&gt; array(&#39;title&#39; =&gt; &#39;New article&#39;)),</span>
+<span class="x">    array(</span>
+<span class="x">        // This updates an existing row</span>
+<span class="x">        &#39;Article&#39; =&gt; array(&#39;id&#39; =&gt; 2, &#39;title&#39; =&gt; &#39;title 2&#39;)),</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="model-saveassociated-array-data-null-array-options-array">
+<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::saveAssociated(array</span> <span class="pre">$data</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">array</span> <span class="pre">$options</span> <span class="pre">=</span> <span class="pre">array())</span></tt><a class="headerlink" href="#model-saveassociated-array-data-null-array-options-array" title="Permalink to this headline">¶</a></h2>
+<p>Method used to save multiple model associations at once. The following
+options may be used:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">validate</span></tt>: Set to false to disable validation, true to validate each record before saving,
+&#8216;first&#8217; to validate <em>all</em> records before any are saved (default),</li>
+<li><tt class="docutils literal"><span class="pre">atomic</span></tt>: If true (default), will attempt to save all records in a single transaction.
+Should be set to false if database/table does not support transactions.</li>
+<li><tt class="docutils literal"><span class="pre">fieldList</span></tt>: Equivalent to the $fieldList parameter in Model::save()</li>
+<li><tt class="docutils literal"><span class="pre">deep</span></tt>: (since 2.1) If set to true, not only directly associated data is saved,
+but deeper nested associated data as well. Defaults to false.</li>
+<li><tt class="docutils literal"><span class="pre">counterCache</span></tt> (since 2.4) Boolean to control updating of counter caches (if any)</li>
+</ul>
+<p>For saving a record along with its related record having a hasOne
+or belongsTo association, the data array should be like this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$data = array(</span>
+<span class="x">    &#39;User&#39; =&gt; array(&#39;username&#39; =&gt; &#39;billy&#39;),</span>
+<span class="x">    &#39;Profile&#39; =&gt; array(&#39;sex&#39; =&gt; &#39;Male&#39;, &#39;occupation&#39; =&gt; &#39;Programmer&#39;),</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>For saving a record along with its related records having hasMany
+association, the data array should be like this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$data = array(</span>
+<span class="x">    &#39;Article&#39; =&gt; array(&#39;title&#39; =&gt; &#39;My first article&#39;),</span>
+<span class="x">    &#39;Comment&#39; =&gt; array(</span>
+<span class="x">        array(&#39;body&#39; =&gt; &#39;Comment 1&#39;, &#39;user_id&#39; =&gt; 1),</span>
+<span class="x">        array(&#39;body&#39; =&gt; &#39;Comment 2&#39;, &#39;user_id&#39; =&gt; 12),</span>
+<span class="x">        array(&#39;body&#39; =&gt; &#39;Comment 3&#39;, &#39;user_id&#39; =&gt; 40),</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>And for saving a record along with its related records having hasMany with more than two
+levels deep associations, the data array should be as follow:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$data = array(</span>
+<span class="x">    &#39;User&#39; =&gt; array(&#39;email&#39; =&gt; &#39;john-doe@WebLauncher Framework.org&#39;),</span>
+<span class="x">    &#39;Cart&#39; =&gt; array(</span>
+<span class="x">        array(</span>
+<span class="x">            &#39;payment_status_id&#39; =&gt; 2,</span>
+<span class="x">            &#39;total_cost&#39; =&gt; 250,</span>
+<span class="x">            &#39;CartItem&#39; =&gt; array(</span>
+<span class="x">                array(</span>
+<span class="x">                    &#39;cart_product_id&#39; =&gt; 3,</span>
+<span class="x">                    &#39;quantity&#39; =&gt; 1,</span>
+<span class="x">                    &#39;cost&#39; =&gt; 100,</span>
+<span class="x">                ),</span>
+<span class="x">                array(</span>
+<span class="x">                    &#39;cart_product_id&#39; =&gt; 5,</span>
+<span class="x">                    &#39;quantity&#39; =&gt; 1,</span>
+<span class="x">                    &#39;cost&#39; =&gt; 150,</span>
+<span class="x">                )</span>
+<span class="x">            )</span>
+<span class="x">        )</span>
+<span class="x">    )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If successful, the foreign key of the main model will be stored in
+the related models&#8217; id field, i.e. <tt class="docutils literal"><span class="pre">$this-&gt;RelatedModel-&gt;id</span></tt>.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Be careful when checking saveAssociated calls with atomic option set to
+false. It returns an array instead of boolean.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.1: </span>You can now save deeper associated data as well with setting <tt class="docutils literal"><span class="pre">$options['deep']</span> <span class="pre">=</span> <span class="pre">true;</span></tt></p>
+</div>
+<p>For saving a record along with its related records having hasMany
+association and deeper associated Comment belongsTo User data as well,
+the data array should be like this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$data = array(</span>
+<span class="x">    &#39;Article&#39; =&gt; array(&#39;title&#39; =&gt; &#39;My first article&#39;),</span>
+<span class="x">    &#39;Comment&#39; =&gt; array(</span>
+<span class="x">        array(&#39;body&#39; =&gt; &#39;Comment 1&#39;, &#39;user_id&#39; =&gt; 1),</span>
+<span class="x">        array(</span>
+<span class="x">            &#39;body&#39; =&gt; &#39;Save a new user as well&#39;,</span>
+<span class="x">            &#39;User&#39; =&gt; array(&#39;first&#39; =&gt; &#39;mad&#39;, &#39;last&#39; =&gt; &#39;coder&#39;)</span>
+<span class="x">        ),</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>And save this data with:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$Article-&gt;saveAssociated($data, array(&#39;deep&#39; =&gt; true));</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 2.1: </span><tt class="docutils literal"><span class="pre">Model::saveAll()</span></tt> and friends now support passing the <cite>fieldList</cite> for multiple models.</p>
+</div>
+<p>Example of using <tt class="docutils literal"><span class="pre">fieldList</span></tt> with multiple models:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;SomeModel-&gt;saveAll($data, array(</span>
+<span class="x">    &#39;fieldList&#39; =&gt; array(</span>
+<span class="x">        &#39;SomeModel&#39; =&gt; array(&#39;field_1&#39;),</span>
+<span class="x">        &#39;AssociatedModel&#39; =&gt; array(&#39;field_2&#39;, &#39;field_3&#39;)</span>
+<span class="x">    )</span>
+<span class="x">));</span>
+</pre></div>
+</div>
+<p>The fieldList will be an array of model aliases as keys and arrays with fields as values.
+The model names are not nested like in the data to be saved.</p>
+</div>
+<div class="section" id="model-saveall-array-data-null-array-options-array">
+<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::saveAll(array</span> <span class="pre">$data</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">array</span> <span class="pre">$options</span> <span class="pre">=</span> <span class="pre">array())</span></tt><a class="headerlink" href="#model-saveall-array-data-null-array-options-array" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">saveAll</span></tt> function is just a wrapper around the <tt class="docutils literal"><span class="pre">saveMany</span></tt> and <tt class="docutils literal"><span class="pre">saveAssociated</span></tt>
+methods. it will inspect the data and determine what type of save it should perform. If
+data is formatted in a numerical indexed array, <tt class="docutils literal"><span class="pre">saveMany</span></tt> will be called, otherwise
+<tt class="docutils literal"><span class="pre">saveAssociated</span></tt> is used.</p>
+<p>This function receives the same options as the former two, and is generally a backwards
+compatible function. It is recommended using either <tt class="docutils literal"><span class="pre">saveMany</span></tt> or <tt class="docutils literal"><span class="pre">saveAssociated</span></tt>
+depending on the case.</p>
+</div>
+<div class="section" id="saving-related-model-data-hasone-hasmany-belongsto">
+<h2>Saving Related Model Data (hasOne, hasMany, belongsTo)<a class="headerlink" href="#saving-related-model-data-hasone-hasmany-belongsto" title="Permalink to this headline">¶</a></h2>
+<p>When working with associated models, it is important to realize
+that saving model data should always be done by the corresponding
+WebLauncher Framework model. If you are saving a new Post and its associated
+Comments, then you would use both Post and Comment models during
+the save operation.</p>
+<p>If neither of the associated model records exists in the system yet
+(for example, you want to save a new User and their related Profile
+records at the same time), you&#8217;ll need to first save the primary,
+or parent model.</p>
+<p>To get an idea of how this works, let&#8217;s imagine that we have an
+action in our UsersController that handles the saving of a new User
+and a related Profile. The example action shown below will assume
+that you&#8217;ve POSTed enough data (using the FormHelper) to create a
+single User and a single Profile:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public function add() {</span>
+<span class="x">    if (!empty($this-&gt;request-&gt;data)) {</span>
+<span class="x">        // We can save the User data:</span>
+<span class="x">        // it should be in $this-&gt;request-&gt;data[&#39;User&#39;]</span>
+
+<span class="x">        $user = $this-&gt;User-&gt;save($this-&gt;request-&gt;data);</span>
+
+<span class="x">        // If the user was saved, Now we add this information to the data</span>
+<span class="x">        // and save the Profile.</span>
+
+<span class="x">        if (!empty($user)) {</span>
+<span class="x">            // The ID of the newly created user has been set</span>
+<span class="x">            // as $this-&gt;User-&gt;id.</span>
+<span class="x">            $this-&gt;request-&gt;data[&#39;Profile&#39;][&#39;user_id&#39;] = $this-&gt;User-&gt;id;</span>
+
+<span class="x">            // Because our User hasOne Profile, we can access</span>
+<span class="x">            // the Profile model through the User model:</span>
+<span class="x">            $this-&gt;User-&gt;Profile-&gt;save($this-&gt;request-&gt;data);</span>
+<span class="x">        }</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>As a rule, when working with hasOne, hasMany, and belongsTo
+associations, it&#8217;s all about keying. The basic idea is to get the
+key from one model and place it in the foreign key field on the
+other. Sometimes this might involve using the <tt class="docutils literal"><span class="pre">$id</span></tt> attribute of
+the model class after a <tt class="docutils literal"><span class="pre">save()</span></tt>, but other times it might just
+involve gathering the ID from a hidden input on a form that&#8217;s just
+been POSTed to a controller action.</p>
+<p>To supplement the basic approach used above, WebLauncher Framework also offers a
+very handy method <tt class="docutils literal"><span class="pre">saveAssociated()</span></tt>, which allows you to validate and
+save multiple models in one shot. In addition, <tt class="docutils literal"><span class="pre">saveAssociated()</span></tt>
+provides transactional support to ensure data integrity in your
+database (i.e. if one model fails to save, the other models will
+not be saved either).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For transactions to work correctly in MySQL your tables must use
+InnoDB engine. Remember that MyISAM tables do not support
+transactions.</p>
+</div>
+<p>Let&#8217;s see how we can use <tt class="docutils literal"><span class="pre">saveAssociated()</span></tt> to save Company and Account
+models at the same time.</p>
+<p>First, you need to build your form for both Company and Account
+models (we&#8217;ll assume that Company hasMany Account):</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">echo $this-&gt;Form-&gt;create(&#39;Company&#39;, array(&#39;action&#39; =&gt; &#39;add&#39;));</span>
+<span class="x">echo $this-&gt;Form-&gt;input(&#39;Company.name&#39;, array(&#39;label&#39; =&gt; &#39;Company name&#39;));</span>
+<span class="x">echo $this-&gt;Form-&gt;input(&#39;Company.description&#39;);</span>
+<span class="x">echo $this-&gt;Form-&gt;input(&#39;Company.location&#39;);</span>
+
+<span class="x">echo $this-&gt;Form-&gt;input(&#39;Account.0.name&#39;, array(&#39;label&#39; =&gt; &#39;Account name&#39;));</span>
+<span class="x">echo $this-&gt;Form-&gt;input(&#39;Account.0.username&#39;);</span>
+<span class="x">echo $this-&gt;Form-&gt;input(&#39;Account.0.email&#39;);</span>
+
+<span class="x">echo $this-&gt;Form-&gt;end(&#39;Add&#39;);</span>
+</pre></div>
+</div>
+<p>Take a look at the way we named the form fields for the Account
+model. If Company is our main model, <tt class="docutils literal"><span class="pre">saveAssociated()</span></tt> will expect the
+related model&#8217;s (Account) data to arrive in a specific format. And
+having <tt class="docutils literal"><span class="pre">Account.0.fieldName</span></tt> is exactly what we need.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The above field naming is required for a hasMany association. If
+the association between the models is hasOne, you have to use
+ModelName.fieldName notation for the associated model.</p>
+</div>
+<p>Now, in our CompaniesController we can create an <tt class="docutils literal"><span class="pre">add()</span></tt>
+action:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public function add() {</span>
+<span class="x">    if (!empty($this-&gt;request-&gt;data)) {</span>
+<span class="x">        // Use the following to avoid validation errors:</span>
+<span class="x">        unset($this-&gt;Company-&gt;Account-&gt;validate[&#39;company_id&#39;]);</span>
+<span class="x">        $this-&gt;Company-&gt;saveAssociated($this-&gt;request-&gt;data);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>That&#8217;s all there is to it. Now our Company and Account models will
+be validated and saved all at the same time. By default <tt class="docutils literal"><span class="pre">saveAssociated</span></tt>
+will validate all values passed and then try to perform a save for each.</p>
+</div>
+<div class="section" id="saving-hasmany-through-data">
+<h2>Saving hasMany through data<a class="headerlink" href="#saving-hasmany-through-data" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s see how data stored in a join table for two models is saved. As shown in the <a class="reference internal" href="associations-linking-models-together.html#hasmany-through"><em>hasMany through (The Join Model)</em></a>
+section, the join table is associated to each model using a <cite>hasMany</cite> type of relationship.
+Our example involves the Head of Cake School asking us to write an application that allows
+him to log a student&#8217;s attendance on a course with days attended and grade. Take
+a look at the following code.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// Controller/CourseMembershipController.php</span>
+<span class="x">class CourseMembershipsController extends AppController {</span>
+<span class="x">    public $uses = array(&#39;CourseMembership&#39;);</span>
+
+<span class="x">    public function index() {</span>
+<span class="x">        $this-&gt;set(</span>
+<span class="x">             &#39;courseMembershipsList&#39;,</span>
+<span class="x">             $this-&gt;CourseMembership-&gt;find(&#39;all&#39;)</span>
+<span class="x">         );</span>
+<span class="x">    }</span>
+
+<span class="x">    public function add() {</span>
+<span class="x">        if ($this-&gt;request-&gt;is(&#39;post&#39;)) {</span>
+<span class="x">            if ($this-&gt;CourseMembership-&gt;saveAssociated($this-&gt;request-&gt;data)) {</span>
+<span class="x">                return $this-&gt;redirect(array(&#39;action&#39; =&gt; &#39;index&#39;));</span>
+<span class="x">            }</span>
+<span class="x">        }</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+
+<span class="x">// View/CourseMemberships/add.ctp</span>
+
+<span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="s1">&#39;CourseMembership&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;Student.first_name&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;Student.last_name&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;Course.name&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;CourseMembership.days_attended&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;CourseMembership.grade&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    &lt;button type=&quot;submit&quot;&gt;Save&lt;/button&gt;</span>
+<span class="cp">&lt;?php</span> <span class="k">echo</span>  <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">end</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<p>The data array will look like this when submitted.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Array</span>
+<span class="x">(</span>
+<span class="x">    [Student] =&gt; Array</span>
+<span class="x">    (</span>
+<span class="x">        [first_name] =&gt; Joe</span>
+<span class="x">        [last_name] =&gt; Bloggs</span>
+<span class="x">    )</span>
+
+<span class="x">    [Course] =&gt; Array</span>
+<span class="x">    (</span>
+<span class="x">        [name] =&gt; Cake</span>
+<span class="x">    )</span>
+
+<span class="x">    [CourseMembership] =&gt; Array</span>
+<span class="x">    (</span>
+<span class="x">        [days_attended] =&gt; 5</span>
+<span class="x">        [grade] =&gt; A</span>
+<span class="x">    )</span>
+
+<span class="x">)</span>
+</pre></div>
+</div>
+<p>WebLauncher Framework will happily be able to save the lot together and assign
+the foreign keys of the Student and Course into CourseMembership
+with a <cite>saveAssociated</cite> call with this data structure. If we run the index
+action of our CourseMembershipsController the data structure
+received now from a find(&#8216;all&#8217;) is:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Array</span>
+<span class="x">(</span>
+<span class="x">    [0] =&gt; Array</span>
+<span class="x">    (</span>
+<span class="x">        [CourseMembership] =&gt; Array</span>
+<span class="x">        (</span>
+<span class="x">            [id] =&gt; 1</span>
+<span class="x">            [student_id] =&gt; 1</span>
+<span class="x">            [course_id] =&gt; 1</span>
+<span class="x">            [days_attended] =&gt; 5</span>
+<span class="x">            [grade] =&gt; A</span>
+<span class="x">        )</span>
+
+<span class="x">        [Student] =&gt; Array</span>
+<span class="x">        (</span>
+<span class="x">            [id] =&gt; 1</span>
+<span class="x">            [first_name] =&gt; Joe</span>
+<span class="x">            [last_name] =&gt; Bloggs</span>
+<span class="x">        )</span>
+
+<span class="x">        [Course] =&gt; Array</span>
+<span class="x">        (</span>
+<span class="x">            [id] =&gt; 1</span>
+<span class="x">            [name] =&gt; Cake</span>
+<span class="x">        )</span>
+<span class="x">    )</span>
+<span class="x">)</span>
+</pre></div>
+</div>
+<p>There are of course many ways to work with a join model. The
+version above assumes you want to save everything at-once. There
+will be cases where you want to create the Student and Course
+independently and at a later point associate the two together with
+a CourseMembership. So you might have a form that allows selection
+of existing students and courses from pick lists or ID entry and
+then the two meta-fields for the CourseMembership, e.g.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// View/CourseMemberships/add.ctp</span>
+
+<span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="s1">&#39;CourseMembership&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?php</span>
+        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span>
+            <span class="s1">&#39;Student.id&#39;</span><span class="p">,</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;text&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Student ID&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+    <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?php</span>
+        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span>
+            <span class="s1">&#39;Course.id&#39;</span><span class="p">,</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;text&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Course ID&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+    <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;CourseMembership.days_attended&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;CourseMembership.grade&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    &lt;button type=&quot;submit&quot;&gt;Save&lt;/button&gt;</span>
+<span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">end</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<p>And the resultant POST:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Array</span>
+<span class="x">(</span>
+<span class="x">    [Student] =&gt; Array</span>
+<span class="x">    (</span>
+<span class="x">        [id] =&gt; 1</span>
+<span class="x">    )</span>
+
+<span class="x">    [Course] =&gt; Array</span>
+<span class="x">    (</span>
+<span class="x">        [id] =&gt; 1</span>
+<span class="x">    )</span>
+
+<span class="x">    [CourseMembership] =&gt; Array</span>
+<span class="x">    (</span>
+<span class="x">        [days_attended] =&gt; 10</span>
+<span class="x">        [grade] =&gt; 5</span>
+<span class="x">    )</span>
+<span class="x">)</span>
+</pre></div>
+</div>
+<p>Again WebLauncher Framework is good to us and pulls the Student id and Course id
+into the CourseMembership with the <cite>saveAssociated</cite>.</p>
+<div class="section" id="saving-related-model-data-habtm">
+<span id="saving-habtm"></span><h3>Saving Related Model Data (HABTM)<a class="headerlink" href="#saving-related-model-data-habtm" title="Permalink to this headline">¶</a></h3>
+<p>Saving models that are associated by hasOne, belongsTo, and hasMany
+is pretty simple: you just populate the foreign key field with the
+ID of the associated model. Once that&#8217;s done, you just call the
+<tt class="docutils literal"><span class="pre">save()</span></tt> method on the model, and everything gets linked up
+correctly. An example of the required format for the data array
+passed to <tt class="docutils literal"><span class="pre">save()</span></tt> for the Tag model is shown below:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Array</span>
+<span class="x">(</span>
+<span class="x">    [Recipe] =&gt; Array</span>
+<span class="x">        (</span>
+<span class="x">            [id] =&gt; 42</span>
+<span class="x">        )</span>
+<span class="x">    [Tag] =&gt; Array</span>
+<span class="x">        (</span>
+<span class="x">            [name] =&gt; Italian</span>
+<span class="x">        )</span>
+<span class="x">)</span>
+</pre></div>
+</div>
+<p>You can also use this format to save several records and their
+HABTM associations with <tt class="docutils literal"><span class="pre">saveAll()</span></tt>, using an array like the
+following:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Array</span>
+<span class="x">(</span>
+<span class="x">    [0] =&gt; Array</span>
+<span class="x">        (</span>
+<span class="x">            [Recipe] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [id] =&gt; 42</span>
+<span class="x">                )</span>
+<span class="x">            [Tag] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [name] =&gt; Italian</span>
+<span class="x">                )</span>
+<span class="x">        )</span>
+<span class="x">    [1] =&gt; Array</span>
+<span class="x">        (</span>
+<span class="x">            [Recipe] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [id] =&gt; 43</span>
+<span class="x">                )</span>
+<span class="x">            [Tag] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [name] =&gt; Pasta</span>
+<span class="x">                )</span>
+<span class="x">        )</span>
+<span class="x">    [2] =&gt; Array</span>
+<span class="x">        (</span>
+<span class="x">            [Recipe] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [id] =&gt; 51</span>
+<span class="x">                )</span>
+<span class="x">            [Tag] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [name] =&gt; Mexican</span>
+<span class="x">                )</span>
+<span class="x">        )</span>
+<span class="x">    [3] =&gt; Array</span>
+<span class="x">        (</span>
+<span class="x">            [Recipe] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [id] =&gt; 17</span>
+<span class="x">                )</span>
+<span class="x">            [Tag] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [name] =&gt; American (new)</span>
+<span class="x">                )</span>
+<span class="x">        )</span>
+<span class="x">)</span>
+</pre></div>
+</div>
+<p>Passing the above array to <tt class="docutils literal"><span class="pre">saveAll()</span></tt> will create the contained tags,
+each associated with their respective recipes.</p>
+<p>Another example that is helpful is when you need to save many Tags to a Post.
+You need to pass the associated HABTM data in the following HABTM array format. Note
+you only need to pass in the id&#8217;s of the associated HABTM model however it needs
+to be nested again:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Array</span>
+<span class="x">(</span>
+<span class="x">    [0] =&gt; Array</span>
+<span class="x">        (</span>
+<span class="x">            [Post] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [title] =&gt; &#39;Saving HABTM arrays&#39;</span>
+<span class="x">                )</span>
+<span class="x">            [Tag] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [Tag] =&gt; Array(1, 2, 5, 9)</span>
+<span class="x">                )</span>
+<span class="x">        )</span>
+<span class="x">    [1] =&gt; Array</span>
+<span class="x">        (</span>
+<span class="x">            [Post] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [title] =&gt; &#39;Dr Who&#39;s Name is Revealed&#39;</span>
+<span class="x">                )</span>
+<span class="x">            [Tag] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [Tag] =&gt; Array(7, 9, 15, 19)</span>
+<span class="x">                )</span>
+<span class="x">        )</span>
+<span class="x">    [2] =&gt; Array</span>
+<span class="x">        (</span>
+<span class="x">            [Post] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [title] =&gt; &#39;I Came, I Saw and I Conquered&#39;</span>
+<span class="x">                )</span>
+<span class="x">            [Tag] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [Tag] =&gt; Array(11, 12, 15, 19)</span>
+<span class="x">                )</span>
+<span class="x">        )</span>
+<span class="x">    [3] =&gt; Array</span>
+<span class="x">        (</span>
+<span class="x">            [Post] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [title] =&gt; &#39;Simplicity is the Ultimate Sophistication&#39;</span>
+<span class="x">                )</span>
+<span class="x">            [Tag] =&gt; Array</span>
+<span class="x">                (</span>
+<span class="x">                    [Tag] =&gt; Array(12, 22, 25, 29)</span>
+<span class="x">                )</span>
+<span class="x">        )</span>
+<span class="x">)</span>
+</pre></div>
+</div>
+<p>Passing the above array to <tt class="docutils literal"><span class="pre">saveAll($data,</span> <span class="pre">array('deep'</span> <span class="pre">=&gt;</span> <span class="pre">true))</span></tt>
+will populate the posts_tags join table with the Tag to Post associations.</p>
+<p>As an example, we&#8217;ll build a form that creates a new tag and
+generates the proper data array to associate it on the fly with
+some recipe.</p>
+<p>The simplest form might look something like this (we&#8217;ll assume that
+<tt class="docutils literal"><span class="pre">$recipe_id</span></tt> is already set to something):</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="s1">&#39;Tag&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span>
+        <span class="s1">&#39;Recipe.id&#39;</span><span class="p">,</span>
+        <span class="k">array</span><span class="p">(</span><span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hidden&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="nv">$recipe_id</span><span class="p">)</span>
+    <span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;Tag.name&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">end</span><span class="p">(</span><span class="s1">&#39;Add Tag&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<p>In this example, you can see the <tt class="docutils literal"><span class="pre">Recipe.id</span></tt> hidden field whose
+value is set to the ID of the recipe we want to link the tag to.</p>
+<p>When the <tt class="docutils literal"><span class="pre">save()</span></tt> method is invoked within the controller, it&#8217;ll
+automatically save the HABTM data to the database:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public function add() {</span>
+<span class="x">    // Save the association</span>
+<span class="x">    if ($this-&gt;Tag-&gt;save($this-&gt;request-&gt;data)) {</span>
+<span class="x">        // do something on success</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>With the preceding code, our new Tag is created and associated with
+a Recipe, whose ID was set in <tt class="docutils literal"><span class="pre">$this-&gt;request-&gt;data['Recipe']['id']</span></tt>.</p>
+<p>Other ways we might want to present our associated data can include
+a select drop down list. The data can be pulled from the model
+using the <tt class="docutils literal"><span class="pre">find('list')</span></tt> method and assigned to a view variable
+of the model name. An input with the same name will automatically
+pull in this data into a <tt class="docutils literal"><span class="pre">&lt;select&gt;</span></tt>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// in the controller:</span>
+<span class="x">$this-&gt;set(&#39;tags&#39;, $this-&gt;Recipe-&gt;Tag-&gt;find(&#39;list&#39;));</span>
+
+<span class="x">// in the view:</span>
+<span class="x">$this-&gt;Form-&gt;input(&#39;tags&#39;);</span>
+</pre></div>
+</div>
+<p>A more likely scenario with a HABTM relationship would include a
+<tt class="docutils literal"><span class="pre">&lt;select&gt;</span></tt> set to allow multiple selections. For example, a
+Recipe can have multiple Tags assigned to it. In this case, the
+data is pulled out of the model the same way, but the form input is
+declared slightly different. The tag name is defined using the
+<tt class="docutils literal"><span class="pre">ModelName</span></tt> convention:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// in the controller:</span>
+<span class="x">$this-&gt;set(&#39;tags&#39;, $this-&gt;Recipe-&gt;Tag-&gt;find(&#39;list&#39;));</span>
+
+<span class="x">// in the view:</span>
+<span class="x">$this-&gt;Form-&gt;input(&#39;Tag&#39;);</span>
+</pre></div>
+</div>
+<p>Using the preceding code, a multiple select drop down is created,
+allowing for multiple choices to automatically be saved to the
+existing Recipe being added or saved to the database.</p>
+<div class="section" id="self-habtm">
+<h4>Self HABTM<a class="headerlink" href="#self-habtm" title="Permalink to this headline">¶</a></h4>
+<p>Normally HABTM is used to bring 2 models together but it can also
+be used with only 1 model, though it requires some extra attention.</p>
+<p>The key is in the model setup the <tt class="docutils literal"><span class="pre">className</span></tt>. Simply adding a
+<tt class="docutils literal"><span class="pre">Project</span></tt> HABTM <tt class="docutils literal"><span class="pre">Project</span></tt> relation causes issues saving data.
+By setting the <tt class="docutils literal"><span class="pre">className</span></tt> to the models name and use the alias as
+key we avoid those issues.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class Project extends AppModel {</span>
+<span class="x">    public $hasAndBelongsToMany = array(</span>
+<span class="x">        &#39;RelatedProject&#39; =&gt; array(</span>
+<span class="x">            &#39;className&#39;              =&gt; &#39;Project&#39;,</span>
+<span class="x">            &#39;foreignKey&#39;             =&gt; &#39;projects_a_id&#39;,</span>
+<span class="x">            &#39;associationForeignKey&#39;  =&gt; &#39;projects_b_id&#39;,</span>
+<span class="x">        ),</span>
+<span class="x">    );</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Creating form elements and saving the data works the same as before but you use the alias instead. This:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;set(&#39;projects&#39;, $this-&gt;Project-&gt;find(&#39;list&#39;));</span>
+<span class="x">$this-&gt;Form-&gt;input(&#39;Project&#39;);</span>
+</pre></div>
+</div>
+<p>Becomes this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;set(&#39;relatedProjects&#39;, $this-&gt;Project-&gt;find(&#39;list&#39;));</span>
+<span class="x">$this-&gt;Form-&gt;input(&#39;RelatedProject&#39;);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="what-to-do-when-habtm-becomes-complicated">
+<h4>What to do when HABTM becomes complicated?<a class="headerlink" href="#what-to-do-when-habtm-becomes-complicated" title="Permalink to this headline">¶</a></h4>
+<p>By default when saving a HasAndBelongsToMany relationship, WebLauncher Framework
+will delete all rows on the join table before saving new ones. For
+example if you have a Club that has 10 Children associated. You
+then update the Club with 2 children. The Club will only have 2
+Children, not 12.</p>
+<p>Also note that if you want to add more fields to the join (when it
+was created or meta information) this is possible with HABTM join
+tables, but it is important to understand that you have an easy
+option.</p>
+<p>HasAndBelongsToMany between two models is in reality shorthand for
+three models associated through both a hasMany and a belongsTo
+association.</p>
+<p>Consider this example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Child hasAndBelongsToMany Club</span>
+</pre></div>
+</div>
+<p>Another way to look at this is adding a Membership model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Child hasMany Membership</span>
+<span class="x">Membership belongsTo Child, Club</span>
+<span class="x">Club hasMany Membership.</span>
+</pre></div>
+</div>
+<p>These two examples are almost the exact same. They use the same
+amount of named fields in the database and the same amount of
+models. The important differences are that the &#8220;join&#8221; model is
+named differently and its behavior is more predictable.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">When your join table contains extra fields besides two foreign
+keys, you can prevent losing the extra field values by setting
+<tt class="docutils literal"><span class="pre">'unique'</span></tt> array key to <tt class="docutils literal"><span class="pre">'keepExisting'</span></tt>. You could think of
+this similar to &#8216;unique&#8217; =&gt; true, but without losing data from
+the extra fields during save operation. Additionally, if you used
+bake in order to create the models, this is set automatically.
+See: <a class="reference internal" href="associations-linking-models-together.html#ref-habtm-arrays"><em>HABTM association arrays</em></a>.</p>
+</div>
+<p>However, in most cases it&#8217;s easier to make a model for the join table
+and setup hasMany, belongsTo associations as shown in example above
+instead of using HABTM association.</p>
+</div>
+</div>
+</div>
+<div class="section" id="datatables">
+<h2>Datatables<a class="headerlink" href="#datatables" title="Permalink to this headline">¶</a></h2>
+<p>While WebLauncher Framework can have datasources that aren&#8217;t database driven, most of the
+time, they are. WebLauncher Framework is designed to be agnostic and will work with MySQL,
+MSSQL, PostgreSQL and others. You can create your database tables as you
+normally would. When you create your Model classes, they&#8217;ll automatically map to
+the tables that you&#8217;ve created. Table names are by convention lowercase and
+pluralized with multi-word table names separated by underscores. For example, a
+Model name of Ingredient expects the table name ingredients. A Model name of
+EventRegistration would expect a table name of event_registrations. WebLauncher Framework will
+inspect your tables to determine the data type of each field and uses this
+information to automate various features such as outputting form fields in the
+view. Field names are by convention lowercase and separated by underscores.</p>
+<div class="section" id="using-created-and-modified">
+<h3>Using created and modified<a class="headerlink" href="#using-created-and-modified" title="Permalink to this headline">¶</a></h3>
+<p>By defining a <tt class="docutils literal"><span class="pre">created</span></tt> and/or <tt class="docutils literal"><span class="pre">modified</span></tt> field in your database table as datetime
+fields (default null), WebLauncher Framework will recognize those fields and populate them automatically
+whenever a record is created or saved to the database (unless the data being
+saved already contains a value for these fields).</p>
+<p>The <tt class="docutils literal"><span class="pre">created</span></tt> and <tt class="docutils literal"><span class="pre">modified</span></tt> fields will be set to the current date and time when
+the record is initially added. The modified field will be updated with the
+current date and time whenever the existing record is saved.</p>
+<p>If you have <tt class="docutils literal"><span class="pre">created</span></tt> or <tt class="docutils literal"><span class="pre">modified</span></tt> data in your $this-&gt;data (e.g. from a
+Model::read or Model::set) before a Model::save() then the values will be taken
+from $this-&gt;data and not automagically updated. If you don&#8217;t want that you can use
+<tt class="docutils literal"><span class="pre">unset($this-&gt;data['Model']['modified'])</span></tt>, etc. Alternatively you can override
+the Model::save() to always do it for you:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class AppModel extends Model {</span>
+
+<span class="x">    public function save($data = null, $validate = true, $fieldList = array()) {</span>
+<span class="x">        // Clear modified field value before each save</span>
+<span class="x">        $this-&gt;set($data);</span>
+<span class="x">        if (isset($this-&gt;data[$this-&gt;alias][&#39;modified&#39;])) {</span>
+<span class="x">            unset($this-&gt;data[$this-&gt;alias][&#39;modified&#39;]);</span>
+<span class="x">        }</span>
+<span class="x">        return parent::save($this-&gt;data, $validate, $fieldList);</span>
+<span class="x">    }</span>
+
+<span class="x">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, WebLauncher.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

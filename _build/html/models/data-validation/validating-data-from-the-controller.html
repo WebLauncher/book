@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="Validating Data from the Controller" lang="en" name="title" />
+<meta content="password rules,validations,subset,array,logs,logic,email,first name last name,models,options,data model" lang="en" name="keywords" />
+
+    <title>Validating Data from the Controller &mdash; WebLauncher Framework 2.7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="../../index.html" />
+    <link rel="up" title="Data Validation" href="../data-validation.html" />
+    <link rel="next" title="Callback Methods" href="../callback-methods.html" />
+    <link rel="prev" title="Data Validation" href="../data-validation.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html"><img src="../../_static/logo.png">
+          WebLauncher Framework</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.7</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configurations.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controllers.html">Controllers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../views.html">Views</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Validating Data from the Controller</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../data-validation.html" title="Previous Chapter: Data Validation"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Data Validation</span>
+    </a>
+  </li>
+  <li>
+    <a href="../callback-methods.html" title="Next Chapter: Callback Methods"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Callback Methods &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="https://github.com/weblauncher/book/edit/master/models/data-validation/validating-data-from-the-controller.rst"
+     rel="nofollow">Modify Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="validating-data-from-the-controller">
+<h1>Validating Data from the Controller<a class="headerlink" href="#validating-data-from-the-controller" title="Permalink to this headline">¶</a></h1>
+<p>While normally you would just use the save method of the model,
+there may be times where you wish to validate the data without
+saving it. For example, you may wish to display some additional
+information to the user before actually saving the data to the
+database. Validating data requires a slightly different process
+than just saving the data.</p>
+<p>First, set the data to the model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;ModelName-&gt;set($this-&gt;request-&gt;data);</span>
+</pre></div>
+</div>
+<p>Then, to check if the data validates, use the validates method of
+the model, which will return true if it validates and false if it
+doesn&#8217;t:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">if ($this-&gt;ModelName-&gt;validates()) {</span>
+<span class="x">    // it validated logic</span>
+<span class="x">} else {</span>
+<span class="x">    // didn&#39;t validate logic</span>
+<span class="x">    $errors = $this-&gt;ModelName-&gt;validationErrors;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>It may be desirable to validate your model only using a subset of
+the validations specified in your model. For example say you had a
+User model with fields for first_name, last_name, email and
+password. In this instance when creating or editing a user you
+would want to validate all 4 field rules. Yet when a user logs in
+you would validate just email and password rules. To do this you
+can pass an options array specifying the fields to validate:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">if ($this-&gt;User-&gt;validates(array(&#39;fieldList&#39; =&gt; array(&#39;email&#39;, &#39;password&#39;)))) {</span>
+<span class="x">    // valid</span>
+<span class="x">} else {</span>
+<span class="x">    // invalid</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>The validates method invokes the invalidFields method which
+populates the validationErrors property of the model. The
+invalidFields method also returns that data as the result:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$errors = $this-&gt;ModelName-&gt;invalidFields(); // contains validationErrors array</span>
+</pre></div>
+</div>
+<p>The validation errors list is not cleared between successive calls to <tt class="docutils literal"><span class="pre">invalidFields()</span></tt>
+So if you are validating in a loop and want each set of errors separately
+don&#8217;t use <tt class="docutils literal"><span class="pre">invalidFields()</span></tt>. Instead use <tt class="docutils literal"><span class="pre">validates()</span></tt>
+and access the <tt class="docutils literal"><span class="pre">validationErrors</span></tt> model property.</p>
+<p>It is important to note that the data must be set to the model
+before the data can be validated. This is different from the save
+method which allows the data to be passed in as a parameter. Also,
+keep in mind that it is not required to call validates prior to
+calling save as save will automatically validate the data before
+actually saving.</p>
+<p>To validate multiple models, the following approach should be
+used:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">if ($this-&gt;ModelName-&gt;saveAll(</span>
+<span class="x">    $this-&gt;request-&gt;data, array(&#39;validate&#39; =&gt; &#39;only&#39;)</span>
+<span class="x">)) {</span>
+<span class="x">  // validates</span>
+<span class="x">} else {</span>
+<span class="x">  // does not validate</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>If you have validated data before save, you can turn off validation
+to avoid second check:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">if ($this-&gt;ModelName-&gt;saveAll(</span>
+<span class="x">    $this-&gt;request-&gt;data, array(&#39;validate&#39; =&gt; false)</span>
+<span class="x">)) {</span>
+<span class="x">    // saving without validation</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, WebLauncher.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="Callback Methods" lang="en" name="title" />
+<meta content="querydata,query conditions,model classes,callback methods,special functions,return values,counterparts,array,logic,decisions" lang="en" name="keywords" />
+
+    <title>Callback Methods &mdash; WebLauncher Framework 2.7.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="../index.html" />
+    <link rel="up" title="Models" href="../models.html" />
+    <link rel="next" title="Behaviors" href="behaviors.html" />
+    <link rel="prev" title="Validating Data from the Controller" href="data-validation/validating-data-from-the-controller.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><img src="../_static/logo.png">
+          WebLauncher Framework</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.7</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configurations.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controllers.html">Controllers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../views.html">Views</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Callback Methods</a><ul>
+<li><a class="reference internal" href="#beforefind">beforeFind</a></li>
+<li><a class="reference internal" href="#afterfind">afterFind</a></li>
+<li><a class="reference internal" href="#beforevalidate">beforeValidate</a></li>
+<li><a class="reference internal" href="#aftervalidate">afterValidate</a></li>
+<li><a class="reference internal" href="#beforesave">beforeSave</a></li>
+<li><a class="reference internal" href="#aftersave">afterSave</a></li>
+<li><a class="reference internal" href="#beforedelete">beforeDelete</a></li>
+<li><a class="reference internal" href="#afterdelete">afterDelete</a></li>
+<li><a class="reference internal" href="#onerror">onError</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="data-validation/validating-data-from-the-controller.html" title="Previous Chapter: Validating Data from the Controller"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Validating Data ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="behaviors.html" title="Next Chapter: Behaviors"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Behaviors &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="https://github.com/weblauncher/book/edit/master/models/callback-methods.rst"
+     rel="nofollow">Modify Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="callback-methods">
+<h1>Callback Methods<a class="headerlink" href="#callback-methods" title="Permalink to this headline">¶</a></h1>
+<p>If you want to sneak in some logic just before or after a WebLauncher Framework
+model operation, use model callbacks. These functions can be
+defined in model classes (including your AppModel) class. Be sure
+to note the expected return values for each of these special
+functions.</p>
+<p>When using callback methods you should remember that behavior callbacks are
+fired <strong>before</strong> model callbacks are.</p>
+<div class="section" id="beforefind">
+<h2>beforeFind<a class="headerlink" href="#beforefind" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">beforeFind(array</span> <span class="pre">$query)</span></tt></p>
+<p>Called before any find-related operation. The <tt class="docutils literal"><span class="pre">$query</span></tt> passed
+to this callback contains information about the current query:
+conditions, fields, etc.</p>
+<p>If you do not wish the find operation to begin (possibly based on a
+decision relating to the <tt class="docutils literal"><span class="pre">$query</span></tt> options), return <em>false</em>.
+Otherwise, return the possibly modified <tt class="docutils literal"><span class="pre">$query</span></tt>, or anything
+you want to get passed to find and its counterparts.</p>
+<p>You might use this callback to restrict find operations based on a
+user&#8217;s role, or make caching decisions based on the current load.</p>
+</div>
+<div class="section" id="afterfind">
+<h2>afterFind<a class="headerlink" href="#afterfind" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">afterFind(array</span> <span class="pre">$results,</span> <span class="pre">boolean</span> <span class="pre">$primary</span> <span class="pre">=</span> <span class="pre">false)</span></tt></p>
+<p>Use this callback to modify results that have been returned from a
+find operation, or to perform any other post-find logic. The
+$results parameter passed to this callback contains the returned
+results from the model&#8217;s find operation, i.e. something like:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$results = array(</span>
+<span class="x">    0 =&gt; array(</span>
+<span class="x">        &#39;ModelName&#39; =&gt; array(</span>
+<span class="x">            &#39;field1&#39; =&gt; &#39;value1&#39;,</span>
+<span class="x">            &#39;field2&#39; =&gt; &#39;value2&#39;,</span>
+<span class="x">        ),</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>The return value for this callback should be the (possibly
+modified) results for the find operation that triggered this
+callback.</p>
+<p>The <tt class="docutils literal"><span class="pre">$primary</span></tt> parameter indicates whether or not the current
+model was the model that the query originated on or whether or not
+this model was queried as an association. If a model is queried as
+an association the format of <tt class="docutils literal"><span class="pre">$results</span></tt> can differ; instead of the
+result you would normally get from a find operation, you may get
+this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$results = array(</span>
+<span class="x">    &#39;field_1&#39; =&gt; &#39;value1&#39;,</span>
+<span class="x">    &#39;field_2&#39; =&gt; &#39;value2&#39;</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Code expecting <tt class="docutils literal"><span class="pre">$primary</span></tt> to be true will probably get a &#8220;Cannot
+use string offset as an array&#8221; fatal error from PHP if a recursive
+find is used.</p>
+</div>
+<p>Below is an example of how afterfind can be used for date
+formatting:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public function afterFind($results, $primary = false) {</span>
+<span class="x">    foreach ($results as $key =&gt; $val) {</span>
+<span class="x">        if (isset($val[&#39;Event&#39;][&#39;begindate&#39;])) {</span>
+<span class="x">            $results[$key][&#39;Event&#39;][&#39;begindate&#39;] = $this-&gt;dateFormatAfterFind(</span>
+<span class="x">                $val[&#39;Event&#39;][&#39;begindate&#39;]</span>
+<span class="x">            );</span>
+<span class="x">        }</span>
+<span class="x">    }</span>
+<span class="x">    return $results;</span>
+<span class="x">}</span>
+
+<span class="x">public function dateFormatAfterFind($dateString) {</span>
+<span class="x">    return date(&#39;d-m-Y&#39;, strtotime($dateString));</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="beforevalidate">
+<h2>beforeValidate<a class="headerlink" href="#beforevalidate" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">beforeValidate(array</span> <span class="pre">$options</span> <span class="pre">=</span> <span class="pre">array())</span></tt></p>
+<p>Use this callback to modify model data before it is validated, or
+to modify validation rules if required. This function must also
+return <em>true</em>, otherwise the current save() execution will abort.</p>
+</div>
+<div class="section" id="aftervalidate">
+<h2>afterValidate<a class="headerlink" href="#aftervalidate" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">afterValidate()</span></tt></p>
+<p>Called after data has been checked for errors. Use this callback to perform
+any data cleanup or preparation if needed.</p>
+</div>
+<div class="section" id="beforesave">
+<h2>beforeSave<a class="headerlink" href="#beforesave" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">beforeSave(array</span> <span class="pre">$options</span> <span class="pre">=</span> <span class="pre">array())</span></tt></p>
+<p>Place any pre-save logic in this function. This function executes
+immediately after model data has been successfully validated, but
+just before the data is saved. This function should also return
+true if you want the save operation to continue.</p>
+<p>This callback is especially handy for any data-massaging logic that
+needs to happen before your data is stored. If your storage engine
+needs dates in a specific format, access it at $this-&gt;data and
+modify it.</p>
+<p>Below is an example of how beforeSave can be used for date
+conversion. The code in the example is used for an application with
+a begindate formatted like YYYY-MM-DD in the database and is
+displayed like DD-MM-YYYY in the application. Of course this can be
+changed very easily. Use the code below in the appropriate model.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public function beforeSave($options = array()) {</span>
+<span class="x">    if (!empty($this-&gt;data[&#39;Event&#39;][&#39;begindate&#39;]) &amp;&amp;</span>
+<span class="x">        !empty($this-&gt;data[&#39;Event&#39;][&#39;enddate&#39;])</span>
+<span class="x">    ) {</span>
+
+<span class="x">        $this-&gt;data[&#39;Event&#39;][&#39;begindate&#39;] = $this-&gt;dateFormatBeforeSave(</span>
+<span class="x">            $this-&gt;data[&#39;Event&#39;][&#39;begindate&#39;]</span>
+<span class="x">        );</span>
+<span class="x">        $this-&gt;data[&#39;Event&#39;][&#39;enddate&#39;] = $this-&gt;dateFormatBeforeSave(</span>
+<span class="x">            $this-&gt;data[&#39;Event&#39;][&#39;enddate&#39;]</span>
+<span class="x">        );</span>
+<span class="x">    }</span>
+<span class="x">    return true;</span>
+<span class="x">}</span>
+
+<span class="x">public function dateFormatBeforeSave($dateString) {</span>
+<span class="x">    return date(&#39;Y-m-d&#39;, strtotime($dateString));</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Be sure that beforeSave() returns true, or your save is going to
+fail.</p>
+</div>
+</div>
+<div class="section" id="aftersave">
+<h2>afterSave<a class="headerlink" href="#aftersave" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">afterSave(boolean</span> <span class="pre">$created,</span> <span class="pre">array</span> <span class="pre">$options</span> <span class="pre">=</span> <span class="pre">array())</span></tt></p>
+<p>If you have logic you need to be executed just after every save
+operation, place it in this callback method. The saved data will
+be available in <tt class="docutils literal"><span class="pre">$this-&gt;data</span></tt>.</p>
+<p>The value of <tt class="docutils literal"><span class="pre">$created</span></tt> will be true if a new record was created
+(rather than an update).</p>
+<p>The <tt class="docutils literal"><span class="pre">$options</span></tt> array is the same one passed to <tt class="docutils literal"><span class="pre">Model::save()</span></tt>.</p>
+</div>
+<div class="section" id="beforedelete">
+<h2>beforeDelete<a class="headerlink" href="#beforedelete" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">beforeDelete(boolean</span> <span class="pre">$cascade</span> <span class="pre">=</span> <span class="pre">true)</span></tt></p>
+<p>Place any pre-deletion logic in this function. This function should
+return true if you want the deletion to continue, and false if you
+want to abort.</p>
+<p>The value of <tt class="docutils literal"><span class="pre">$cascade</span></tt> will be <tt class="docutils literal"><span class="pre">true</span></tt> if records that depend
+on this record will also be deleted.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Be sure that beforeDelete() returns true, or your delete is going
+to fail.</p>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// using app/Model/ProductCategory.php</span>
+<span class="x">// In the following example, do not let a product category be deleted if it</span>
+<span class="x">// still contains products.</span>
+<span class="x">// A call of $this-&gt;Product-&gt;delete($id) from ProductsController.php has set</span>
+<span class="x">// $this-&gt;id .</span>
+<span class="x">// Assuming &#39;ProductCategory hasMany Product&#39;, we can access $this-&gt;Product</span>
+<span class="x">// in the model.</span>
+<span class="x">public function beforeDelete($cascade = true) {</span>
+<span class="x">    $count = $this-&gt;Product-&gt;find(&quot;count&quot;, array(</span>
+<span class="x">        &quot;conditions&quot; =&gt; array(&quot;product_category_id&quot; =&gt; $this-&gt;id)</span>
+<span class="x">    ));</span>
+<span class="x">    if ($count == 0) {</span>
+<span class="x">        return true;</span>
+<span class="x">    } else {</span>
+<span class="x">        return false;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="afterdelete">
+<h2>afterDelete<a class="headerlink" href="#afterdelete" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">afterDelete()</span></tt></p>
+<p>Place any logic that you want to be executed after every deletion
+in this callback method.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// perhaps after deleting a record from the database, you also want to delete</span>
+<span class="x">// an associated file</span>
+<span class="x">public function afterDelete() {</span>
+<span class="x">    $file = new File($this-&gt;data[&#39;SomeModel&#39;][&#39;file_path&#39;]);</span>
+<span class="x">    $file-&gt;delete();</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="onerror">
+<h2>onError<a class="headerlink" href="#onerror" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">onError()</span></tt></p>
+<p>Called if any problems occur.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, WebLauncher.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
