@@ -237,17 +237,7 @@
 <div class="container">
 	<div class="row">
 <div class="col-md-3">
-	<div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-	<li class="globaltoc-container">
-		<a role="button"
-		id="dLabelGlobalToc"
-		data-toggle="dropdown"
-		data-target="#"
-		href="../index.html">Contents <b class="caret"></b></a>
-		<ul class="globaltoc"
-		role="menu"
-		aria-labelledby="dLabelGlobalToc">
-			<ul class="current">
+	<div id="sidebar" class="bs-sidenav" role="complementary"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
@@ -276,9 +266,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../views.html">Views</a></li>
 </ul>
 
-		</ul>
-	</li>
-</ul>
 	</div>
 </div>
 		<div class="col-md-9">
@@ -805,7 +792,7 @@ will validate all values passed and then try to perform a save for each.</p>
 </div>
 <div class="section" id="saving-hasmany-through-data">
 <h2>Saving hasMany through data<a class="headerlink" href="#saving-hasmany-through-data" title="Permalink to this headline">¶</a></h2>
-<p>Let&#8217;s see how data stored in a join table for two models is saved. As shown in the <a class="reference internal" href="associations-linking-models-together.html#hasmany-through"><em>hasMany through (The Join Model)</em></a>
+<p>Let&#8217;s see how data stored in a join table for two models is saved. As shown in the <em class="xref std std-ref">hasMany-through</em>
 section, the join table is associated to each model using a <cite>hasMany</cite> type of relationship.
 Our example involves the Head of Cake School asking us to write an application that allows
 him to log a student&#8217;s attendance on a course with days attended and grade. Take
@@ -1210,7 +1197,7 @@ keys, you can prevent losing the extra field values by setting
 this similar to &#8216;unique&#8217; =&gt; true, but without losing data from
 the extra fields during save operation. Additionally, if you used
 bake in order to create the models, this is set automatically.
-See: <a class="reference internal" href="associations-linking-models-together.html#ref-habtm-arrays"><em>HABTM association arrays</em></a>.</p>
+See: <em class="xref std std-ref">HABTM association arrays</em>.</p>
 </div>
 <p>However, in most cases it&#8217;s easier to make a model for the join table
 and setup hasMany, belongsTo associations as shown in example above
