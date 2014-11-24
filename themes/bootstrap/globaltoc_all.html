@@ -8,7 +8,7 @@
 		<ul class="globaltoc"
 		role="menu"
 		aria-labelledby="dLabelGlobalToc">
-			{{ toctree(maxdepth=theme_globaltoc_depth|toint, collapse=false, includehidden=theme_globaltoc_includehidden|tobool) }}
+			{{ toctree(maxdepth=theme_globaltoc_depth|toint,titles_only=true, collapse=true, includehidden=theme_globaltoc_includehidden|tobool) }}
 		</ul>
 	</li>
 </ul>
