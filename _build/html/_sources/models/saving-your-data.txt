@@ -33,8 +33,8 @@ When save is called the function will execute ``insert()`` or ``update()`` depen
 There are a few other save-related methods in the model that you'll
 find useful:
 
-:php:meth:`Model::insert($data)`
-=========================================
+:php:meth:`Model::insert($data, $callbacks=true)`
+=================================================
 
 ``Model::insert()`` can be used to specifically insert data into the table linked to the model::
 
@@ -44,7 +44,7 @@ find useful:
     $post_id=$this->models->posts->insert($data);
 
 :php:meth:`Model::insert_multiple($fields, $params)`
-=========================================
+====================================================
 
 ``Model::insert_multiple()`` can be used to specifically insert multiple data rows into the table linked to the model::
 
@@ -63,8 +63,8 @@ find useful:
 This method is only recommended if you don't need the last inserted id of the rows inserted. Otherwise please use ``insert()``.
 
 
-:php:meth:`Model::update($data,$condition='')`
-==============================================
+:php:meth:`Model::update($data,$condition='', $callbacks=true)`
+===============================================================
 
 ``Model::update()`` can be used to specifically update data from the table linked to the model::
 
@@ -84,7 +84,7 @@ You can also provide the id directly in the data array like this, then no condit
     $post_id=$this->models->posts->update($data);
 
 :php:meth:`Model::update_field($id, $field, $value)`
-==============================================
+====================================================
 
 ``Model::update_field()`` can be used to specifically update a certain field in a row(s) with the given id(s)::
 
@@ -95,7 +95,7 @@ You can also provide the id directly in the data array like this, then no condit
     // this will update the post with id=1 and post with id=2 title to the new value
 
 :php:meth:`Model::update_field_cond($field, $value, $condition)`
-==============================================
+================================================================
 
 ``Model::update_field_cond()`` can be used to specifically update a certain field in a row(s) found with the given condition::
 

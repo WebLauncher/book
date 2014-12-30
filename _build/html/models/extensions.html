@@ -4,10 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="Additional Methods and Properties" lang="en" name="title" />
-<meta content="model classes,model functions,model class,interval,array" lang="en" name="keywords" />
+    <meta content="Extensions" lang="en" name="title" />
+<meta content="tree manipulation,manipulation methods,model behaviors,access control list,model class,tree structures,php class,business contract,class category,database table,bakery,inheritance,functionality,interaction,logic,WebLauncher Framework,models,essence" lang="en" name="keywords" />
 
-    <title>Additional Methods and Properties &mdash; WebLauncher Framework 2.7.0 documentation</title>
+    <title>Extensions &mdash; WebLauncher Framework 2.7.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -32,8 +32,8 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="../index.html" />
     <link rel="up" title="Models" href="../models.html" />
-    <link rel="next" title="Virtual fields" href="virtual-fields.html" />
-    <link rel="prev" title="Model Attributes" href="model-attributes.html" />
+    <link rel="next" title="DataSources" href="datasources.html" />
+    <link rel="prev" title="Callback Methods" href="callback-methods.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -141,10 +141,10 @@
 <li class="toctree-l3"><a class="reference internal" href="saving-your-data.html">Saving Your Data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="deleting-data.html">Deleting Data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="callback-methods.html">Callback Methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html">Extensions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">Extensions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="datasources.html">DataSources</a></li>
 <li class="toctree-l3"><a class="reference internal" href="model-attributes.html">Model Attributes</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="">Additional Methods and Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="additional-methods-and-properties.html">Additional Methods and Properties</a></li>
 <li class="toctree-l3"><a class="reference internal" href="virtual-fields.html">Virtual fields</a></li>
 <li class="toctree-l3"><a class="reference internal" href="transactions.html">Transactions</a></li>
 </ul>
@@ -165,12 +165,8 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Additional Methods and Properties</a><ul>
-<li><a class="reference internal" href="#model-join-table-condition-type-left"><tt class="docutils literal"><span class="pre">Model::join($table,$condition,$type='left')</span></tt></a></li>
-<li><a class="reference internal" href="#model-query-string-query-to-prepare-array-args-array"><tt class="docutils literal"><span class="pre">Model::query(string</span> <span class="pre">$query_to_prepare</span> <span class="pre">=</span> <span class="pre">'',</span> <span class="pre">array</span> <span class="pre">$args</span> <span class="pre">=</span> <span class="pre">array())</span></tt></a></li>
-<li><a class="reference internal" href="#model-exists-field-or-id-value-null"><tt class="docutils literal"><span class="pre">Model::exists($field_or_id,</span> <span class="pre">$value</span> <span class="pre">=</span> <span class="pre">null)</span></tt></a></li>
-<li><a class="reference internal" href="#model-get-id"><tt class="docutils literal"><span class="pre">Model::get($id)</span></tt></a></li>
-<li><a class="reference internal" href="#model-last-id"><tt class="docutils literal"><span class="pre">Model::last_id()</span></tt></a></li>
+<li><a class="reference internal" href="#">Extensions</a><ul>
+<li><a class="reference internal" href="#using-extensions">Using Extensions</a></li>
 </ul>
 </li>
 </ul>
@@ -182,11 +178,11 @@
               
                 
   <li>
-    <a href="model-attributes.html" title="Previous Chapter: Model Attributes"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Model Attributes</span>
+    <a href="callback-methods.html" title="Previous Chapter: Callback Methods"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Callback Methods</span>
     </a>
   </li>
   <li>
-    <a href="virtual-fields.html" title="Next Chapter: Virtual fields"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Virtual fields &raquo;</span>
+    <a href="datasources.html" title="Next Chapter: DataSources"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">DataSources &raquo;</span>
     </a>
   </li>
               
@@ -196,7 +192,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="https://github.com/weblauncher/book/edit/master/models/additional-methods-and-properties.rst"
+  <a href="https://github.com/weblauncher/book/edit/master/models/extensions.rst"
      rel="nofollow">Modify Source</a>
 </div></li>
             
@@ -234,12 +230,12 @@
 <li class="toctree-l2"><a class="reference internal" href="saving-your-data.html">Saving Your Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deleting-data.html">Deleting Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="callback-methods.html">Callback Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="extensions.html">Extensions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datasources.html">DataSources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model-attributes.html">Model Attributes</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Additional Methods and Properties</a><ul class="simple">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Extensions</a><ul class="simple">
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="datasources.html">DataSources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model-attributes.html">Model Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="additional-methods-and-properties.html">Additional Methods and Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual-fields.html">Virtual fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li>
 </ul>
@@ -251,55 +247,100 @@
 </div>
 		<div class="col-md-9">
 			
-  <div class="section" id="additional-methods-and-properties">
-<h1>Additional Methods and Properties<a class="headerlink" href="#additional-methods-and-properties" title="Permalink to this headline">¶</a></h1>
-<p>While WebLauncher Framework&#8217;s model functions should get you where you need to
-go, don&#8217;t forget that model classes are just that: classes that
-allow you to write your own methods or define your own properties.</p>
-<p>Any operation that handles the saving and fetching of data is best
-housed in your model classes. This concept is often referred to as
-the fat model.</p>
-<div class="section" id="model-join-table-condition-type-left">
-<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::join($table,$condition,$type='left')</span></tt><a class="headerlink" href="#model-join-table-condition-type-left" title="Permalink to this headline">¶</a></h2>
-<p>Joins the current model with another model:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$result = $this-&gt;models-&gt;example-&gt;join(&#39;example1&#39;,&#39;example.id=exampl1.id&#39;,&#39;left&#39;)-&gt;get_all();</span>
+  <div class="section" id="extensions">
+<h1>Extensions<a class="headerlink" href="#extensions" title="Permalink to this headline">¶</a></h1>
+<p>Model extensions are a way to organize some of the functionality
+defined in WebLauncher Framework models. They allow us to separate and reuse logic that
+creates a type of behavior, and they do this without requiring inheritance. For
+example creating tree structures. By providing a simple yet powerful way to
+enhance models, behaviors allow us to attach functionality to models by defining
+a simple class variable. That&#8217;s how behaviors allow models to get rid of all the
+extra weight that might not be part of the business contract they are modeling,
+or that is also needed in different models and can then be extrapolated.</p>
+<p>As an example, consider a model that gives us access to a database table which
+stores structural information about a tree. Removing, adding, and migrating
+nodes in the tree is not as simple as deleting, inserting, and editing rows in
+the table. Many records may need to be updated as things move around. Rather
+than creating those tree-manipulation methods on a per model basis (for every
+model that needs that functionality), we could simply tell our model to use the
+<tt class="xref php php-class docutils literal"><span class="pre">BaseTree</span></tt>, or in more formal terms, we tell our model to behave
+as a Tree. This is known as attaching a behavior to a model. With just one line
+of code, our WebLauncher Framework model takes on a whole new set of methods that allow it to
+interact with the underlying structure.</p>
+<p>WebLauncher Framework already includes extensions for tree structures, soap web services and others.
+In this section, we&#8217;ll cover the basic usage pattern for adding behaviors to models, how to use WebLauncher Framework&#8217;s built-in behaviors,
+and how to create our own.</p>
+<p>In essence, Extensions are
+<a class="reference external" href="http://en.wikipedia.org/wiki/Mixin">Mixins</a> with callbacks.</p>
+<p>There are a number of Extensions included in WebLauncher Framework. To find out more about each
+one, reference the chapters below:</p>
+<div class="section" id="using-extensions">
+<h2>Using Extensions<a class="headerlink" href="#using-extensions" title="Permalink to this headline">¶</a></h2>
+<p>Behaviors are attached to models through the <tt class="docutils literal"><span class="pre">$extends</span></tt> model class
+variable:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class categories extends Base {</span>
+<span class="x">    public $extends = array(&#39;Tree&#39;);</span>
+<span class="x">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="model-query-string-query-to-prepare-array-args-array">
-<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::query(string</span> <span class="pre">$query_to_prepare</span> <span class="pre">=</span> <span class="pre">'',</span> <span class="pre">array</span> <span class="pre">$args</span> <span class="pre">=</span> <span class="pre">array())</span></tt><a class="headerlink" href="#model-query-string-query-to-prepare-array-args-array" title="Permalink to this headline">¶</a></h2>
-<p>Executes a query prepared to escape the values given using PDO drivers.</p>
-</div>
-<div class="section" id="model-exists-field-or-id-value-null">
-<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::exists($field_or_id,</span> <span class="pre">$value</span> <span class="pre">=</span> <span class="pre">null)</span></tt><a class="headerlink" href="#model-exists-field-or-id-value-null" title="Permalink to this headline">¶</a></h2>
-<p>Returns true if a record with the particular ID exists:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;models-&gt;example-&gt;exists(1);</span>
+<p>This example shows how a Category model could be managed in a tree
+structure using the BaseTree extender. Once a extension has been
+specified, use the methods added by the behavior as if they always
+existed as part of the original model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// get a category</span>
+<span class="x">$this-&gt;models-&gt;categories-&gt;get(1);</span>
+
+<span class="x">// Use behavior method, children():</span>
+<span class="x">$kids = $this-&gt;models-&gt;categories-&gt;get_children();</span>
 </pre></div>
 </div>
-<p>Returns true if a record with a particular field and value exists:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;models-&gt;example-&gt;exists(&#39;id&#39;,1);</span>
+<p>Some extensions may require or allow settings to be defined when the
+extension is attached to the model. Here, we tell our BaseTree extension
+the name of the &#8220;parent_id&#8221; field in the underlying
+database table:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class categories extends Base {</span>
+<span class="x">    public $extends = array(&#39;Tree&#39;)</span>
+<span class="x">    public $parent_id_field=&#39;parent_id&#39;;</span>
+<span class="x">}</span>
 </pre></div>
 </div>
-<p>You can provide more fields and values as long as the number of fields are values are the same:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;models-&gt;example(array(&#39;field1&#39;=&gt;&#39;value1&#39;,&#39;field2&#39;=&gt;&#39;value2&#39;)</span>
+<p>We can also attach several extension to a model. There&#8217;s no reason
+why, for example, our categories model should only behave as a tree,
+it may also need internationalization support:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class categories extends Base {</span>
+<span class="x">    public $extends = array(</span>
+<span class="x">        &#39;Tree&#39;,</span>
+<span class="x">        &#39;Translate&#39;</span>
+<span class="x">    );</span>
+<span class="x">}</span>
 </pre></div>
 </div>
-<p>Returns the number of rows affected by the last query.</p>
-</div>
-<div class="section" id="model-get-id">
-<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::get($id)</span></tt><a class="headerlink" href="#model-get-id" title="Permalink to this headline">¶</a></h2>
-<p>Returns the record as associative array with the given id:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;models-&gt;example-&gt;get(1); // returns a record from the example table in DB</span>
+<p>So far we have been adding extensions to models using a model class
+variable. That means that our extensions will be attached to our
+models throughout the model&#8217;s lifetime. However, we may need to
+&#8220;detach&#8221; extensions from our models at runtime. Let&#8217;s say that on
+our previous Category model, which is acting as a Tree and a
+Translate model, we need for some reason to force it to stop acting
+as a Translate model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// Detach a extension from our model:</span>
+<span class="x">$this-&gt;models-&gt;categories-&gt;Extensions-&gt;unload(&#39;Translate&#39;);</span>
 </pre></div>
 </div>
-<p>You can also get the all the records with the ID in an array of ids:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;example-&gt;get(array(1,2,3)); // returns a list of example records from DB</span>
+<p>That will make our categories model stop extending Translate
+model from thereon. We may need, instead, to just disable the
+Translate extension from acting upon our normal model operations:
+our gets, our saves, etc.</p>
+<p>Just as we could completely detach a extensions from a model at
+runtime, we can also attach new behaviors. Say that our familiar
+categories model needs to start extending a Christmas model, but
+only on Christmas day:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// If today is Dec 25</span>
+<span class="x">if (date(&#39;m/d&#39;) === &#39;12/25&#39;) {</span>
+<span class="x">    // Our model needs to behave as a Christmas model</span>
+<span class="x">    $this-&gt;models-&gt;categories-&gt;extend(&#39;Christmas&#39;);</span>
+<span class="x">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="model-last-id">
-<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::last_id()</span></tt><a class="headerlink" href="#model-last-id" title="Permalink to this headline">¶</a></h2>
-<p>Returns the ID of the last record this model inserted.</p>
 </div>
 </div>
 

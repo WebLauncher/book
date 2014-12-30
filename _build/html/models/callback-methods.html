@@ -33,7 +33,7 @@
     <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="../index.html" />
     <link rel="up" title="Models" href="../models.html" />
     <link rel="next" title="Behaviors" href="behaviors.html" />
-    <link rel="prev" title="Validating Data from the Controller" href="data-validation/validating-data-from-the-controller.html" />
+    <link rel="prev" title="Deleting Data" href="deleting-data.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -140,7 +140,6 @@
 <li class="toctree-l3"><a class="reference internal" href="retrieving-your-data.html">Retrieving Your Data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="saving-your-data.html">Saving Your Data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="deleting-data.html">Deleting Data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="data-validation.html">Data Validation</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="">Callback Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="behaviors.html">Behaviors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="datasources.html">DataSources</a></li>
@@ -167,15 +166,13 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Callback Methods</a><ul>
-<li><a class="reference internal" href="#beforefind">beforeFind</a></li>
-<li><a class="reference internal" href="#afterfind">afterFind</a></li>
-<li><a class="reference internal" href="#beforevalidate">beforeValidate</a></li>
-<li><a class="reference internal" href="#aftervalidate">afterValidate</a></li>
-<li><a class="reference internal" href="#beforesave">beforeSave</a></li>
-<li><a class="reference internal" href="#aftersave">afterSave</a></li>
-<li><a class="reference internal" href="#beforedelete">beforeDelete</a></li>
-<li><a class="reference internal" href="#afterdelete">afterDelete</a></li>
-<li><a class="reference internal" href="#onerror">onError</a></li>
+<li><a class="reference internal" href="#process-row">process_row</a></li>
+<li><a class="reference internal" href="#before-insert">before_insert</a></li>
+<li><a class="reference internal" href="#after-insert">after_insert</a></li>
+<li><a class="reference internal" href="#before-update">before_update</a></li>
+<li><a class="reference internal" href="#after-update">after_update</a></li>
+<li><a class="reference internal" href="#before-delete">before_delete</a></li>
+<li><a class="reference internal" href="#after-delete">after_delete</a></li>
 </ul>
 </li>
 </ul>
@@ -187,7 +184,7 @@
               
                 
   <li>
-    <a href="data-validation/validating-data-from-the-controller.html" title="Previous Chapter: Validating Data from the Controller"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Validating Data ...</span>
+    <a href="deleting-data.html" title="Previous Chapter: Deleting Data"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Deleting Data</span>
     </a>
   </li>
   <li>
@@ -238,7 +235,6 @@
 <li class="toctree-l2"><a class="reference internal" href="retrieving-your-data.html">Retrieving Your Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="saving-your-data.html">Saving Your Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deleting-data.html">Deleting Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data-validation.html">Data Validation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Callback Methods</a><ul class="simple">
 </ul>
 </li>
@@ -261,197 +257,69 @@
 <h1>Callback Methods<a class="headerlink" href="#callback-methods" title="Permalink to this headline">¶</a></h1>
 <p>If you want to sneak in some logic just before or after a WebLauncher Framework
 model operation, use model callbacks. These functions can be
-defined in model classes (including your AppModel) class. Be sure
+defined in model classes. Be sure
 to note the expected return values for each of these special
 functions.</p>
 <p>When using callback methods you should remember that behavior callbacks are
 fired <strong>before</strong> model callbacks are.</p>
-<div class="section" id="beforefind">
-<h2>beforeFind<a class="headerlink" href="#beforefind" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">beforeFind(array</span> <span class="pre">$query)</span></tt></p>
-<p>Called before any find-related operation. The <tt class="docutils literal"><span class="pre">$query</span></tt> passed
-to this callback contains information about the current query:
-conditions, fields, etc.</p>
-<p>If you do not wish the find operation to begin (possibly based on a
-decision relating to the <tt class="docutils literal"><span class="pre">$query</span></tt> options), return <em>false</em>.
-Otherwise, return the possibly modified <tt class="docutils literal"><span class="pre">$query</span></tt>, or anything
-you want to get passed to find and its counterparts.</p>
-<p>You might use this callback to restrict find operations based on a
-user&#8217;s role, or make caching decisions based on the current load.</p>
-</div>
-<div class="section" id="afterfind">
-<h2>afterFind<a class="headerlink" href="#afterfind" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">afterFind(array</span> <span class="pre">$results,</span> <span class="pre">boolean</span> <span class="pre">$primary</span> <span class="pre">=</span> <span class="pre">false)</span></tt></p>
-<p>Use this callback to modify results that have been returned from a
-find operation, or to perform any other post-find logic. The
-$results parameter passed to this callback contains the returned
-results from the model&#8217;s find operation, i.e. something like:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$results = array(</span>
-<span class="x">    0 =&gt; array(</span>
-<span class="x">        &#39;ModelName&#39; =&gt; array(</span>
-<span class="x">            &#39;field1&#39; =&gt; &#39;value1&#39;,</span>
-<span class="x">            &#39;field2&#39; =&gt; &#39;value2&#39;,</span>
-<span class="x">        ),</span>
-<span class="x">    ),</span>
-<span class="x">);</span>
-</pre></div>
-</div>
-<p>The return value for this callback should be the (possibly
-modified) results for the find operation that triggered this
-callback.</p>
-<p>The <tt class="docutils literal"><span class="pre">$primary</span></tt> parameter indicates whether or not the current
-model was the model that the query originated on or whether or not
-this model was queried as an association. If a model is queried as
-an association the format of <tt class="docutils literal"><span class="pre">$results</span></tt> can differ; instead of the
-result you would normally get from a find operation, you may get
-this:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$results = array(</span>
-<span class="x">    &#39;field_1&#39; =&gt; &#39;value1&#39;,</span>
-<span class="x">    &#39;field_2&#39; =&gt; &#39;value2&#39;</span>
-<span class="x">);</span>
-</pre></div>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Code expecting <tt class="docutils literal"><span class="pre">$primary</span></tt> to be true will probably get a &#8220;Cannot
-use string offset as an array&#8221; fatal error from PHP if a recursive
-find is used.</p>
-</div>
-<p>Below is an example of how afterfind can be used for date
-formatting:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">public function afterFind($results, $primary = false) {</span>
-<span class="x">    foreach ($results as $key =&gt; $val) {</span>
-<span class="x">        if (isset($val[&#39;Event&#39;][&#39;begindate&#39;])) {</span>
-<span class="x">            $results[$key][&#39;Event&#39;][&#39;begindate&#39;] = $this-&gt;dateFormatAfterFind(</span>
-<span class="x">                $val[&#39;Event&#39;][&#39;begindate&#39;]</span>
-<span class="x">            );</span>
-<span class="x">        }</span>
-<span class="x">    }</span>
-<span class="x">    return $results;</span>
+<div class="section" id="process-row">
+<h2>process_row<a class="headerlink" href="#process-row" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">process_row(array</span> <span class="pre">$row)</span></tt></p>
+<p>This method is called for each row retrieved from the database. This is a very important callback that lets you do extra processing on each row retrieved
+before actually sending the result of the <tt class="docutils literal"><span class="pre">get()</span></tt>, <tt class="docutils literal"><span class="pre">get_cond()</span></tt> and <tt class="docutils literal"><span class="pre">get_all()</span></tt> methods.</p>
+<p>As an example you would like to get the user information for each post retrieved from the database:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">function process_row($row){</span>
+<span class="x">    $row[&#39;user&#39;]=$this-&gt;models-&gt;users-&gt;get($row[&#39;user_id&#39;]);</span>
+<span class="x">    return $row;</span>
 <span class="x">}</span>
-
-<span class="x">public function dateFormatAfterFind($dateString) {</span>
-<span class="x">    return date(&#39;d-m-Y&#39;, strtotime($dateString));</span>
+</pre></div>
+</div>
+<p>Please make sure you return the processed <tt class="docutils literal"><span class="pre">$row</span></tt> variable so that the function may pass the result further.</p>
+</div>
+<div class="section" id="before-insert">
+<h2>before_insert<a class="headerlink" href="#before-insert" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">before_insert(array</span> <span class="pre">&amp;$data)</span></tt></p>
+<p>Called before any insert operation. In <tt class="docutils literal"><span class="pre">$data</span></tt> is the reference to the data that needs to be inserted.
+This callback can be used for doing some extra processing before each insert.</p>
+<p>For example when inserting a post you would like the title to be striped from any html tags:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">function before_insert($data){</span>
+<span class="x">    $data[&#39;title&#39;]=strip_tags($data[&#39;title&#39;]);</span>
 <span class="x">}</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="beforevalidate">
-<h2>beforeValidate<a class="headerlink" href="#beforevalidate" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">beforeValidate(array</span> <span class="pre">$options</span> <span class="pre">=</span> <span class="pre">array())</span></tt></p>
-<p>Use this callback to modify model data before it is validated, or
-to modify validation rules if required. This function must also
-return <em>true</em>, otherwise the current save() execution will abort.</p>
-</div>
-<div class="section" id="aftervalidate">
-<h2>afterValidate<a class="headerlink" href="#aftervalidate" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">afterValidate()</span></tt></p>
-<p>Called after data has been checked for errors. Use this callback to perform
-any data cleanup or preparation if needed.</p>
-</div>
-<div class="section" id="beforesave">
-<h2>beforeSave<a class="headerlink" href="#beforesave" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">beforeSave(array</span> <span class="pre">$options</span> <span class="pre">=</span> <span class="pre">array())</span></tt></p>
-<p>Place any pre-save logic in this function. This function executes
-immediately after model data has been successfully validated, but
-just before the data is saved. This function should also return
-true if you want the save operation to continue.</p>
-<p>This callback is especially handy for any data-massaging logic that
-needs to happen before your data is stored. If your storage engine
-needs dates in a specific format, access it at $this-&gt;data and
-modify it.</p>
-<p>Below is an example of how beforeSave can be used for date
-conversion. The code in the example is used for an application with
-a begindate formatted like YYYY-MM-DD in the database and is
-displayed like DD-MM-YYYY in the application. Of course this can be
-changed very easily. Use the code below in the appropriate model.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">public function beforeSave($options = array()) {</span>
-<span class="x">    if (!empty($this-&gt;data[&#39;Event&#39;][&#39;begindate&#39;]) &amp;&amp;</span>
-<span class="x">        !empty($this-&gt;data[&#39;Event&#39;][&#39;enddate&#39;])</span>
-<span class="x">    ) {</span>
-
-<span class="x">        $this-&gt;data[&#39;Event&#39;][&#39;begindate&#39;] = $this-&gt;dateFormatBeforeSave(</span>
-<span class="x">            $this-&gt;data[&#39;Event&#39;][&#39;begindate&#39;]</span>
-<span class="x">        );</span>
-<span class="x">        $this-&gt;data[&#39;Event&#39;][&#39;enddate&#39;] = $this-&gt;dateFormatBeforeSave(</span>
-<span class="x">            $this-&gt;data[&#39;Event&#39;][&#39;enddate&#39;]</span>
-<span class="x">        );</span>
-<span class="x">    }</span>
-<span class="x">    return true;</span>
-<span class="x">}</span>
-
-<span class="x">public function dateFormatBeforeSave($dateString) {</span>
-<span class="x">    return date(&#39;Y-m-d&#39;, strtotime($dateString));</span>
-<span class="x">}</span>
-</pre></div>
-</div>
-<div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">Be sure that beforeSave() returns true, or your save is going to
-fail.</p>
-</div>
-</div>
-<div class="section" id="aftersave">
-<h2>afterSave<a class="headerlink" href="#aftersave" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">afterSave(boolean</span> <span class="pre">$created,</span> <span class="pre">array</span> <span class="pre">$options</span> <span class="pre">=</span> <span class="pre">array())</span></tt></p>
-<p>If you have logic you need to be executed just after every save
-operation, place it in this callback method. The saved data will
-be available in <tt class="docutils literal"><span class="pre">$this-&gt;data</span></tt>.</p>
-<p>The value of <tt class="docutils literal"><span class="pre">$created</span></tt> will be true if a new record was created
-(rather than an update).</p>
-<p>The <tt class="docutils literal"><span class="pre">$options</span></tt> array is the same one passed to <tt class="docutils literal"><span class="pre">Model::save()</span></tt>.</p>
-</div>
-<div class="section" id="beforedelete">
-<h2>beforeDelete<a class="headerlink" href="#beforedelete" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">beforeDelete(boolean</span> <span class="pre">$cascade</span> <span class="pre">=</span> <span class="pre">true)</span></tt></p>
-<p>Place any pre-deletion logic in this function. This function should
-return true if you want the deletion to continue, and false if you
-want to abort.</p>
-<p>The value of <tt class="docutils literal"><span class="pre">$cascade</span></tt> will be <tt class="docutils literal"><span class="pre">true</span></tt> if records that depend
-on this record will also be deleted.</p>
-<div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">Be sure that beforeDelete() returns true, or your delete is going
-to fail.</p>
-</div>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">// using app/Model/ProductCategory.php</span>
-<span class="x">// In the following example, do not let a product category be deleted if it</span>
-<span class="x">// still contains products.</span>
-<span class="x">// A call of $this-&gt;Product-&gt;delete($id) from ProductsController.php has set</span>
-<span class="x">// $this-&gt;id .</span>
-<span class="x">// Assuming &#39;ProductCategory hasMany Product&#39;, we can access $this-&gt;Product</span>
-<span class="x">// in the model.</span>
-<span class="x">public function beforeDelete($cascade = true) {</span>
-<span class="x">    $count = $this-&gt;Product-&gt;find(&quot;count&quot;, array(</span>
-<span class="x">        &quot;conditions&quot; =&gt; array(&quot;product_category_id&quot; =&gt; $this-&gt;id)</span>
-<span class="x">    ));</span>
-<span class="x">    if ($count == 0) {</span>
-<span class="x">        return true;</span>
-<span class="x">    } else {</span>
-<span class="x">        return false;</span>
-<span class="x">    }</span>
+<div class="section" id="after-insert">
+<h2>after_insert<a class="headerlink" href="#after-insert" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">after_insert(array</span> <span class="pre">$data)</span></tt></p>
+<p>Use this callback to do aditional processing or data insertions after a record has been inserted into DB using this model.</p>
+<p>As an example after each post insertions you would like to increase a value <tt class="docutils literal"><span class="pre">no_posts</span></tt> in the users profile:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">function after_insert($data){</span>
+<span class="x">    $current_user_id=1;</span>
+<span class="x">    $current_user=$this-&gt;models-&gt;users-&gt;get($current_user_id);</span>
+<span class="x">    $this-&gt;models-&gt;users-&gt;update_field($current_user_id,&#39;no_posts&#39;,$current_user[&#39;no_posts&#39;]++);</span>
 <span class="x">}</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="afterdelete">
-<h2>afterDelete<a class="headerlink" href="#afterdelete" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">afterDelete()</span></tt></p>
-<p>Place any logic that you want to be executed after every deletion
-in this callback method.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">// perhaps after deleting a record from the database, you also want to delete</span>
-<span class="x">// an associated file</span>
-<span class="x">public function afterDelete() {</span>
-<span class="x">    $file = new File($this-&gt;data[&#39;SomeModel&#39;][&#39;file_path&#39;]);</span>
-<span class="x">    $file-&gt;delete();</span>
-<span class="x">}</span>
-</pre></div>
+<div class="section" id="before-update">
+<h2>before_update<a class="headerlink" href="#before-update" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">before_update(array</span> <span class="pre">&amp;$data,</span> <span class="pre">&amp;$condition)</span></tt></p>
+<p>This callback can be used to do some processing on the $data and $condition before each <tt class="docutils literal"><span class="pre">update()</span></tt> call.</p>
 </div>
+<div class="section" id="after-update">
+<h2>after_update<a class="headerlink" href="#after-update" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">after_update(array</span> <span class="pre">$data,</span> <span class="pre">$condition)</span></tt></p>
+<p>This method is called after any <tt class="docutils literal"><span class="pre">update()</span></tt> call. Can be used to do some extra updates on other models when an update happens on the current model.</p>
 </div>
-<div class="section" id="onerror">
-<h2>onError<a class="headerlink" href="#onerror" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">onError()</span></tt></p>
-<p>Called if any problems occur.</p>
+<div class="section" id="before-delete">
+<h2>before_delete<a class="headerlink" href="#before-delete" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">before_delete(integer</span> <span class="pre">&amp;$id)</span></tt></p>
+<p>This method is called before any <tt class="docutils literal"><span class="pre">delete()</span></tt> call. Can be used to do extra delete actions before the actual model delete call.</p>
+</div>
+<div class="section" id="after-delete">
+<h2>after_delete<a class="headerlink" href="#after-delete" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">after_delete(integer</span> <span class="pre">$id)</span></tt></p>
+<p>This method is called after any <tt class="docutils literal"><span class="pre">delete()</span></tt> call. Can be used to do extra delete actions after the actual model delete call.</p>
 </div>
 </div>
 

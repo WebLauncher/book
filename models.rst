@@ -101,9 +101,9 @@ More on models
     models/retrieving-your-data
     models/saving-your-data
     models/deleting-data
-    models/data-validation
+    .. models/data-validation
     models/callback-methods
-    models/behaviors
+    models/extensions
     models/datasources
     models/model-attributes
     models/additional-methods-and-properties

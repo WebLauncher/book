@@ -140,7 +140,6 @@
 <li class="toctree-l3"><a class="reference internal" href="retrieving-your-data.html">Retrieving Your Data</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="">Saving Your Data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="deleting-data.html">Deleting Data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="data-validation.html">Data Validation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="callback-methods.html">Callback Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="behaviors.html">Behaviors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="datasources.html">DataSources</a></li>
@@ -167,9 +166,9 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Saving Your Data</a><ul>
-<li><a class="reference internal" href="#model-insert-data"><tt class="docutils literal"><span class="pre">Model::insert($data)</span></tt></a></li>
+<li><a class="reference internal" href="#model-insert-data-callbacks-true"><tt class="docutils literal"><span class="pre">Model::insert($data,</span> <span class="pre">$callbacks=true)</span></tt></a></li>
 <li><a class="reference internal" href="#model-insert-multiple-fields-params"><tt class="docutils literal"><span class="pre">Model::insert_multiple($fields,</span> <span class="pre">$params)</span></tt></a></li>
-<li><a class="reference internal" href="#model-update-data-condition"><tt class="docutils literal"><span class="pre">Model::update($data,$condition='')</span></tt></a></li>
+<li><a class="reference internal" href="#model-update-data-condition-callbacks-true"><tt class="docutils literal"><span class="pre">Model::update($data,$condition='',</span> <span class="pre">$callbacks=true)</span></tt></a></li>
 <li><a class="reference internal" href="#model-update-field-id-field-value"><tt class="docutils literal"><span class="pre">Model::update_field($id,</span> <span class="pre">$field,</span> <span class="pre">$value)</span></tt></a></li>
 <li><a class="reference internal" href="#model-update-field-cond-field-value-condition"><tt class="docutils literal"><span class="pre">Model::update_field_cond($field,</span> <span class="pre">$value,</span> <span class="pre">$condition)</span></tt></a></li>
 </ul>
@@ -236,7 +235,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="deleting-data.html">Deleting Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data-validation.html">Data Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="callback-methods.html">Callback Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="behaviors.html">Behaviors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datasources.html">DataSources</a></li>
@@ -285,8 +283,8 @@ model to save data to a database table:</p>
 <p>When save is called the function will execute <tt class="docutils literal"><span class="pre">insert()</span></tt> or <tt class="docutils literal"><span class="pre">update()</span></tt> depending if the id is passed in thee $data array.</p>
 <p>There are a few other save-related methods in the model that you&#8217;ll
 find useful:</p>
-<div class="section" id="model-insert-data">
-<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::insert($data)</span></tt><a class="headerlink" href="#model-insert-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="model-insert-data-callbacks-true">
+<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::insert($data,</span> <span class="pre">$callbacks=true)</span></tt><a class="headerlink" href="#model-insert-data-callbacks-true" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">Model::insert()</span></tt> can be used to specifically insert data into the table linked to the model:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">$data=array(</span>
 <span class="x">    &#39;title&#39;=&gt;&#39;Testing&#39;,</span>
@@ -313,8 +311,8 @@ find useful:</p>
 </div>
 <p>This method is only recommended if you don&#8217;t need the last inserted id of the rows inserted. Otherwise please use <tt class="docutils literal"><span class="pre">insert()</span></tt>.</p>
 </div>
-<div class="section" id="model-update-data-condition">
-<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::update($data,$condition='')</span></tt><a class="headerlink" href="#model-update-data-condition" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="model-update-data-condition-callbacks-true">
+<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::update($data,$condition='',</span> <span class="pre">$callbacks=true)</span></tt><a class="headerlink" href="#model-update-data-condition-callbacks-true" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">Model::update()</span></tt> can be used to specifically update data from the table linked to the model:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">$id=1;</span>
 <span class="x">$data=array(</span>
