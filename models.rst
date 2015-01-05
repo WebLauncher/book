@@ -104,11 +104,11 @@ More on models
     .. models/data-validation
     models/callback-methods
     models/extensions
-    models/datasources
+    .. models/datasources
     models/model-attributes
     models/additional-methods-and-properties
-    models/virtual-fields
-    models/transactions
+    .. models/virtual-fields
+    .. models/transactions
 
 
 .. meta::

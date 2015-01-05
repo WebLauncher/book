@@ -33,7 +33,7 @@
     <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="../index.html" />
     <link rel="up" title="Models" href="../models.html" />
     <link rel="next" title="Additional Methods and Properties" href="additional-methods-and-properties.html" />
-    <link rel="prev" title="DataSources" href="datasources.html" />
+    <link rel="prev" title="Extensions" href="extensions.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -140,14 +140,10 @@
 <li class="toctree-l3"><a class="reference internal" href="retrieving-your-data.html">Retrieving Your Data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="saving-your-data.html">Saving Your Data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="deleting-data.html">Deleting Data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="data-validation.html">Data Validation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="callback-methods.html">Callback Methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="behaviors.html">Behaviors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datasources.html">DataSources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html">Extensions</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="">Model Attributes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="additional-methods-and-properties.html">Additional Methods and Properties</a></li>
-<li class="toctree-l3"><a class="reference internal" href="virtual-fields.html">Virtual fields</a></li>
-<li class="toctree-l3"><a class="reference internal" href="transactions.html">Transactions</a></li>
 </ul>
 </li>
 </ul>
@@ -167,19 +163,11 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Model Attributes</a><ul>
-<li><a class="reference internal" href="#usedbconfig">useDbConfig</a></li>
-<li><a class="reference internal" href="#usetable">useTable</a></li>
-<li><a class="reference internal" href="#tableprefix">tablePrefix</a></li>
-<li><a class="reference internal" href="#primarykey">primaryKey</a></li>
-<li><a class="reference internal" href="#displayfield">displayField</a></li>
-<li><a class="reference internal" href="#recursive">recursive</a></li>
-<li><a class="reference internal" href="#order">order</a></li>
-<li><a class="reference internal" href="#data">data</a></li>
-<li><a class="reference internal" href="#schema">_schema</a></li>
-<li><a class="reference internal" href="#validate">validate</a></li>
-<li><a class="reference internal" href="#virtualfields">virtualFields</a></li>
-<li><a class="reference internal" href="#name">name</a></li>
-<li><a class="reference internal" href="#cachequeries">cacheQueries</a></li>
+<li><a class="reference internal" href="#table">table</a></li>
+<li><a class="reference internal" href="#model-primarykey">id_field</a></li>
+<li><a class="reference internal" href="#order-field">order_field</a></li>
+<li><a class="reference internal" href="#active-field">active_field</a></li>
+<li><a class="reference internal" href="#process">process</a></li>
 </ul>
 </li>
 </ul>
@@ -191,7 +179,7 @@
               
                 
   <li>
-    <a href="datasources.html" title="Previous Chapter: DataSources"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; DataSources</span>
+    <a href="extensions.html" title="Previous Chapter: Extensions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Extensions</span>
     </a>
   </li>
   <li>
@@ -242,16 +230,12 @@
 <li class="toctree-l2"><a class="reference internal" href="retrieving-your-data.html">Retrieving Your Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="saving-your-data.html">Saving Your Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deleting-data.html">Deleting Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data-validation.html">Data Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="callback-methods.html">Callback Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="behaviors.html">Behaviors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datasources.html">DataSources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensions.html">Extensions</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Model Attributes</a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="additional-methods-and-properties.html">Additional Methods and Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virtual-fields.html">Virtual fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../views.html">Views</a></li>
@@ -265,224 +249,43 @@
 <h1>Model Attributes<a class="headerlink" href="#model-attributes" title="Permalink to this headline">¶</a></h1>
 <p>Model attributes allow you to set properties that can override the
 default model behavior.</p>
-<p>For a complete list of model attributes and their descriptions
-visit the <a class="reference external" href="http://api.WebLauncherFramework.org/2.4/class-Model.html">WebLauncher Framework API</a>.</p>
-<div class="section" id="usedbconfig">
-<h2>useDbConfig<a class="headerlink" href="#usedbconfig" title="Permalink to this headline">¶</a></h2>
-<p>The <tt class="docutils literal"><span class="pre">useDbConfig</span></tt> property is a string that specifies the name of
-the database connection to use to bind your model class to the
-related database table. You can set it to any of the database
-connections defined within your database configuration file. The
-database configuration file is stored in /app/Config/database.php.</p>
-<p>The <tt class="docutils literal"><span class="pre">useDbConfig</span></tt> property is defaulted to the &#8216;default&#8217; database
-connection.</p>
+<div class="section" id="table">
+<h2>table<a class="headerlink" href="#table" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">table</span></tt> property is a string that specifies the name of
+the database table to use to bind your model class to the
+related database table.</p>
 <p>Example usage:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends AppModel {</span>
-<span class="x">    public $useDbConfig = &#39;alternate&#39;;</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends Base {</span>
+<span class="x">    public $table = &#39;example_1&#39;;</span>
 <span class="x">}</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="usetable">
-<h2>useTable<a class="headerlink" href="#usetable" title="Permalink to this headline">¶</a></h2>
-<p>The <tt class="docutils literal"><span class="pre">useTable</span></tt> property specifies the database table name. By
-default, the model uses the lowercase, plural form of the model&#8217;s
-class name. Set this attribute to the name of an alternate table,
-or set it to <tt class="docutils literal"><span class="pre">false</span></tt> if you wish the model to use no database
-table.</p>
-<p>Example usage:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends AppModel {</span>
-<span class="x">    public $useTable = false; // This model does not use a database table</span>
-<span class="x">}</span>
-</pre></div>
-</div>
-<p>Alternatively:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends AppModel {</span>
-<span class="x">    public $useTable = &#39;exmp&#39;; // This model uses a database table &#39;exmp&#39;</span>
-<span class="x">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="tableprefix">
-<h2>tablePrefix<a class="headerlink" href="#tableprefix" title="Permalink to this headline">¶</a></h2>
-<p>The name of the table prefix used for the model. The table prefix
-is initially set in the database connection file at
-/app/Config/database.php. The default is no prefix. You can
-override the default by setting the <tt class="docutils literal"><span class="pre">tablePrefix</span></tt> attribute in
-the model.</p>
-<p>Example usage:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends AppModel {</span>
-<span class="x">    public $tablePrefix = &#39;alternate_&#39;; // will look for &#39;alternate_examples&#39;</span>
-<span class="x">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="primarykey">
-<span id="model-primarykey"></span><h2>primaryKey<a class="headerlink" href="#primarykey" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="model-primarykey">
+<span id="id-field"></span><h2>id_field<a class="headerlink" href="#model-primarykey" title="Permalink to this headline">¶</a></h2>
 <p>Each table normally has a primary key, <tt class="docutils literal"><span class="pre">id</span></tt>. You may change which
 field name the model uses as its primary key. This is common when
 setting WebLauncher Framework to use an existing database table.</p>
 <p>Example usage:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends AppModel {</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends Base {</span>
 <span class="x">    // example_id is the field name in the database</span>
-<span class="x">    public $primaryKey = &#39;example_id&#39;;</span>
+<span class="x">    public $id_field = &#39;the_id&#39;;</span>
 <span class="x">}</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="displayfield">
-<span id="model-displayfield"></span><h2>displayField<a class="headerlink" href="#displayfield" title="Permalink to this headline">¶</a></h2>
-<p>The <tt class="docutils literal"><span class="pre">displayField</span></tt> attribute specifies which database field
-should be used as a label for the record. The label is used in
-scaffolding and in <tt class="docutils literal"><span class="pre">find('list')</span></tt> calls. The model will use
-<tt class="docutils literal"><span class="pre">name</span></tt> or <tt class="docutils literal"><span class="pre">title</span></tt>, by default.</p>
-<p>For example, to use the <tt class="docutils literal"><span class="pre">username</span></tt> field:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class User extends AppModel {</span>
-<span class="x">    public $displayField = &#39;username&#39;;</span>
-<span class="x">}</span>
-</pre></div>
+<div class="section" id="order-field">
+<h2>order_field<a class="headerlink" href="#order-field" title="Permalink to this headline">¶</a></h2>
+<p>The collumn in the table that should provide order functionality. (Usually an integer type from 0-&gt;)</p>
+<p>Default: &#8216;order&#8217;</p>
 </div>
-<p>Multiple field names cannot be combined into a single display
-field. For example, you cannot specify,
-<tt class="docutils literal"><span class="pre">array('first_name',</span> <span class="pre">'last_name')</span></tt> as the display field. Instead
-create a virtual field with the Model attribute virtualFields</p>
+<div class="section" id="active-field">
+<h2>active_field<a class="headerlink" href="#active-field" title="Permalink to this headline">¶</a></h2>
+<p>The collumn in the table that should provide if the row is active or not.</p>
 </div>
-<div class="section" id="recursive">
-<h2>recursive<a class="headerlink" href="#recursive" title="Permalink to this headline">¶</a></h2>
-<p>The recursive property defines how deep WebLauncher Framework should go to fetch
-associated model data via <tt class="docutils literal"><span class="pre">find()</span></tt>, and <tt class="docutils literal"><span class="pre">read()</span></tt> methods.</p>
-<p>Imagine your application features Groups which belong to a domain
-and have many Users which in turn have many Articles. You can set
-$recursive to different values based on the amount of data you want
-back from a $this-&gt;Group-&gt;find() call:</p>
-<ul class="simple">
-<li>-1 WebLauncher Framework fetches Group data only, no joins.</li>
-<li>0  WebLauncher Framework fetches Group data and its domain</li>
-<li>1  WebLauncher Framework fetches a Group, its domain and its associated Users</li>
-<li>2  WebLauncher Framework fetches a Group, its domain, its associated Users, and the
-Users&#8217; associated Articles</li>
-</ul>
-<p>Set it no higher than you need. Having WebLauncher Framework fetch data you
-aren&#8217;t going to use slows your app unnecessarily. Also note that
-the default recursive level is 1.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If you want to combine $recursive with the <tt class="docutils literal"><span class="pre">fields</span></tt>
-functionality, you will have to add the columns containing the
-required foreign keys to the <tt class="docutils literal"><span class="pre">fields</span></tt> array manually. In the
-example above, this could mean adding <tt class="docutils literal"><span class="pre">domain_id</span></tt>.</p>
-</div>
-<div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p>The recommended recursive level for your application should be -1.
-This avoids retrieving related data where that is unnecessary or even
-unwanted. This is most likely the case for most of your find() calls.
-Raise it only when needed or use Containable behavior.</p>
-<p>You can achieve that by adding it to the AppModel:</p>
-<div class="last highlight-php"><div class="highlight"><pre><span class="x">public $recursive = -1;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="order">
-<h2>order<a class="headerlink" href="#order" title="Permalink to this headline">¶</a></h2>
-<p>The default ordering of data for any find operation. Possible
-values include:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$order = &quot;field&quot;</span>
-<span class="x">$order = &quot;Model.field&quot;;</span>
-<span class="x">$order = &quot;Model.field asc&quot;;</span>
-<span class="x">$order = &quot;Model.field ASC&quot;;</span>
-<span class="x">$order = &quot;Model.field DESC&quot;;</span>
-<span class="x">$order = array(&quot;Model.field&quot; =&gt; &quot;asc&quot;, &quot;Model.field2&quot; =&gt; &quot;DESC&quot;);</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="data">
-<h2>data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
-<p>The container for the model&#8217;s fetched data. While data returned
-from a model class is normally used as returned from a find() call,
-you may need to access information stored in $data inside of model
-callbacks.</p>
-</div>
-<div class="section" id="schema">
-<h2>_schema<a class="headerlink" href="#schema" title="Permalink to this headline">¶</a></h2>
-<p>Contains metadata describing the model&#8217;s database table fields.
-Each field is described by:</p>
-<ul class="simple">
-<li>name</li>
-<li>type (integer, string, datetime, etc.)</li>
-<li>null</li>
-<li>default value</li>
-<li>length</li>
-</ul>
-<p>Example Usage:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">protected $_schema = array(</span>
-<span class="x">    &#39;first_name&#39; =&gt; array(</span>
-<span class="x">        &#39;type&#39; =&gt; &#39;string&#39;,</span>
-<span class="x">        &#39;length&#39; =&gt; 30</span>
-<span class="x">    ),</span>
-<span class="x">    &#39;last_name&#39; =&gt; array(</span>
-<span class="x">        &#39;type&#39; =&gt; &#39;string&#39;,</span>
-<span class="x">        &#39;length&#39; =&gt; 30</span>
-<span class="x">    ),</span>
-<span class="x">    &#39;email&#39; =&gt; array(</span>
-<span class="x">        &#39;type&#39; =&gt; &#39;string&#39;,</span>
-<span class="x">        &#39;length&#39; =&gt; 30</span>
-<span class="x">    ),</span>
-<span class="x">    &#39;message&#39; =&gt; array(&#39;type&#39; =&gt; &#39;text&#39;)</span>
-<span class="x">);</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="validate">
-<h2>validate<a class="headerlink" href="#validate" title="Permalink to this headline">¶</a></h2>
-<p>This attribute holds rules that allow the model to make data
-validation decisions before saving. Keys named after fields hold
-regex values allowing the model to try to make matches.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">It is not necessary to call validate() before save() as save() will
-automatically validate your data before actually saving.</p>
-</div>
-<p>For more information on validation, see the <a class="reference internal" href="data-validation.html"><em>Data Validation</em></a>
-later on in this manual.</p>
-</div>
-<div class="section" id="virtualfields">
-<h2>virtualFields<a class="headerlink" href="#virtualfields" title="Permalink to this headline">¶</a></h2>
-<p>Array of virtual fields this model has. Virtual fields are aliased
-SQL expressions. Fields added to this property will be read as
-other fields in a model but will not be saveable.</p>
-<p>Example usage for MySQL:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">public $virtualFields = array(</span>
-<span class="x">    &#39;name&#39; =&gt; &quot;CONCAT(User.first_name, &#39; &#39;, User.last_name)&quot;</span>
-<span class="x">);</span>
-</pre></div>
-</div>
-<p>In subsequent find operations, your User results would contain a
-<tt class="docutils literal"><span class="pre">name</span></tt> key with the result of the concatenation. It is not
-advisable to create virtual fields with the same names as columns
-on the database, this can cause SQL errors.</p>
-<p>For more information on the <tt class="docutils literal"><span class="pre">virtualFields</span></tt> property, its proper
-usage, as well as limitations, see
-<a class="reference internal" href="virtual-fields.html"><em>Virtual fields</em></a>.</p>
-</div>
-<div class="section" id="name">
-<h2>name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p>Name of the model. If you do not specify it in your model file it will
-be set to the class name by constructor.</p>
-<p>Example usage:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends AppModel {</span>
-<span class="x">    public $name = &#39;Example&#39;;</span>
-<span class="x">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="cachequeries">
-<h2>cacheQueries<a class="headerlink" href="#cachequeries" title="Permalink to this headline">¶</a></h2>
-<p>If set to true, data fetched by the model during a single request
-is cached. This caching is in-memory only, and only lasts for the
-duration of the request. Any duplicate requests for the same data
-is handled by the cache.</p>
+<div class="section" id="process">
+<h2>process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h2>
+<p>This tells the model if it should call the <cite>process_row</cite> method.</p>
 </div>
 </div>
 
