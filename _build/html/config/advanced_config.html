@@ -234,7 +234,24 @@
 			
   <div class="section" id="advanced-configurations">
 <h1>Advanced Configurations<a class="headerlink" href="#advanced-configurations" title="Permalink to this headline">¶</a></h1>
-<p>To do advanced configurations</p>
+<p>There are cases when you would like custom configurations to be applied on different hostnames or other conditions are satisfied.</p>
+<p>By importing conditional configurations files you can accomplish this. This funcionality will include several configuration files when condition is matched.</p>
+<p><strong>Page add_config($name,$hostnames)</strong>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$page-&gt;add_config(&#39;development&#39;,&#39;localhost&#39;);</span>
+<span class="x">// this will import `config.development.php` when hostname is localhost</span>
+
+<span class="x">$page-&gt;add_config(&#39;development&#39;,array(&#39;localhost&#39;,&#39;127.0.0.1&#39;));</span>
+<span class="x">// this will import `config.development.php` when hostname is localhost or 127.0.0.1</span>
+
+<span class="x">$page-&gt;add_config(&#39;development&#39;,function($system){</span>
+<span class="x">        return isset($_REQUEST[&#39;dev&#39;]) &amp;&amp; $_REQUEST[&#39;dev&#39;]=1;</span>
+<span class="x">});</span>
+<span class="x">// this will include `config.development.php` when you add to the url the parameter ?dev=1</span>
+<span class="x">// $system is the alias of $page and can be used for checking settings but not for assigning configurations</span>
+<span class="x">// the function defined shoul return true or false based if the file should be loaded or not</span>
+</pre></div>
+</div>
+<p>Custom configuration files are loaded in the order they are defined and only after the <cite>config.php</cite> file is included completely. They are not included at call time.</p>
 </div>
 
 

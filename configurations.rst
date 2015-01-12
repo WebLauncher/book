@@ -3,7 +3,7 @@ Configurations
 
 Configurations in WebLauncher framework usually refers to applying some available configurations to the main class (System) and/or it's sub-classes.
 
-For configuring the framework settings you can use the **global config file** (``php.config.php``) and the **modules config** files (``config.php`` located under each module folder).
+For configuring the framework settings you can use the **global config file** (``config.php``) and the **modules config** files (``config.php`` located under each module folder).
 
 Each of this files should start with::
 
