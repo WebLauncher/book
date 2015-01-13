@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Configurations &mdash; WebLauncher Framework 2.7.0 documentation</title>
+    <title>Migrations &mdash; WebLauncher Framework 2.7.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -29,8 +29,8 @@
     <script type="text/javascript" src="_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="index.html" />
-    <link rel="next" title="General Configurations" href="config/general_config.html" />
-    <link rel="prev" title="Update from 2.6" href="update.html" />
+    <link rel="next" title="Modules" href="modules.html" />
+    <link rel="prev" title="Advanced Configurations" href="config/advanced_config.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -95,7 +95,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Configurations</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="config/general_config.html">General Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/module_config.html">Module Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/database_config.html">Database Configurations</a></li>
@@ -104,11 +104,11 @@
 <li class="toctree-l2"><a class="reference internal" href="config/advanced_config.html">Advanced Configurations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="migrations.html">Migrations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migrations.html#configuring-migrations">Configuring migrations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migrations.html#defining-a-migration">Defining a migration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migrations.html#running-migrations">Running migrations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migrations.html#running-migration-up-or-down">Running migration up or down</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Migrations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-migrations">Configuring migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-a-migration">Defining a migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-migrations">Running migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-migration-up-or-down">Running migration up or down</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a><ul>
@@ -166,7 +166,13 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Configurations</a></li>
+<li><a class="reference internal" href="#">Migrations</a><ul>
+<li><a class="reference internal" href="#configuring-migrations">Configuring migrations</a></li>
+<li><a class="reference internal" href="#defining-a-migration">Defining a migration</a></li>
+<li><a class="reference internal" href="#running-migrations">Running migrations</a></li>
+<li><a class="reference internal" href="#running-migration-up-or-down">Running migration up or down</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -176,11 +182,11 @@
               
                 
   <li>
-    <a href="update.html" title="Previous Chapter: Update from 2.6"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Update from 2.6</span>
+    <a href="config/advanced_config.html" title="Previous Chapter: Advanced Configurations"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Advanced Configu...</span>
     </a>
   </li>
   <li>
-    <a href="config/general_config.html" title="Next Chapter: General Configurations"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">General Configur... &raquo;</span>
+    <a href="modules.html" title="Next Chapter: Modules"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Modules &raquo;</span>
     </a>
   </li>
               
@@ -190,7 +196,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="https://github.com/weblauncher/book/edit/master/configurations.rst"
+  <a href="https://github.com/weblauncher/book/edit/master/migrations.rst"
      rel="nofollow">Modify Source</a>
 </div></li>
             
@@ -218,16 +224,10 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Configurations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config/general_config.html">General Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/module_config.html">Module Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/database_config.html">Database Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/email_config.html">E-mail Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/templates_config.html">Templates Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/advanced_config.html">Advanced Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Migrations</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="migrations.html">Migrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="controllers.html">Controllers</a></li>
@@ -239,35 +239,65 @@
 </div>
 		<div class="col-md-9">
 			
-  <div class="section" id="configurations">
-<h1>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h1>
-<p>Configurations in WebLauncher framework usually refers to applying some available configurations to the main class (System) and/or it&#8217;s sub-classes.</p>
-<p>For configuring the framework settings you can use the <strong>global config file</strong> (<tt class="docutils literal"><span class="pre">config.php</span></tt>) and the <strong>modules config</strong> files (<tt class="docutils literal"><span class="pre">config.php</span></tt> located under each module folder).</p>
-<p>Each of this files should start with:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">global $page;</span>
+  <div class="section" id="migrations">
+<h1>Migrations<a class="headerlink" href="#migrations" title="Permalink to this headline">¶</a></h1>
+<p><strong>WebLauncher Framework</strong> has a build-in DB migration system. The migration functionality can handle two types of migration files. One is a
+SQL query run (this method does not have a reverse run) and the other is a <tt class="docutils literal"><span class="pre">Migration</span></tt> object class file where you can run queries and scripts
+to define your migration.</p>
+<div class="section" id="configuring-migrations">
+<h2>Configuring migrations<a class="headerlink" href="#configuring-migrations" title="Permalink to this headline">¶</a></h2>
+<p>Migrations list is defined in <tt class="docutils literal"><span class="pre">db\migrations.php</span></tt> file which returns an associative array in the structure of &#8216;$version&#8217;=&gt;&#8217;$file_name&#8217;.
+Note: <tt class="docutils literal"><span class="pre">$file_name</span></tt> should not have the extension added. See example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">return array(</span>
+<span class="x">        &#39;1&#39;=&gt;&#39;migration_1&#39;,</span>
+<span class="x">        &#39;2&#39;=&gt;&#39;migration_2&#39;</span>
+<span class="x">        ...</span>
+<span class="x">);</span>
+<span class="x">// this will define 2 versions of the DB using the migrations</span>
 </pre></div>
 </div>
-<p>Using this variable you can set several settings (database, e-mail, authentication ...) for the framework to use.</p>
-<p>While the <strong>global config file</strong> is not restricted to any configuration limitations the <strong>modules config</strong> should be only used to set some minor modules related configurations.</p>
-<p>The path to the <strong>global config file</strong> can be modified if required using <em>SYSTEM_CONFIG_PATH</em> constant in the <tt class="docutils literal"><span class="pre">index.php</span></tt> file located in the root of the site. For security reasons this should be moved outside of web public location.
-This needs to be a global path. Do not use realtive paths. See example below:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">define(&#39;SYSTEM_CONFIG_PATH&#39;,&#39;/home/account/&#39;);</span>
+</div>
+<div class="section" id="defining-a-migration">
+<h2>Defining a migration<a class="headerlink" href="#defining-a-migration" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>migration</strong> is a file (sql or php file that contains a class that extends <tt class="docutils literal"><span class="pre">Migration</span></tt>) located in the <tt class="docutils literal"><span class="pre">db/migrations/</span></tt> folder.</p>
+<p>There are two ways of defining a migration:</p>
+<ol class="arabic simple">
+<li>Using a SQL file which contains the queries that need to be executed. This will look for <tt class="docutils literal"><span class="pre">$file_name.sql</span></tt> into the migrations folder. (this will not be executed on down migrations)</li>
+</ol>
+<p>2. Using a php file which contains the definition of a class named <tt class="docutils literal"><span class="pre">$file_name</span></tt> that extends <tt class="docutils literal"><span class="pre">Migration</span></tt> class. <tt class="docutils literal"><span class="pre">Migration</span></tt> class also extends <tt class="docutils literal"><span class="pre">Base</span></tt> which is the model class so you have access to all the methods from the models. We recommend sticking to <tt class="docutils literal"><span class="pre">$this-&gt;query($sql)</span></tt> method and using the DbManager <tt class="docutils literal"><span class="pre">$this-&gt;db</span></tt> for
+handling migrations. See an example below:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class migration_1 extends Migration{</span>
+<span class="x">        function up(){</span>
+<span class="x">                // define here all the queries that need to be run to upgrade the db version</span>
+<span class="x">                $this-&gt;query(sql);</span>
+<span class="x">                $data=$this-&gt;db-&gt;getAll(sql); // to retrieve data from db</span>
+<span class="x">        }</span>
+
+<span class="x">        function down(){</span>
+<span class="x">                // define here all methods that need to be run to downgrade the db version</span>
+<span class="x">        }</span>
+
+<span class="x">        function before($direction=&#39;up&#39;){</span>
+<span class="x">                // define here code that needs to be executed before the method up() or down() are run</span>
+<span class="x">        }</span>
+
+<span class="x">        function after($direction=&#39;up&#39;){</span>
+<span class="x">                // define here code that needs to be executed after the method up() or down() are run</span>
+<span class="x">        }</span>
+<span class="x">}</span>
 </pre></div>
 </div>
-<p>The name of the <strong>global config file</strong> can be modified if required using <em>SYSTEM_CONFIG_FILE</em> constant in the <tt class="docutils literal"><span class="pre">index.php</span></tt> file:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">define(&#39;SYSTEM_CONFIG_FILE&#39;,&#39;my_conf.php&#39;);</span>
-</pre></div>
+<p>When using the php way you can also define <tt class="docutils literal"><span class="pre">migration_1.up.sql</span></tt> and/or <tt class="docutils literal"><span class="pre">migration_1.down.sql</span></tt> for them to be run after methods <tt class="docutils literal"><span class="pre">up()</span></tt> and/or <tt class="docutils literal"><span class="pre">down()</span></tt> are run.</p>
 </div>
-<p>Read the following sections to find out more about configurations:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="config/general_config.html">General Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config/module_config.html">Module Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config/database_config.html">Database Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config/email_config.html">E-mail Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config/templates_config.html">Templates Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config/advanced_config.html">Advanced Configurations</a></li>
-</ul>
+<div class="section" id="running-migrations">
+<h2>Running migrations<a class="headerlink" href="#running-migrations" title="Permalink to this headline">¶</a></h2>
+<p>Migrations can be run using the browser url to you site by adding <tt class="docutils literal"><span class="pre">?a=migrate:all</span></tt>. This will run all found migrations that were not run.
+The script requires write access to <tt class="docutils literal"><span class="pre">files</span></tt> folder so it can store the migrated versions of the DB.</p>
+</div>
+<div class="section" id="running-migration-up-or-down">
+<h2>Running migration up or down<a class="headerlink" href="#running-migration-up-or-down" title="Permalink to this headline">¶</a></h2>
+<p>To run up a migration <tt class="docutils literal"><span class="pre">?a=migrate:up</span></tt>.</p>
+<p>To run down a migration <tt class="docutils literal"><span class="pre">?a=migrate:down</span></tt>.</p>
 </div>
 </div>
 

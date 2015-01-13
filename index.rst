@@ -22,6 +22,7 @@ Contents
    getting-started
    update
    configurations
+   migrations
    modules
    components	
    controllers
