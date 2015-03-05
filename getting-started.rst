@@ -1,4 +1,4 @@
 Getting Started
 ===============
 
-to do
+Welcome to WebLauncher Framework book.
