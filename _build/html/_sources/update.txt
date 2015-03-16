@@ -18,3 +18,4 @@ Update from 2.6
 5. Replace $page->visits_logs_enabled with $page->logins_logs_enabled
 6. Move skins/ folder under assets/ folder. Some general sites do not require skins and should only be used in case there is the need for skins. Otherwise assets/ folder should be used.
 7. Replace 'tbl_' with '' (blank string). In table aliasing and models there is no longer required to use this. Be carefull with this your project my be using 'tbl_' string for other reasons. A manual search/replace is recommended.
+8. Rename 'php.config.php' to 'config.php' and make sure everything is properly defined.
