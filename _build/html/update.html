@@ -251,6 +251,7 @@
 <li>x_conf_visits_logs =&gt; logins (can be configured using $page-&gt;logins_logs_table)</li>
 <li>x_conf_cronjobs =&gt; cronjobs (can be configured using $page-&gt;console_cronjobs_db_table)</li>
 <li>x_conf_email_queue =&gt; email_queue (can be configured using $page-&gt;mail_queue_table)</li>
+<li>check also the settings table for values from the tables above to change the name of the table</li>
 </ul>
 </dd>
 </dl>
@@ -259,11 +260,13 @@
 </li>
 <li><p class="first">Replace $page-&gt;visits_logs_enabled with $page-&gt;logins_logs_enabled</p>
 </li>
-<li><p class="first">Move skins/ folder under assets/ folder. Some general sites do not require skins and should only be used in case there is the need for skins. Otherwise assets/ folder should be used.</p>
+<li><p class="first">Move skins folder under asseets folder. Some general sites do not require skins and should only be used in case there is the need for skins. Otherwise assets folder should be used.</p>
 </li>
-<li><p class="first">Replace &#8216;<a href="#id1"><span class="problematic" id="id2">tbl_</span></a>&#8216; with &#8216;&#8217; (blank string). In table aliasing and models there is no longer required to use this. Be carefull with this your project my be using &#8216;<a href="#id3"><span class="problematic" id="id4">tbl_</span></a>&#8216; string for other reasons. A manual search/replace is recommended.</p>
+<li><p class="first">Replace &#8216;<a href="#id1"><span class="problematic" id="id2">tbl_</span></a>&#8216; with &#8216;&#8217; (blank string). In table aliasing and models there is no longer required to use this.</p>
 </li>
 <li><p class="first">Rename &#8216;php.config.php&#8217; to &#8216;config.php&#8217; and make sure everything is properly defined.</p>
+</li>
+<li><p class="first">Create &#8216;config.development.php&#8217; or copy from the repository.</p>
 </li>
 </ol>
 </div>
