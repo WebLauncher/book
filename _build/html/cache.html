@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Configurations &mdash; WebLauncher Framework 2.7.0 documentation</title>
+    <title>Cache &mdash; WebLauncher Framework 2.7.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -29,8 +29,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="WebLauncher Framework 2.7.0 documentation" href="index.html" />
-    <link rel="next" title="General Configurations" href="config/general_config.html" />
-    <link rel="prev" title="Update from 2.6" href="update.html" />
+    <link rel="prev" title="Views" href="views.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -95,7 +94,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Configurations</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="config/general_config.html">General Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/module_config.html">Module Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/database_config.html">Database Configurations</a></li>
@@ -154,27 +153,27 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cache.html">Cache</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#configuring-cache">Configuring Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Cache</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-cache">Configuring Cache</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#read-through-caching">Read Through Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-to-a-cache">Writing to a Cache</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#read-through-caching">Read Through Caching</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-from-a-cache">Reading From a Cache</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deleting-from-a-cache">Deleting From a Cache</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#running-maintenance">Running Maintenance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-maintenance">Running Maintenance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
 </ul>
 </li>
 </ul>
@@ -190,7 +189,29 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Configurations</a></li>
+<li><a class="reference internal" href="#">Cache</a><ul>
+<li><a class="reference internal" href="#configuring-cache">Configuring Cache</a><ul>
+<li><a class="reference internal" href="#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#writing-to-a-cache">Writing to a Cache</a><ul>
+<li><a class="reference internal" href="#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
+<li><a class="reference internal" href="#read-through-caching">Read Through Caching</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reading-from-a-cache">Reading From a Cache</a><ul>
+<li><a class="reference internal" href="#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deleting-from-a-cache">Deleting From a Cache</a><ul>
+<li><a class="reference internal" href="#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
+<li><a class="reference internal" href="#running-maintenance">Running Maintenance</a></li>
+<li><a class="reference internal" href="#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -200,11 +221,7 @@
               
                 
   <li>
-    <a href="update.html" title="Previous Chapter: Update from 2.6"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Update from 2.6</span>
-    </a>
-  </li>
-  <li>
-    <a href="config/general_config.html" title="Next Chapter: General Configurations"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">General Configur... &raquo;</span>
+    <a href="views.html" title="Previous Chapter: Views"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Views</span>
     </a>
   </li>
               
@@ -214,7 +231,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="https://github.com/weblauncher/book/edit/master/configurations.rst"
+  <a href="https://github.com/weblauncher/book/edit/master/cache.rst"
      rel="nofollow">Modify Source</a>
 </div></li>
             
@@ -242,59 +259,138 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Configurations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config/general_config.html">General Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/module_config.html">Module Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/database_config.html">Database Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/email_config.html">E-mail Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/templates_config.html">Templates Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/cache_config.html">Cache Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/advanced_config.html">Advanced Configurations</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Migrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="controllers.html">Controllers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cache.html">Cache</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Cache</a><ul class="simple">
+</ul>
+</li>
 </ul>
 
 	</div>
 </div>
 		<div class="col-md-9">
 			
-  <div class="section" id="configurations">
-<h1>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h1>
-<p>Configurations in WebLauncher framework usually refers to applying some available configurations to the main class (System) and/or it&#8217;s sub-classes.</p>
-<p>For configuring the framework settings you can use the <strong>global config file</strong> (<tt class="docutils literal"><span class="pre">config.php</span></tt>) and the <strong>modules config</strong> files (<tt class="docutils literal"><span class="pre">config.php</span></tt> located under each module folder).</p>
-<p>Each of this files should start with:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">global $page;</span>
+  <div class="section" id="cache">
+<h1>Cache<a class="headerlink" href="#cache" title="Permalink to this headline">¶</a></h1>
+<p>Caching is frequently used to reduce the time it takes to create or read from
+other resources. Caching is often used to make reading from expensive
+resources less expensive. You can easily store the results of expensive queries,
+or remote webservice access that doesn&#8217;t frequently change in a cache. Once
+in the cache, re-reading the stored resource from the cache is much cheaper
+than accessing the remote resource.</p>
+<p>Caching in WebLauncher Framework is primarily facilitated by the <a class="reference external" href="http://www.stashphp.com/">Stash</a> library.
+This library offer extensive functionality and extensibility for a numerous number of Caching Engines.</p>
+<p>In WebLauncher Framework we have a class that facilitates the usage of this library (<tt class="docutils literal"><span class="pre">CacheManager</span></tt>).</p>
+<p>In a component or model it can be called simply by using <tt class="docutils literal"><span class="pre">$this-&gt;cache</span></tt>. This is a reference to the CacheManager instance. This uses the default configuration cache.</p>
+<p>To specify a certain cache configuration you can use <tt class="docutils literal"><span class="pre">$this-&gt;cache('short')</span></tt>. This gets the Cache Pool configured under the name &#8216;short&#8217;.</p>
+<p><a class="reference external" href="http://www.stashphp.com/">Stash</a> library can be used in any module to configure your own custom cache system.</p>
+<div class="section" id="configuring-cache">
+<h2>Configuring Cache<a class="headerlink" href="#configuring-cache" title="Permalink to this headline">¶</a></h2>
+<p>You can configure cache in the configuration files. Read more about <a class="reference internal" href="config/cache_config.html"><em>Cache Configurations</em></a>.</p>
+<div class="section" id="removing-configured-cache-engines">
+<h3>Removing Configured Cache Engines<a class="headerlink" href="#removing-configured-cache-engines" title="Permalink to this headline">¶</a></h3>
+<p>to do</p>
+</div>
+</div>
+<div class="section" id="writing-to-a-cache">
+<h2>Writing to a Cache<a class="headerlink" href="#writing-to-a-cache" title="Permalink to this headline">¶</a></h2>
+<p>Use <a href="#id2"><span class="problematic" id="id3">`Stash library documentation&lt;http://www.stashphp.com/Basics.html#examples&gt;`_</span></a> about saving data to a cache pool.
+Cache pools are returned either by <cite>$this-&gt;cache</cite> (default configuration) or <cite>$this-&gt;cache(&#8216;short&#8217;)</cite>.</p>
+<p>In component or model example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// get the cache item</span>
+<span class="x">// path/to/cache_item can be any string to help you identify the cache location</span>
+<span class="x">$item=$this-&gt;cache-&gt;getItem(&#39;path/to/cache_item&#39;);</span>
+
+<span class="x">// try to get cache item data</span>
+<span class="x">$data=$item-&gt;get();</span>
+
+<span class="x">// see if item is in cache</span>
+<span class="x">if($item-&gt;isMiss()){</span>
+<span class="x">        // lock the cache item so other know you are processing this</span>
+<span class="x">        $item-&gt;lock();</span>
+
+<span class="x">        // get data from the source that you want to cache</span>
+<span class="x">        $data=longRunningFunction();</span>
+
+<span class="x">        // set data into cache, you can also specify a TTL period as a second argument</span>
+<span class="x">        $item-&gt;set($data);</span>
+<span class="x">}</span>
+
+<span class="x">// use data for other functinality</span>
+<span class="x">doStuffWithData($data);</span>
 </pre></div>
 </div>
-<p>Using this variable you can set several settings (database, e-mail, authentication ...) for the framework to use.</p>
-<p>While the <strong>global config file</strong> is not restricted to any configuration limitations the <strong>modules config</strong> should be only used to set some minor modules related configurations.</p>
-<p>The path to the <strong>global config file</strong> can be modified if required using <em>SYSTEM_CONFIG_PATH</em> constant in the <tt class="docutils literal"><span class="pre">index.php</span></tt> file located in the root of the site. For security reasons this should be moved outside of web public location.
-This needs to be a global path. Do not use realtive paths. See example below:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">define(&#39;SYSTEM_CONFIG_PATH&#39;,&#39;/home/account/&#39;);</span>
+<div class="section" id="writing-multiple-keys-at-once">
+<h3>Writing Multiple Keys at Once<a class="headerlink" href="#writing-multiple-keys-at-once" title="Permalink to this headline">¶</a></h3>
+<p>to do</p>
+</div>
+<div class="section" id="read-through-caching">
+<h3>Read Through Caching<a class="headerlink" href="#read-through-caching" title="Permalink to this headline">¶</a></h3>
+<p>to do</p>
+</div>
+</div>
+<div class="section" id="reading-from-a-cache">
+<h2>Reading From a Cache<a class="headerlink" href="#reading-from-a-cache" title="Permalink to this headline">¶</a></h2>
+<p>Use <a href="#id4"><span class="problematic" id="id5">`Stash library documentation&lt;http://www.stashphp.com/Basics.html#identifying-items&gt;`_</span></a> about reading data from a cache pool.
+Cache pools are returned either by <cite>$this-&gt;cache</cite> (default configuration) or <cite>$this-&gt;cache(&#8216;short&#8217;)</cite>.</p>
+<p>In component or model example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// get the cache item</span>
+<span class="x">// path/to/cache_item can be any string to help you identify the cache location</span>
+<span class="x">$item=$this-&gt;cache-&gt;getItem(&#39;path/to/cache_item&#39;);</span>
+
+<span class="x">// try to get cache item data</span>
+<span class="x">$data=$item-&gt;get();</span>
 </pre></div>
 </div>
-<p>The name of the <strong>global config file</strong> can be modified if required using <em>SYSTEM_CONFIG_FILE</em> constant in the <tt class="docutils literal"><span class="pre">index.php</span></tt> file:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">define(&#39;SYSTEM_CONFIG_FILE&#39;,&#39;my_conf.php&#39;);</span>
+<div class="section" id="reading-multiple-keys-at-once">
+<h3>Reading Multiple Keys at Once<a class="headerlink" href="#reading-multiple-keys-at-once" title="Permalink to this headline">¶</a></h3>
+<p>to do</p>
+</div>
+</div>
+<div class="section" id="deleting-from-a-cache">
+<h2>Deleting From a Cache<a class="headerlink" href="#deleting-from-a-cache" title="Permalink to this headline">¶</a></h2>
+<p>Use <a href="#id6"><span class="problematic" id="id7">`Stash library documentation&lt;http://www.stashphp.com/Basics.html#clearing-data&gt;`_</span></a> about deleting data from a cache pool.
+Cache pools are returned either by <cite>$this-&gt;cache</cite> (default configuration) or <cite>$this-&gt;cache(&#8216;short&#8217;)</cite>.</p>
+<p>In component or model example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// get the cache item</span>
+<span class="x">// path/to/cache_item can be any string to help you identify the cache location</span>
+<span class="x">$item=$this-&gt;cache-&gt;getItem(&#39;path/to/cache_item&#39;);</span>
+
+<span class="x">// clear data from cache</span>
+<span class="x">$item-&gt;clear();</span>
 </pre></div>
 </div>
-<p>Read the following sections to find out more about configurations:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="config/general_config.html">General Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config/module_config.html">Module Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config/database_config.html">Database Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config/email_config.html">E-mail Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config/templates_config.html">Templates Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config/cache_config.html">Cache Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config/advanced_config.html">Advanced Configurations</a></li>
-</ul>
+<div class="section" id="deleting-multiple-keys-at-once">
+<h3>Deleting Multiple Keys at Once<a class="headerlink" href="#deleting-multiple-keys-at-once" title="Permalink to this headline">¶</a></h3>
+<p>to do</p>
+</div>
+</div>
+<div class="section" id="clearing-entire-pool-cached-data">
+<h2>Clearing Entire Pool Cached Data<a class="headerlink" href="#clearing-entire-pool-cached-data" title="Permalink to this headline">¶</a></h2>
+<p>Use <a href="#id8"><span class="problematic" id="id9">`Stash library documentation&lt;http://www.stashphp.com/Basics.html#emptying-the-entire-cache&gt;`_</span></a> about clearing entire data from a cache pool.
+Cache pools are returned either by <cite>$this-&gt;cache</cite> (default configuration) or <cite>$this-&gt;cache(&#8216;short&#8217;)</cite>.</p>
+<p>In component or model example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;cache-&gt;flush();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-maintenance">
+<h2>Running Maintenance<a class="headerlink" href="#running-maintenance" title="Permalink to this headline">¶</a></h2>
+<p>Some caching systems require maintenance actions to occur. This can include things such as removing stale data or reindexing for improved performance.</p>
+<p>Use <a href="#id10"><span class="problematic" id="id11">`Stash library documentation&lt;http://www.stashphp.com/Basics.html#running-maintenance&gt;`_</span></a> about clearing entire data from a cache pool.
+Cache pools are returned either by <cite>$this-&gt;cache</cite> (default configuration) or <cite>$this-&gt;cache(&#8216;short&#8217;)</cite>.</p>
+<p>In component or model example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;cache-&gt;purge();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="globally-enable-or-disable-cache">
+<h2>Globally Enable or Disable Cache<a class="headerlink" href="#globally-enable-or-disable-cache" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

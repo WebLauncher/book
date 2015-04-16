@@ -28,4 +28,4 @@ Contents
    controllers
    models
    views
-
+   cache
