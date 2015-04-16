@@ -158,19 +158,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -194,19 +187,12 @@
 <li><a class="reference internal" href="#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#writing-to-a-cache">Writing to a Cache</a><ul>
-<li><a class="reference internal" href="#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li><a class="reference internal" href="#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#writing-to-a-cache">Writing to a Cache</a></li>
 <li><a class="reference internal" href="#reading-from-a-cache">Reading From a Cache</a><ul>
-<li><a class="reference internal" href="#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li><a class="reference internal" href="#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li><a class="reference internal" href="#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li><a class="reference internal" href="#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li><a class="reference internal" href="#running-maintenance">Running Maintenance</a></li>
 <li><a class="reference internal" href="#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -325,14 +311,6 @@ Cache pools are returned either by <cite>$this-&gt;cache</cite> (default configu
 <span class="x">doStuffWithData($data);</span>
 </pre></div>
 </div>
-<div class="section" id="writing-multiple-keys-at-once">
-<h3>Writing Multiple Keys at Once<a class="headerlink" href="#writing-multiple-keys-at-once" title="Permalink to this headline">¶</a></h3>
-<p>to do</p>
-</div>
-<div class="section" id="read-through-caching">
-<h3>Read Through Caching<a class="headerlink" href="#read-through-caching" title="Permalink to this headline">¶</a></h3>
-<p>to do</p>
-</div>
 </div>
 <div class="section" id="reading-from-a-cache">
 <h2>Reading From a Cache<a class="headerlink" href="#reading-from-a-cache" title="Permalink to this headline">¶</a></h2>
@@ -347,14 +325,22 @@ Cache pools are returned either by <cite>$this-&gt;cache</cite> (default configu
 <span class="x">$data=$item-&gt;get();</span>
 </pre></div>
 </div>
-<div class="section" id="reading-multiple-keys-at-once">
-<h3>Reading Multiple Keys at Once<a class="headerlink" href="#reading-multiple-keys-at-once" title="Permalink to this headline">¶</a></h3>
-<p>to do</p>
+<div class="section" id="reading-writing-deleting-multiple-keys-at-once">
+<h3>Reading/Writing/Deleting Multiple Keys at Once<a class="headerlink" href="#reading-writing-deleting-multiple-keys-at-once" title="Permalink to this headline">¶</a></h3>
+<p>Use <a href="#id6"><span class="problematic" id="id7">`Stash library documentation&lt;http://www.stashphp.com/API.html#getitemiterator&gt;`_</span></a> about reading multiple data from a cache pool.
+Cache pools are returned either by <cite>$this-&gt;cache</cite> (default configuration) or <cite>$this-&gt;cache(&#8216;short&#8217;)</cite>.</p>
+<p>In component or model example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// get cache items</span>
+<span class="x">$items=$this-&gt;cache-&gt;getItemIterator(array(&#39;path/to/cache_item1&#39;,&#39;path/to/cache_item2&#39;,...));</span>
+
+<span class="x">// go to the items and get, set or clear the item</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="deleting-from-a-cache">
 <h2>Deleting From a Cache<a class="headerlink" href="#deleting-from-a-cache" title="Permalink to this headline">¶</a></h2>
-<p>Use <a href="#id6"><span class="problematic" id="id7">`Stash library documentation&lt;http://www.stashphp.com/Basics.html#clearing-data&gt;`_</span></a> about deleting data from a cache pool.
+<p>Use <a href="#id8"><span class="problematic" id="id9">`Stash library documentation&lt;http://www.stashphp.com/Basics.html#clearing-data&gt;`_</span></a> about deleting data from a cache pool.
 Cache pools are returned either by <cite>$this-&gt;cache</cite> (default configuration) or <cite>$this-&gt;cache(&#8216;short&#8217;)</cite>.</p>
 <p>In component or model example:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">// get the cache item</span>
@@ -365,14 +351,10 @@ Cache pools are returned either by <cite>$this-&gt;cache</cite> (default configu
 <span class="x">$item-&gt;clear();</span>
 </pre></div>
 </div>
-<div class="section" id="deleting-multiple-keys-at-once">
-<h3>Deleting Multiple Keys at Once<a class="headerlink" href="#deleting-multiple-keys-at-once" title="Permalink to this headline">¶</a></h3>
-<p>to do</p>
-</div>
 </div>
 <div class="section" id="clearing-entire-pool-cached-data">
 <h2>Clearing Entire Pool Cached Data<a class="headerlink" href="#clearing-entire-pool-cached-data" title="Permalink to this headline">¶</a></h2>
-<p>Use <a href="#id8"><span class="problematic" id="id9">`Stash library documentation&lt;http://www.stashphp.com/Basics.html#emptying-the-entire-cache&gt;`_</span></a> about clearing entire data from a cache pool.
+<p>Use <a href="#id10"><span class="problematic" id="id11">`Stash library documentation&lt;http://www.stashphp.com/Basics.html#emptying-the-entire-cache&gt;`_</span></a> about clearing entire data from a cache pool.
 Cache pools are returned either by <cite>$this-&gt;cache</cite> (default configuration) or <cite>$this-&gt;cache(&#8216;short&#8217;)</cite>.</p>
 <p>In component or model example:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;cache-&gt;flush();</span>
@@ -382,7 +364,7 @@ Cache pools are returned either by <cite>$this-&gt;cache</cite> (default configu
 <div class="section" id="running-maintenance">
 <h2>Running Maintenance<a class="headerlink" href="#running-maintenance" title="Permalink to this headline">¶</a></h2>
 <p>Some caching systems require maintenance actions to occur. This can include things such as removing stale data or reindexing for improved performance.</p>
-<p>Use <a href="#id10"><span class="problematic" id="id11">`Stash library documentation&lt;http://www.stashphp.com/Basics.html#running-maintenance&gt;`_</span></a> about clearing entire data from a cache pool.
+<p>Use <a href="#id12"><span class="problematic" id="id13">`Stash library documentation&lt;http://www.stashphp.com/Basics.html#running-maintenance&gt;`_</span></a> about clearing entire data from a cache pool.
 Cache pools are returned either by <cite>$this-&gt;cache</cite> (default configuration) or <cite>$this-&gt;cache(&#8216;short&#8217;)</cite>.</p>
 <p>In component or model example:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;cache-&gt;purge();</span>
@@ -391,6 +373,7 @@ Cache pools are returned either by <cite>$this-&gt;cache</cite> (default configu
 </div>
 <div class="section" id="globally-enable-or-disable-cache">
 <h2>Globally Enable or Disable Cache<a class="headerlink" href="#globally-enable-or-disable-cache" title="Permalink to this headline">¶</a></h2>
+<p>to do</p>
 </div>
 </div>
 

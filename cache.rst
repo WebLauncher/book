@@ -60,18 +60,6 @@ In component or model example::
 	
 	// use data for other functinality
 	doStuffWithData($data);
-	
-	
-
-Writing Multiple Keys at Once
------------------------------
-
-to do
-
-Read Through Caching
---------------------
-
-to do
 
 Reading From a Cache
 ====================
@@ -88,10 +76,18 @@ In component or model example::
 	// try to get cache item data
 	$data=$item->get();	
 
-Reading Multiple Keys at Once
+Reading/Writing/Deleting Multiple Keys at Once
 -----------------------------
 
-to do
+Use `Stash library documentation<http://www.stashphp.com/API.html#getitemiterator>`_ about reading multiple data from a cache pool. 
+Cache pools are returned either by `$this->cache` (default configuration) or `$this->cache('short')`.
+
+In component or model example::
+
+	// get cache items
+	$items=$this->cache->getItemIterator(array('path/to/cache_item1','path/to/cache_item2',...));
+	
+	// go to the items and get, set or clear the item
 
 
 Deleting From a Cache
@@ -108,11 +104,6 @@ In component or model example::
 	
 	// clear data from cache
 	$item->clear();	
-
-Deleting Multiple Keys at Once
-------------------------------
-
-to do
 
 Clearing Entire Pool Cached Data
 ================================
@@ -139,3 +130,5 @@ In component or model example::
 
 Globally Enable or Disable Cache
 ================================
+
+to do

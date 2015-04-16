@@ -268,6 +268,39 @@
 			
   <div class="section" id="cache-configurations">
 <h1>Cache Configurations<a class="headerlink" href="#cache-configurations" title="Permalink to this headline">¶</a></h1>
+<p>There are several configuration related to caching data or pages.</p>
+<p>To enable Stash library cache use:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$page-&gt;cache_enabled=true; // default it is true</span>
+</pre></div>
+</div>
+<p>To enable page caching (this applies only for Smarty generated pages):</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// to disable or enable page caching</span>
+<span class="x">$page-&gt;page_cache_enabled=true; // default it is false</span>
+</pre></div>
+</div>
+<p>To configure data cache for Stash library use:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// to configure caching options</span>
+<span class="x">$page-&gt;cache_options=array(</span>
+<span class="x">        &#39;short&#39;=&gt;array(</span>
+<span class="x">                &#39;type&#39;=&#39;file&#39;,</span>
+<span class="x">                // other types are &#39;sqlite&#39;,&#39;apc&#39;,&#39;memcached&#39;,&#39;redis&#39;,&#39;composite&#39;</span>
+
+
+<span class="x">                &#39;options&#39;=&gt;array(</span>
+<span class="x">                        &#39;path&#39;=&gt;&#39;path/to/store/cache&#39;</span>
+<span class="x">                ),</span>
+<span class="x">                // read more in Stash library about drivers options.</span>
+
+
+<span class="x">                &#39;default&#39;=&gt;true</span>
+<span class="x">                // tell the system if this pool should be used as default and can be accesed by $this-&gt;cache</span>
+<span class="x">        )</span>
+<span class="x">);</span>
+</pre></div>
+</div>
+<p>There are several cache drivers suported by <a class="reference external" href="http://www.stashphp.com/Drivers.html">Stash</a>.</p>
+<p>By default the system creates a file system cache pool if no other configuration is provided. Cache files are stored in the <cite>cache/_system/</cite> folder.
+To clear cache manually just remove that folder.</p>
 </div>
 
 
