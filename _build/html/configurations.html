@@ -159,19 +159,12 @@
 <li class="toctree-l3"><a class="reference internal" href="cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -268,12 +261,8 @@
   <div class="section" id="configurations">
 <h1>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h1>
 <p>Configurations in WebLauncher framework usually refers to applying some available configurations to the main class (System) and/or it&#8217;s sub-classes.</p>
-<p>For configuring the framework settings you can use the <strong>global config file</strong> (<tt class="docutils literal"><span class="pre">config.php</span></tt>) and the <strong>modules config</strong> files (<tt class="docutils literal"><span class="pre">config.php</span></tt> located under each module folder).</p>
-<p>Each of this files should start with:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">global $page;</span>
-</pre></div>
-</div>
-<p>Using this variable you can set several settings (database, e-mail, authentication ...) for the framework to use.</p>
+<p>For configuring the framework settings you can use the <strong>global config file</strong> (<tt class="docutils literal"><span class="pre">config.php</span></tt>) and the <strong>modules config</strong> files (<tt class="docutils literal"><span class="pre">config.php</span></tt> located under each module folder). Also environment based configuration files can be configured.</p>
+<p>Using $this variable you can set several settings $thisbase, e-mail, authentication ...) for the framework to use.</p>
 <p>While the <strong>global config file</strong> is not restricted to any configuration limitations the <strong>modules config</strong> should be only used to set some minor modules related configurations.</p>
 <p>The path to the <strong>global config file</strong> can be modified if required using <em>SYSTEM_CONFIG_PATH</em> constant in the <tt class="docutils literal"><span class="pre">index.php</span></tt> file located in the root of the site. For security reasons this should be moved outside of web public location.
 This needs to be a global path. Do not use realtive paths. See example below:</p>

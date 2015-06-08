@@ -160,19 +160,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -271,15 +264,15 @@
 <p>There are some configurations that apply to the template engine or the template content and resources. WebLauncher Framework uses <a class="reference external" href="http://www.smarty.net/">Smarty Template Engine</a> by default.
 There is also a built-in PHP simple template engine.</p>
 <p>To change the default template engine use:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$page-&gt;template_engine=&#39;php&#39;; // to change to simple PHP template engine</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;template_engine=&#39;php&#39;; // to change to simple PHP template engine</span>
 </pre></div>
 </div>
 <p>To import a global css file into the template use:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$page-&gt;add_css_file(&#39;/assets/style.css&#39;); // you can use Smarty predefined variables into the link provided {$root_styles} points to /assets/styles</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;add_css_file(&#39;/assets/style.css&#39;); // you can use Smarty predefined variables into the link provided {$root_styles} points to /assets/styles</span>
 </pre></div>
 </div>
 <p>To import a global javascript file into the template use:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$page-&gt;add_js_file(&#39;/assets/jquery/jquery.js&#39;); // you can use Smarty predefined variables into the link provided {$root_scripts} points to /assets/scripts</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;add_js_file(&#39;/assets/jquery/jquery.js&#39;); // you can use Smarty predefined variables into the link provided {$root_scripts} points to /assets/scripts</span>
 </pre></div>
 </div>
 <p>Go here to find out more about the <a class="reference internal" href="../views/predefined-template-variables.html"><em>predefined templated variables</em></a>.</p>

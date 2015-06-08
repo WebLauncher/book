@@ -31,7 +31,7 @@ WebLauncher Framework offers a code builder that will automatically create a new
 Navigate to ``yourdomain.com/module_name/new_component?a=build`` and this should generate you a new componet ``new_component`` if it's not existing.
 
 .. warning::
-	For this to work your webserver has to have write persmissions on the ``modules/module_name/components/`` folder and the ``$page->build_enabled`` configuration needs to be **true**.
+	For this to work your webserver has to have write persmissions on the ``modules/module_name/components/`` folder and the ``$this->build_enabled`` configuration needs to be **true**.
 
 To manually create a new component simply go into the ``modules/module_name/components/`` folder and add a new folder called {new_component}. No space or starting numbers are allowed in the name of the folder. The name should be URL compliant.
 

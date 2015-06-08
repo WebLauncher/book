@@ -160,19 +160,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -269,7 +262,7 @@
   <div class="section" id="database-configurations">
 <h1>Database Configurations<a class="headerlink" href="#database-configurations" title="Permalink to this headline">¶</a></h1>
 <p>Most online aplications nowdays have a database in it&#8217;s backend. Here are the settings that allow you to use a database connection:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$page -&gt; db_connections = array(0 =&gt; array(</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this -&gt; db_connections = array(0 =&gt; array(</span>
 <span class="x">        &#39;host&#39; =&gt; &#39;localhost&#39;,</span>
 <span class="x">        &#39;user&#39; =&gt; &#39;my_user&#39;,</span>
 <span class="x">        &#39;password&#39; =&gt; &#39;my_password&#39;,</span>
@@ -278,9 +271,9 @@
 <span class="x">));</span>
 </pre></div>
 </div>
-<p>While the system only uses by default the db connection located at index 0 in the $page-&gt;db_connections array, you can set several connections details. Connection will need to be initialised manually by your code.</p>
+<p>While the system only uses by default the db connection located at index 0 in the $this-&gt;db_connections array, you can set several connections details. Connection will need to be initialised manually by your code.</p>
 <p>WebLauncher Framework allows database table aliasing. Which means that you can give shorter name to the models that get associated with the db tables by using:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$page -&gt; tables = array(</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$this -&gt; tables = array(</span>
 <span class="x">        &#39;pages&#39; =&gt; &#39;my_site_pages&#39;,  // this will alias &#39;my_site_pages&#39; table to &#39;pages&#39; model</span>
 <span class="x">        ...</span>
 <span class="x">);</span>

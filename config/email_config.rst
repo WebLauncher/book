@@ -5,25 +5,25 @@ Most of the aplications need to send an e-mail now and then. WebLauncher Framewo
 
 Here are the configurations you can use to setup your e-mail delivery system::
 
-	$page->mail_host='your_mail_server';		
+	$this->mail_host='your_mail_server';		
 	// yout mail server address if local use localhost or 127.0.0.1
 	
-	$page->mail_type='smtp'; 					
+	$this->mail_type='smtp'; 					
 	// we recomment smtp (other: qmail, sendmail, mail, queue)
 	
-	$page->mail_user='noreply@yoursite.com';	
+	$this->mail_user='noreply@yoursite.com';	
 	// the smtp address user to use for e-mail sending
 	
-	$page->mail_password='smtp password';		
+	$this->mail_password='smtp password';		
 	// the smtp password
 	
-	$page->mail_ssl=false;						
+	$this->mail_ssl=false;						
 	// true if the smtp connection is using SSL
 	
-	$page->mail_port=25;						
+	$this->mail_port=25;						
 	// the smtp port to use	
 			
-	$page->mail_defaults = array(
+	$this->mail_defaults = array(
 		'subject' => 'Default e-mail subject',	// the default e-mail subject 
 		'from' => 'from@yoursite.com',			// the default from e-mail address 
 		'fromname' => 'Your Site Name',			// the default from name value 

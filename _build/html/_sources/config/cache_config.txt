@@ -5,17 +5,17 @@ There are several configuration related to caching data or pages.
 
 To enable Stash library cache use::
 
-	$page->cache_enabled=true; // default it is true
+	$this->cache_enabled=true; // default it is true
 	
 To enable page caching (this applies only for Smarty generated pages)::
 	
 	// to disable or enable page caching
-	$page->page_cache_enabled=true; // default it is false
+	$this->page_cache_enabled=true; // default it is false
 	
 To configure data cache for Stash library use::
 
 	// to configure caching options
-	$page->cache_options=array(
+	$this->cache_options=array(
 		'short'=>array(
 			'type'='file', 
 			// other types are 'sqlite','apc','memcached','redis','composite'

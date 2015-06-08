@@ -26,7 +26,7 @@ WebLauncher Framework offers a code builder that will automatically create a new
 Navigate to ``yourdomain.com/{module_name}?a=build-module`` and this should generate you a new module if it's not existing.
 
 .. warning::
-	For this to work your webserver has to have write persmissions on the ``modules/`` folder and the ``$page->build_enabled`` configuration needs to be **true**.
+	For this to work your webserver has to have write persmissions on the ``modules/`` folder and the ``$this->build_enabled`` configuration needs to be **true**.
 
 To manually create a new module simply go into the ``modules/`` folder and add a new folder called {module_name}. No space or starting numbers are allowed in the name of the folder. The name should be URL compliant.
 

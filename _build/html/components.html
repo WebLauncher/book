@@ -159,19 +159,12 @@
 <li class="toctree-l3"><a class="reference internal" href="cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -293,7 +286,7 @@ The <tt class="docutils literal"><span class="pre">home</span></tt> component is
 Navigate to <tt class="docutils literal"><span class="pre">yourdomain.com/module_name/new_component?a=build</span></tt> and this should generate you a new componet <tt class="docutils literal"><span class="pre">new_component</span></tt> if it&#8217;s not existing.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">For this to work your webserver has to have write persmissions on the <tt class="docutils literal"><span class="pre">modules/module_name/components/</span></tt> folder and the <tt class="docutils literal"><span class="pre">$page-&gt;build_enabled</span></tt> configuration needs to be <strong>true</strong>.</p>
+<p class="last">For this to work your webserver has to have write persmissions on the <tt class="docutils literal"><span class="pre">modules/module_name/components/</span></tt> folder and the <tt class="docutils literal"><span class="pre">$this-&gt;build_enabled</span></tt> configuration needs to be <strong>true</strong>.</p>
 </div>
 <p>To manually create a new component simply go into the <tt class="docutils literal"><span class="pre">modules/module_name/components/</span></tt> folder and add a new folder called {new_component}. No space or starting numbers are allowed in the name of the folder. The name should be URL compliant.</p>
 <p>The new component should be now accesible using <tt class="docutils literal"><span class="pre">yourdomain.com/module_name/new_component</span></tt>. Accessing this path should pop a 404 error.

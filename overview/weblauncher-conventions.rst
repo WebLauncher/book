@@ -43,7 +43,7 @@ A component structure is like this:
 - ``models`` 				(custom models folder | not required)
 - ``{component_name}.php`` 	(controller class file | required)
 
-A new component can be easily built using ?a=build in the url. For this to work the $page->build_enabled need to be true. 
+A new component can be easily built using ?a=build in the url. For this to work the $this->build_enabled need to be true. 
 
 Controller Conventions
 ======================

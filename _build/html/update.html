@@ -159,19 +159,12 @@
 <li class="toctree-l3"><a class="reference internal" href="cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -266,24 +259,24 @@
 <li><dl class="first docutils">
 <dt>System tables renamed:</dt>
 <dd><ul class="first last simple">
-<li>x_conf_sys_settings =&gt; settings (can be now configured using $page-&gt;settings_table)</li>
-<li>x_conf_languages =&gt; locales (can be now configured settings $page-&gt;libraries_settings[&#8216;wbl_locale&#8217;][&#8216;table&#8217;])</li>
-<li>x_conf_texts =&gt; locales_texts (can be now configured settings $page-&gt;libraries_settings[&#8216;wbl_locale&#8217;][&#8216;texts_table&#8217;])</li>
-<li>x_conf_translations =&gt; locales_translations (can be now configured settings $page-&gt;libraries_settings[&#8216;wbl_locale&#8217;][&#8216;translations_table&#8217;])</li>
-<li>x_conf_metas =&gt; seo_metas (can be now configured using $page-&gt;libraries_settings[&#8216;wbl_seo&#8217;][&#8216;metas_table&#8217;])</li>
-<li>x_conf_pages =&gt; seo_links (can be now configured using $page-&gt;libraries_settings[&#8216;wbl_seo&#8217;][&#8216;links_table&#8217;])</li>
-<li>x_conf_pages_tracking =&gt; seo_trackings (can be configured using $page-&gt;libraries_settings[&#8216;wbl_seo&#8217;][&#8216;trackings_table&#8217;])</li>
-<li>x_conf_visits_logs =&gt; logins (can be configured using $page-&gt;logins_logs_table)</li>
-<li>x_conf_cronjobs =&gt; cronjobs (can be configured using $page-&gt;console_cronjobs_db_table)</li>
-<li>x_conf_email_queue =&gt; email_queue (can be configured using $page-&gt;mail_queue_table)</li>
+<li>x_conf_sys_settings =&gt; settings (can be now configured using $this-&gt;settings_table)</li>
+<li>x_conf_languages =&gt; locales (can be now configured settings $this-&gt;libraries_settings[&#8216;wbl_locale&#8217;][&#8216;table&#8217;])</li>
+<li>x_conf_texts =&gt; locales_texts (can be now configured settings $this-&gt;libraries_settings[&#8216;wbl_locale&#8217;][&#8216;texts_table&#8217;])</li>
+<li>x_conf_translations =&gt; locales_translations (can be now configured settings $this-&gt;libraries_settings[&#8216;wbl_locale&#8217;][&#8216;translations_table&#8217;])</li>
+<li>x_conf_metas =&gt; seo_metas (can be now configured using $this-&gt;libraries_settings[&#8216;wbl_seo&#8217;][&#8216;metas_table&#8217;])</li>
+<li>x_conf_pages =&gt; seo_links (can be now configured using $this-&gt;libraries_settings[&#8216;wbl_seo&#8217;][&#8216;links_table&#8217;])</li>
+<li>x_conf_pages_tracking =&gt; seo_trackings (can be configured using $this-&gt;libraries_settings[&#8216;wbl_seo&#8217;][&#8216;trackings_table&#8217;])</li>
+<li>x_conf_visits_logs =&gt; logins (can be configured using $this-&gt;logins_logs_table)</li>
+<li>x_conf_cronjobs =&gt; cronjobs (can be configured using $this-&gt;console_cronjobs_db_table)</li>
+<li>x_conf_email_queue =&gt; email_queue (can be configured using $this-&gt;mail_queue_table)</li>
 <li>check also the settings table for values from the tables above to change the name of the table</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p class="first">Replace $page-&gt;metas_enabled with $page-&gt;seo_enabled</p>
+<li><p class="first">Replace $this-&gt;metas_enabled with $this-&gt;seo_enabled</p>
 </li>
-<li><p class="first">Replace $page-&gt;visits_logs_enabled with $page-&gt;logins_logs_enabled</p>
+<li><p class="first">Replace $this-&gt;visits_logs_enabled with $this-&gt;logins_logs_enabled</p>
 </li>
 <li><p class="first">Move skins folder under asseets folder. Some general sites do not require skins and should only be used in case there is the need for skins. Otherwise assets folder should be used.</p>
 </li>

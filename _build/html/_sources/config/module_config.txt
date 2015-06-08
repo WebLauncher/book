@@ -7,9 +7,9 @@ If you only have one module in the site you can just do these configuration dire
 
 Here are some mostly module area used ones::
 	
-	$page->title="my site default title";
+	$this->title="my site default title";
 	// sets the default title of the site
 	
-	$page->module_user_type='user';
+	$this->module_user_type='user';
 	// this is used by the Authentication module to determine which user type logs in
 	
