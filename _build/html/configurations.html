@@ -273,6 +273,7 @@ This needs to be a global path. Do not use realtive paths. See example below:</p
 <div class="highlight-php"><div class="highlight"><pre><span class="x">define(&#39;SYSTEM_CONFIG_FILE&#39;,&#39;my_conf.php&#39;);</span>
 </pre></div>
 </div>
+<p>Using <tt class="docutils literal"><span class="pre">$this-&gt;add_config('{name}',</span> <span class="pre">'{hostname}')</span></tt> you can add per hostname based configuration files that will be loaded if the hostname is matched. Script will try to load &#8216;{name}.config.php&#8217; file if existent.</p>
 <p>Read the following sections to find out more about configurations:</p>
 <div class="toctree-wrapper compound">
 <ul>

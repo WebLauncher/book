@@ -17,6 +17,8 @@ This needs to be a global path. Do not use realtive paths. See example below::
 The name of the **global config file** can be modified if required using *SYSTEM_CONFIG_FILE* constant in the ``index.php`` file::
 
 	define('SYSTEM_CONFIG_FILE','my_conf.php');
+	
+Using ``$this->add_config('{name}', '{hostname}')`` you can add per hostname based configuration files that will be loaded if the hostname is matched. Script will try to load '{name}.config.php' file if existent.
 
 Read the following sections to find out more about configurations:
 
