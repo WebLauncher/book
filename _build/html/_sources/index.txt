@@ -11,6 +11,39 @@ This book is mostly appliable to 2.7+ releases of the framework. Most of the fun
 **WebLauncher** framework is built with the ideea of keeping things simple and easy to implement. 
 Use this documentation to get familiar with the development tehniques used to implement a website or app using this framework.
 
+Requirements
+------------
+
+Apache 2.2+
+PHP 5.3.3+
+
+**Apache Modules**
+
+Required
+``mod_rewrite``
+
+Recomended [production]
+``mod_security``
+``mod_filter``
+``mod_deflate``
+``mod_expires``
+
+**PHP Extras**
+
+Required
+``PDO``
+``GD``
+``MCrypt``
+``curl``
+``mb_string``
+
+
+Recomended [production]
+``APC`` or ``EAccelerator`` or ``OPCache``
+``SOAP``
+``Posix``
+``mb_regex``
+
 Contents
 --------
 
