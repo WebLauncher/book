@@ -15,33 +15,47 @@ Requirements
 ------------
 
 Apache 2.2+
-PHP 5.3.3+
+
+PHP 5.3.3+ [Recomended 5.4+ or 5.5+]
 
 **Apache Modules**
 
 Required
+
 ``mod_rewrite``
 
 Recomended [production]
+
 ``mod_security``
+
 ``mod_filter``
+
 ``mod_deflate``
+
 ``mod_expires``
 
 **PHP Extras**
 
 Required
+
 ``PDO``
+
 ``GD``
+
 ``MCrypt``
+
 ``curl``
+
 ``mb_string``
 
-
 Recomended [production]
+
 ``APC`` or ``EAccelerator`` or ``OPCache``
+
 ``SOAP``
+
 ``Posix``
+
 ``mb_regex``
 
 Contents
