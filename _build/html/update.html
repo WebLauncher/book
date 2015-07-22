@@ -251,42 +251,34 @@
 			
   <div class="section" id="update-from-2-6">
 <h1>Update from 2.6<a class="headerlink" href="#update-from-2-6" title="Permalink to this headline">¶</a></h1>
-<ol class="arabic">
-<li><p class="first">Replace old framework folder (lib/stable) with the new one</p>
-</li>
-<li><p class="first">Empty cache folder (all compiled templates need to be deleted)</p>
-</li>
-<li><dl class="first docutils">
-<dt>System tables renamed:</dt>
-<dd><ul class="first last simple">
-<li>x_conf_sys_settings =&gt; settings (can be now configured using $this-&gt;settings_table)</li>
-<li>x_conf_languages =&gt; locales (can be now configured settings $this-&gt;libraries_settings[&#8216;wbl_locale&#8217;][&#8216;table&#8217;])</li>
-<li>x_conf_texts =&gt; locales_texts (can be now configured settings $this-&gt;libraries_settings[&#8216;wbl_locale&#8217;][&#8216;texts_table&#8217;])</li>
-<li>x_conf_translations =&gt; locales_translations (can be now configured settings $this-&gt;libraries_settings[&#8216;wbl_locale&#8217;][&#8216;translations_table&#8217;])</li>
-<li>x_conf_metas =&gt; seo_metas (can be now configured using $this-&gt;libraries_settings[&#8216;wbl_seo&#8217;][&#8216;metas_table&#8217;])</li>
-<li>x_conf_pages =&gt; seo_links (can be now configured using $this-&gt;libraries_settings[&#8216;wbl_seo&#8217;][&#8216;links_table&#8217;])</li>
-<li>x_conf_pages_tracking =&gt; seo_trackings (can be configured using $this-&gt;libraries_settings[&#8216;wbl_seo&#8217;][&#8216;trackings_table&#8217;])</li>
-<li>x_conf_visits_logs =&gt; logins (can be configured using $this-&gt;logins_logs_table)</li>
-<li>x_conf_cronjobs =&gt; cronjobs (can be configured using $this-&gt;console_cronjobs_db_table)</li>
-<li>x_conf_email_queue =&gt; email_queue (can be configured using $this-&gt;mail_queue_table)</li>
+<p>[REQUIRED]
+1. Replace old framework folder (lib/stable) with the new one
+2. Empty cache folder (all compiled templates need to be deleted)
+3. System tables renamed (can be solved by including <cite>config.26.php</cite> file at the end of your <cite>config.php</cite> file):</p>
+<blockquote>
+<div><ul class="simple">
+<li>x_conf_sys_settings =&gt; settings (can be now configured using $page-&gt;settings_table)</li>
+<li>x_conf_languages =&gt; locales (can be now configured settings $page-&gt;libraries_settings[&#8216;wbl_locale&#8217;][&#8216;table&#8217;])</li>
+<li>x_conf_texts =&gt; locales_texts (can be now configured settings $page-&gt;libraries_settings[&#8216;wbl_locale&#8217;][&#8216;texts_table&#8217;])</li>
+<li>x_conf_translations =&gt; locales_translations (can be now configured settings $page-&gt;libraries_settings[&#8216;wbl_locale&#8217;][&#8216;translations_table&#8217;])</li>
+<li>x_conf_metas =&gt; seo_metas (can be now configured using $page-&gt;libraries_settings[&#8216;wbl_seo&#8217;][&#8216;metas_table&#8217;])</li>
+<li>x_conf_pages =&gt; seo_links (can be now configured using $page-&gt;libraries_settings[&#8216;wbl_seo&#8217;][&#8216;links_table&#8217;])</li>
+<li>x_conf_pages_tracking =&gt; seo_trackings (can be configured using $page-&gt;libraries_settings[&#8216;wbl_seo&#8217;][&#8216;trackings_table&#8217;])</li>
+<li>x_conf_visits_logs =&gt; logins (can be configured using $page-&gt;logins_logs_table)</li>
+<li>x_conf_cronjobs =&gt; cronjobs (can be configured using $page-&gt;console_cronjobs_db_table)</li>
+<li>x_conf_email_queue =&gt; email_queue (can be configured using $page-&gt;mail_queue_table)</li>
 <li>check also the settings table for values from the tables above to change the name of the table</li>
 </ul>
-</dd>
-</dl>
-</li>
-<li><p class="first">Replace $this-&gt;metas_enabled with $this-&gt;seo_enabled</p>
-</li>
-<li><p class="first">Replace $this-&gt;visits_logs_enabled with $this-&gt;logins_logs_enabled</p>
-</li>
-<li><p class="first">Move skins folder under asseets folder. Some general sites do not require skins and should only be used in case there is the need for skins. Otherwise assets folder should be used.</p>
-</li>
-<li><p class="first">Replace &#8216;<a href="#id1"><span class="problematic" id="id2">tbl_</span></a>&#8216; with &#8216;&#8217; (blank string). In table aliasing and models there is no longer required to use this.</p>
-</li>
-<li><p class="first">Rename &#8216;php.config.php&#8217; to &#8216;config.php&#8217; and make sure everything is properly defined.</p>
-</li>
-<li><p class="first">Create &#8216;config.development.php&#8217; or copy from the repository.</p>
-</li>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Move skins folder under asseets folder. Some general sites do not require skins and should only be used in case there is the need for skins. Otherwise assets folder should be used.</li>
+<li>Replace &#8216;<a href="#id1"><span class="problematic" id="id2">tbl_</span></a>&#8216; with &#8216;&#8217; (blank string). In table aliasing and models there is no longer required to use this.</li>
+<li>Rename &#8216;php.config.php&#8217; to &#8216;config.php&#8217; and make sure everything is properly defined.</li>
+<li>Create &#8216;config.development.php&#8217; or copy from the repository.</li>
 </ol>
+<p>[OPTIONAL]
+Replace $page-&gt;metas_enabled with $page-&gt;seo_enabled
+Replace $page-&gt;visits_logs_enabled with $page-&gt;logins_logs_enabled</p>
 </div>
 
 
