@@ -3,35 +3,45 @@ General Configurations
 
 These general configurations will help the system determine how it should function.
 
-**Page trace**::
+Page trace
+----------
+::
 	
 	$this->trace = false;
 
 If true shows a trace help page that helps debug the issues, default value false.
 	
-**Debug mode**::
+Debug mode
+----------
+::
 
 	$this->debug = true;
 
 Activates the display of errors, if false all error will be not shown.
 	
-**Live mode**::
+Live mode
+---------
+::
 
 	$this->live = false;
 	
 If true tells the system that the site is in production so it should stop running debug codes and start optimizing site, also activates cache if configured.
 	
-**Default Module**::
+Default Module
+--------------
+::
 
 	$this->default_module = 'site/';
 	
 This tells the system which is the default module that it should render.
 	
-**Session Cookie Name**::
+Session Cookie Name
+-------------------
+::
 	
 	$this->session_cookie = 'default_session_cookie';
 	
-Set it to an appropiate name to your site theme.
+Set it to an appropriate name to your site theme.
 
 
 While no general configuration is required to be done and most settings have good default values to get you going easily, there might be the case you would like to changed these::

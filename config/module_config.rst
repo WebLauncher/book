@@ -1,9 +1,9 @@
 Module Configurations
 =====================
 
-You can do most configurations to the framework using **modules config** files (``config.php`` located under each module folder). These will only apply to the current module.
+You can do most configurations to the framework using **modules config** files (**config.php** located under each module folder). These will only apply to the current module.
 
-If you only have one module in the site you can just do these configuration directly into the **global config file** (``php.config.php``).
+If you only have one module in the site you can just do these configuration directly into the **global config file** (**php.config.php**).
 
 Here are some mostly module area used ones::
 	

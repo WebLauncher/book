@@ -40,7 +40,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -162,19 +162,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -291,9 +284,9 @@ functions.</p>
 fired <strong>before</strong> model callbacks are.</p>
 <div class="section" id="process-row">
 <h2>process_row<a class="headerlink" href="#process-row" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">process_row(array</span> <span class="pre">$row)</span></tt></p>
+<p><code class="docutils literal"><span class="pre">process_row(array</span> <span class="pre">$row)</span></code></p>
 <p>This method is called for each row retrieved from the database. This is a very important callback that lets you do extra processing on each row retrieved
-before actually sending the result of the <tt class="docutils literal"><span class="pre">get()</span></tt>, <tt class="docutils literal"><span class="pre">get_cond()</span></tt> and <tt class="docutils literal"><span class="pre">get_all()</span></tt> methods.</p>
+before actually sending the result of the <code class="docutils literal"><span class="pre">get()</span></code>, <code class="docutils literal"><span class="pre">get_cond()</span></code> and <code class="docutils literal"><span class="pre">get_all()</span></code> methods.</p>
 <p>As an example you would like to get the user information for each post retrieved from the database:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">function process_row($row){</span>
 <span class="x">    $row[&#39;user&#39;]=$this-&gt;models-&gt;users-&gt;get($row[&#39;user_id&#39;]);</span>
@@ -301,12 +294,12 @@ before actually sending the result of the <tt class="docutils literal"><span cla
 <span class="x">}</span>
 </pre></div>
 </div>
-<p>Please make sure you return the processed <tt class="docutils literal"><span class="pre">$row</span></tt> variable so that the function may pass the result further.</p>
+<p>Please make sure you return the processed <code class="docutils literal"><span class="pre">$row</span></code> variable so that the function may pass the result further.</p>
 </div>
 <div class="section" id="before-insert">
 <h2>before_insert<a class="headerlink" href="#before-insert" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">before_insert(array</span> <span class="pre">&amp;$data)</span></tt></p>
-<p>Called before any insert operation. In <tt class="docutils literal"><span class="pre">$data</span></tt> is the reference to the data that needs to be inserted.
+<p><code class="docutils literal"><span class="pre">before_insert(array</span> <span class="pre">&amp;$data)</span></code></p>
+<p>Called before any insert operation. In <code class="docutils literal"><span class="pre">$data</span></code> is the reference to the data that needs to be inserted.
 This callback can be used for doing some extra processing before each insert.</p>
 <p>For example when inserting a post you would like the title to be striped from any html tags:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">function before_insert($data){</span>
@@ -317,9 +310,9 @@ This callback can be used for doing some extra processing before each insert.</p
 </div>
 <div class="section" id="after-insert">
 <h2>after_insert<a class="headerlink" href="#after-insert" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">after_insert(array</span> <span class="pre">$data)</span></tt></p>
+<p><code class="docutils literal"><span class="pre">after_insert(array</span> <span class="pre">$data)</span></code></p>
 <p>Use this callback to do aditional processing or data insertions after a record has been inserted into DB using this model.</p>
-<p>As an example after each post insertions you would like to increase a value <tt class="docutils literal"><span class="pre">no_posts</span></tt> in the users profile:</p>
+<p>As an example after each post insertions you would like to increase a value <code class="docutils literal"><span class="pre">no_posts</span></code> in the users profile:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">function after_insert($data){</span>
 <span class="x">    $current_user_id=1;</span>
 <span class="x">    $current_user=$this-&gt;models-&gt;users-&gt;get($current_user_id);</span>
@@ -330,23 +323,23 @@ This callback can be used for doing some extra processing before each insert.</p
 </div>
 <div class="section" id="before-update">
 <h2>before_update<a class="headerlink" href="#before-update" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">before_update(array</span> <span class="pre">&amp;$data,</span> <span class="pre">&amp;$condition)</span></tt></p>
-<p>This callback can be used to do some processing on the $data and $condition before each <tt class="docutils literal"><span class="pre">update()</span></tt> call.</p>
+<p><code class="docutils literal"><span class="pre">before_update(array</span> <span class="pre">&amp;$data,</span> <span class="pre">&amp;$condition)</span></code></p>
+<p>This callback can be used to do some processing on the $data and $condition before each <code class="docutils literal"><span class="pre">update()</span></code> call.</p>
 </div>
 <div class="section" id="after-update">
 <h2>after_update<a class="headerlink" href="#after-update" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">after_update(array</span> <span class="pre">$data,</span> <span class="pre">$condition)</span></tt></p>
-<p>This method is called after any <tt class="docutils literal"><span class="pre">update()</span></tt> call. Can be used to do some extra updates on other models when an update happens on the current model.</p>
+<p><code class="docutils literal"><span class="pre">after_update(array</span> <span class="pre">$data,</span> <span class="pre">$condition)</span></code></p>
+<p>This method is called after any <code class="docutils literal"><span class="pre">update()</span></code> call. Can be used to do some extra updates on other models when an update happens on the current model.</p>
 </div>
 <div class="section" id="before-delete">
 <h2>before_delete<a class="headerlink" href="#before-delete" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">before_delete(integer</span> <span class="pre">&amp;$id)</span></tt></p>
-<p>This method is called before any <tt class="docutils literal"><span class="pre">delete()</span></tt> call. Can be used to do extra delete actions before the actual model delete call.</p>
+<p><code class="docutils literal"><span class="pre">before_delete(integer</span> <span class="pre">&amp;$id)</span></code></p>
+<p>This method is called before any <code class="docutils literal"><span class="pre">delete()</span></code> call. Can be used to do extra delete actions before the actual model delete call.</p>
 </div>
 <div class="section" id="after-delete">
 <h2>after_delete<a class="headerlink" href="#after-delete" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">after_delete(integer</span> <span class="pre">$id)</span></tt></p>
-<p>This method is called after any <tt class="docutils literal"><span class="pre">delete()</span></tt> call. Can be used to do extra delete actions after the actual model delete call.</p>
+<p><code class="docutils literal"><span class="pre">after_delete(integer</span> <span class="pre">$id)</span></code></p>
+<p>This method is called after any <code class="docutils literal"><span class="pre">delete()</span></code> call. Can be used to do extra delete actions after the actual model delete call.</p>
 </div>
 </div>
 
@@ -364,7 +357,7 @@ This callback can be used for doing some extra processing before each insert.</p
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

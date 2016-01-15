@@ -36,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -92,16 +92,36 @@
 <li class="toctree-l2"><a class="reference internal" href="install.html#setup">Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#using-the-build-tool">Using the build tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#check-requirements">Check requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#debug-statistics-for-previous-requests">Debug/Statistics for previous requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="update.html#required-steps">REQUIRED STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html#optional-steps">OPTIONAL STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html#note">NOTE</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config/general_config.html">General Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/general_config.html">General Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#page-trace">Page trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#debug-mode">Debug mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#live-mode">Live mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#default-module">Default Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#session-cookie-name">Session Cookie Name</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="config/module_config.html">Module Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/database_config.html">Database Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/email_config.html">E-mail Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/templates_config.html">Templates Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/cache_config.html">Cache Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/advanced_config.html">Advanced Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/advanced_config.html">Advanced Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config/advanced_config.html#addconfig-name-hostnames">addConfig($name,$hostnames)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Migrations</a><ul>
@@ -109,6 +129,7 @@
 <li class="toctree-l2"><a class="reference internal" href="migrations.html#defining-a-migration">Defining a migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migrations.html#running-migrations">Running migrations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migrations.html#running-migration-up-or-down">Running migration up or down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html#running-migration-from-the-php-console-in-development">Running migration from the php console (in development)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a><ul>
@@ -637,7 +658,7 @@
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

@@ -40,7 +40,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -162,19 +162,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -281,17 +274,17 @@
 in real projects( you should use a deleted flag in the table) we offer this functionality as described below.</p>
 <div class="section" id="delete">
 <span id="model-delete"></span><h2>delete<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">delete(integer</span> <span class="pre">$id,</span> <span class="pre">boolean</span> <span class="pre">$callbacks=true);</span></tt></p>
+<p><code class="docutils literal"><span class="pre">delete(integer</span> <span class="pre">$id,</span> <span class="pre">boolean</span> <span class="pre">$callbacks=true);</span></code></p>
 <p>Deletes the record identified by $id:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;models-&gt;posts-&gt;delete(1);</span>
 <span class="x">// deletes post with id=1</span>
 </pre></div>
 </div>
-<p>This method has some callback which you can customize with hoocks <tt class="docutils literal"><span class="pre">before_delete()</span></tt> and <tt class="docutils literal"><span class="pre">after_delete()</span></tt>.</p>
+<p>This method has some callback which you can customize with hoocks <code class="docutils literal"><span class="pre">before_delete()</span></code> and <code class="docutils literal"><span class="pre">after_delete()</span></code>.</p>
 </div>
 <div class="section" id="delete-cond">
 <span id="model-delete-cond"></span><h2>delete_cond<a class="headerlink" href="#delete-cond" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">delete_cond(mixed</span> <span class="pre">$condition)</span></tt></p>
+<p><code class="docutils literal"><span class="pre">delete_cond(mixed</span> <span class="pre">$condition)</span></code></p>
 <p>Delete records identified by the given condition:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;models-&gt;posts-&gt;delete_cond(&#39;title=&quot;Old Title&quot;&#39;);</span>
 </pre></div>
@@ -313,7 +306,7 @@ in real projects( you should use a deleted flag in the table) we offer this func
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

@@ -40,7 +40,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -162,19 +162,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -194,11 +187,11 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Saving Your Data</a><ul>
-<li><a class="reference internal" href="#model-insert-data-callbacks-true"><tt class="docutils literal"><span class="pre">Model::insert($data,</span> <span class="pre">$callbacks=true)</span></tt></a></li>
-<li><a class="reference internal" href="#model-insert-multiple-fields-params"><tt class="docutils literal"><span class="pre">Model::insert_multiple($fields,</span> <span class="pre">$params)</span></tt></a></li>
-<li><a class="reference internal" href="#model-update-data-condition-callbacks-true"><tt class="docutils literal"><span class="pre">Model::update($data,$condition='',</span> <span class="pre">$callbacks=true)</span></tt></a></li>
-<li><a class="reference internal" href="#model-update-field-id-field-value"><tt class="docutils literal"><span class="pre">Model::update_field($id,</span> <span class="pre">$field,</span> <span class="pre">$value)</span></tt></a></li>
-<li><a class="reference internal" href="#model-update-field-cond-field-value-condition"><tt class="docutils literal"><span class="pre">Model::update_field_cond($field,</span> <span class="pre">$value,</span> <span class="pre">$condition)</span></tt></a></li>
+<li><a class="reference internal" href="#base-insert-data-callbacks-true"><code class="docutils literal"><span class="pre">Base::insert($data,</span> <span class="pre">$callbacks=true)</span></code></a></li>
+<li><a class="reference internal" href="#base-insert-multiple-fields-params"><code class="docutils literal"><span class="pre">Base::insert_multiple($fields,</span> <span class="pre">$params)</span></code></a></li>
+<li><a class="reference internal" href="#base-update-data-condition-callbacks-true"><code class="docutils literal"><span class="pre">Base::update($data,$condition='',</span> <span class="pre">$callbacks=true)</span></code></a></li>
+<li><a class="reference internal" href="#base-update-field-id-field-value"><code class="docutils literal"><span class="pre">Base::update_field($id,</span> <span class="pre">$field,</span> <span class="pre">$value)</span></code></a></li>
+<li><a class="reference internal" href="#base-update-field-cond-field-value-condition"><code class="docutils literal"><span class="pre">Base::update_field_cond($field,</span> <span class="pre">$value,</span> <span class="pre">$condition)</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -210,7 +203,7 @@
               
                 
   <li>
-    <a href="retrieving-your-data.html" title="Previous Chapter: Retrieving Your Data"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Retrieving Your ...</span>
+    <a href="retrieving-your-data.html" title="Previous Chapter: Retrieving Your Data"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Retrieving Yo...</span>
     </a>
   </li>
   <li>
@@ -281,99 +274,99 @@
   <div class="section" id="saving-your-data">
 <h1>Saving Your Data<a class="headerlink" href="#saving-your-data" title="Permalink to this headline">¶</a></h1>
 <p>WebLauncher Framework makes saving model data a snap. Data ready to be saved
-should be passed to the model&#8217;s <tt class="docutils literal"><span class="pre">save()</span></tt> method using the
+should be passed to the model&#8217;s <code class="docutils literal"><span class="pre">save()</span></code> method using the
 following basic format:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">Array</span>
-<span class="x">(</span>
-<span class="x">    [fieldname1] =&gt; &#39;value&#39;,</span>
-<span class="x">    [fieldname2] =&gt; &#39;value&#39;</span>
-<span class="x">)</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">array</span>
+<span class="p">(</span>
+    <span class="p">[</span><span class="nx">fieldname1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span>
+    <span class="p">[</span><span class="nx">fieldname2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="s1">&#39;value&#39;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 <p>Here&#8217;s a quick example of a controller action that uses a WebLauncher Framework
 model to save data to a database table:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">public function edit($id) {</span>
-<span class="x">    if(isset($_POST[&#39;id&#39;])){</span>
-<span class="x">        $data=array();</span>
-<span class="x">        $data[&#39;id&#39;]=$_POST[&#39;id&#39;];</span>
-<span class="x">        $data[&#39;title&#39;]=$_POST[&#39;title&#39;];</span>
-<span class="x">        $data[&#39;content&#39;]=$_POST[&#39;content&#39;];</span>
-<span class="x">        $id=$this-&gt;models-&gt;posts-&gt;save($data);</span>
-<span class="x">    }</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">edit</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])){</span>
+        <span class="nv">$data</span><span class="o">=</span><span class="k">array</span><span class="p">();</span>
+        <span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">=</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">];</span>
+        <span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">=</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">];</span>
+        <span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span><span class="o">=</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">];</span>
+        <span class="nv">$id</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">models</span><span class="o">-&gt;</span><span class="na">posts</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+    <span class="p">}</span>
 
-<span class="x">    // If no form data, find the post to be edited</span>
-<span class="x">    // and hand it to the view.</span>
-<span class="x">    $this-&gt;assign(&#39;post&#39;, $this-&gt;models-&gt;posts-&gt;get($id));</span>
-<span class="x">}</span>
+    <span class="c1">// If no form data, find the post to be edited</span>
+    <span class="c1">// and hand it to the view.</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">models</span><span class="o">-&gt;</span><span class="na">posts</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$id</span><span class="p">));</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>When save is called the function will execute <tt class="docutils literal"><span class="pre">insert()</span></tt> or <tt class="docutils literal"><span class="pre">update()</span></tt> depending if the id is passed in thee $data array.</p>
+<p>When save is called the function will execute <code class="docutils literal"><span class="pre">insert()</span></code> or <code class="docutils literal"><span class="pre">update()</span></code> depending if the id is passed in thee $data array.</p>
 <p>There are a few other save-related methods in the model that you&#8217;ll
 find useful:</p>
-<div class="section" id="model-insert-data-callbacks-true">
-<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::insert($data,</span> <span class="pre">$callbacks=true)</span></tt><a class="headerlink" href="#model-insert-data-callbacks-true" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">Model::insert()</span></tt> can be used to specifically insert data into the table linked to the model:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$data=array(</span>
-<span class="x">    &#39;title&#39;=&gt;&#39;Testing&#39;,</span>
-<span class="x">    &#39;content&#39;=&gt;&#39;content of the post&#39;);</span>
-<span class="x">$post_id=$this-&gt;models-&gt;posts-&gt;insert($data);</span>
+<div class="section" id="base-insert-data-callbacks-true">
+<h2><code class="xref php php-meth docutils literal"><span class="pre">Base::insert($data,</span> <span class="pre">$callbacks=true)</span></code><a class="headerlink" href="#base-insert-data-callbacks-true" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">Base::insert()</span></code> can be used to specifically insert data into the table linked to the model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$data</span><span class="o">=</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;title&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Testing&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;content&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;content of the post&#39;</span><span class="p">);</span>
+<span class="nv">$post_id</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">models</span><span class="o">-&gt;</span><span class="na">posts</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="model-insert-multiple-fields-params">
-<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::insert_multiple($fields,</span> <span class="pre">$params)</span></tt><a class="headerlink" href="#model-insert-multiple-fields-params" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">Model::insert_multiple()</span></tt> can be used to specifically insert multiple data rows into the table linked to the model:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$fields=array(&#39;title&#39;,&#39;content&#39;);</span>
-<span class="x">// this are the collumns to be inserted</span>
+<div class="section" id="base-insert-multiple-fields-params">
+<h2><code class="xref php php-meth docutils literal"><span class="pre">Base::insert_multiple($fields,</span> <span class="pre">$params)</span></code><a class="headerlink" href="#base-insert-multiple-fields-params" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">Base::insert_multiple()</span></code> can be used to specifically insert multiple data rows into the table linked to the model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$fields</span><span class="o">=</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;content&#39;</span><span class="p">);</span>
+<span class="c1">// this are the collumns to be inserted</span>
 
-<span class="x">$data=array();</span>
-<span class="x">$data[]=array(</span>
-<span class="x">    &#39;title&#39;=&gt;&#39;Testing&#39;,</span>
-<span class="x">    &#39;content&#39;=&gt;&#39;content of the post 1&#39;);</span>
-<span class="x">$data[]=array(</span>
-<span class="x">    &#39;title&#39;=&gt;&#39;Testing 1&#39;,</span>
-<span class="x">    &#39;content&#39;=&gt;&#39;content of the post 2&#39;);</span>
-<span class="x">$this-&gt;models-&gt;posts-&gt;insert_multiple($fields,$data);</span>
+<span class="nv">$data</span><span class="o">=</span><span class="k">array</span><span class="p">();</span>
+<span class="nv">$data</span><span class="p">[]</span><span class="o">=</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;title&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Testing&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;content&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;content of the post 1&#39;</span><span class="p">);</span>
+<span class="nv">$data</span><span class="p">[]</span><span class="o">=</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;title&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Testing 1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;content&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;content of the post 2&#39;</span><span class="p">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">models</span><span class="o">-&gt;</span><span class="na">posts</span><span class="o">-&gt;</span><span class="na">insert_multiple</span><span class="p">(</span><span class="nv">$fields</span><span class="p">,</span><span class="nv">$data</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>This method is only recommended if you don&#8217;t need the last inserted id of the rows inserted. Otherwise please use <tt class="docutils literal"><span class="pre">insert()</span></tt>.</p>
+<p>This method is only recommended if you don&#8217;t need the last inserted id of the rows inserted. Otherwise please use <code class="docutils literal"><span class="pre">insert()</span></code>.</p>
 </div>
-<div class="section" id="model-update-data-condition-callbacks-true">
-<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::update($data,$condition='',</span> <span class="pre">$callbacks=true)</span></tt><a class="headerlink" href="#model-update-data-condition-callbacks-true" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">Model::update()</span></tt> can be used to specifically update data from the table linked to the model:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$id=1;</span>
-<span class="x">$data=array(</span>
-<span class="x">    &#39;title&#39;=&gt;&#39;Testing&#39;,</span>
-<span class="x">    &#39;content&#39;=&gt;&#39;content of the post&#39;);</span>
-<span class="x">$post_id=$this-&gt;models-&gt;posts-&gt;update($data,&#39;id=&#39;.$id);</span>
-<span class="x">// by using a different condition you can update more than one row from the table</span>
+<div class="section" id="base-update-data-condition-callbacks-true">
+<h2><code class="xref php php-meth docutils literal"><span class="pre">Base::update($data,$condition='',</span> <span class="pre">$callbacks=true)</span></code><a class="headerlink" href="#base-update-data-condition-callbacks-true" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">Base::update()</span></code> can be used to specifically update data from the table linked to the model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$id</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="nv">$data</span><span class="o">=</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;title&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Testing&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;content&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;content of the post&#39;</span><span class="p">);</span>
+<span class="nv">$post_id</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">models</span><span class="o">-&gt;</span><span class="na">posts</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span><span class="s1">&#39;id=&#39;</span><span class="o">.</span><span class="nv">$id</span><span class="p">);</span>
+<span class="c1">// by using a different condition you can update more than one row from the table</span>
 </pre></div>
 </div>
 <p>You can also provide the id directly in the data array like this, then no condition is required:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$data=array(</span>
-<span class="x">    &#39;id&#39;=&gt;1,</span>
-<span class="x">    &#39;title&#39;=&gt;&#39;Testing&#39;,</span>
-<span class="x">    &#39;content&#39;=&gt;&#39;content of the post&#39;);</span>
-<span class="x">$post_id=$this-&gt;models-&gt;posts-&gt;update($data);</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$data</span><span class="o">=</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;id&#39;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;title&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Testing&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;content&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;content of the post&#39;</span><span class="p">);</span>
+<span class="nv">$post_id</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">models</span><span class="o">-&gt;</span><span class="na">posts</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="model-update-field-id-field-value">
-<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::update_field($id,</span> <span class="pre">$field,</span> <span class="pre">$value)</span></tt><a class="headerlink" href="#model-update-field-id-field-value" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">Model::update_field()</span></tt> can be used to specifically update a certain field in a row(s) with the given id(s):</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;models-&gt;posts-&gt;update_field(1,&#39;title&#39;,&#39;New Title&#39;);</span>
-<span class="x">// this will update the post with id =1 title to the new value</span>
+<div class="section" id="base-update-field-id-field-value">
+<h2><code class="xref php php-meth docutils literal"><span class="pre">Base::update_field($id,</span> <span class="pre">$field,</span> <span class="pre">$value)</span></code><a class="headerlink" href="#base-update-field-id-field-value" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">Base::update_field()</span></code> can be used to specifically update a certain field in a row(s) with the given id(s):</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">models</span><span class="o">-&gt;</span><span class="na">posts</span><span class="o">-&gt;</span><span class="na">update_field</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;New Title&#39;</span><span class="p">);</span>
+<span class="c1">// this will update the post with id =1 title to the new value</span>
 
-<span class="x">$this-&gt;models-&gt;posts-&gt;update_field(array(1,2),&#39;title&#39;,&#39;New Title&#39;);</span>
-<span class="x">// this will update the post with id=1 and post with id=2 title to the new value</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">models</span><span class="o">-&gt;</span><span class="na">posts</span><span class="o">-&gt;</span><span class="na">update_field</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;New Title&#39;</span><span class="p">);</span>
+<span class="c1">// this will update the post with id=1 and post with id=2 title to the new value</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="model-update-field-cond-field-value-condition">
-<h2><tt class="xref php php-meth docutils literal"><span class="pre">Model::update_field_cond($field,</span> <span class="pre">$value,</span> <span class="pre">$condition)</span></tt><a class="headerlink" href="#model-update-field-cond-field-value-condition" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">Model::update_field_cond()</span></tt> can be used to specifically update a certain field in a row(s) found with the given condition:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;models-&gt;posts-&gt;update_field_cond(&#39;title&#39;,&#39;New Title&#39;,&#39;title=&quot;Old Title&quot;&#39;);</span>
-<span class="x">// this will update the post with title=&quot;Old Title&quot; title to the new value</span>
+<div class="section" id="base-update-field-cond-field-value-condition">
+<h2><code class="xref php php-meth docutils literal"><span class="pre">Base::update_field_cond($field,</span> <span class="pre">$value,</span> <span class="pre">$condition)</span></code><a class="headerlink" href="#base-update-field-cond-field-value-condition" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">Base::update_field_cond()</span></code> can be used to specifically update a certain field in a row(s) found with the given condition:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">models</span><span class="o">-&gt;</span><span class="na">posts</span><span class="o">-&gt;</span><span class="na">update_field_cond</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;New Title&#39;</span><span class="p">,</span><span class="s1">&#39;title=&quot;Old Title&quot;&#39;</span><span class="p">);</span>
+<span class="c1">// this will update the post with title=&quot;Old Title&quot; title to the new value</span>
 </pre></div>
 </div>
 </div>
@@ -393,7 +386,7 @@ find useful:</p>
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

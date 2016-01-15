@@ -40,7 +40,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -96,16 +96,36 @@
 <li class="toctree-l2"><a class="reference internal" href="../install.html#setup">Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#using-the-build-tool">Using the build tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#check-requirements">Check requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#debug-statistics-for-previous-requests">Debug/Statistics for previous requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../update.html">Update from 2.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../update.html#required-steps">REQUIRED STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../update.html#optional-steps">OPTIONAL STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../update.html#note">NOTE</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../configurations.html">Configurations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../config/general_config.html">General Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/general_config.html">General Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../config/general_config.html#page-trace">Page trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../config/general_config.html#debug-mode">Debug mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../config/general_config.html#live-mode">Live mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../config/general_config.html#default-module">Default Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../config/general_config.html#session-cookie-name">Session Cookie Name</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../config/module_config.html">Module Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../config/database_config.html">Database Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../config/email_config.html">E-mail Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../config/templates_config.html">Templates Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../config/cache_config.html">Cache Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../config/advanced_config.html">Advanced Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/advanced_config.html">Advanced Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../config/advanced_config.html#addconfig-name-hostnames">addConfig($name,$hostnames)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../migrations.html">Migrations</a><ul>
@@ -113,6 +133,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../migrations.html#defining-a-migration">Defining a migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../migrations.html#running-migrations">Running migrations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../migrations.html#running-migration-up-or-down">Running migration up or down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migrations.html#running-migration-from-the-php-console-in-development">Running migration from the php console (in development)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a><ul>
@@ -283,7 +304,7 @@ nodes in the tree is not as simple as deleting, inserting, and editing rows in
 the table. Many records may need to be updated as things move around. Rather
 than creating those tree-manipulation methods on a per model basis (for every
 model that needs that functionality), we could simply tell our model to use the
-<tt class="xref php php-class docutils literal"><span class="pre">BaseTree</span></tt>, or in more formal terms, we tell our model to behave
+<code class="xref php php-class docutils literal"><span class="pre">BaseTree</span></code>, or in more formal terms, we tell our model to behave
 as a Tree. This is known as attaching a behavior to a model. With just one line
 of code, our WebLauncher Framework model takes on a whole new set of methods that allow it to
 interact with the underlying structure.</p>
@@ -296,43 +317,43 @@ and how to create our own.</p>
 one, reference the chapters below:</p>
 <div class="section" id="using-extensions">
 <h2>Using Extensions<a class="headerlink" href="#using-extensions" title="Permalink to this headline">¶</a></h2>
-<p>Behaviors are attached to models through the <tt class="docutils literal"><span class="pre">$extends</span></tt> model class
+<p>Behaviors are attached to models through the <code class="docutils literal"><span class="pre">$extends</span></code> model class
 variable:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class categories extends Base {</span>
-<span class="x">    public $extends = array(&#39;Tree&#39;);</span>
-<span class="x">}</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">categories</span> <span class="k">extends</span> <span class="nx">Base</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$extends</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Tree&#39;</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>This example shows how a Category model could be managed in a tree
 structure using the BaseTree extender. Once a extension has been
 specified, use the methods added by the behavior as if they always
 existed as part of the original model:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">// get a category</span>
-<span class="x">$this-&gt;models-&gt;categories-&gt;get(1);</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// get a category</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">models</span><span class="o">-&gt;</span><span class="na">categories</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 
-<span class="x">// Use behavior method, children():</span>
-<span class="x">$kids = $this-&gt;models-&gt;categories-&gt;get_children();</span>
+<span class="c1">// Use behavior method, children():</span>
+<span class="nv">$kids</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">models</span><span class="o">-&gt;</span><span class="na">categories</span><span class="o">-&gt;</span><span class="na">get_children</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>Some extensions may require or allow settings to be defined when the
 extension is attached to the model. Here, we tell our BaseTree extension
 the name of the &#8220;parent_id&#8221; field in the underlying
 database table:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class categories extends Base {</span>
-<span class="x">    public $extends = array(&#39;Tree&#39;)</span>
-<span class="x">    public $parent_id_field=&#39;parent_id&#39;;</span>
-<span class="x">}</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">categories</span> <span class="k">extends</span> <span class="nx">Base</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$extends</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Tree&#39;</span><span class="p">)</span>
+    <span class="k">public</span> <span class="nv">$parent_id_field</span><span class="o">=</span><span class="s1">&#39;parent_id&#39;</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>We can also attach several extension to a model. There&#8217;s no reason
 why, for example, our categories model should only behave as a tree,
 it may also need internationalization support:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class categories extends Base {</span>
-<span class="x">    public $extends = array(</span>
-<span class="x">        &#39;Tree&#39;,</span>
-<span class="x">        &#39;Translate&#39;</span>
-<span class="x">    );</span>
-<span class="x">}</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">categories</span> <span class="k">extends</span> <span class="nx">Base</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$extends</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;Tree&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Translate&#39;</span>
+    <span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>So far we have been adding extensions to models using a model class
@@ -342,8 +363,8 @@ models throughout the model&#8217;s lifetime. However, we may need to
 our previous Category model, which is acting as a Tree and a
 Translate model, we need for some reason to force it to stop acting
 as a Translate model:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">// Detach a extension from our model:</span>
-<span class="x">$this-&gt;models-&gt;categories-&gt;Extensions-&gt;unload(&#39;Translate&#39;);</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// Detach a extension from our model:</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">models</span><span class="o">-&gt;</span><span class="na">categories</span><span class="o">-&gt;</span><span class="na">Extensions</span><span class="o">-&gt;</span><span class="na">unload</span><span class="p">(</span><span class="s1">&#39;Translate&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>That will make our categories model stop extending Translate
@@ -354,11 +375,11 @@ our gets, our saves, etc.</p>
 runtime, we can also attach new behaviors. Say that our familiar
 categories model needs to start extending a Christmas model, but
 only on Christmas day:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">// If today is Dec 25</span>
-<span class="x">if (date(&#39;m/d&#39;) === &#39;12/25&#39;) {</span>
-<span class="x">    // Our model needs to behave as a Christmas model</span>
-<span class="x">    $this-&gt;models-&gt;categories-&gt;extend(&#39;Christmas&#39;);</span>
-<span class="x">}</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// If today is Dec 25</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">date</span><span class="p">(</span><span class="s1">&#39;m/d&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="s1">&#39;12/25&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Our model needs to behave as a Christmas model</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">models</span><span class="o">-&gt;</span><span class="na">categories</span><span class="o">-&gt;</span><span class="na">extend</span><span class="p">(</span><span class="s1">&#39;Christmas&#39;</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -378,7 +399,7 @@ only on Christmas day:</p>
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

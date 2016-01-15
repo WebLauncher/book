@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -93,16 +93,36 @@
 <li class="toctree-l2"><a class="reference internal" href="install.html#setup">Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#using-the-build-tool">Using the build tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#check-requirements">Check requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#debug-statistics-for-previous-requests">Debug/Statistics for previous requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="update.html#required-steps">REQUIRED STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html#optional-steps">OPTIONAL STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html#note">NOTE</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config/general_config.html">General Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/general_config.html">General Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#page-trace">Page trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#debug-mode">Debug mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#live-mode">Live mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#default-module">Default Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#session-cookie-name">Session Cookie Name</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="config/module_config.html">Module Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/database_config.html">Database Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/email_config.html">E-mail Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/templates_config.html">Templates Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/cache_config.html">Cache Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/advanced_config.html">Advanced Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/advanced_config.html">Advanced Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config/advanced_config.html#addconfig-name-hostnames">addConfig($name,$hostnames)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Migrations</a><ul>
@@ -110,6 +130,7 @@
 <li class="toctree-l2"><a class="reference internal" href="migrations.html#defining-a-migration">Defining a migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migrations.html#running-migrations">Running migrations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migrations.html#running-migration-up-or-down">Running migration up or down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html#running-migration-from-the-php-console-in-development">Running migration from the php console (in development)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a><ul>
@@ -159,19 +180,12 @@
 <li class="toctree-l3"><a class="reference internal" href="cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -285,40 +299,40 @@ controllers thin, and your models fat. This will help you more easily reuse
 your code and makes your code easier to test.</p>
 <p>Commonly, a controller is used to manage the logic around a single model. For
 example, if you were building a blog, you might have a
-<tt class="docutils literal"><span class="pre">posts_page</span></tt> controller managing your posts and an <tt class="docutils literal"><span class="pre">category_page</span></tt> managing your
+<code class="docutils literal"><span class="pre">posts_page</span></code> controller managing your posts and an <code class="docutils literal"><span class="pre">category_page</span></code> managing your
 categories. However, it&#8217;s also possible to have controllers work with more than
 one model. To keep the code clean you should name the controller according to the name
 of the primary model it handles.</p>
-<p>Your application&#8217;s controllers extend the <tt class="docutils literal"><span class="pre">Page</span></tt> class, which in turn
-extends the core <tt class="xref php php-class docutils literal"><span class="pre">_Page</span></tt> class.</p>
+<p>Your application&#8217;s controllers extend the <code class="docutils literal"><span class="pre">Page</span></code> class, which in turn
+extends the core <code class="xref php php-class docutils literal"><span class="pre">_Page</span></code> class.</p>
 <p>Controllers provide a number of methods that handle requests. These are called
-<em>actions</em>. By default, each public method which starts with <tt class="docutils literal"><span class="pre">action_</span></tt> in
+<em>actions</em>. By default, each public method which starts with <code class="docutils literal"><span class="pre">action_</span></code> in
 a controller is an action, and is accessible from a URL. An action is responsible
 for interpreting the request and creating the response. Usually responses are
 in the form of a rendered view, but there are other ways to create responses as
 well.</p>
 <div class="section" id="the-page-controller">
 <h2>The &#8216;Page&#8217; Controller<a class="headerlink" href="#the-page-controller" title="Permalink to this headline">¶</a></h2>
-<p>As stated in the introduction, the <tt class="docutils literal"><span class="pre">Page</span></tt> class is the
+<p>As stated in the introduction, the <code class="docutils literal"><span class="pre">Page</span></code> class is the
 parent class to all of your application&#8217;s controllers.
-<tt class="docutils literal"><span class="pre">Page</span></tt> itself extends the <tt class="xref php php-class docutils literal"><span class="pre">_Page</span></tt> class included in the
+<code class="docutils literal"><span class="pre">Page</span></code> itself extends the <code class="xref php php-class docutils literal"><span class="pre">_Page</span></code> class included in the
 WebLauncher core library.</p>
-<p>Controller attributes and methods created in your <tt class="docutils literal"><span class="pre">Page</span></tt>
+<p>Controller attributes and methods created in your <code class="docutils literal"><span class="pre">Page</span></code>
 will be available to all of your application&#8217;s controllers.</p>
 <p>While normal object-oriented inheritance rules apply, WebLauncher
 does a bit of extra work when it comes to special controller
 attributes. The components and helpers used by a
-controller are treated specially. In these cases, <tt class="docutils literal"><span class="pre">Page</span></tt>
+controller are treated specially. In these cases, <code class="docutils literal"><span class="pre">Page</span></code>
 value arrays are merged with child controller class arrays. The values in the
-child class will always override those in <tt class="docutils literal"><span class="pre">Page</span></tt>.</p>
+child class will always override those in <code class="docutils literal"><span class="pre">Page</span></code>.</p>
 </div>
 <div class="section" id="request-parameters">
 <h2>Request parameters<a class="headerlink" href="#request-parameters" title="Permalink to this headline">¶</a></h2>
-<p>When a request is made to a WebLauncher application, WebLauncher&#8217;s uses <em class="xref std std-ref">routes-configuration</em> to find and
+<p>When a request is made to a WebLauncher application, WebLauncher&#8217;s uses <span class="xref std std-ref">routes-configuration</span> to find and
 create the correct controller. The request data is encapsulated in a request
 object. WebLauncher puts all of the important request information into the
-<tt class="docutils literal"><span class="pre">$this-&gt;request</span></tt> property. See the section on
-<em class="xref std std-ref">weblauncher-request</em> for more information on the WebLauncher request object.</p>
+<code class="docutils literal"><span class="pre">$this-&gt;request</span></code> property. See the section on
+<span class="xref std std-ref">weblauncher-request</span> for more information on the WebLauncher request object.</p>
 </div>
 <div class="section" id="controller-actions">
 <h2>Controller actions<a class="headerlink" href="#controller-actions" title="Permalink to this headline">¶</a></h2>
@@ -327,32 +341,32 @@ response for the browser/user making the request. WebLauncher uses conventions t
 automate this process and remove some boilerplate code you would otherwise need
 to write.</p>
 <p>By convention, WebLauncher renders a view with an inflected version of the action
-name. Returning to our blog example, our <tt class="docutils literal"><span class="pre">posts_page</span></tt> might contain the
-<tt class="docutils literal"><span class="pre">action_view()</span></tt>, <tt class="docutils literal"><span class="pre">action_share()</span></tt>, and <tt class="docutils literal"><span class="pre">action_search()</span></tt> actions. The controller would be found
-in <tt class="docutils literal"><span class="pre">/modules/site/components/posts/posts.php</span></tt> and contain:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x"># /modules/site/components/posts/posts.php</span>
+name. Returning to our blog example, our <code class="docutils literal"><span class="pre">posts_page</span></code> might contain the
+<code class="docutils literal"><span class="pre">action_view()</span></code>, <code class="docutils literal"><span class="pre">action_share()</span></code>, and <code class="docutils literal"><span class="pre">action_search()</span></code> actions. The controller would be found
+in <code class="docutils literal"><span class="pre">/modules/site/components/posts/posts.php</span></code> and contain:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1"># /modules/site/components/posts/posts.php</span>
 
-<span class="x">class posts_page extends Page {</span>
-<span class="x">    public function action_view($id) {</span>
-<span class="x">        //action logic goes here..</span>
-<span class="x">    }</span>
+<span class="k">class</span> <span class="nc">posts_page</span> <span class="k">extends</span> <span class="nx">Page</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">action_view</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//action logic goes here..</span>
+    <span class="p">}</span>
 
-<span class="x">    public function action_share($customerId, $recipeId) {</span>
-<span class="x">        //action logic goes here..</span>
-<span class="x">    }</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">action_share</span><span class="p">(</span><span class="nv">$customerId</span><span class="p">,</span> <span class="nv">$recipeId</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//action logic goes here..</span>
+    <span class="p">}</span>
 
-<span class="x">    public function action_search($query) {</span>
-<span class="x">        //action logic goes here..</span>
-<span class="x">    }</span>
-<span class="x">}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">action_search</span><span class="p">(</span><span class="nv">$query</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//action logic goes here..</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>The view files for these actions would be <tt class="docutils literal"><span class="pre">/modules/site/components/posts/views/view.tpl</span></tt>,
-<tt class="docutils literal"><span class="pre">/modules/site/components/posts/views/share.tpl</span></tt>, and <tt class="docutils literal"><span class="pre">/modules/site/components/posts/views/search.tpl</span></tt>. The
+<p>The view files for these actions would be <code class="docutils literal"><span class="pre">/modules/site/components/posts/views/view.tpl</span></code>,
+<code class="docutils literal"><span class="pre">/modules/site/components/posts/views/share.tpl</span></code>, and <code class="docutils literal"><span class="pre">/modules/site/components/posts/views/search.tpl</span></code>. The
 conventional view file name is the lowercased and underscored version of the
 action name.</p>
-<p>Controller actions generally use <tt class="xref php php-meth docutils literal"><span class="pre">set()</span></tt> to create a
-context that <tt class="xref php php-class docutils literal"><span class="pre">View</span></tt> uses to render the view. Because of the
+<p>Controller actions generally use <code class="xref php php-meth docutils literal"><span class="pre">set()</span></code> to create a
+context that <code class="xref php php-class docutils literal"><span class="pre">View</span></code> uses to render the view. Because of the
 conventions that WebLauncher uses, you don&#8217;t need to create and render the view
 manually. Instead, once a controller action has completed, WebLauncher will handle
 rendering and delivering the View.</p>
@@ -372,14 +386,14 @@ cover some of the core attributes and methods provided by WebLauncher&#8217;s co
 <span id="controller-life-cycle"></span><h2>Request Life-cycle callbacks<a class="headerlink" href="#request-life-cycle-callbacks" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="Page">
-<em class="property">class </em><tt class="descname">Page</tt><a class="headerlink" href="#Page" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">Page</code><a class="headerlink" href="#Page" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>WebLauncher controllers come fitted with callbacks you can use to
 insert logic around the request life-cycle:</p>
 <dl class="method">
 <dt id="Page::on_init">
-<tt class="descclassname">Page::</tt><tt class="descname">on_init</tt><big>(</big><big>)</big><a class="headerlink" href="#Page::on_init" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Page::</code><code class="descname">on_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Page::on_init" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function is executed before every action in the controller and before every sub-component is initialised.
 It&#8217;s a handy place to check for an active session or inspect user
 permissions.</p>
@@ -392,15 +406,15 @@ and scaffolded actions.</p>
 
 <dl class="method">
 <dt id="Page::on_load">
-<tt class="descclassname">Page::</tt><tt class="descname">on_load</tt><big>(</big><big>)</big><a class="headerlink" href="#Page::on_load" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Page::</code><code class="descname">on_load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Page::on_load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called after controller action logic and after each sub-component action logic, but before the view is
 rendered. This callback is not used often, but may be needed if you
-are calling <tt class="xref php php-meth docutils literal"><span class="pre">render()</span></tt> manually before the end of a given action.</p>
+are calling <code class="xref php php-meth docutils literal"><span class="pre">render()</span></code> manually before the end of a given action.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="Page::index">
-<tt class="descclassname">Page::</tt><tt class="descname">index</tt><big>(</big><big>)</big><a class="headerlink" href="#Page::index" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Page::</code><code class="descname">index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Page::index" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function is executed when an action is not provided in the request.</p>
 </dd></dl>
 
@@ -412,38 +426,38 @@ visit the <cite>WebLauncher API</cite>.</p>
 <div class="section" id="interacting-with-views">
 <h3>Interacting with Views<a class="headerlink" href="#interacting-with-views" title="Permalink to this headline">¶</a></h3>
 <p>Controllers interact with views in a number of ways. First, they
-are able to pass data to the views, using <a class="reference internal" href="#Page::assign" title="Page::assign"><tt class="xref php php-meth docutils literal"><span class="pre">assign()</span></tt></a>. You can also
+are able to pass data to the views, using <a class="reference internal" href="#Page::assign" title="Page::assign"><code class="xref php php-meth docutils literal"><span class="pre">assign()</span></code></a>. You can also
 decide which view class to use, and which view file should be
 rendered from the controller.</p>
 <dl class="method">
 <dt id="Page::assign">
-<tt class="descclassname">Page::</tt><tt class="descname">assign</tt><big>(</big><em>string $var</em>, <em>mixed $value</em><big>)</big><a class="headerlink" href="#Page::assign" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <tt class="xref php php-meth docutils literal"><span class="pre">assign()</span></tt> method is the main way to send data from your
-controller to your view. Once you&#8217;ve used <a class="reference internal" href="#Page::assign" title="Page::assign"><tt class="xref php php-meth docutils literal"><span class="pre">assign()</span></tt></a>, the variable
+<code class="descclassname">Page::</code><code class="descname">assign</code><span class="sig-paren">(</span><em>string $var</em>, <em>mixed $value</em><span class="sig-paren">)</span><a class="headerlink" href="#Page::assign" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <code class="xref php php-meth docutils literal"><span class="pre">assign()</span></code> method is the main way to send data from your
+controller to your view. Once you&#8217;ve used <a class="reference internal" href="#Page::assign" title="Page::assign"><code class="xref php php-meth docutils literal"><span class="pre">assign()</span></code></a>, the variable
 can be accessed in your view:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">// First you pass data from the controller:</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// First you pass data from the controller:</span>
 
-<span class="x">$this-&gt;assign(&#39;color&#39;, &#39;pink&#39;);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="s1">&#39;pink&#39;</span><span class="p">);</span>
 
-<span class="x">// Then, in the view, you can utilize the data:</span>
-<span class="x">?&gt;</span>
+<span class="c1">// Then, in the view, you can utilize the data:</span>
+<span class="cp">?&gt;</span><span class="x"></span>
 
 <span class="x">You have selected </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$color</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> icing for the cake.</span>
 </pre></div>
 </div>
-<p>The <tt class="xref php php-meth docutils literal"><span class="pre">assign()</span></tt> method also takes an associative array as its first
+<p>The <code class="xref php php-meth docutils literal"><span class="pre">assign()</span></code> method also takes an associative array as its first
 parameter. This can often be a quick way to assign a set of
 information to the view:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$data = array(</span>
-<span class="x">    &#39;color&#39; =&gt; &#39;pink&#39;,</span>
-<span class="x">    &#39;type&#39; =&gt; &#39;sugar&#39;,</span>
-<span class="x">    &#39;base_price&#39; =&gt; 23.95</span>
-<span class="x">);</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$data</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;color&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;sugar&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;base_price&#39;</span> <span class="o">=&gt;</span> <span class="mf">23.95</span>
+<span class="p">);</span>
 
-<span class="x">// make $color, $type, and $base_price</span>
-<span class="x">// available to the view:</span>
+<span class="c1">// make $color, $type, and $base_price</span>
+<span class="c1">// available to the view:</span>
 
-<span class="x">$this-&gt;assign($data);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -452,54 +466,54 @@ information to the view:</p>
 <h4>Rendering a specific view<a class="headerlink" href="#rendering-a-specific-view" title="Permalink to this headline">¶</a></h4>
 <p>In your controller, you may want to render a different view than
 the conventional one. You can do this by calling
-<tt class="xref php php-meth docutils literal"><span class="pre">render()</span></tt> directly. Once you have called <tt class="xref php php-meth docutils literal"><span class="pre">render()</span></tt>, WebLauncher
+<code class="xref php php-meth docutils literal"><span class="pre">render()</span></code> directly. Once you have called <code class="xref php php-meth docutils literal"><span class="pre">render()</span></code>, WebLauncher
 will not try to re-render the view:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class posts_page extends Page {</span>
-<span class="x">    public function action_my_action() {</span>
-<span class="x">            $this-&gt;view=&#39;custom_file&#39;;</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">posts_page</span> <span class="k">extends</span> <span class="nx">Page</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">action_my_action</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">=</span><span class="s1">&#39;custom_file&#39;</span><span class="p">;</span>
 
-<span class="x">            // or</span>
-<span class="x">        $this-&gt;render(&#39;custom_file&#39;);</span>
-<span class="x">    }</span>
-<span class="x">}</span>
+            <span class="c1">// or</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;custom_file&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>This would render <tt class="docutils literal"><span class="pre">/modules/site/components/posts/views/custom_file.tpl</span></tt> instead of
-<tt class="docutils literal"><span class="pre">/modules/site/components/posts/views/custom_file.tpl</span></tt></p>
+<p>This would render <code class="docutils literal"><span class="pre">/modules/site/components/posts/views/custom_file.tpl</span></code> instead of
+<code class="docutils literal"><span class="pre">/modules/site/components/posts/views/custom_file.tpl</span></code></p>
 </div>
 </div>
 <div class="section" id="flow-control">
 <h3>Flow Control<a class="headerlink" href="#flow-control" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt id="Page::redirect">
-<tt class="descclassname">Page::</tt><tt class="descname">redirect</tt><big>(</big><em>mixed $url</em>, <em>integer $status</em>, <em>boolean $exit</em><big>)</big><a class="headerlink" href="#Page::redirect" title="Permalink to this definition">¶</a></dt>
-<dd><p>The flow control method you&#8217;ll use most often is <a class="reference internal" href="#Page::redirect" title="Page::redirect"><tt class="xref php php-meth docutils literal"><span class="pre">redirect()</span></tt></a>.
+<code class="descclassname">Page::</code><code class="descname">redirect</code><span class="sig-paren">(</span><em>mixed $url</em>, <em>integer $status</em>, <em>boolean $exit</em><span class="sig-paren">)</span><a class="headerlink" href="#Page::redirect" title="Permalink to this definition">¶</a></dt>
+<dd><p>The flow control method you&#8217;ll use most often is <a class="reference internal" href="#Page::redirect" title="Page::redirect"><code class="xref php php-meth docutils literal"><span class="pre">redirect()</span></code></a>.
 This method takes its first parameter in the form of a
 WebLauncher-relative URL. When a user has successfully placed an order,
 you might wish to redirect them to a receipt screen.:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">public function action_place_order() {</span>
-<span class="x">    // Logic for finalizing order goes here</span>
-<span class="x">    if ($success) {</span>
-<span class="x">        return $this-&gt;redirect(</span>
-<span class="x">            $this-&gt;paths[&#39;root_module&#39;]</span>
-<span class="x">        );</span>
-<span class="x">    }</span>
-<span class="x">}</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">action_place_order</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Logic for finalizing order goes here</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$success</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">paths</span><span class="p">[</span><span class="s1">&#39;root_module&#39;</span><span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>You can also use a relative or absolute URL as the $url argument:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;redirect(&#39;/orders/thanks&#39;);</span>
-<span class="x">$this-&gt;redirect(&#39;http://www.example.com&#39;);</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s1">&#39;/orders/thanks&#39;</span><span class="p">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s1">&#39;http://www.example.com&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The second parameter of <a class="reference internal" href="#Page::redirect" title="Page::redirect"><tt class="xref php php-meth docutils literal"><span class="pre">redirect()</span></tt></a> allows you to define an HTTP
+<p>The second parameter of <a class="reference internal" href="#Page::redirect" title="Page::redirect"><code class="xref php php-meth docutils literal"><span class="pre">redirect()</span></code></a> allows you to define an HTTP
 status code to accompany the redirect. You may want to use 301
 (moved permanently) or 303 (see other), depending on the nature of
 the redirect.</p>
-<p>The method will issue an <tt class="docutils literal"><span class="pre">exit()</span></tt> after the redirect unless you
-set the third parameter to <tt class="docutils literal"><span class="pre">false</span></tt>.</p>
+<p>The method will issue an <code class="docutils literal"><span class="pre">exit()</span></code> after the redirect unless you
+set the third parameter to <code class="docutils literal"><span class="pre">false</span></code>.</p>
 <p>If you need to redirect to the referer page you can use:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;redirect($this-&gt;referer());</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">referer</span><span class="p">());</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -509,47 +523,47 @@ set the third parameter to <tt class="docutils literal"><span class="pre">false<
 <h3>Other Useful Methods<a class="headerlink" href="#other-useful-methods" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt id="Page::add_message">
-<tt class="descclassname">Page::</tt><tt class="descname">add_message</tt><big>(</big><em>string $type='success'</em>, <em>string $message</em><big>)</big><a class="headerlink" href="#Page::add_message" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Page::</code><code class="descname">add_message</code><span class="sig-paren">(</span><em>string $type='success'</em>, <em>string $message</em><span class="sig-paren">)</span><a class="headerlink" href="#Page::add_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method saves the message into the session for it to be displayed at the render time.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="Page::referer">
-<tt class="descclassname">Page::</tt><tt class="descname">referer</tt><big>(</big><big>)</big><a class="headerlink" href="#Page::referer" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Page::</code><code class="descname">referer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Page::referer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the referring URL for the current request. Parameter
-<tt class="docutils literal"><span class="pre">$default</span></tt> can be used to supply a default URL to use if
+<code class="docutils literal"><span class="pre">$default</span></code> can be used to supply a default URL to use if
 HTTP_REFERER cannot be read from headers. So, instead of doing
 this:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class users_page extends Page {</span>
-<span class="x">    public function action_delete($id) {</span>
-<span class="x">        // delete code goes here, and then...</span>
-<span class="x">        if ($this-&gt;referer() != &#39;/&#39;) {</span>
-<span class="x">            return $this-&gt;redirect($this-&gt;referer());</span>
-<span class="x">        }</span>
-<span class="x">        return $this-&gt;redirect($this-&gt;paths[&#39;current&#39;]);</span>
-<span class="x">    }</span>
-<span class="x">}</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">users_page</span> <span class="k">extends</span> <span class="nx">Page</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">action_delete</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// delete code goes here, and then...</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">referer</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">referer</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">paths</span><span class="p">[</span><span class="s1">&#39;current&#39;</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="Page::validate">
-<tt class="descclassname">Page::</tt><tt class="descname">validate</tt><big>(</big><em>string $form_id</em><big>)</big><a class="headerlink" href="#Page::validate" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Page::</code><code class="descname">validate</code><span class="sig-paren">(</span><em>string $form_id</em><span class="sig-paren">)</span><a class="headerlink" href="#Page::validate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use this method to check the validity of a form id ($form_id). Although most of the forms are automatically checked by
 the internal form validation system sometimes is better to check twice.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="Page::add_validator">
-<tt class="descclassname">Page::</tt><tt class="descname">add_validator</tt><big>(</big><em>string $form_id</em>, <em>string $field_name</em>, <em>string $rule</em>, <em>string $message</em><big>)</big><a class="headerlink" href="#Page::add_validator" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method adds a form validator to a given field in a form. Checkout the <tt class="docutils literal"><span class="pre">form</span> <span class="pre">validation</span> <span class="pre">page</span></tt>.</p>
+<code class="descclassname">Page::</code><code class="descname">add_validator</code><span class="sig-paren">(</span><em>string $form_id</em>, <em>string $field_name</em>, <em>string $rule</em>, <em>string $message</em><span class="sig-paren">)</span><a class="headerlink" href="#Page::add_validator" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method adds a form validator to a given field in a form. Checkout the <code class="docutils literal"><span class="pre">form</span> <span class="pre">validation</span> <span class="pre">page</span></code>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="Page::mail">
-<tt class="descclassname">Page::</tt><tt class="descname">mail</tt><big>(</big><em>string $template</em>, <em>mixed $params=array()</em><big>)</big><a class="headerlink" href="#Page::mail" title="Permalink to this definition">¶</a></dt>
-<dd><p>Send e-mail using EmailManager. Checkout <tt class="docutils literal"><span class="pre">sending</span> <span class="pre">an</span> <span class="pre">e-mail</span> <span class="pre">page</span></tt>.</p>
+<code class="descclassname">Page::</code><code class="descname">mail</code><span class="sig-paren">(</span><em>string $template</em>, <em>mixed $params=array()</em><span class="sig-paren">)</span><a class="headerlink" href="#Page::mail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send e-mail using EmailManager. Checkout <code class="docutils literal"><span class="pre">sending</span> <span class="pre">an</span> <span class="pre">e-mail</span> <span class="pre">page</span></code>.</p>
 </dd></dl>
 
 </div>
@@ -560,67 +574,67 @@ the internal form validation system sometimes is better to check twice.</p>
 visit the <cite>WebLauncher API</cite>.</p>
 <dl class="attr">
 <dt id="Page::$title">
-<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">title</tt><a class="headerlink" href="#Page::$title" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descclassname">Page::$</code><code class="descname">title</code><a class="headerlink" href="#Page::$title" title="Permalink to this definition">¶</a></dt>
 <dd><p>Page title</p>
 </dd></dl>
 
 <dl class="attr">
 <dt id="Page::$view">
-<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">view</tt><a class="headerlink" href="#Page::$view" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descclassname">Page::$</code><code class="descname">view</code><a class="headerlink" href="#Page::$view" title="Permalink to this definition">¶</a></dt>
 <dd><p>The view to be used for the current action.</p>
 </dd></dl>
 
 <dl class="attr">
 <dt id="Page::$system">
-<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">system</tt><a class="headerlink" href="#Page::$system" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descclassname">Page::$</code><code class="descname">system</code><a class="headerlink" href="#Page::$system" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct access to System class for helper methods and attributes.</p>
 </dd></dl>
 
 <dl class="attr">
 <dt id="Page::$models">
-<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">models</tt><a class="headerlink" href="#Page::$models" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descclassname">Page::$</code><code class="descname">models</code><a class="headerlink" href="#Page::$models" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct access to System::models for accesing the models.</p>
 </dd></dl>
 
 <dl class="attr">
 <dt id="Page::$paths">
-<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">paths</tt><a class="headerlink" href="#Page::$paths" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descclassname">Page::$</code><code class="descname">paths</code><a class="headerlink" href="#Page::$paths" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct access to System::paths for using generated URL/Directories paths.</p>
 </dd></dl>
 
 <dl class="attr">
 <dt id="Page::$db">
-<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">db</tt><a class="headerlink" href="#Page::$db" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descclassname">Page::$</code><code class="descname">db</code><a class="headerlink" href="#Page::$db" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct access to the current DbManager object for executing DB queries.</p>
 </dd></dl>
 
 <dl class="attr">
 <dt id="Page::$user">
-<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">user</tt><a class="headerlink" href="#Page::$user" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descclassname">Page::$</code><code class="descname">user</code><a class="headerlink" href="#Page::$user" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct access to the current signed in user data as array.</p>
 </dd></dl>
 
 <dl class="attr">
 <dt id="Page::$session">
-<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">session</tt><a class="headerlink" href="#Page::$session" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descclassname">Page::$</code><code class="descname">session</code><a class="headerlink" href="#Page::$session" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct access to the session array. You can also use $_SESSION variable.</p>
 </dd></dl>
 
 <dl class="attr">
 <dt id="Page::$forms">
-<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">forms</tt><a class="headerlink" href="#Page::$forms" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descclassname">Page::$</code><code class="descname">forms</code><a class="headerlink" href="#Page::$forms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct access to System::forms FormsManager object.</p>
 </dd></dl>
 
 <dl class="attr">
 <dt id="Page::$parent">
-<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">parent</tt><a class="headerlink" href="#Page::$parent" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descclassname">Page::$</code><code class="descname">parent</code><a class="headerlink" href="#Page::$parent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Access to the parent component controller class.</p>
 </dd></dl>
 
 <dl class="attr">
 <dt id="Page::$subpage">
-<em class="property">property </em><tt class="descclassname">Page::$</tt><tt class="descname">subpage</tt><a class="headerlink" href="#Page::$subpage" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descclassname">Page::$</code><code class="descname">subpage</code><a class="headerlink" href="#Page::$subpage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Access to the child component requested.</p>
 </dd></dl>
 
@@ -641,7 +655,7 @@ visit the <cite>WebLauncher API</cite>.</p>
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

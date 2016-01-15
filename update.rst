@@ -1,7 +1,9 @@
 Update from 2.6
 ===============
 
-[REQUIRED]
+REQUIRED STEPS
+--------------
+
 1. Replace old framework folder (lib/stable) with the new one
 2. Empty cache folder (all compiled templates need to be deleted)
 3. System tables renamed (can be solved by including `config.26.php` file at the end of your `config.php` file):
@@ -21,6 +23,14 @@ Update from 2.6
 6. Rename 'php.config.php' to 'config.php' and make sure everything is properly defined.
 7. Create 'config.development.php' or copy from the repository.
 	
-[OPTIONAL]
+OPTIONAL STEPS
+--------------
+
 Replace $page->metas_enabled with $page->seo_enabled
 Replace $page->visits_logs_enabled with $page->logins_logs_enabled
+
+NOTE
+----
+
+`config.26.php` tries to solve the above by adding handlers and backward setting configurations. 
+This might not work on all websites. Please test before using this in production.

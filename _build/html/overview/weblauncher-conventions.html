@@ -40,7 +40,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -206,7 +206,7 @@
               
                 
   <li>
-    <a href="weblauncher-request.html" title="Previous Chapter: WebLaucher Request"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; WebLaucher Reque...</span>
+    <a href="weblauncher-request.html" title="Previous Chapter: WebLaucher Request"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; WebLaucher Re...</span>
     </a>
   </li>
   <li>
@@ -287,36 +287,36 @@ especially handy when working with legacy systems.</p>
 <p>Modules are big parts of an app that might require several custom configurations and/or seession handlers. The default module is called site/ and can be found in the /modules/site/ folder.</p>
 <p>The stucture of a module is the following:</p>
 <ul>
-<li><p class="first"><tt class="docutils literal"><span class="pre">components</span></tt>                        (components of the module | required)</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">components</span></code>                        (components of the module | required)</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">models</span></tt>                            (models of the module | not required)</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">models</span></code>                            (models of the module | not required)</p>
 </li>
 <li><dl class="first docutils">
-<dt><tt class="docutils literal"><span class="pre">views</span></tt>                             (general views and layouts | required | this can be also structured in skins)</dt>
+<dt><code class="docutils literal"><span class="pre">views</span></code>                             (general views and layouts | required | this can be also structured in skins)</dt>
 <dd><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">index.tpl</span></tt>                 (general layout of the module | required)</li>
-<li><tt class="docutils literal"><span class="pre">404.tpl</span></tt>                   (404 error layout | not required)</li>
-<li><tt class="docutils literal"><span class="pre">noscript.tpl</span></tt>              (no javascript section template | not required)</li>
-<li><tt class="docutils literal"><span class="pre">restricted.tpl</span></tt>    (restricted area template | not required)</li>
+<li><code class="docutils literal"><span class="pre">index.tpl</span></code>                 (general layout of the module | required)</li>
+<li><code class="docutils literal"><span class="pre">404.tpl</span></code>                   (404 error layout | not required)</li>
+<li><code class="docutils literal"><span class="pre">noscript.tpl</span></code>              (no javascript section template | not required)</li>
+<li><code class="docutils literal"><span class="pre">restricted.tpl</span></code>    (restricted area template | not required)</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">config.php</span></tt>                        (custom module configuration file | not required)</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">config.php</span></code>                        (custom module configuration file | not required)</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">index.php</span></tt>                         (module controller class named PageIndex | required)</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">index.php</span></code>                         (module controller class named PageIndex | required)</p>
 </li>
 </ul>
 </div>
 <div class="section" id="components-conventions">
 <h2>Components Conventions<a class="headerlink" href="#components-conventions" title="Permalink to this headline">¶</a></h2>
-<p>Components are in WebLauncher parts of applicaiton functionality. Each component can have several sub-components located in the <tt class="docutils literal"><span class="pre">components</span></tt> folder.</p>
+<p>Components are in WebLauncher parts of applicaiton functionality. Each component can have several sub-components located in the <code class="docutils literal"><span class="pre">components</span></code> folder.</p>
 <p>A component structure is like this:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">components</span></tt>                        (sub-components folder | not required)</li>
-<li><tt class="docutils literal"><span class="pre">views</span></tt>                             (views folder for this component | required - also configurable by skin)</li>
-<li><tt class="docutils literal"><span class="pre">models</span></tt>                            (custom models folder | not required)</li>
-<li><tt class="docutils literal"><span class="pre">{component_name}.php</span></tt>      (controller class file | required)</li>
+<li><code class="docutils literal"><span class="pre">components</span></code>                        (sub-components folder | not required)</li>
+<li><code class="docutils literal"><span class="pre">views</span></code>                             (views folder for this component | required - also configurable by skin)</li>
+<li><code class="docutils literal"><span class="pre">models</span></code>                            (custom models folder | not required)</li>
+<li><code class="docutils literal"><span class="pre">{component_name}.php</span></code>      (controller class file | required)</li>
 </ul>
 <p>A new component can be easily built using ?a=build in the url. For this to work the $this-&gt;build_enabled need to be true.</p>
 </div>
@@ -324,13 +324,13 @@ especially handy when working with legacy systems.</p>
 <h2>Controller Conventions<a class="headerlink" href="#controller-conventions" title="Permalink to this headline">¶</a></h2>
 <p>Controller class names are simple to use and follow (ex. home_page - is the controller for the home component). We used lower case writting for fast codding purposes.</p>
 <p>The first method you write for a controller might be the
-<tt class="docutils literal"><span class="pre">index()</span></tt> method. When a request specifies a controller but not
+<code class="docutils literal"><span class="pre">index()</span></code> method. When a request specifies a controller but not
 an action, the default WebLauncher behavior is to execute the
-<tt class="docutils literal"><span class="pre">index()</span></tt> method of that controller. For example, a request for
-<a class="reference external" href="http://www.example.com/apples/">http://www.example.com/apples/</a> maps to a call on the <tt class="docutils literal"><span class="pre">index()</span></tt>
-method of the <tt class="docutils literal"><span class="pre">apples_page</span></tt>, whereas
+<code class="docutils literal"><span class="pre">index()</span></code> method of that controller. For example, a request for
+<a class="reference external" href="http://www.example.com/apples/">http://www.example.com/apples/</a> maps to a call on the <code class="docutils literal"><span class="pre">index()</span></code>
+method of the <code class="docutils literal"><span class="pre">apples_page</span></code>, whereas
 <a class="reference external" href="http://www.example.com/apples/view/">http://www.example.com/apples/view/</a> maps to a call on the
-<tt class="docutils literal"><span class="pre">action_view()</span></tt> method of the <tt class="docutils literal"><span class="pre">apples_page</span></tt>. Another way to call an action of a controller is by using <a class="reference external" href="http://www.example.com/apples?a=view">http://www.example.com/apples?a=view</a> .</p>
+<code class="docutils literal"><span class="pre">action_view()</span></code> method of the <code class="docutils literal"><span class="pre">apples_page</span></code>. Another way to call an action of a controller is by using <a class="reference external" href="http://www.example.com/apples?a=view">http://www.example.com/apples?a=view</a> .</p>
 <p>You can also use the request method specific actions:</p>
 <ul class="simple">
 <li>get_action_view()</li>
@@ -342,7 +342,7 @@ method of the <tt class="docutils literal"><span class="pre">apples_page</span><
 <div class="section" id="url-considerations-for-controller-names">
 <h3>URL Considerations for Controller Names<a class="headerlink" href="#url-considerations-for-controller-names" title="Permalink to this headline">¶</a></h3>
 <p>As you&#8217;ve just seen, single word controllers map easily to a simple
-lower case URL path. For example, <tt class="docutils literal"><span class="pre">apples_page</span></tt> (which would
+lower case URL path. For example, <code class="docutils literal"><span class="pre">apples_page</span></code> (which would
 be defined in the file name &#8216;apples.php&#8217; located under modules/site/components/apples/apples.php) is accessed
 from <a class="reference external" href="http://example.com/apples">http://example.com/apples</a>.</p>
 <p>Multiple word controllers <em>can</em> be any &#8216;inflected&#8217; form which
@@ -356,26 +356,27 @@ equals the controller name so:</p>
 <p>will all resolve to the index of the reedapples_page controller. However,
 the convention is that your URLs are lowercase and underscored,
 therefore /red_apples/go_pick is the correct form to access the
-<tt class="docutils literal"><span class="pre">red_apples::action_go_pick</span></tt> action.</p>
+<code class="docutils literal"><span class="pre">red_apples::action_go_pick</span></code> action.</p>
 </div>
 </div>
 <div class="section" id="model-and-database-conventions">
 <h2>Model and Database Conventions<a class="headerlink" href="#model-and-database-conventions" title="Permalink to this headline">¶</a></h2>
 <p>Model class names are lower case and correspond to the database table name to which they have access. This is for simplicity and fast codding.</p>
-<p>Ex.</p>
-<blockquote>
-<div><p>books =&gt; db table books</p>
-<p>books_authors =&gt; db table books_authors</p>
-</div></blockquote>
+<p>Example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nx">books</span> <span class="o">=&gt;</span> <span class="nx">db</span> <span class="nx">table</span> <span class="nx">books</span>
+
+<span class="nx">books_authors</span> <span class="o">=&gt;</span> <span class="nx">db</span> <span class="nx">table</span> <span class="nx">books_authors</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="view-conventions">
 <h2>View Conventions<a class="headerlink" href="#view-conventions" title="Permalink to this headline">¶</a></h2>
 <p>View template files are named after the controller functions they
 display, in an underscored form. The action_get() function of the
 cars_page class will look for a view template in
-/modules/site/components/cars/get.tpl.</p>
+/modules/site/components/cars/views/get.tpl.</p>
 <p>The basic pattern is
-/modules/{module}/components/{component1}/components/{component2}/views/underscored_function_name.ctp.</p>
+/modules/{module}/components/{component1}/components/{component2}/views/{action|component2}.tpl.</p>
 <p>By naming the pieces of your application using WebLauncher conventions,
 you gain functionality without the hassle and maintenance tethers
 of configuration. Here&#8217;s a final example that ties the conventions
@@ -410,7 +411,7 @@ files that you&#8217;d need to create anyway.</p>
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

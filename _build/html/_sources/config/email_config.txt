@@ -1,7 +1,7 @@
 E-mail Configurations
 =====================
 
-Most of the aplications need to send an e-mail now and then. WebLauncher Framework extend PHPMailer as the default mailer. (https://github.com/PHPMailer/PHPMailer)
+Most of the applications need to send an e-mail now and then. WebLauncher Framework extend PHPMailer as the default mailer. (https://github.com/PHPMailer/PHPMailer)
 
 Here are the configurations you can use to setup your e-mail delivery system::
 
@@ -9,7 +9,7 @@ Here are the configurations you can use to setup your e-mail delivery system::
 	// yout mail server address if local use localhost or 127.0.0.1
 	
 	$this->mail_type='smtp'; 					
-	// we recomment smtp (other: qmail, sendmail, mail, queue)
+	// we recommend smtp (other: qmail, sendmail, mail, queue)
 	
 	$this->mail_user='noreply@yoursite.com';	
 	// the smtp address user to use for e-mail sending

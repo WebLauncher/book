@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -93,16 +93,36 @@
 <li class="toctree-l2"><a class="reference internal" href="install.html#setup">Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#using-the-build-tool">Using the build tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#check-requirements">Check requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#debug-statistics-for-previous-requests">Debug/Statistics for previous requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="update.html#required-steps">REQUIRED STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html#optional-steps">OPTIONAL STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html#note">NOTE</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config/general_config.html">General Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/general_config.html">General Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#page-trace">Page trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#debug-mode">Debug mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#live-mode">Live mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#default-module">Default Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#session-cookie-name">Session Cookie Name</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="config/module_config.html">Module Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/database_config.html">Database Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/email_config.html">E-mail Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/templates_config.html">Templates Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/cache_config.html">Cache Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/advanced_config.html">Advanced Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/advanced_config.html">Advanced Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config/advanced_config.html#addconfig-name-hostnames">addConfig($name,$hostnames)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Migrations</a><ul>
@@ -110,6 +130,7 @@
 <li class="toctree-l2"><a class="reference internal" href="migrations.html#defining-a-migration">Defining a migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migrations.html#running-migrations">Running migrations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migrations.html#running-migration-up-or-down">Running migration up or down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html#running-migration-from-the-php-console-in-development">Running migration from the php console (in development)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a><ul>
@@ -258,24 +279,24 @@
 			
   <div class="section" id="components">
 <h1>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h1>
-<p>A <strong>component</strong> is a small part of an application that serves for handling a part of the application functionality. Each module has at least one component <tt class="docutils literal"><span class="pre">home</span></tt>.
-The <tt class="docutils literal"><span class="pre">home</span></tt> component is required for the module to work.</p>
+<p>A <strong>component</strong> is a small part of an application that serves for handling a part of the application functionality. Each module has at least one component <code class="docutils literal"><span class="pre">home</span></code>.
+The <code class="docutils literal"><span class="pre">home</span></code> component is required for the module to work.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Ex. In a blog application you should have <tt class="docutils literal"><span class="pre">post</span></tt> component to handle the display/edit of a post.</p>
+<p class="last">Ex. In a blog application you should have <code class="docutils literal"><span class="pre">post</span></code> component to handle the display/edit of a post.</p>
 </div>
-<p>Components can be hierahically organised. Each component can have one or more sub-components.</p>
+<p>Components can be hierachically organised. Each component can have one or more sub-components.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Ex. The <tt class="docutils literal"><span class="pre">post</span></tt> component can have <tt class="docutils literal"><span class="pre">view</span></tt> and <tt class="docutils literal"><span class="pre">edit</span></tt> sub-components.</p>
+<p class="last">Ex. The <code class="docutils literal"><span class="pre">post</span></code> component can have <code class="docutils literal"><span class="pre">view</span></code> and <code class="docutils literal"><span class="pre">edit</span></code> sub-components.</p>
 </div>
 <div class="section" id="structure-of-a-component">
 <h2>Structure of a component<a class="headerlink" href="#structure-of-a-component" title="Permalink to this headline">¶</a></h2>
 <p>A component folder has the following structure:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">components/             // [optional] this folder contains the sub-components of the current component</span>
-<span class="x">models/                         // [optional] this folder can contain the models defined for this controller</span>
-<span class="x">views/                          // [required] this folder contains the views that can be structured by skins</span>
-<span class="x">component.php           // [required] this is the controller class that serves this component `component`</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="nx">components</span><span class="o">/</span>             <span class="c1">// [optional] this folder contains the sub-components of the current component</span>
+<span class="nx">models</span><span class="o">/</span>                         <span class="c1">// [optional] this folder can contain the models defined for this controller</span>
+<span class="nx">views</span><span class="o">/</span>                          <span class="c1">// [required] this folder contains the views that can be structured by skins</span>
+<span class="nx">component</span><span class="o">.</span><span class="nx">php</span>           <span class="c1">// [required] this is the controller class that serves this component `component`</span>
 </pre></div>
 </div>
 <p>Each component has a controller class that controls the functionality flow. <a class="reference internal" href="controllers.html"><em>Read more about controllers</em></a>.</p>
@@ -283,21 +304,21 @@ The <tt class="docutils literal"><span class="pre">home</span></tt> component is
 <div class="section" id="create-a-component">
 <h2>Create a component<a class="headerlink" href="#create-a-component" title="Permalink to this headline">¶</a></h2>
 <p>WebLauncher Framework offers a code builder that will automatically create a new component.
-Navigate to <tt class="docutils literal"><span class="pre">yourdomain.com/module_name/new_component?a=build</span></tt> and this should generate you a new componet <tt class="docutils literal"><span class="pre">new_component</span></tt> if it&#8217;s not existing.</p>
+Navigate to <a class="reference external" href="http://localhost/new_module/new_component?a=build">http://localhost/new_module/new_component?a=build</a> and this should generate you a new component <code class="docutils literal"><span class="pre">new_component</span></code> if it&#8217;s not existing.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">For this to work your webserver has to have write persmissions on the <tt class="docutils literal"><span class="pre">modules/module_name/components/</span></tt> folder and the <tt class="docutils literal"><span class="pre">$this-&gt;build_enabled</span></tt> configuration needs to be <strong>true</strong>.</p>
+<p class="last">For this to work your web server has to have write permissions on the <code class="docutils literal"><span class="pre">modules/new_module/components/</span></code> folder and the <code class="docutils literal"><span class="pre">$this-&gt;build_enabled</span></code> configuration needs to be <strong>true</strong>.</p>
 </div>
-<p>To manually create a new component simply go into the <tt class="docutils literal"><span class="pre">modules/module_name/components/</span></tt> folder and add a new folder called {new_component}. No space or starting numbers are allowed in the name of the folder. The name should be URL compliant.</p>
-<p>The new component should be now accesible using <tt class="docutils literal"><span class="pre">yourdomain.com/module_name/new_component</span></tt>. Accessing this path should pop a 404 error.
-Since your new component has no controller code you will have to create an <tt class="docutils literal"><span class="pre">new_component.php</span></tt> file and post the following code:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class new_component_page extends Page {</span>
+<p>To manually create a new component simply go into the <code class="docutils literal"><span class="pre">modules/new_module/components/</span></code> folder and add a new folder called &#8216;new_component&#8217;. No space or starting numbers are allowed in the name of the folder. The name should be URL compliant.</p>
+<p>The new component should be now accessible using <a class="reference external" href="http://localhost/new_module/new_component">http://localhost/new_module/new_component</a> . Accessing this path should pop a 404 error.
+Since your new component has no controller code you will have to create an <code class="docutils literal"><span class="pre">new_component.php</span></code> file and post the following code:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">new_component_page</span> <span class="k">extends</span> <span class="nx">Page</span> <span class="p">{</span>
 
-<span class="x">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>Now you have a new component class. However this new component won&#8217;t have any view defined. For this component to have a default view defined create the folder <tt class="docutils literal"><span class="pre">views/</span></tt> in your
-new component folder and add a new file called <tt class="docutils literal"><span class="pre">new_component.tpl</span></tt> in that folder.</p>
+<p>Now you have a new component class. However this new component won&#8217;t have any view defined. For this component to have a default view defined create the folder <code class="docutils literal"><span class="pre">views/</span></code> in your
+new component folder and add a new file called <code class="docutils literal"><span class="pre">new_component.tpl</span></code> in that folder.</p>
 <p>Now you should have a fully functional component.</p>
 <p>To check out more about controllers go to <a class="reference internal" href="controllers.html"><em>controller section</em></a>.</p>
 </div>
@@ -306,7 +327,7 @@ new component folder and add a new file called <tt class="docutils literal"><spa
 <p>Each component can be accesed via the url given in the browser. Here is an example:</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>To access the <tt class="docutils literal"><span class="pre">post</span></tt> component of the module <tt class="docutils literal"><span class="pre">blog</span></tt> of an application hosted at <tt class="docutils literal"><span class="pre">localhost</span></tt> you use:</p>
+<p>To access the <code class="docutils literal"><span class="pre">post</span></code> component of the module <code class="docutils literal"><span class="pre">blog</span></code> of an application hosted at <code class="docutils literal"><span class="pre">localhost</span></code> you use:</p>
 <p class="last"><a class="reference external" href="http:://localhost/blog/post/">http:://localhost/blog/post/</a></p>
 </div>
 <p>You will be able to access that controller for coding by accessing the appropiate folder on the path described by the url.</p>
@@ -331,7 +352,7 @@ new component folder and add a new file called <tt class="docutils literal"><spa
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

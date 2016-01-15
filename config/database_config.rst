@@ -1,7 +1,7 @@
 Database Configurations
 =======================
 
-Most online aplications nowdays have a database in it's backend. Here are the settings that allow you to use a database connection::
+Most online applications now days have a database in it's backend. Here are the settings that allow you to use a database connection::
 
 	$this -> db_connections = array(0 => array(
 		'host' => 'localhost',

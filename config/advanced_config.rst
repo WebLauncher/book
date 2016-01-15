@@ -1,19 +1,21 @@
 Advanced Configurations
 =======================
 
-There are cases when you would like custom configurations to be applied on different hostnames or other conditions are satisfied.
+There are cases when you would like custom configurations to be applied on different host names or other conditions are satisfied.
 
-By importing conditional configurations files you can accomplish this. This funcionality will include several configuration files when condition is matched.
+By importing conditional configurations files you can accomplish this. This functionality will include several configuration files when condition is matched.
 
-**Page add_config($name,$hostnames)**::
+addConfig($name,$hostnames)
+---------------------------
+::
 
-	$this->add_config('development','localhost');
+	$this->addConfig('development','localhost');
 	// this will import `config.development.php` when hostname is localhost
 
-	$this->add_config('development',array('localhost','127.0.0.1'));
+	$this->addConfig('development',array('localhost','127.0.0.1'));
 	// this will import `config.development.php` when hostname is localhost or 127.0.0.1
 
-	$this->add_config('development',function($system){
+	$this->addConfig('development',function($system){
 		return isset($_REQUEST['dev']) && $_REQUEST['dev']=1;
 	});
 	// this will include `config.development.php` when you add to the url the parameter ?dev=1

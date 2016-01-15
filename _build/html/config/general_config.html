@@ -38,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -94,10 +94,27 @@
 <li class="toctree-l2"><a class="reference internal" href="../install.html#setup">Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#using-the-build-tool">Using the build tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#check-requirements">Check requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#debug-statistics-for-previous-requests">Debug/Statistics for previous requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../update.html">Update from 2.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../update.html#required-steps">REQUIRED STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../update.html#optional-steps">OPTIONAL STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../update.html#note">NOTE</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="reference internal" href="../configurations.html">Configurations</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">General Configurations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">General Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#page-trace">Page trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debug-mode">Debug mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#live-mode">Live mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-module">Default Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#session-cookie-name">Session Cookie Name</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="module_config.html">Module Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="database_config.html">Database Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="email_config.html">E-mail Configurations</a></li>
@@ -184,7 +201,14 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">General Configurations</a></li>
+<li><a class="reference internal" href="#">General Configurations</a><ul>
+<li><a class="reference internal" href="#page-trace">Page trace</a></li>
+<li><a class="reference internal" href="#debug-mode">Debug mode</a></li>
+<li><a class="reference internal" href="#live-mode">Live mode</a></li>
+<li><a class="reference internal" href="#default-module">Default Module</a></li>
+<li><a class="reference internal" href="#session-cookie-name">Session Cookie Name</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -198,7 +222,7 @@
     </a>
   </li>
   <li>
-    <a href="module_config.html" title="Next Chapter: Module Configurations"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Module Configura... &raquo;</span>
+    <a href="module_config.html" title="Next Chapter: Module Configurations"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Module Config... &raquo;</span>
     </a>
   </li>
               
@@ -237,7 +261,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../update.html">Update from 2.6</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../configurations.html">Configurations</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">General Configurations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">General Configurations</a><ul class="simple">
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="module_config.html">Module Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="database_config.html">Database Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="email_config.html">E-mail Configurations</a></li>
@@ -262,41 +288,51 @@
   <div class="section" id="general-configurations">
 <h1>General Configurations<a class="headerlink" href="#general-configurations" title="Permalink to this headline">¶</a></h1>
 <p>These general configurations will help the system determine how it should function.</p>
-<p><strong>Page trace</strong>:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;trace = false;</span>
+<div class="section" id="page-trace">
+<h2>Page trace<a class="headerlink" href="#page-trace" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">trace</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>If true shows a trace help page that helps debug the issues, default value false.</p>
-<p><strong>Debug mode</strong>:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;debug = true;</span>
+</div>
+<div class="section" id="debug-mode">
+<h2>Debug mode<a class="headerlink" href="#debug-mode" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">debug</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Activates the display of errors, if false all error will be not shown.</p>
-<p><strong>Live mode</strong>:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;live = false;</span>
+</div>
+<div class="section" id="live-mode">
+<h2>Live mode<a class="headerlink" href="#live-mode" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">live</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>If true tells the system that the site is in production so it should stop running debug codes and start optimizing site, also activates cache if configured.</p>
-<p><strong>Default Module</strong>:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;default_module = &#39;site/&#39;;</span>
+</div>
+<div class="section" id="default-module">
+<h2>Default Module<a class="headerlink" href="#default-module" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">default_module</span> <span class="o">=</span> <span class="s1">&#39;site/&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This tells the system which is the default module that it should render.</p>
-<p><strong>Session Cookie Name</strong>:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;session_cookie = &#39;default_session_cookie&#39;;</span>
+</div>
+<div class="section" id="session-cookie-name">
+<h2>Session Cookie Name<a class="headerlink" href="#session-cookie-name" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session_cookie</span> <span class="o">=</span> <span class="s1">&#39;default_session_cookie&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Set it to an appropiate name to your site theme.</p>
+<p>Set it to an appropriate name to your site theme.</p>
 <p>While no general configuration is required to be done and most settings have good default values to get you going easily, there might be the case you would like to changed these:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;modules_folder = &#39;modules&#39;;</span>
-<span class="x">// module folder to use, this is relative to site root folder</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modules_folder</span> <span class="o">=</span> <span class="s1">&#39;modules&#39;</span><span class="p">;</span>
+<span class="c1">// module folder to use, this is relative to site root folder</span>
 
-<span class="x">$this-&gt;skins_folder = &#39;skins/&#39;;</span>
-<span class="x">// skins folder to use, this is relative to site root folder</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">skins_folder</span> <span class="o">=</span> <span class="s1">&#39;skins/&#39;</span><span class="p">;</span>
+<span class="c1">// skins folder to use, this is relative to site root folder</span>
 
-<span class="x">$this-&gt;files_folder = &#39;files/&#39;;</span>
-<span class="x">// files folder to use, this is relative to site root folder, this needs to have write permissions</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">files_folder</span> <span class="o">=</span> <span class="s1">&#39;files/&#39;</span><span class="p">;</span>
+<span class="c1">// files folder to use, this is relative to site root folder, this needs to have write permissions</span>
 </pre></div>
+</div>
 </div>
 </div>
 
@@ -314,7 +350,7 @@
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

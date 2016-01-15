@@ -39,7 +39,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -161,19 +161,12 @@
 <li class="toctree-l3"><a class="reference internal" href="cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -209,7 +202,7 @@
               
                 
   <li>
-    <a href="overview/weblauncher-conventions.html" title="Previous Chapter: WebLauncher Conventions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; WebLauncher Conv...</span>
+    <a href="overview/weblauncher-conventions.html" title="Previous Chapter: WebLauncher Conventions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; WebLauncher C...</span>
     </a>
   </li>
   <li>
@@ -298,9 +291,6 @@ into any commercial or closed source application.</p>
 </div>
 <div class="section" id="downloading-weblauncher">
 <h2>Downloading WebLauncher<a class="headerlink" href="#downloading-weblauncher" title="Permalink to this headline">¶</a></h2>
-<p>There are two main ways to get a fresh copy of WebLauncher. You can
-either download an archived copy (zip/tar.gz/tar.bz2):</p>
-<p><a class="reference external" href="http://weblauncher.ro/downloads/wbl27.zip">http://weblauncher.ro/downloads/wbl27.zip</a></p>
 <p>All current releases of WebLauncher are hosted on
 <a class="reference external" href="https://github.com/WebLauncher/framework">GitHub</a>. GitHub houses both WebLauncher
 itself as well as many other plugins for WebLauncher. The WebLauncher
@@ -310,24 +300,24 @@ releases are available at
 bug-fixes and up to the minute enhancements.
 These can be accessed from GitHub by cloning the
 <a class="reference external" href="https://github.com/WebLauncher/framework">GitHub</a> repository:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">git clone git://github.com/WebLauncher/framework.git</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="nx">git</span> <span class="k">clone</span> <span class="nx">git</span><span class="o">://</span><span class="nx">github</span><span class="o">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">WebLauncher</span><span class="o">/</span><span class="nx">framework</span><span class="o">.</span><span class="nx">git</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="permissions">
 <h2>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline">¶</a></h2>
-<p>WebLauncher uses the <tt class="docutils literal"><span class="pre">cache/</span></tt> directory for a number of different
+<p>WebLauncher uses the <code class="docutils literal"><span class="pre">cache/</span></code> directory for a number of different
 operations. A few examples would be Model descriptions, cached
 views and session information.</p>
-<p>As such, make sure the directory <tt class="docutils literal"><span class="pre">cache/</span></tt> and all its subdirectories in your WebLauncher installation
+<p>As such, make sure the directory <code class="docutils literal"><span class="pre">cache/</span></code> and all its subdirectories in your WebLauncher installation
 are writable by the web server user.</p>
 <p>One common issue is that the cache/ directories and subdirectories must be writable both by the web server and the command line user.
 On a UNIX system, if your web server user is different from your command line user,
 you can run the following commands just once in your project to ensure that
 permissions will be setup properly:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">HTTPDUSER=`ps aux | grep -E &#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39; | grep -v root | head -1 | cut -d\  -f1`</span>
-<span class="x">setfacl -R -m u:${HTTPDUSER}:rwx cache</span>
-<span class="x">setfacl -R -d -m u:${HTTPDUSER}:rwx cache</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="nx">HTTPDUSER</span><span class="o">=</span><span class="sb">`ps aux | grep -E &#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39; | grep -v root | head -1 | cut -d\  -f1`</span>
+<span class="nx">setfacl</span> <span class="o">-</span><span class="nx">R</span> <span class="o">-</span><span class="nx">m</span> <span class="nx">u</span><span class="o">:</span><span class="err">$</span><span class="p">{</span><span class="nx">HTTPDUSER</span><span class="p">}</span><span class="o">:</span><span class="nx">rwx</span> <span class="nx">cache</span>
+<span class="nx">setfacl</span> <span class="o">-</span><span class="nx">R</span> <span class="o">-</span><span class="nx">d</span> <span class="o">-</span><span class="nx">m</span> <span class="nx">u</span><span class="o">:</span><span class="err">$</span><span class="p">{</span><span class="nx">HTTPDUSER</span><span class="p">}</span><span class="o">:</span><span class="nx">rwx</span> <span class="nx">cache</span>
 </pre></div>
 </div>
 </div>
@@ -366,7 +356,7 @@ application</em></a>.</p>
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

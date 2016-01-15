@@ -36,7 +36,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -271,9 +271,9 @@ in the cache, re-reading the stored resource from the cache is much cheaper
 than accessing the remote resource.</p>
 <p>Caching in WebLauncher Framework is primarily facilitated by the <a class="reference external" href="http://www.stashphp.com/">Stash</a> library.
 This library offer extensive functionality and extensibility for a numerous number of Caching Engines.</p>
-<p>In WebLauncher Framework we have a class that facilitates the usage of this library (<tt class="docutils literal"><span class="pre">CacheManager</span></tt>).</p>
-<p>In a component or model it can be called simply by using <tt class="docutils literal"><span class="pre">$this-&gt;cache</span></tt>. This is a reference to the CacheManager instance. This uses the default configuration cache.</p>
-<p>To specify a certain cache configuration you can use <tt class="docutils literal"><span class="pre">$this-&gt;cache('short')</span></tt>. This gets the Cache Pool configured under the name &#8216;short&#8217;.</p>
+<p>In WebLauncher Framework we have a class that facilitates the usage of this library (<code class="docutils literal"><span class="pre">CacheManager</span></code>).</p>
+<p>In a component or model it can be called simply by using <code class="docutils literal"><span class="pre">$this-&gt;cache</span></code>. This is a reference to the CacheManager instance. This uses the default configuration cache.</p>
+<p>To specify a certain cache configuration you can use <code class="docutils literal"><span class="pre">$this-&gt;cache('short')</span></code>. This gets the Cache Pool configured under the name &#8216;short&#8217;.</p>
 <p><a class="reference external" href="http://www.stashphp.com/">Stash</a> library can be used in any module to configure your own custom cache system.</p>
 <div class="section" id="configuring-cache">
 <h2>Configuring Cache<a class="headerlink" href="#configuring-cache" title="Permalink to this headline">¶</a></h2>
@@ -391,7 +391,7 @@ Cache pools are returned either by <cite>$this-&gt;cache</cite> (default configu
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

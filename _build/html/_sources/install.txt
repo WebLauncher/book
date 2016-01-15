@@ -32,11 +32,6 @@ into any commercial or closed source application.
 Downloading WebLauncher
 =======================
 
-There are two main ways to get a fresh copy of WebLauncher. You can
-either download an archived copy (zip/tar.gz/tar.bz2):
-
-`http://weblauncher.ro/downloads/wbl27.zip <http://weblauncher.ro/downloads/wbl27.zip>`_
-
 All current releases of WebLauncher are hosted on
 `GitHub <https://github.com/WebLauncher/framework>`_. GitHub houses both WebLauncher
 itself as well as many other plugins for WebLauncher. The WebLauncher

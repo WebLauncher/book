@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -93,16 +93,36 @@
 <li class="toctree-l2"><a class="reference internal" href="install.html#setup">Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#using-the-build-tool">Using the build tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#check-requirements">Check requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#debug-statistics-for-previous-requests">Debug/Statistics for previous requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="update.html#required-steps">REQUIRED STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html#optional-steps">OPTIONAL STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html#note">NOTE</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config/general_config.html">General Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/general_config.html">General Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#page-trace">Page trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#debug-mode">Debug mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#live-mode">Live mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#default-module">Default Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#session-cookie-name">Session Cookie Name</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="config/module_config.html">Module Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/database_config.html">Database Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/email_config.html">E-mail Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/templates_config.html">Templates Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/cache_config.html">Cache Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/advanced_config.html">Advanced Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/advanced_config.html">Advanced Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config/advanced_config.html#addconfig-name-hostnames">addConfig($name,$hostnames)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Migrations</a><ul>
@@ -110,6 +130,7 @@
 <li class="toctree-l2"><a class="reference internal" href="migrations.html#defining-a-migration">Defining a migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migrations.html#running-migrations">Running migrations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migrations.html#running-migration-up-or-down">Running migration up or down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html#running-migration-from-the-php-console-in-development">Running migration from the php console (in development)</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Modules</a><ul>
@@ -261,42 +282,42 @@
 <p>A module is a big part of an application, having some or more different configurations and design. While a simple
 application can be built using a single module there might be the case a large application requiring several modules.
 Example: the backend administration of a site, employee space etc.</p>
-<p>WebLauncher Frameworks offers the posibility of creating several modules. You can also create several applications it will have the same result.</p>
+<p>WebLauncher Frameworks offers the possibility of creating several modules. You can also create several applications it will have the same result.</p>
 <div class="section" id="structure-of-a-module">
 <h2>Structure of a module<a class="headerlink" href="#structure-of-a-module" title="Permalink to this headline">¶</a></h2>
 <p>A module folder has the following structure:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">components/             // [required] the module components folder</span>
-<span class="x">models/                 // [optional] the module models folder</span>
-<span class="x">objects/                // [optional] the objects folder (here you should store e-mail templates and other objects not related to the MVC structure)</span>
-<span class="x">views/                  // [required] the views folder that can be structured by skins</span>
-<span class="x">config.php              // [optional] the module config file</span>
-<span class="x">index.php               // [required] the module controller class (PageIndex extends Page)</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="nx">components</span><span class="o">/</span>             <span class="c1">// [required] the module components folder</span>
+<span class="nx">models</span><span class="o">/</span>                 <span class="c1">// [optional] the module models folder</span>
+<span class="nx">objects</span><span class="o">/</span>                <span class="c1">// [optional] the objects folder (here you should store e-mail templates and other objects not related to the MVC structure)</span>
+<span class="nx">views</span><span class="o">/</span>                  <span class="c1">// [required] the views folder that can be structured by skins</span>
+<span class="nx">config</span><span class="o">.</span><span class="nx">php</span>              <span class="c1">// [optional] the module config file</span>
+<span class="nx">index</span><span class="o">.</span><span class="nx">php</span>               <span class="c1">// [required] the module controller class (PageIndex extends Page)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="create-a-module">
 <h2>Create a module<a class="headerlink" href="#create-a-module" title="Permalink to this headline">¶</a></h2>
 <p>WebLauncher Framework offers a code builder that will automatically create a new module.
-Navigate to <tt class="docutils literal"><span class="pre">yourdomain.com/{module_name}?a=build-module</span></tt> and this should generate you a new module if it&#8217;s not existing.</p>
+Navigate to <a class="reference external" href="http://localhost/new_module?a=build-module">http://localhost/new_module?a=build-module</a> and this should generate you a new module called &#8216;new_module&#8217; if it&#8217;s not existing.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">For this to work your webserver has to have write persmissions on the <tt class="docutils literal"><span class="pre">modules/</span></tt> folder and the <tt class="docutils literal"><span class="pre">$this-&gt;build_enabled</span></tt> configuration needs to be <strong>true</strong>.</p>
+<p class="last">For this to work your web server has to have write permissions on the <code class="docutils literal"><span class="pre">modules/</span></code> folder and the <code class="docutils literal"><span class="pre">$this-&gt;build_enabled</span></code> configuration needs to be <strong>true</strong>.</p>
 </div>
-<p>To manually create a new module simply go into the <tt class="docutils literal"><span class="pre">modules/</span></tt> folder and add a new folder called {module_name}. No space or starting numbers are allowed in the name of the folder. The name should be URL compliant.</p>
-<p>The new module should be now accesible using <tt class="docutils literal"><span class="pre">yourdomain.com/{module_name}</span></tt>. Accessing this path should pop an error saying that you are missing the PageIndex class for in the <tt class="docutils literal"><span class="pre">index.php</span></tt> file in the modules.
-Since your new module has now code you will have to create an <tt class="docutils literal"><span class="pre">index.php</span></tt> file and post the following code:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class PageIndex extends Page {</span>
+<p>To manually create a new module simply go into the <code class="docutils literal"><span class="pre">modules/</span></code> folder and add a new folder called &#8216;new_module&#8217;. No space or starting numbers are allowed in the name of the folder. The name should be URL compliant.</p>
+<p>The new module should be now accessible using <a class="reference external" href="http://localhost/new_module">http://localhost/new_module</a> . Accessing this path should pop an error saying that you are missing the PageIndex class for in the <code class="docutils literal"><span class="pre">index.php</span></code> file in the modules.
+Since your new module has now code you will have to create an <code class="docutils literal"><span class="pre">index.php</span></code> file and post the following code:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">PageIndex</span> <span class="k">extends</span> <span class="nx">Page</span> <span class="p">{</span>
 
-<span class="x">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>Now you have a new module class. However when accesing the module path you will still get a 404 error that the path is not on server. This is because your new module does not have the default
-module component <tt class="docutils literal"><span class="pre">home</span></tt>. The framework requires at least the <tt class="docutils literal"><span class="pre">home</span></tt> component for every the module.</p>
+<p>Now you have a new module class. However when accessing the module path you will still get a 404 error that the path is not on server. This is because your new module does not have the default
+module component <code class="docutils literal"><span class="pre">home</span></code>. The framework requires at least the <code class="docutils literal"><span class="pre">home</span></code> component for every the module.</p>
 <p>To check out more about components and how to build them go to <a class="reference internal" href="components.html"><em>components section</em></a>.</p>
 </div>
 <div class="section" id="url-access-to-modules">
 <h2>URL Access to modules<a class="headerlink" href="#url-access-to-modules" title="Permalink to this headline">¶</a></h2>
-<p>The modules should be now accesible using <tt class="docutils literal"><span class="pre">yourdomain.com/{module_name}</span></tt>.</p>
+<p>The modules should be now accessible using <a class="reference external" href="http://localhost/new_module">http://localhost/new_module</a> .</p>
 </div>
 </div>
 
@@ -314,7 +335,7 @@ module component <tt class="docutils literal"><span class="pre">home</span></tt>
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

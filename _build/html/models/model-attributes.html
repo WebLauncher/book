@@ -40,7 +40,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -162,19 +162,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -214,7 +207,7 @@
     </a>
   </li>
   <li>
-    <a href="additional-methods-and-properties.html" title="Next Chapter: Additional Methods and Properties"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Additional Metho... &raquo;</span>
+    <a href="additional-methods-and-properties.html" title="Next Chapter: Additional Methods and Properties"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Additional Me... &raquo;</span>
     </a>
   </li>
               
@@ -284,26 +277,26 @@
 default model behavior.</p>
 <div class="section" id="table">
 <h2>table<a class="headerlink" href="#table" title="Permalink to this headline">¶</a></h2>
-<p>The <tt class="docutils literal"><span class="pre">table</span></tt> property is a string that specifies the name of
+<p>The <code class="docutils literal"><span class="pre">table</span></code> property is a string that specifies the name of
 the database table to use to bind your model class to the
 related database table.</p>
 <p>Example usage:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends Base {</span>
-<span class="x">    public $table = &#39;example_1&#39;;</span>
-<span class="x">}</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Example</span> <span class="k">extends</span> <span class="nx">Base</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s1">&#39;example_1&#39;</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="model-primarykey">
 <span id="id-field"></span><h2>id_field<a class="headerlink" href="#model-primarykey" title="Permalink to this headline">¶</a></h2>
-<p>Each table normally has a primary key, <tt class="docutils literal"><span class="pre">id</span></tt>. You may change which
+<p>Each table normally has a primary key, <code class="docutils literal"><span class="pre">id</span></code>. You may change which
 field name the model uses as its primary key. This is common when
 setting WebLauncher Framework to use an existing database table.</p>
 <p>Example usage:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class Example extends Base {</span>
-<span class="x">    // example_id is the field name in the database</span>
-<span class="x">    public $id_field = &#39;the_id&#39;;</span>
-<span class="x">}</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Example</span> <span class="k">extends</span> <span class="nx">Base</span> <span class="p">{</span>
+    <span class="c1">// example_id is the field name in the database</span>
+    <span class="k">public</span> <span class="nv">$id_field</span> <span class="o">=</span> <span class="s1">&#39;the_id&#39;</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -336,7 +329,7 @@ setting WebLauncher Framework to use an existing database table.</p>
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

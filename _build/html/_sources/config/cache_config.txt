@@ -5,12 +5,14 @@ There are several configuration related to caching data or pages.
 
 To enable Stash library cache use::
 
-	$this->cache_enabled=true; // default it is true
+	$this->cache_enabled=true;
+	// default it is false
 	
 To enable page caching (this applies only for Smarty generated pages)::
 	
 	// to disable or enable page caching
-	$this->page_cache_enabled=true; // default it is false
+	$this->page_cache_enabled=true;
+	// default it is false
 	
 To configure data cache for Stash library use::
 
@@ -32,7 +34,7 @@ To configure data cache for Stash library use::
 		)
 	);
 	
-There are several cache drivers suported by `Stash <http://www.stashphp.com/Drivers.html>`_.
+There are several cache drivers supported by `Stash <http://www.stashphp.com/Drivers.html>`_.
 
-By default the system creates a file system cache pool if no other configuration is provided. Cache files are stored in the `cache/_system/` folder.
+By default the system creates a file system cache pool if no other configuration is provided when $this->cache_enabled is true. Cache files are stored in the `cache/_system/` folder.
 To clear cache manually just remove that folder.

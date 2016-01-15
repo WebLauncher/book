@@ -38,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -94,10 +94,27 @@
 <li class="toctree-l2"><a class="reference internal" href="../install.html#setup">Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#using-the-build-tool">Using the build tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#check-requirements">Check requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started.html#debug-statistics-for-previous-requests">Debug/Statistics for previous requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../update.html">Update from 2.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../update.html#required-steps">REQUIRED STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../update.html#optional-steps">OPTIONAL STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../update.html#note">NOTE</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="reference internal" href="../configurations.html">Configurations</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="general_config.html">General Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_config.html">General Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="general_config.html#page-trace">Page trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="general_config.html#debug-mode">Debug mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="general_config.html#live-mode">Live mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="general_config.html#default-module">Default Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="general_config.html#session-cookie-name">Session Cookie Name</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="module_config.html">Module Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="database_config.html">Database Configurations</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">E-mail Configurations</a></li>
@@ -194,11 +211,11 @@
               
                 
   <li>
-    <a href="database_config.html" title="Previous Chapter: Database Configurations"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Database Configu...</span>
+    <a href="database_config.html" title="Previous Chapter: Database Configurations"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Database Conf...</span>
     </a>
   </li>
   <li>
-    <a href="templates_config.html" title="Next Chapter: Templates Configurations"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Templates Config... &raquo;</span>
+    <a href="templates_config.html" title="Next Chapter: Templates Configurations"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Templates Con... &raquo;</span>
     </a>
   </li>
               
@@ -261,35 +278,35 @@
 			
   <div class="section" id="e-mail-configurations">
 <h1>E-mail Configurations<a class="headerlink" href="#e-mail-configurations" title="Permalink to this headline">¶</a></h1>
-<p>Most of the aplications need to send an e-mail now and then. WebLauncher Framework extend PHPMailer as the default mailer. (<a class="reference external" href="https://github.com/PHPMailer/PHPMailer">https://github.com/PHPMailer/PHPMailer</a>)</p>
+<p>Most of the applications need to send an e-mail now and then. WebLauncher Framework extend PHPMailer as the default mailer. (<a class="reference external" href="https://github.com/PHPMailer/PHPMailer">https://github.com/PHPMailer/PHPMailer</a>)</p>
 <p>Here are the configurations you can use to setup your e-mail delivery system:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;mail_host=&#39;your_mail_server&#39;;</span>
-<span class="x">// yout mail server address if local use localhost or 127.0.0.1</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mail_host</span><span class="o">=</span><span class="s1">&#39;your_mail_server&#39;</span><span class="p">;</span>
+<span class="c1">// yout mail server address if local use localhost or 127.0.0.1</span>
 
-<span class="x">$this-&gt;mail_type=&#39;smtp&#39;;</span>
-<span class="x">// we recomment smtp (other: qmail, sendmail, mail, queue)</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mail_type</span><span class="o">=</span><span class="s1">&#39;smtp&#39;</span><span class="p">;</span>
+<span class="c1">// we recommend smtp (other: qmail, sendmail, mail, queue)</span>
 
-<span class="x">$this-&gt;mail_user=&#39;noreply@yoursite.com&#39;;</span>
-<span class="x">// the smtp address user to use for e-mail sending</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mail_user</span><span class="o">=</span><span class="s1">&#39;noreply@yoursite.com&#39;</span><span class="p">;</span>
+<span class="c1">// the smtp address user to use for e-mail sending</span>
 
-<span class="x">$this-&gt;mail_password=&#39;smtp password&#39;;</span>
-<span class="x">// the smtp password</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mail_password</span><span class="o">=</span><span class="s1">&#39;smtp password&#39;</span><span class="p">;</span>
+<span class="c1">// the smtp password</span>
 
-<span class="x">$this-&gt;mail_ssl=false;</span>
-<span class="x">// true if the smtp connection is using SSL</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mail_ssl</span><span class="o">=</span><span class="k">false</span><span class="p">;</span>
+<span class="c1">// true if the smtp connection is using SSL</span>
 
-<span class="x">$this-&gt;mail_port=25;</span>
-<span class="x">// the smtp port to use</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mail_port</span><span class="o">=</span><span class="mi">25</span><span class="p">;</span>
+<span class="c1">// the smtp port to use</span>
 
-<span class="x">$this-&gt;mail_defaults = array(</span>
-<span class="x">        &#39;subject&#39; =&gt; &#39;Default e-mail subject&#39;,  // the default e-mail subject</span>
-<span class="x">        &#39;from&#39; =&gt; &#39;from@yoursite.com&#39;,                  // the default from e-mail address</span>
-<span class="x">        &#39;fromname&#39; =&gt; &#39;Your Site Name&#39;,                 // the default from name value</span>
-<span class="x">        &#39;reply_to&#39; =&gt; &#39;noreply@heyduckee.com&#39;,  // the default reply e-mail address</span>
-<span class="x">        &#39;reply_name&#39; =&gt; &#39;Your Site Reply Name&#39;, // the default reply name value</span>
-<span class="x">        &#39;mail_in&#39; =&gt; &#39;to&#39;,                                              // the default email method (to, cc, bcc)</span>
-<span class="x">        &#39;others&#39; =&gt; array(&#39;headers&#39;=&gt;array(&#39;X-SendFrom&#39;=&gt;&#39;address&#39;)) // this can be used to set custom headers to the e-mails</span>
-<span class="x">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mail_defaults</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;subject&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Default e-mail subject&#39;</span><span class="p">,</span>  <span class="c1">// the default e-mail subject</span>
+        <span class="s1">&#39;from&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;from@yoursite.com&#39;</span><span class="p">,</span>                  <span class="c1">// the default from e-mail address</span>
+        <span class="s1">&#39;fromname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Your Site Name&#39;</span><span class="p">,</span>                 <span class="c1">// the default from name value</span>
+        <span class="s1">&#39;reply_to&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;noreply@heyduckee.com&#39;</span><span class="p">,</span>  <span class="c1">// the default reply e-mail address</span>
+        <span class="s1">&#39;reply_name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Your Site Reply Name&#39;</span><span class="p">,</span> <span class="c1">// the default reply name value</span>
+        <span class="s1">&#39;mail_in&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span>                                              <span class="c1">// the default email method (to, cc, bcc)</span>
+        <span class="s1">&#39;others&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;headers&#39;</span><span class="o">=&gt;</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;X-SendFrom&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;address&#39;</span><span class="p">))</span> <span class="c1">// this can be used to set custom headers to the e-mails</span>
+<span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -308,7 +325,7 @@
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

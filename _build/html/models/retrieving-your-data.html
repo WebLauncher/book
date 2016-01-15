@@ -40,7 +40,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -162,19 +162,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -212,7 +205,7 @@
               
                 
   <li>
-    <a href="associations-linking-models-together.html" title="Previous Chapter: Associations: Linking Models Together"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Associations: Li...</span>
+    <a href="associations-linking-models-together.html" title="Previous Chapter: Associations: Linking Models Together"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Associations:...</span>
     </a>
   </li>
   <li>
@@ -284,20 +277,25 @@
 <h1>Retrieving Your Data<a class="headerlink" href="#retrieving-your-data" title="Permalink to this headline">¶</a></h1>
 <p>As stated before, one of the roles of the Model layer is to get data from multiple types of storage.
 The WebLauncher Framework Model class comes with some functions that will help you search for this data, sort it,
-paginate it, and filter it. The most common function you will use in models is <tt class="xref php php-meth docutils literal"><span class="pre">Model::get_all()</span></tt></p>
+paginate it, and filter it. The most common function you will use in models is <code class="xref php php-meth docutils literal"><span class="pre">Model::get_all()</span></code></p>
 <div class="section" id="get-all">
 <span id="model-get-all"></span><h2>get_all<a class="headerlink" href="#get-all" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">get_all($from='',$to='',$order='',$order_direction='',$condition='',$calculate_rows=false)</span></tt></p>
-<p>Function <tt class="docutils literal"><span class="pre">get_all</span></tt> is used to retrieve multiple rows from the databse.</p>
+<p><code class="xref php php-meth docutils literal"><span class="pre">get_all($from='',$to='',$order='',$order_direction='',$condition='',$calculate_rows=false)</span></code></p>
+<p>Function <code class="docutils literal"><span class="pre">get_all</span></code> is used to retrieve multiple rows from the databse.</p>
 <p>$from, $to is for configuring LIMIT for the query used.
 $order, $order_direction is for configuring order of rows retieved (array can be passed also for multiple order and directions)
 $condition is the condition to be used for the WHERE part or the query created.
 $calculate_rows if it is set to true will calculate the total possible number of rows found using the contition sent without applying LIMIT. The value will be saved in $this-&gt;total_rows, where $this is the model object</p>
+<p>Example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">models</span><span class="o">-&gt;</span><span class="na">example</span><span class="o">-&gt;</span><span class="na">get_all</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="s1">&#39;desc&#39;</span><span class="p">,</span><span class="s1">&#39;field1=1&#39;</span><span class="p">,</span><span class="k">true</span><span class="p">);</span>
+<span class="c1">// gets first 10 rows from model example ordered by column test and where field1=1</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="get-cols">
 <h2>get_cols<a class="headerlink" href="#get-cols" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">get_cols($cols=array(),$from='',$to='',$order='',$order_direction='',$condition='',$calculate_rows=false)</span></tt></p>
-<p>Function <tt class="docutils literal"><span class="pre">get_colls</span></tt> is used to retrieve multiple rows from the databse and select only the culumns required.</p>
+<p><code class="xref php php-meth docutils literal"><span class="pre">get_cols($cols=array(),$from='',$to='',$order='',$order_direction='',$condition='',$calculate_rows=false)</span></code></p>
+<p>Function <code class="docutils literal"><span class="pre">get_colls</span></code> is used to retrieve multiple rows from the databse and select only the culumns required.</p>
 <p>$from, $to is for configuring LIMIT for the query used.
 $order, $order_direction is for configuring order of rows retieved (array can be passed also for multiple order and directions)
 $condition is the condition to be used for the WHERE part or the query created.
@@ -305,23 +303,28 @@ $calculate_rows if it is set to true will calculate the total possible number of
 </div>
 <div class="section" id="get">
 <span id="model-get"></span><h2>get<a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">get($id='')</span></tt> will return one result or many results if provided an array of ids. This method will return the row with the id given or the rows with the ids given.</p>
+<p><code class="xref php php-meth docutils literal"><span class="pre">get($id='')</span></code></p>
+<p>This will return one result or many results if provided an array of ids. This method will return the row with the id given or the rows with the ids given.</p>
 </div>
 <div class="section" id="count-all">
 <span id="model-count-all"></span><h2>count_all<a class="headerlink" href="#count-all" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">count_all($condition)</span></tt> returns an integer value. This function will count the rows found applying the condition given.</p>
+<p><code class="xref php php-meth docutils literal"><span class="pre">count_all($condition)</span></code></p>
+<p>Returns an integer value. This function will count the rows found applying the condition given.</p>
 </div>
 <div class="section" id="get-cond">
 <span id="model-find-all"></span><h2>get_cond<a class="headerlink" href="#get-cond" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">get_cond($condition)</span></tt> returns the first found row identified by the condition given.</p>
+<p><code class="xref php php-meth docutils literal"><span class="pre">get_cond($condition)</span></code></p>
+<p>Returns the first found row identified by the condition given.</p>
 </div>
 <div class="section" id="get-field">
 <span id="model-get-field"></span><h2>get_field<a class="headerlink" href="#get-field" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">get_field($id,</span> <span class="pre">$field)</span></tt> returns the field requested for a given row identified by the id given.</p>
+<p><code class="xref php php-meth docutils literal"><span class="pre">get_field($id,</span> <span class="pre">$field)</span></code></p>
+<p>Returns the field requested for a given row identified by the id given.</p>
 </div>
 <div class="section" id="get-field-cond">
 <span id="model-find-threaded"></span><h2>get_field_cond<a class="headerlink" href="#get-field-cond" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">get_field_cond($field,</span> <span class="pre">$cond)</span></tt> returns the field requested for a given row identified by the condition given.</p>
+<p><code class="xref php php-meth docutils literal"><span class="pre">get_field_cond($field,</span> <span class="pre">$cond)</span></code></p>
+<p>Returns the field/column requested for a given row identified by the condition given.</p>
 <span class="target" id="model-find-neighbors"></span></div>
 </div>
 
@@ -339,7 +342,7 @@ $calculate_rows if it is set to true will calculate the total possible number of
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

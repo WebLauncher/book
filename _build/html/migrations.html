@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -93,16 +93,36 @@
 <li class="toctree-l2"><a class="reference internal" href="install.html#setup">Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#using-the-build-tool">Using the build tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#check-requirements">Check requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#debug-statistics-for-previous-requests">Debug/Statistics for previous requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="update.html">Update from 2.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="update.html#required-steps">REQUIRED STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html#optional-steps">OPTIONAL STEPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html#note">NOTE</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="configurations.html">Configurations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config/general_config.html">General Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/general_config.html">General Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#page-trace">Page trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#debug-mode">Debug mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#live-mode">Live mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#default-module">Default Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/general_config.html#session-cookie-name">Session Cookie Name</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="config/module_config.html">Module Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/database_config.html">Database Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/email_config.html">E-mail Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/templates_config.html">Templates Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/cache_config.html">Cache Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/advanced_config.html">Advanced Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/advanced_config.html">Advanced Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config/advanced_config.html#addconfig-name-hostnames">addConfig($name,$hostnames)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Migrations</a><ul>
@@ -110,6 +130,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#defining-a-migration">Defining a migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-migrations">Running migrations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-migration-up-or-down">Running migration up or down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-migration-from-the-php-console-in-development">Running migration from the php console (in development)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a><ul>
@@ -159,19 +180,12 @@
 <li class="toctree-l3"><a class="reference internal" href="cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -195,6 +209,7 @@
 <li><a class="reference internal" href="#defining-a-migration">Defining a migration</a></li>
 <li><a class="reference internal" href="#running-migrations">Running migrations</a></li>
 <li><a class="reference internal" href="#running-migration-up-or-down">Running migration up or down</a></li>
+<li><a class="reference internal" href="#running-migration-from-the-php-console-in-development">Running migration from the php console (in development)</a></li>
 </ul>
 </li>
 </ul>
@@ -206,7 +221,7 @@
               
                 
   <li>
-    <a href="config/advanced_config.html" title="Previous Chapter: Advanced Configurations"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Advanced Configu...</span>
+    <a href="config/advanced_config.html" title="Previous Chapter: Advanced Configurations"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Advanced Conf...</span>
     </a>
   </li>
   <li>
@@ -267,62 +282,79 @@
   <div class="section" id="migrations">
 <h1>Migrations<a class="headerlink" href="#migrations" title="Permalink to this headline">¶</a></h1>
 <p><strong>WebLauncher Framework</strong> has a build-in DB migration system. The migration functionality can handle two types of migration files. One is a
-SQL query run (this method does not have a reverse run) and the other is a <tt class="docutils literal"><span class="pre">Migration</span></tt> object class file where you can run queries and scripts
+SQL query run (this method does not have a reverse run) and the other is a <code class="docutils literal"><span class="pre">Migration</span></code> object class file where you can run queries and scripts
 to define your migration.</p>
 <div class="section" id="configuring-migrations">
 <h2>Configuring migrations<a class="headerlink" href="#configuring-migrations" title="Permalink to this headline">¶</a></h2>
-<p>Migrations list is defined in <tt class="docutils literal"><span class="pre">db\migrations.php</span></tt> file which returns an associative array in the structure of &#8216;$version&#8217;=&gt;&#8217;$file_name&#8217;.
-Note: <tt class="docutils literal"><span class="pre">$file_name</span></tt> should not have the extension added. See example:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">return array(</span>
-<span class="x">        &#39;1&#39;=&gt;&#39;migration_1&#39;,</span>
-<span class="x">        &#39;2&#39;=&gt;&#39;migration_2&#39;</span>
-<span class="x">        ...</span>
-<span class="x">);</span>
-<span class="x">// this will define 2 versions of the DB using the migrations</span>
+<p>Migrations list is defined in <code class="docutils literal"><span class="pre">db\migrations.php</span></code> file which returns an associative array in the structure of &#8216;$version&#8217;=&gt;&#8217;$file_name&#8217;.
+Note: <code class="docutils literal"><span class="pre">$file_name</span></code> should not have the extension added. See example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;1&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;migration_1&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;2&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;migration_2&#39;</span>
+        <span class="o">...</span>
+<span class="p">);</span>
+<span class="c1">// this will define 2 versions of the DB using the migrations</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="defining-a-migration">
 <h2>Defining a migration<a class="headerlink" href="#defining-a-migration" title="Permalink to this headline">¶</a></h2>
-<p>A <strong>migration</strong> is a file (sql or php file that contains a class that extends <tt class="docutils literal"><span class="pre">Migration</span></tt>) located in the <tt class="docutils literal"><span class="pre">db/migrations/</span></tt> folder.</p>
+<p>A <strong>migration</strong> is a file (sql or php file that contains a class that extends <code class="docutils literal"><span class="pre">Migration</span></code>) located in the <code class="docutils literal"><span class="pre">db/migrations/</span></code> folder.</p>
 <p>There are two ways of defining a migration:</p>
-<ol class="arabic simple">
-<li>Using a SQL file which contains the queries that need to be executed. This will look for <tt class="docutils literal"><span class="pre">$file_name.sql</span></tt> into the migrations folder. (this will not be executed on down migrations)</li>
-</ol>
-<p>2. Using a php file which contains the definition of a class named <tt class="docutils literal"><span class="pre">$file_name</span></tt> that extends <tt class="docutils literal"><span class="pre">Migration</span></tt> class. <tt class="docutils literal"><span class="pre">Migration</span></tt> class also extends <tt class="docutils literal"><span class="pre">Base</span></tt> which is the model class so you have access to all the methods from the models. We recommend sticking to <tt class="docutils literal"><span class="pre">$this-&gt;query($sql)</span></tt> method and using the DbManager <tt class="docutils literal"><span class="pre">$this-&gt;db</span></tt> for
-handling migrations. See an example below:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class migration_1 extends Migration{</span>
-<span class="x">        function up(){</span>
-<span class="x">                // define here all the queries that need to be run to upgrade the db version</span>
-<span class="x">                $this-&gt;query(sql);</span>
-<span class="x">                $data=$this-&gt;db-&gt;getAll(sql); // to retrieve data from db</span>
-<span class="x">        }</span>
+<ol class="arabic">
+<li><p class="first">Using a SQL file which contains the queries that need to be executed. This will look for <code class="docutils literal"><span class="pre">$file_name.sql</span></code> into the migrations folder. (this will not be executed on down migrations)</p>
+</li>
+<li><p class="first">Using a php file which contains the definition of a class named <code class="docutils literal"><span class="pre">$file_name</span></code> that extends <code class="docutils literal"><span class="pre">Migration</span></code> class. <code class="docutils literal"><span class="pre">Migration</span></code> class also extends <code class="docutils literal"><span class="pre">Base</span></code> which is the model class so you have access to all the methods from the models. We recommend sticking to <code class="docutils literal"><span class="pre">$this-&gt;query($sql)</span></code> method and using the DbManager <code class="docutils literal"><span class="pre">$this-&gt;db</span></code> for handling migrations. See an example below:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">migration_1</span> <span class="k">extends</span> <span class="nx">Migration</span><span class="p">{</span>
+        <span class="k">function</span> <span class="nf">up</span><span class="p">(){</span>
+                <span class="c1">// define here all the queries that need to be run to upgrade the db version</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nx">sql</span><span class="p">);</span>
+                <span class="nv">$data</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">getAll</span><span class="p">(</span><span class="nx">sql</span><span class="p">);</span> <span class="c1">// to retrieve data from db</span>
+        <span class="p">}</span>
 
-<span class="x">        function down(){</span>
-<span class="x">                // define here all methods that need to be run to downgrade the db version</span>
-<span class="x">        }</span>
+        <span class="k">function</span> <span class="nf">down</span><span class="p">(){</span>
+                <span class="c1">// define here all methods that need to be run to downgrade the db version</span>
+        <span class="p">}</span>
 
-<span class="x">        function before($direction=&#39;up&#39;){</span>
-<span class="x">                // define here code that needs to be executed before the method up() or down() are run</span>
-<span class="x">        }</span>
+        <span class="k">function</span> <span class="nf">before</span><span class="p">(</span><span class="nv">$direction</span><span class="o">=</span><span class="s1">&#39;up&#39;</span><span class="p">){</span>
+                <span class="c1">// define here code that needs to be executed before the method up() or down() are run</span>
+        <span class="p">}</span>
 
-<span class="x">        function after($direction=&#39;up&#39;){</span>
-<span class="x">                // define here code that needs to be executed after the method up() or down() are run</span>
-<span class="x">        }</span>
-<span class="x">}</span>
+        <span class="k">function</span> <span class="nf">after</span><span class="p">(</span><span class="nv">$direction</span><span class="o">=</span><span class="s1">&#39;up&#39;</span><span class="p">){</span>
+                <span class="c1">// define here code that needs to be executed after the method up() or down() are run</span>
+        <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>When using the php way you can also define <tt class="docutils literal"><span class="pre">migration_1.up.sql</span></tt> and/or <tt class="docutils literal"><span class="pre">migration_1.down.sql</span></tt> for them to be run after methods <tt class="docutils literal"><span class="pre">up()</span></tt> and/or <tt class="docutils literal"><span class="pre">down()</span></tt> are run.</p>
+</li>
+</ol>
+<p>When using the php way you can also define <code class="docutils literal"><span class="pre">migration_1.up.sql</span></code> and/or <code class="docutils literal"><span class="pre">migration_1.down.sql</span></code> for them to be run after methods <code class="docutils literal"><span class="pre">up()</span></code> and/or <code class="docutils literal"><span class="pre">down()</span></code> are run.</p>
 </div>
 <div class="section" id="running-migrations">
 <h2>Running migrations<a class="headerlink" href="#running-migrations" title="Permalink to this headline">¶</a></h2>
-<p>Migrations can be run using the browser url to you site by adding <tt class="docutils literal"><span class="pre">?a=migrate:all</span></tt>. This will run all found migrations that were not run.
-The script requires write access to <tt class="docutils literal"><span class="pre">files</span></tt> folder so it can store the migrated versions of the DB.</p>
+<p>Migrations can be run using the browser url to you site by adding <a class="reference external" href="http://localhost/?a=migrate:all">http://localhost/?a=migrate:all</a>. This will run all found migrations that were not run.
+The script requires write access to <code class="docutils literal"><span class="pre">files</span></code> folder so it can store the migrated versions of the DB.</p>
 </div>
 <div class="section" id="running-migration-up-or-down">
 <h2>Running migration up or down<a class="headerlink" href="#running-migration-up-or-down" title="Permalink to this headline">¶</a></h2>
-<p>To run up a migration <tt class="docutils literal"><span class="pre">?a=migrate:up</span></tt>.</p>
-<p>To run down a migration <tt class="docutils literal"><span class="pre">?a=migrate:down</span></tt>.</p>
+<p>To run up a migration in browser <a class="reference external" href="http://localhost/?a=migrate:up">http://localhost/?a=migrate:up</a> .</p>
+<p>To run down a migration in browser <a class="reference external" href="http://localhost/?a=migrate:down">http://localhost/?a=migrate:down</a> .</p>
+<p>To run up a migration with id 1 in browser <a class="reference external" href="http://localhost/?a=migrate:up:1">http://localhost/?a=migrate:up:1</a> .</p>
+<p>To run down a migration with id 1 in browser <a class="reference external" href="http://localhost/?a=migrate:up:1">http://localhost/?a=migrate:up:1</a> .</p>
+</div>
+<div class="section" id="running-migration-from-the-php-console-in-development">
+<h2>Running migration from the php console (in development)<a class="headerlink" href="#running-migration-from-the-php-console-in-development" title="Permalink to this headline">¶</a></h2>
+<p>When the console is in the root folder.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nx">php</span> <span class="nx">index</span><span class="o">.</span><span class="nx">php</span> <span class="o">--</span><span class="nx">migrate</span>
+<span class="c1">// to migrate all</span>
+<span class="nx">php</span> <span class="nx">index</span><span class="o">.</span><span class="nx">php</span> <span class="o">--</span><span class="nx">migrate</span> <span class="nx">up</span>
+<span class="c1">// to migrate up</span>
+<span class="nx">php</span> <span class="nx">index</span><span class="o">.</span><span class="nx">php</span> <span class="o">--</span><span class="nx">migrate</span> <span class="nx">down</span>
+<span class="c1">// to migrate down</span>
+<span class="nx">php</span> <span class="nx">index</span><span class="o">.</span><span class="nx">php</span> <span class="o">--</span><span class="nx">migrate</span> <span class="p">[</span><span class="nx">up</span><span class="o">|</span><span class="nx">down</span><span class="p">]</span> <span class="p">{</span><span class="nx">ID</span><span class="p">}</span>
+<span class="c1">// to execute up or down migration {ID}</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -340,7 +372,7 @@ The script requires write access to <tt class="docutils literal"><span class="pr
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

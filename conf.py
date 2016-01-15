@@ -33,8 +33,11 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinxcontrib.phpdomain',
 ]
-
-primary_domain='php'
+from sphinx.highlighting import lexers
+from pygments.lexers.web import PhpLexer
+lexers['php'] = PhpLexer(startinline=True, linenos=1)
+lexers['php-annotations'] = PhpLexer(startinline=True, linenos=1)
+primary_domain = 'php'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

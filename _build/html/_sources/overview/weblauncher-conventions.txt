@@ -95,7 +95,7 @@ Model and Database Conventions
 
 Model class names are lower case and correspond to the database table name to which they have access. This is for simplicity and fast codding.
 
-Ex.
+Example::
 
 	books => db table books
 	
@@ -107,10 +107,10 @@ View Conventions
 View template files are named after the controller functions they
 display, in an underscored form. The action_get() function of the
 cars_page class will look for a view template in
-/modules/site/components/cars/get.tpl.
+/modules/site/components/cars/views/get.tpl.
 
 The basic pattern is
-/modules/{module}/components/{component1}/components/{component2}/views/underscored\_function\_name.ctp.
+/modules/{module}/components/{component1}/components/{component2}/views/{action|component2}.tpl.
 
 By naming the pieces of your application using WebLauncher conventions,
 you gain functionality without the hassle and maintenance tethers

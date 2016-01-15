@@ -11,9 +11,7 @@ The ``table`` property is a string that specifies the name of
 the database table to use to bind your model class to the
 related database table. 
 
-Example usage:
-
-::
+Example usage::
 
     class Example extends Base {
         public $table = 'example_1';

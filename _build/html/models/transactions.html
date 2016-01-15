@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -159,19 +159,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -276,8 +269,8 @@ transactions.</p>
 <div class="section" id="nested-transactions">
 <h2>Nested Transactions<a class="headerlink" href="#nested-transactions" title="Permalink to this headline">¶</a></h2>
 <p>It is possible to start a transaction several times using the
-<tt class="xref php php-meth docutils literal"><span class="pre">Datasource::begin()</span></tt> method. The transaction will finish only when
-the number of <tt class="docutils literal"><span class="pre">commit</span></tt> and <tt class="docutils literal"><span class="pre">rollback</span></tt> calls match with <tt class="docutils literal"><span class="pre">begin</span></tt>.</p>
+<code class="xref php php-meth docutils literal"><span class="pre">Datasource::begin()</span></code> method. The transaction will finish only when
+the number of <code class="docutils literal"><span class="pre">commit</span></code> and <code class="docutils literal"><span class="pre">rollback</span></code> calls match with <code class="docutils literal"><span class="pre">begin</span></code>.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">$dataSource-&gt;begin();</span>
 <span class="x">// Perform some tasks</span>
 <span class="x">$dataSource-&gt;begin();</span>
@@ -295,10 +288,10 @@ the number of <tt class="docutils literal"><span class="pre">commit</span></tt> 
 it is enabled in the datasource. The methods will always return true when in
 transaction mode and the nested is not supported or disabled.</p>
 <p>If you want to use multiple begin&#8217;s but not use the nested transaction from database,
-disable it using <tt class="docutils literal"><span class="pre">$dataSource-&gt;useNestedTransactions</span> <span class="pre">=</span> <span class="pre">false;</span></tt>. It will use only
+disable it using <code class="docutils literal"><span class="pre">$dataSource-&gt;useNestedTransactions</span> <span class="pre">=</span> <span class="pre">false;</span></code>. It will use only
 one global transaction.</p>
 <p>The real nested transaction is disabled by default. Enable it using
-<tt class="docutils literal"><span class="pre">$dataSource-&gt;useNestedTransactions</span> <span class="pre">=</span> <span class="pre">true;</span></tt>.</p>
+<code class="docutils literal"><span class="pre">$dataSource-&gt;useNestedTransactions</span> <span class="pre">=</span> <span class="pre">true;</span></code>.</p>
 </div>
 </div>
 
@@ -316,7 +309,7 @@ one global transaction.</p>
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

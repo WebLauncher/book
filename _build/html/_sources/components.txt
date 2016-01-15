@@ -7,7 +7,7 @@ The ``home`` component is required for the module to work.
 .. note::
 	Ex. In a blog application you should have ``post`` component to handle the display/edit of a post.
 	
-Components can be hierahically organised. Each component can have one or more sub-components. 
+Components can be hierachically organised. Each component can have one or more sub-components.
 
 .. note::
 	Ex. The ``post`` component can have ``view`` and ``edit`` sub-components.
@@ -28,14 +28,14 @@ Create a component
 ------------------
 
 WebLauncher Framework offers a code builder that will automatically create a new component. 
-Navigate to ``yourdomain.com/module_name/new_component?a=build`` and this should generate you a new componet ``new_component`` if it's not existing.
+Navigate to http://localhost/new_module/new_component?a=build and this should generate you a new component ``new_component`` if it's not existing.
 
 .. warning::
-	For this to work your webserver has to have write persmissions on the ``modules/module_name/components/`` folder and the ``$this->build_enabled`` configuration needs to be **true**.
+	For this to work your web server has to have write permissions on the ``modules/new_module/components/`` folder and the ``$this->build_enabled`` configuration needs to be **true**.
 
-To manually create a new component simply go into the ``modules/module_name/components/`` folder and add a new folder called {new_component}. No space or starting numbers are allowed in the name of the folder. The name should be URL compliant.
+To manually create a new component simply go into the ``modules/new_module/components/`` folder and add a new folder called 'new_component'. No space or starting numbers are allowed in the name of the folder. The name should be URL compliant.
 
-The new component should be now accesible using ``yourdomain.com/module_name/new_component``. Accessing this path should pop a 404 error.
+The new component should be now accessible using http://localhost/new_module/new_component . Accessing this path should pop a 404 error.
 Since your new component has no controller code you will have to create an ``new_component.php`` file and post the following code::
 
 	class new_component_page extends Page {

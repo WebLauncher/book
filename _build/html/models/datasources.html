@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -159,19 +159,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -260,7 +253,7 @@
 models represent. In many cases, the data is retrieved from a
 relational database such as MySQL, PostgreSQL or MSSQL. WebLauncher Framework is
 distributed with several database-specific datasources (see the
-class files in <tt class="docutils literal"><span class="pre">lib/Cake/Model/Datasource/Database</span></tt>), a summary
+class files in <code class="docutils literal"><span class="pre">lib/Cake/Model/Datasource/Database</span></code>), a summary
 of which is listed here for your convenience:</p>
 <ul class="simple">
 <li>MySql</li>
@@ -274,10 +267,10 @@ of which is listed here for your convenience:</p>
 <a class="reference external" href="https://github.com/WebLauncherFramework/datasources/tree/2.0">WebLauncher Framework DataSources repository on GitHub</a>.</p>
 </div>
 <p>When specifying a database connection configuration in
-<tt class="docutils literal"><span class="pre">app/Config/database.php</span></tt>, WebLauncher Framework transparently uses the corresponding
+<code class="docutils literal"><span class="pre">app/Config/database.php</span></code>, WebLauncher Framework transparently uses the corresponding
 database datasource for all model operations. So, even though you might not have
 known about datasources, you&#8217;ve been using them all along.</p>
-<p>All of the above sources derive from a base <tt class="docutils literal"><span class="pre">DboSource</span></tt> class, which
+<p>All of the above sources derive from a base <code class="docutils literal"><span class="pre">DboSource</span></code> class, which
 aggregates some logic that is common to most relational databases. If you decide
 to write a RDBMS datasource, working from one of these (e.g. Mysql, or Sqlite)
 is your best bet.</p>
@@ -287,44 +280,44 @@ going to look at now.</p>
 <div class="section" id="basic-api-for-datasources">
 <h2>Basic API For DataSources<a class="headerlink" href="#basic-api-for-datasources" title="Permalink to this headline">¶</a></h2>
 <p>A datasource can, and <em>should</em> implement at least one of the
-following methods: <tt class="docutils literal"><span class="pre">create</span></tt>, <tt class="docutils literal"><span class="pre">read</span></tt>, <tt class="docutils literal"><span class="pre">update</span></tt> and/or
-<tt class="docutils literal"><span class="pre">delete</span></tt> (the actual method signatures &amp; implementation details
+following methods: <code class="docutils literal"><span class="pre">create</span></code>, <code class="docutils literal"><span class="pre">read</span></code>, <code class="docutils literal"><span class="pre">update</span></code> and/or
+<code class="docutils literal"><span class="pre">delete</span></code> (the actual method signatures &amp; implementation details
 are not important for the moment, and will be described later). You
 need not implement more of the methods listed above than necessary
 - if you need a read-only datasource, there&#8217;s no reason to
-implement <tt class="docutils literal"><span class="pre">create</span></tt>, <tt class="docutils literal"><span class="pre">update</span></tt>, and <tt class="docutils literal"><span class="pre">delete</span></tt>.</p>
+implement <code class="docutils literal"><span class="pre">create</span></code>, <code class="docutils literal"><span class="pre">update</span></code>, and <code class="docutils literal"><span class="pre">delete</span></code>.</p>
 <p>Methods that must be implemented for all CRUD methods:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">describe($model)</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">listSources($data</span> <span class="pre">=</span> <span class="pre">null)</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">calculate($model,</span> <span class="pre">$func,</span> <span class="pre">$params)</span></tt></li>
+<li><code class="docutils literal"><span class="pre">describe($model)</span></code></li>
+<li><code class="docutils literal"><span class="pre">listSources($data</span> <span class="pre">=</span> <span class="pre">null)</span></code></li>
+<li><code class="docutils literal"><span class="pre">calculate($model,</span> <span class="pre">$func,</span> <span class="pre">$params)</span></code></li>
 <li>At least one of:<ul>
-<li><tt class="docutils literal"><span class="pre">create(Model</span> <span class="pre">$model,</span> <span class="pre">$fields</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">$values</span> <span class="pre">=</span> <span class="pre">null)</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">read(Model</span> <span class="pre">$model,</span> <span class="pre">$queryData</span> <span class="pre">=</span> <span class="pre">array(),</span> <span class="pre">$recursive</span> <span class="pre">=</span> <span class="pre">null)</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">update(Model</span> <span class="pre">$model,</span> <span class="pre">$fields</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">$values</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">$conditions</span> <span class="pre">=</span> <span class="pre">null)</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">delete(Model</span> <span class="pre">$model,</span> <span class="pre">$id</span> <span class="pre">=</span> <span class="pre">null)</span></tt></li>
+<li><code class="docutils literal"><span class="pre">create(Model</span> <span class="pre">$model,</span> <span class="pre">$fields</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">$values</span> <span class="pre">=</span> <span class="pre">null)</span></code></li>
+<li><code class="docutils literal"><span class="pre">read(Model</span> <span class="pre">$model,</span> <span class="pre">$queryData</span> <span class="pre">=</span> <span class="pre">array(),</span> <span class="pre">$recursive</span> <span class="pre">=</span> <span class="pre">null)</span></code></li>
+<li><code class="docutils literal"><span class="pre">update(Model</span> <span class="pre">$model,</span> <span class="pre">$fields</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">$values</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">$conditions</span> <span class="pre">=</span> <span class="pre">null)</span></code></li>
+<li><code class="docutils literal"><span class="pre">delete(Model</span> <span class="pre">$model,</span> <span class="pre">$id</span> <span class="pre">=</span> <span class="pre">null)</span></code></li>
 </ul>
 </li>
 </ul>
 <p>It is also possible (and sometimes quite useful) to define the
-<tt class="docutils literal"><span class="pre">$_schema</span></tt> class attribute inside the datasource itself, instead
+<code class="docutils literal"><span class="pre">$_schema</span></code> class attribute inside the datasource itself, instead
 of in the model.</p>
 <p>And that&#8217;s pretty much all there is to it. By coupling this
 datasource to a model, you are then able to use
-<tt class="docutils literal"><span class="pre">Model::find()/save()/delete()</span></tt> as you would normally, and the appropriate
+<code class="docutils literal"><span class="pre">Model::find()/save()/delete()</span></code> as you would normally, and the appropriate
 data and/or parameters used to call those methods will be passed on
 to the datasource itself, where you can decide to implement
 whichever features you need (e.g. Model::find options such as
-<tt class="docutils literal"><span class="pre">'conditions'</span></tt> parsing, <tt class="docutils literal"><span class="pre">'limit'</span></tt> or even your own custom
+<code class="docutils literal"><span class="pre">'conditions'</span></code> parsing, <code class="docutils literal"><span class="pre">'limit'</span></code> or even your own custom
 parameters).</p>
 </div>
 <div class="section" id="an-example">
 <h2>An Example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h2>
 <p>A common reason you would want to write your own datasource is when you would
-like to access a 3rd party API using the usual <tt class="docutils literal"><span class="pre">Model::find()/save()/delete()</span></tt>
+like to access a 3rd party API using the usual <code class="docutils literal"><span class="pre">Model::find()/save()/delete()</span></code>
 methods. Let&#8217;s write a datasource that will access a fictitious remote JSON
-based API. We&#8217;ll call it <tt class="docutils literal"><span class="pre">FarAwaySource</span></tt> and we&#8217;ll put it in
-<tt class="docutils literal"><span class="pre">app/Model/Datasource/FarAwaySource.php</span></tt>:</p>
+based API. We&#8217;ll call it <code class="docutils literal"><span class="pre">FarAwaySource</span></code> and we&#8217;ll put it in
+<code class="docutils literal"><span class="pre">app/Model/Datasource/FarAwaySource.php</span></code>:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">App::uses(&#39;HttpSocket&#39;, &#39;Network/Http&#39;);</span>
 
 <span class="x">class FarAwaySource extends DataSource {</span>
@@ -485,7 +478,7 @@ based API. We&#8217;ll call it <tt class="docutils literal"><span class="pre">Fa
 <span class="x">}</span>
 </pre></div>
 </div>
-<p>We can then configure the datasource in our <tt class="docutils literal"><span class="pre">app/Config/database.php</span></tt> file
+<p>We can then configure the datasource in our <code class="docutils literal"><span class="pre">app/Config/database.php</span></code> file
 by adding something like this:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">public $faraway = array(</span>
 <span class="x">    &#39;datasource&#39; =&gt; &#39;FarAwaySource&#39;,</span>
@@ -508,8 +501,8 @@ by adding something like this:</p>
 </div>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">Using find types other than <tt class="docutils literal"><span class="pre">'all'</span></tt> can have unexpected results if the
-result of your <tt class="docutils literal"><span class="pre">read</span></tt> method is not a numerically indexed array.</p>
+<p class="last">Using find types other than <code class="docutils literal"><span class="pre">'all'</span></code> can have unexpected results if the
+result of your <code class="docutils literal"><span class="pre">read</span></code> method is not a numerically indexed array.</p>
 </div>
 <p>Similarly we can save a new message:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">$this-&gt;MyModel-&gt;save(array(</span>
@@ -534,7 +527,7 @@ result of your <tt class="docutils literal"><span class="pre">read</span></tt> m
 <h2>Plugin DataSources<a class="headerlink" href="#plugin-datasources" title="Permalink to this headline">¶</a></h2>
 <p>You can also package Datasources into plugins.</p>
 <p>Simply place your datasource file into
-<tt class="docutils literal"><span class="pre">Plugin/[YourPlugin]/Model/Datasource/[YourSource].php</span></tt>
+<code class="docutils literal"><span class="pre">Plugin/[YourPlugin]/Model/Datasource/[YourSource].php</span></code>
 and refer to it using the plugin notation:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">public $faraway = array(</span>
 <span class="x">    &#39;datasource&#39; =&gt; &#39;MyPlugin.FarAwaySource&#39;,</span>
@@ -574,7 +567,7 @@ Client are installed properly.</p>
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>

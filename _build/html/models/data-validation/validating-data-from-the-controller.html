@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -159,19 +159,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../../cache.html#removing-configured-cache-engines">Removing Configured Cache Engines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../cache.html#writing-to-a-cache">Writing to a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../cache.html#writing-multiple-keys-at-once">Writing Multiple Keys at Once</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../cache.html#read-through-caching">Read Through Caching</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../cache.html#writing-to-a-cache">Writing to a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cache.html#reading-from-a-cache">Reading From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../cache.html#reading-multiple-keys-at-once">Reading Multiple Keys at Once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cache.html#reading-writing-deleting-multiple-keys-at-once">Reading/Writing/Deleting Multiple Keys at Once</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../cache.html#deleting-from-a-cache">Deleting From a Cache</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../cache.html#deleting-multiple-keys-at-once">Deleting Multiple Keys at Once</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../cache.html#deleting-from-a-cache">Deleting From a Cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cache.html#clearing-entire-pool-cached-data">Clearing Entire Pool Cached Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cache.html#running-maintenance">Running Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cache.html#globally-enable-or-disable-cache">Globally Enable or Disable Cache</a></li>
@@ -291,10 +284,10 @@ invalidFields method also returns that data as the result:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">$errors = $this-&gt;ModelName-&gt;invalidFields(); // contains validationErrors array</span>
 </pre></div>
 </div>
-<p>The validation errors list is not cleared between successive calls to <tt class="docutils literal"><span class="pre">invalidFields()</span></tt>
+<p>The validation errors list is not cleared between successive calls to <code class="docutils literal"><span class="pre">invalidFields()</span></code>
 So if you are validating in a loop and want each set of errors separately
-don&#8217;t use <tt class="docutils literal"><span class="pre">invalidFields()</span></tt>. Instead use <tt class="docutils literal"><span class="pre">validates()</span></tt>
-and access the <tt class="docutils literal"><span class="pre">validationErrors</span></tt> model property.</p>
+don&#8217;t use <code class="docutils literal"><span class="pre">invalidFields()</span></code>. Instead use <code class="docutils literal"><span class="pre">validates()</span></code>
+and access the <code class="docutils literal"><span class="pre">validationErrors</span></code> model property.</p>
 <p>It is important to note that the data must be set to the model
 before the data can be validated. This is different from the save
 method which allows the data to be passed in as a parameter. Also,
@@ -337,7 +330,7 @@ to avoid second check:</p>
 		<p>
 			&copy; Copyright 2014, WebLauncher.
 			<br/>
-			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+			Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.4.
 			<br/>
 		</p>
 	</div>
